@@ -7,7 +7,7 @@ public class Meal{
     private String name;
     private int cals;
 
-    Meal(int serialnum , int price,String name ,String desc ,int cals ){
+    Meal(int serialnum , int price , String name ,String desc ,int cals ){
         this.serialnum=serialnum;
         this.price=price;
         this.desc=desc;

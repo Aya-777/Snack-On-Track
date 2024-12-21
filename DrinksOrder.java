@@ -1,19 +1,30 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class DrinksOrder extends Order implements MouseListener{
 
-    JLabel drink1label = new JLabel("0");
-    JLabel drink2label = new JLabel("0");
-    JLabel drink3label = new JLabel("0");
-    JLabel drink4label = new JLabel("0");
-    JLabel drink5label = new JLabel("0");
+    ImageIcon drink1icon = new ImageIcon("drink1.jpg");
+    ImageIcon drink2icon = new ImageIcon("drink2.jpg");
+    ImageIcon drink3icon = new ImageIcon("drink3.jpg");
+    ImageIcon drink4icon = new ImageIcon("drink4.jpg");
+    ImageIcon drink5icon = new ImageIcon("drink5.jpg");
+    JLabel drink1label = new JLabel(drink1icon);
+    JLabel drink2label = new JLabel(drink2icon);
+    JLabel drink3label = new JLabel(drink3icon);
+    JLabel drink4label = new JLabel(drink4icon);
+    JLabel drink5label = new JLabel(drink5icon);
 
     static int num1=0,num2=0,num3=0,num4=0,num5=0;
     DrinksOrder(){
+
+        drink1label.setBounds(0,350 , 665, 150);
+        // drink2label.setBounds(0, , 665, 150);
+        drink1label.setOpaque(true);
 
         f.add(drink1label);
         f.add(drink2label);

@@ -1,6 +1,7 @@
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,30 +44,30 @@ public class MealFrame implements ActionListener{
         +" light soy sauce and orange.",490);
 
         //Desserts    
-    static Meal dessert1 = new Meal(11,1000,"Chocolate Shia Pudding",
+    static Meal dessert1 = new Meal(12,1000,"Chocolate Shia Pudding",
         "Shia seeds, cocoa powder, banana, milk, chocolate shavings.",250);
-    static Meal dessert2 = new Meal(12,1300,"Granola Bars",
+    static Meal dessert2 = new Meal(13,1300,"Granola Bars",
         "Shia seeds, oatmeal, raisins, almond, sunflower seeds, pumpkin seeds, coconut flakes, honey.",300);
-    static Meal dessert3 = new Meal(13,1000,"Muhalabia(arabian milk pudding)",
+    static Meal dessert3 = new Meal(14,1000,"Muhalabia(arabian milk pudding)",
         "Milk, sugar, roses.",100);
-    static Meal dessert4 = new Meal(14,1500,"Vegan Mango Shia Pudding",
+    static Meal dessert4 = new Meal(15,1500,"Vegan Mango Shia Pudding",
         "Shia seeds, mango slices, mango juice, sugar.",280);
-    static Meal dessert5 = new Meal(15,800,"Flan","Milk, sugar, caramel",300);
+    static Meal dessert5 = new Meal(16,800,"Flan","Milk, sugar, caramel",300);
 
         //Drinks
-    static Meal drink1 = new Meal(16, 200, "Watermelon Strawberry Smoothie",
+    static Meal drink1 = new Meal(17, 200, "Watermelon Strawberry Smoothie",
      "Watermelon, strawberry, sugar, lemon.", 200);
-     static Meal drink2 = new Meal(17, 150, "Strawberry Iced Tea",
+     static Meal drink2 = new Meal(18, 150, "Strawberry Iced Tea",
      "Strawberry, tea, sugar.", 100);
-     static Meal drink3 = new Meal(18, 300, "Orange Coconut Water",
+     static Meal drink3 = new Meal(19, 300, "Orange Coconut Water",
      "Orange, coconut, mint, sugar.", 290); 
-     static Meal drink4 = new Meal(19, 200, "Peach and Raspberry Smoothie",
+     static Meal drink4 = new Meal(20, 200, "Peach and Raspberry Smoothie",
      "Raspberry, peach, red orange, pomegranet, milk, sugar.", 370);
-     static Meal drink5 = new Meal(20, 200, "Diet Coke",
+     static Meal drink5 = new Meal(21, 200, "Diet Coke",
      "Just Coke..", 5);  
 
-    static Integer [] order = new Integer[23];
-    static Meal[] meallist = new Meal[23]; 
+    static ArrayList<Integer> order = new ArrayList<>();
+    static ArrayList<Meal> meallist = new ArrayList<>(); 
 
     int mealnum;
     Meal m;
@@ -81,53 +82,9 @@ public class MealFrame implements ActionListener{
 
     MealFrame(Integer mealnum){
         f.setLayout(new FlowLayout());
-        meallist[0]=null;
-        meallist[1]=m1;
-        meallist[2]=m2;
-        meallist[3]=m3;
-        meallist[4]=m4;
-        meallist[5]=m5;
-        meallist[6]=m6;
-        meallist[7]=m7;
-        meallist[8]=s1;
-        meallist[9]=s2;
-        meallist[10]=s3;
-        meallist[11]=s4;
-        meallist[12]=dessert1;
-        meallist[13]=dessert2;
-        meallist[14]=dessert3;
-        meallist[15]=dessert4;
-        meallist[16]=drink1;
-        meallist[17]=drink2;
-        meallist[18]=drink3;
-        meallist[19]=drink4;
-        meallist[20]=drink5;
-        meallist[21]=null;
-        meallist[22]=null;
-
-
-        order[0]=0;
-        order[1]=0;
-        order[2]=0;
-        order[3]=0;
-        order[4]=0;
-        order[5]=0;
-        order[6]=0;
-        order[7]=0;
-        order[8]=0;
-        order[9]=0;
-        order[10]=0;
-        order[11]=0;
-        order[12]=0;
-        order[13]=0;
-        order[14]=0;
-        order[15]=0;
-        order[16]=0;
-        order[17]=0;
-
 
         this.mealnum=mealnum;
-        m = meallist[mealnum];
+        m = meallist.get(mealnum);
 
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
@@ -148,7 +105,7 @@ public class MealFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == addbutton){
             Order.num++; num1++;
-            order[mealnum]++;
+            order.add(mealnum, order.get(mealnum)+1);
             Order.price += m.getPrice();
             singlemealnumlabel.setText(String.valueOf(num1));
             mealnumlabel.setText(String.valueOf(Order.num));
@@ -168,7 +125,7 @@ public class MealFrame implements ActionListener{
         }
         if(e.getSource() == minusbutton && num1 > 0){
             Order.num--; num1--;
-            order[mealnum]--;
+            order.add(mealnum, order.get(mealnum)+1);
             Order.price-= m.getPrice();
             pricenumlabel.setText(String.valueOf(Order.price));
             mealnumlabel.setText(String.valueOf(Order.num));
@@ -189,5 +146,61 @@ public class MealFrame implements ActionListener{
 
     }
 
+    public static void fillLists(){
+        meallist.add(m1);
+        meallist.add(m2);
+        meallist.add(m3);
+        meallist.add(m4);
+        meallist.add(m5);
+        meallist.add(m6);
+        meallist.add(m7);
+        meallist.add(s1);
+        meallist.add(s2);
+        meallist.add(s3);
+        meallist.add(s4);
+        meallist.add(dessert1);
+        meallist.add(dessert2);
+        meallist.add(dessert3);
+        meallist.add(dessert4);
+        meallist.add(dessert5);
+        meallist.add(drink1);
+        meallist.add(drink2);
+        meallist.add(drink3);
+        meallist.add(drink4);
+        meallist.add(drink5);
+
+
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+        order.add(0);
+
+    }
+
+    public static void addMeal(int serialnum,int price,String name , String desc, int cals){
+        fillLists();
+        serialnum = meallist.size()-1;
+        Meal  newMeal = new Meal(serialnum, price, name, desc, cals);
+        meallist.add(newMeal);
+        System.out.println(meallist.size()); 
+        
+    }
 
 }

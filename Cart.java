@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Cart implements ActionListener {
 
-    Integer[] meals = new Integer[7];
+    ArrayList<Integer> meals = new ArrayList<>();
     JFrame f = new JFrame();
     JLabel l = new JLabel("Your Order");
     JCheckBox delivery = new JCheckBox("Delivery");
@@ -24,7 +25,7 @@ public class Cart implements ActionListener {
 
     int i = 1;
     Cart(){}
-    Cart(Integer[] ll) {
+    Cart(ArrayList<Integer> ll) {
         meals=ll;
         f.setLayout(null);
         // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -29,16 +29,16 @@ public class Order implements ActionListener {
         mealsbar.add(dessertsitem);
         mealsbar.add(drinksitem);
 
-        viewcartbutton.setBounds(50,200 , 130, 30);
-        mealslabel.setBounds(200, 212, 100, 20);
+        viewcartbutton.setBounds(340,90 , 130, 30);
+        mealslabel.setBounds(350, 20, 100, 20);
         mealslabel.setFont(new Font("Consolas", Font.PLAIN ,20));
-        mealnumlabel.setBounds(295 , 212 , 50, 20);
+        mealnumlabel.setBounds(450 , 20 , 50, 20);
         mealnumlabel.setFont(new Font("Consolas", Font.PLAIN ,20));
-        pricelabel.setBounds(360, 212, 100, 20);
+        pricelabel.setBounds(350, 60, 100, 20);
         pricelabel.setFont(new Font("Consolas",Font.PLAIN,20));
-        pricenumlabel.setBounds(460, 212, 50, 20);
+        pricenumlabel.setBounds(450, 60, 50, 20);
         pricenumlabel.setFont(new Font("Consolas",Font.PLAIN,20));
-        mealsbar.setBounds(0, 250, 665, 50);
+        mealsbar.setBounds(0, 140, 665, 50);
         mealsbar.setFont(new Font("Consolas",Font.PLAIN,200));
 
         f.add(viewcartbutton);

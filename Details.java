@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -15,7 +16,7 @@ public class Details {
     JProgressBar detailsprogregressbar = new JProgressBar();
     JFrame f = new JFrame();
 
-    Details(Integer[] meals){
+    Details(ArrayList<Integer> meals){
         int index=0;
         
             // System.out.println(index+ " " + i);

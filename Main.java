@@ -7,6 +7,6 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        SignFrame signFrame = new SignFrame();
+        new SignFrame();
     }
 }

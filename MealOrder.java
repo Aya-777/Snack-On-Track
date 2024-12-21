@@ -6,7 +6,8 @@ import java.awt.event.MouseListener;
 
 public class MealOrder extends Order implements MouseListener {
     
-    JLabel meal1label = new JLabel();
+    ImageIcon meal = new ImageIcon("meal.jpg");
+    JLabel meal1label = new JLabel(meal);
     JLabel meal2label = new JLabel("0");
     JLabel meal3label = new JLabel("0");
     JLabel meal4label = new JLabel("0");
@@ -16,8 +17,8 @@ public class MealOrder extends Order implements MouseListener {
 
 
     MealOrder(){
-        meal1label.setBounds(20,350 , 100, 20);
-        meal1label.setBackground(Color.red);
+        meal1label.setBounds(0,350 , 665, 150);
+        // meal1label.setBackground(Color.red);
         meal1label.setOpaque(true);
         meal1label.addMouseListener(this);
 
