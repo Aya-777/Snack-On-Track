@@ -16,7 +16,6 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal7label = new JLabel("0");
     boolean manager;
 
-    MealOrder(){}
     MealOrder(boolean manager){
         this.manager=manager;
         meal1label.setBounds(0,350 , 665, 150);

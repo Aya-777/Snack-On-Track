@@ -85,6 +85,7 @@ public class MealFrame implements ActionListener{
     MealFrame(Integer mealnum , boolean manager){
         f.setLayout(new FlowLayout());
         this.mealnum=mealnum;
+        this.m=meallist.get(mealnum);
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
         deleteButton.addActionListener(this);
@@ -108,43 +109,27 @@ public class MealFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == addbutton){
             Order.num++; num1++;
-            order.add(mealnum, order.get(mealnum)+1);
+            // order.add(mealnum-1, num1);
+            order.set(mealnum, num1);
             Order.price += m.getPrice();
             singlemealnumlabel.setText(String.valueOf(num1));
             mealnumlabel.setText(String.valueOf(Order.num));
             pricenumlabel.setText(String.valueOf(Order.price));
 
-            MealOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            MealOrder.pricenumlabel.setText(String.valueOf(Order.price));
-
-            SaladOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            SaladOrder.pricenumlabel.setText(String.valueOf(Order.price));
-
-            DessertOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            DessertOrder.pricenumlabel.setText(String.valueOf(Order.price));
-            
-            DrinksOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            DrinksOrder.pricenumlabel.setText(String.valueOf(Order.price));
+            Order.mealnumlabel.setText(String.valueOf(Order.num));
+            Order.pricenumlabel.setText(String.valueOf(Order.price));
         }
         if(e.getSource() == minusbutton && num1 > 0){
             Order.num--; num1--;
-            order.add(mealnum, order.get(mealnum)+1);
+            // order.add(mealnum-1 ,num1);
+            order.set(mealnum, num1);
             Order.price-= m.getPrice();
             pricenumlabel.setText(String.valueOf(Order.price));
             mealnumlabel.setText(String.valueOf(Order.num));
             singlemealnumlabel.setText(String.valueOf(num1));
 
-            MealOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            MealOrder.pricenumlabel.setText(String.valueOf(Order.price));
-
-            SaladOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            SaladOrder.pricenumlabel.setText(String.valueOf(Order.price));
-
-            DessertOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            DessertOrder.pricenumlabel.setText(String.valueOf(Order.price));
-            
-            DrinksOrder.mealnumlabel.setText(String.valueOf(Order.num));
-            DrinksOrder.pricenumlabel.setText(String.valueOf(Order.price));
+            Order.mealnumlabel.setText(String.valueOf(Order.num));
+            Order.pricenumlabel.setText(String.valueOf(Order.price));
         }
         if(e.getSource() == deleteButton){
             // meallist.remove(mealnum);
