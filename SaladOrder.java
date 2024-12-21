@@ -9,11 +9,12 @@ public class SaladOrder extends Order implements MouseListener {
     JLabel salad2label = new JLabel("0");
     JLabel salad3label = new JLabel("0");
     JLabel salad4label = new JLabel("0");
+    boolean manager;
 
     static int num1=0,num2=0,num3=0,num4=0;
 
-    SaladOrder(){
-
+    SaladOrder(boolean manager){
+        this.manager=manager;
         f.add(salad1label);
         f.add(salad2label);
         f.add(salad3label);
@@ -24,7 +25,7 @@ public class SaladOrder extends Order implements MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
-            new MealOrder();
+            new MealOrder(manager);
 
         }
         if(e.getSource() == saladsitem){
@@ -32,10 +33,10 @@ public class SaladOrder extends Order implements MouseListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
         }
          if(e.getSource() == dessertsitem){
-            new DessertOrder();
+            new DessertOrder(manager);
         }
         if(e.getSource()==drinksitem){
-            new DrinksOrder();
+            new DrinksOrder(manager);
         }
 
         if(e.getSource() == viewcartbutton){
@@ -51,20 +52,20 @@ public class SaladOrder extends Order implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == salad1label){
-            new MealFrame(8);
+            new MealFrame(8,manager);
 
         }
         if(e.getSource() == salad2label){
-            new MealFrame(9);
+            new MealFrame(9,manager);
 
         }
         if(e.getSource() == salad3label){
-            new MealFrame(10);
+            new MealFrame(10,manager);
 
 
         }
         if(e.getSource() == salad4label){
-            new MealFrame(11);
+            new MealFrame(11,manager);
         }
     }
     @Override

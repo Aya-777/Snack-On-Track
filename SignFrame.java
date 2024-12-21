@@ -109,7 +109,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     if (check) {
                         this.dispose();
                         // new firstFrame();
-                        new MealOrder();
+                        new MealOrder(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
                     }
@@ -119,7 +119,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     if (check) {
                         this.dispose();
                         // new firstFrame();
-                        new MealOrderManager();
+                        new MealOrderManager(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
                     }
@@ -134,7 +134,7 @@ public class SignFrame extends JFrame implements ActionListener {
                         customeAccounts.add(new customerAccounts(userName, password));
                         this.dispose();
                         // new firstFrame();
-                        new MealOrder();
+                        new MealOrder(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
                     }
@@ -145,7 +145,7 @@ public class SignFrame extends JFrame implements ActionListener {
                         mangeAccounts.add(new ManagementAccounts(password));
                         this.dispose();
                         // new firstFrame();
-                        new MealOrderManager();
+                        new MealOrderManager(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
                     }

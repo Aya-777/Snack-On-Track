@@ -14,9 +14,11 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal5label = new JLabel("0");
     JLabel meal6label = new JLabel("0");
     JLabel meal7label = new JLabel("0");
+    boolean manager;
 
-
-    MealOrder(){
+    MealOrder(){}
+    MealOrder(boolean manager){
+        this.manager=manager;
         meal1label.setBounds(0,350 , 665, 150);
         // meal1label.setBackground(Color.red);
         meal1label.setOpaque(true);
@@ -42,13 +44,13 @@ public class MealOrder extends Order implements MouseListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
         }
         if(e.getSource() == saladsitem){
-            new SaladOrder();
+            new SaladOrder(manager);
         }
         if(e.getSource() == dessertsitem){
-            new DessertOrder();
+            new DessertOrder(manager);
         }
         if(e.getSource()==drinksitem){
-            new DrinksOrder();
+            new DrinksOrder(manager);
         }
 
         if(e.getSource() == viewcartbutton){
@@ -70,26 +72,26 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(1);
+                new MealFrame(1,manager);
             }
         }
         if(e.getSource() == meal2label){
-            new MealFrame(2);
+            new MealFrame(2,manager);
         }
         if(e.getSource() == meal3label){
-            new MealFrame(3);
+            new MealFrame(3,manager);
         }
         if(e.getSource() == meal4label){
-            new MealFrame(4);
+            new MealFrame(4,manager);
         }
         if(e.getSource() == meal5label){
-            new MealFrame(5);
+            new MealFrame(5,manager);
         }
         if(e.getSource() == meal6label){
-            new MealFrame(6);
+            new MealFrame(6,manager);
         }
         if(e.getSource() == meal7label){
-            new MealFrame(7);
+            new MealFrame(7,manager);
         }
     }
     @Override

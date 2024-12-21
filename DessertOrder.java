@@ -11,10 +11,12 @@ public class DessertOrder extends Order implements MouseListener{
     JLabel dessert3label = new JLabel("0");
     JLabel dessert4label = new JLabel("0");
     JLabel dessert5label = new JLabel("0");
+    boolean manager;
 
     static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
 
-    DessertOrder(){
+    DessertOrder(boolean manager){
+        this.manager=manager;
 
         f.add(dessert1label);
         f.add(dessert2label);
@@ -28,13 +30,13 @@ public class DessertOrder extends Order implements MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
-            new MealOrder();
+            new MealOrder(manager);
         }
         if(e.getSource() == saladsitem){
-            new SaladOrder();
+            new SaladOrder(manager);
         }
         if(e.getSource()==drinksitem){
-            new DrinksOrder();
+            new DrinksOrder(manager);
 
         }
         if(e.getSource() == dessertsitem){
@@ -56,19 +58,19 @@ public class DessertOrder extends Order implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == dessert1label){
-            new MealFrame(11);
+            new MealFrame(11,manager);
         }
         if(e.getSource() == dessert2label){
-            new MealFrame(12);
+            new MealFrame(12,manager);
         }
         if(e.getSource() == dessert3label){
-            new MealFrame(13);
+            new MealFrame(13,manager);
         }
         if(e.getSource() == dessert4label){
-            new MealFrame(14);
+            new MealFrame(14,manager);
         }
         if(e.getSource() == dessert5label){
-            new MealFrame(15);
+            new MealFrame(15,manager);
         }
         
     }

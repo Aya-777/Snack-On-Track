@@ -5,7 +5,8 @@ class MealOrderManager extends MealOrder{
 
     JButton addmealButton = new JButton("Add Meal");
 
-    MealOrderManager(){
+    MealOrderManager(boolean m){
+        super(m);
         addmealButton.setBounds(400, 200, 100, 20);
         addmealButton.addActionListener(this);
 

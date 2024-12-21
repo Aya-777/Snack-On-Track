@@ -82,14 +82,16 @@ public class MealFrame implements ActionListener{
     JFrame f = new JFrame();
     static int num1 =0;
 
-    MealFrame(Integer mealnum){
+    MealFrame(Integer mealnum , boolean manager){
         f.setLayout(new FlowLayout());
         this.mealnum=mealnum;
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
         deleteButton.addActionListener(this);
 
-        f.add(deleteButton);
+        if(manager){
+            f.add(deleteButton);
+        }
         f.add(singlemealnumlabel);
         f.add(addbutton);
         f.add(minusbutton);
@@ -148,6 +150,7 @@ public class MealFrame implements ActionListener{
             // meallist.remove(mealnum);
             meallist.get(mealnum-1).setDeleted(true);
             JOptionPane.showMessageDialog(null, "Meal Deleted.", "Title", JOptionPane.INFORMATION_MESSAGE);
+            f.dispose();
         }
     }
 
