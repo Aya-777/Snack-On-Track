@@ -34,6 +34,9 @@ public class SaladOrder extends Order implements MouseListener {
          if(e.getSource() == dessertsitem){
             new DessertOrder();
         }
+        if(e.getSource()==drinksitem){
+            new DrinksOrder();
+        }
 
         if(e.getSource() == viewcartbutton){
             if(Order.num == 0){
