@@ -65,7 +65,13 @@ public class MealOrder extends Order implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == meal1label){
-            new MealFrame(1);
+            // System.out.println(MealFrame.m1.getDeleted());
+            if(MealFrame.m1.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(1);
+            }
         }
         if(e.getSource() == meal2label){
             new MealFrame(2);
