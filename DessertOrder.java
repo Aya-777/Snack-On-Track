@@ -16,8 +16,8 @@ public class DessertOrder extends Order implements MouseListener{
     static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
 
     DessertOrder(boolean manager){
+        super(manager);
         this.manager=manager;
-
         f.add(dessert1label);
         f.add(dessert2label);
         f.add(dessert3label);
@@ -56,6 +56,9 @@ public class DessertOrder extends Order implements MouseListener{
             }
         }
         if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
             super.actionPerformed(e);
         }
 

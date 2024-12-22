@@ -14,6 +14,7 @@ public class SaladOrder extends Order implements MouseListener {
     static int num1=0,num2=0,num3=0,num4=0;
 
     SaladOrder(boolean manager){
+        super(manager);
         this.manager=manager;
         f.add(salad1label);
         f.add(salad2label);
@@ -51,6 +52,9 @@ public class SaladOrder extends Order implements MouseListener {
                 new Cart(MealFrame.order);}
         }
         if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
             super.actionPerformed(e);
         }
 

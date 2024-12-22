@@ -22,6 +22,7 @@ public class DrinksOrder extends Order implements MouseListener{
 
     static int num1=0,num2=0,num3=0,num4=0,num5=0;
     DrinksOrder(boolean manager){
+        super(manager);
         this.manager=manager;
         drink1label.setBounds(0,350 , 665, 150);
         // drink2label.setBounds(0, , 665, 150);
@@ -65,6 +66,9 @@ public class DrinksOrder extends Order implements MouseListener{
             }
         }
         if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
             super.actionPerformed(e);
         }
 

@@ -119,7 +119,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     if (check) {
                         this.dispose();
                         // new firstFrame();
-                        new MealOrderManager(true);
+                        new MealOrder(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
                     }
@@ -145,7 +145,7 @@ public class SignFrame extends JFrame implements ActionListener {
                         mangeAccounts.add(new ManagementAccounts(password));
                         this.dispose();
                         // new firstFrame();
-                        new MealOrderManager(true);
+                        new MealOrder(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
                     }

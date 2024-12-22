@@ -13,15 +13,17 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal5label = new JLabel("0");
     JLabel meal6label = new JLabel("0");
     JLabel meal7label = new JLabel("0");
-    boolean manager;
+    static boolean manager;
 
     MealOrder(boolean manager){
+        super(manager);
         this.manager=manager;
         meal1label.setBounds(-7,350 , 665, 150);
         // meal1label.setBackground(Color.red);
         meal1label.setOpaque(true);
         meal1label.addMouseListener(this);
 
+        
         f.add(meal1label);
         f.add(meal2label);
         f.add(meal3label);
@@ -63,6 +65,9 @@ public class MealOrder extends Order implements MouseListener {
                 new Cart(MealFrame.order);}
         }
         if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
             super.actionPerformed(e);
         }
 

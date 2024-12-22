@@ -13,6 +13,8 @@ public class Order implements ActionListener {
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewcartbutton = new JButton("View cart");
     JButton logoutButton = new JButton("Log out");
+    JButton addmealButton = new JButton("Add Meal");
+
     JLabel mealslabel = new JLabel("Meals :");
     
     JMenuBar mealsbar = new JMenuBar();
@@ -22,8 +24,14 @@ public class Order implements ActionListener {
     JMenuItem drinksitem = new JMenuItem("Drinks");
 
 
-    Order(){
+    Order(boolean manager){
         f.setLayout(null);
+
+        if(manager){
+            addmealButton.setBounds(400, 200, 100, 20);
+            addmealButton.addActionListener(this);
+            f.add(addmealButton);
+        }
 
         mealsbar.add(mealsitem);
         mealsbar.add(saladsitem);
@@ -72,7 +80,16 @@ public class Order implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==logoutButton){
             f.dispose();
+            price=0;
+            num=0;
+            mealnumlabel.setText(String.valueOf(num));
+            pricenumlabel.setText(String.valueOf(price));
+            MealFrame.meallist.clear();
+            MealFrame.fillLists();
             new SignFrame();
+        }
+        if(e.getSource()==addmealButton){
+            new AddMeal();
         }
 
     }
