@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 
 public class MealOrder extends Order implements MouseListener {
     
-    ImageIcon meal = new ImageIcon("meal.jpg");
+    ImageIcon meal = new ImageIcon("meal1icon.jpg");
     JLabel meal1label = new JLabel(meal);
     JLabel meal2label = new JLabel("0");
     JLabel meal3label = new JLabel("0");
@@ -18,7 +18,7 @@ public class MealOrder extends Order implements MouseListener {
 
     MealOrder(boolean manager){
         this.manager=manager;
-        meal1label.setBounds(0,350 , 665, 150);
+        meal1label.setBounds(-7,350 , 665, 150);
         // meal1label.setBackground(Color.red);
         meal1label.setOpaque(true);
         meal1label.addMouseListener(this);
@@ -43,12 +43,15 @@ public class MealOrder extends Order implements MouseListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
         }
         if(e.getSource() == saladsitem){
+            f.dispose();
             new SaladOrder(manager);
         }
         if(e.getSource() == dessertsitem){
+            f.dispose();
             new DessertOrder(manager);
         }
         if(e.getSource()==drinksitem){
+            f.dispose();
             new DrinksOrder(manager);
         }
 
@@ -59,6 +62,9 @@ public class MealOrder extends Order implements MouseListener {
             }
             else {
                 new Cart(MealFrame.order);}
+        }
+        if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
         }
 
 

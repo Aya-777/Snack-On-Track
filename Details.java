@@ -51,9 +51,11 @@ public class Details {
         // mealdetails();
 
         f.add(detailsprogregressbar);
-        f.setSize(500,500);
+        f.setResizable(false);
+        f.setSize(665,850);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
+
     }
 
     public void mealdetails(){

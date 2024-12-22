@@ -74,9 +74,11 @@ public class Cart implements ActionListener {
         f.add(pricelabel);
         f.add(continuenutton);
 
-        f.setSize(500, 500);
+        f.setResizable(false);
+        f.setSize(500,500);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
+
 
     }
 
@@ -120,6 +122,7 @@ public class Cart implements ActionListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
                     addressfield.setCaretColor(Color.red);
                 } else{
+                    f.dispose();
                     new Details(meals);
                     // for(Meal i : order){
                     //     System.out.println(i.getNum());}
@@ -131,6 +134,7 @@ public class Cart implements ActionListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
                     tablenumtextfield.setCaretColor(Color.red);
                 } else{
+                    f.dispose();
                     new Details(meals);
                 }
             }

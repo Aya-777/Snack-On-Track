@@ -12,6 +12,7 @@ public class Order implements ActionListener {
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewcartbutton = new JButton("View cart");
+    JButton logoutButton = new JButton("Log out");
     JLabel mealslabel = new JLabel("Meals :");
     
     JMenuBar mealsbar = new JMenuBar();
@@ -41,18 +42,22 @@ public class Order implements ActionListener {
         mealsbar.setBounds(0, 140, 665, 50);
         mealsbar.setFont(new Font("Consolas",Font.PLAIN,200));
 
+        logoutButton.setBounds(100, 200, 100, 20);;
+
         f.add(viewcartbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
         f.add(pricelabel);
         f.add(pricenumlabel);
         f.add(mealsbar);
+        f.add(logoutButton);
 
         viewcartbutton.addActionListener(this);
         mealsitem.addActionListener(this);
         saladsitem.addActionListener(this);
         dessertsitem.addActionListener(this);
         drinksitem.addActionListener(this);
+        logoutButton.addActionListener(this);
       
         f.setResizable(false);
         f.setSize(665,850);
@@ -65,6 +70,10 @@ public class Order implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==logoutButton){
+            f.dispose();
+            new SignFrame();
+        }
 
     }
 }

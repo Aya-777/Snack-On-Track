@@ -30,12 +30,15 @@ public class DessertOrder extends Order implements MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
+            f.dispose();
             new MealOrder(manager);
         }
         if(e.getSource() == saladsitem){
+            f.dispose();
             new SaladOrder(manager);
         }
         if(e.getSource()==drinksitem){
+            f.dispose();
             new DrinksOrder(manager);
 
         }
@@ -51,6 +54,9 @@ public class DessertOrder extends Order implements MouseListener{
             else {
                 new Cart(MealFrame.order);
             }
+        }
+        if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
         }
 
     }

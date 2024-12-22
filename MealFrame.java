@@ -100,9 +100,11 @@ public class MealFrame implements ActionListener{
         f.add(pricelabel);
         f.add(pricenumlabel);
         
+        f.setResizable(false);
         f.setSize(665,850);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
+
     }
 
     @Override
