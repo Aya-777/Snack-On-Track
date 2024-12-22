@@ -58,19 +58,44 @@ public class DessertOrder extends Order implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == dessert1label){
-            new MealFrame(11,manager);
+            if(MealFrame.dessert1.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(12,manager);
+            }        
         }
         if(e.getSource() == dessert2label){
-            new MealFrame(12,manager);
+            if(MealFrame.dessert2.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(13,manager);
+            }
         }
         if(e.getSource() == dessert3label){
-            new MealFrame(13,manager);
+            if(MealFrame.dessert3.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(14,manager);
+            }
         }
         if(e.getSource() == dessert4label){
-            new MealFrame(14,manager);
+            if(MealFrame.dessert4.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(15,manager);
+            }
         }
         if(e.getSource() == dessert5label){
-            new MealFrame(15,manager);
+            if(MealFrame.dessert5.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(16,manager);
+            }
         }
         
     }

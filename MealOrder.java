@@ -75,22 +75,52 @@ public class MealOrder extends Order implements MouseListener {
             }
         }
         if(e.getSource() == meal2label){
-            new MealFrame(2,manager);
+            if(MealFrame.m2.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(2,manager);
+            }
         }
         if(e.getSource() == meal3label){
-            new MealFrame(3,manager);
+            if(MealFrame.m3.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(3,manager);
+            }
         }
         if(e.getSource() == meal4label){
-            new MealFrame(4,manager);
+            if(MealFrame.m4.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(4,manager);
+            }
         }
         if(e.getSource() == meal5label){
-            new MealFrame(5,manager);
+            if(MealFrame.m5.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(5,manager);
+            }
         }
         if(e.getSource() == meal6label){
-            new MealFrame(6,manager);
+            if(MealFrame.m6.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(6,manager);
+            }
         }
         if(e.getSource() == meal7label){
-            new MealFrame(7,manager);
+            if(MealFrame.m7.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(7,manager);
+            }
         }
     }
     @Override
