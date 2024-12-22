@@ -1,4 +1,3 @@
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -6,18 +5,20 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
 public class Details implements ActionListener{
     JProgressBar detailsprogregressbar = new JProgressBar();
-    JFrame f = new JFrame();
+    static JFrame f = new JFrame();
     JButton backToOrderButton = new JButton("Back to Order");
+    JLabel state = new JLabel("Accepting order...");
+    int x=200 ,y = 150 , xnum=400 , ynum=150;
 
     Details(ArrayList<Integer> meals){
         int index=0;
@@ -25,14 +26,8 @@ public class Details implements ActionListener{
             for(int i : meals){
                 writer.write(String.valueOf(index) + " ");
                 writer.write(String.valueOf(i)+ "\n");
-                if(i!=0){
-                    JLabel meal = new JLabel(MealFrame.meallist.get(index).getName());
-                    meal.setBounds(200, 150, 200, 20);
-                    f.add(meal);
-                }
-                index++;
             }
-            writer.close();
+                writer.close();
             }catch(Exception e){
                 System.out.println(e.getStackTrace());
             }
@@ -59,8 +54,55 @@ public class Details implements ActionListener{
         detailsprogregressbar.setValue(0);
         detailsprogregressbar.setStringPainted(true);
 
-        // mealdetails();
+        SwingWorker<Void,Integer> worker = new SwingWorker<Void,Integer>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                for(int i = 0 ; i <= 100 ; i++){
+                    try {
+                        Thread.sleep(100);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                    publish(i);
+                }
+                return null;
+            }
+            @Override
+            protected void process(List<Integer> chunks) {
+                int progress = chunks.get(chunks.size()-1);
+                detailsprogregressbar.setValue(progress);
+                if(progress==10){
+                    state.setText("Preparing...");}
+                if(progress==75){
+                    state.setText("Delivering...");
+                }
 
+            }
+            @Override
+            protected void done() {
+                System.out.println("completed");
+                state.setText("Done!");
+            }
+        };
+
+        index=0;
+        f.add(state);
+        for(int i =0 ; i < meals.size() ; i++){
+            if(meals.get(i)>0){
+                JLabel mealname = new JLabel(MealFrame.meallist.get(index).getName());
+                JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
+                mealname.setBounds(x, y, 200, 20);
+                mealnum.setBounds(xnum , ynum, 50, 20);
+                state.setBounds(70, 200 , 100, 20);
+                f.add(mealname);
+                f.add(mealnum);
+                worker.execute();
+                // x+=100;
+                y+=50;
+                ynum+=50;
+                }
+                index++;
+            }
         f.add(backToOrderButton);
         f.add(detailsprogregressbar);
         f.setResizable(false);
@@ -68,19 +110,6 @@ public class Details implements ActionListener{
         f.setVisible(true);
         f.setLocationRelativeTo(null);
 
-    }
-
-    public void mealdetails(){
-        int counter = 0 ;
-        while (counter < 101) {
-            detailsprogregressbar.setValue(counter);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            counter+=20;
-        }
     }
 
     @Override
@@ -100,5 +129,6 @@ public class Details implements ActionListener{
             }
         }
     }
+
 
 }

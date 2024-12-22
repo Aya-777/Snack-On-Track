@@ -72,15 +72,16 @@ public class MealFrame implements ActionListener{
 
     int mealnum;
     Meal m;
-    JLabel mealnumlabel = new JLabel("0");
-    JLabel singlemealnumlabel = new JLabel("0");
+    int num1 = 0;
+    JLabel mealnumlabel = new JLabel(String.valueOf(Order.num));
+    JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
     JButton addbutton = new JButton("+");
     JButton minusbutton = new JButton("-");
     JButton deleteButton = new JButton("Delete Meal");
+    JButton backButton = new JButton("Back");
     JLabel pricelabel = new JLabel("Price : ");
     JLabel pricenumlabel = new JLabel(String.valueOf(Order.price));
     JFrame f = new JFrame();
-    static int num1 =0;
 
     MealFrame(Integer mealnum , boolean manager){
         f.setLayout(new FlowLayout());
@@ -89,10 +90,13 @@ public class MealFrame implements ActionListener{
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
         deleteButton.addActionListener(this);
+        backButton.addActionListener(this);
 
         if(manager){
             f.add(deleteButton);
         }
+        singlemealnumlabel.setText(String.valueOf(order.get(mealnum)));
+        f.add(backButton);
         f.add(singlemealnumlabel);
         f.add(addbutton);
         f.add(minusbutton);
@@ -137,6 +141,9 @@ public class MealFrame implements ActionListener{
             // meallist.remove(mealnum);
             meallist.get(mealnum-1).setDeleted(true);
             JOptionPane.showMessageDialog(null, "Meal Deleted.", "Title", JOptionPane.INFORMATION_MESSAGE);
+            f.dispose();
+        }
+        if(e.getSource()==backButton){
             f.dispose();
         }
     }
