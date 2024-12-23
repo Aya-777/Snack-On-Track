@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,8 @@ public class Order implements ActionListener {
     JMenuItem saladsitem = new JMenuItem("Salads");
     JMenuItem dessertsitem = new JMenuItem("Desserts");
     JMenuItem drinksitem = new JMenuItem("Drinks");
-
+    JPanel panelScroll = new JPanel();
+    JScrollPane scrollPane = new JScrollPane(panelScroll);
 
     Order(){
         f.setLayout(null);
@@ -29,17 +31,21 @@ public class Order implements ActionListener {
         mealsbar.add(dessertsitem);
         mealsbar.add(drinksitem);
 
-        viewcartbutton.setBounds(50,200 , 130, 30);
-        mealslabel.setBounds(200, 212, 100, 20);
-        mealslabel.setFont(new Font("Consolas", Font.PLAIN ,20));
-        mealnumlabel.setBounds(295 , 212 , 50, 20);
-        mealnumlabel.setFont(new Font("Consolas", Font.PLAIN ,20));
-        pricelabel.setBounds(360, 212, 100, 20);
-        pricelabel.setFont(new Font("Consolas",Font.PLAIN,20));
-        pricenumlabel.setBounds(460, 212, 50, 20);
-        pricenumlabel.setFont(new Font("Consolas",Font.PLAIN,20));
-        mealsbar.setBounds(0, 250, 665, 50);
-        mealsbar.setFont(new Font("Consolas",Font.PLAIN,200));
+        viewcartbutton.setBounds(260,115 , 130, 30);
+        mealslabel.setBounds(275, 40, 100, 20);
+        mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
+        mealnumlabel.setBounds(360, 40, 50, 20);
+        mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
+        pricelabel.setBounds(275, 75, 100, 20);
+        pricelabel.setFont(new Font("Franklin Gothic Demi",Font.PLAIN,20));
+        pricenumlabel.setBounds(360, 75, 50, 20);
+        pricenumlabel.setFont(new Font("Franklin Gothic Demi",Font.PLAIN,20));
+        mealsbar.setBounds(0, 160, 665, 25);
+        mealsbar.setFont(new Font("Franklin Gothic Demi",Font.PLAIN,200));
+        scrollPane.setBounds(10,190,615,600);
+        panelScroll.setLayout(new BoxLayout(panelScroll,BoxLayout.Y_AXIS));
+        panelScroll.setBorder(new LineBorder(Color.white,2));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         f.add(viewcartbutton);
         f.add(mealnumlabel);
@@ -47,6 +53,7 @@ public class Order implements ActionListener {
         f.add(pricelabel);
         f.add(pricenumlabel);
         f.add(mealsbar);
+        f.add(scrollPane);
 
         viewcartbutton.addActionListener(this);
         mealsitem.addActionListener(this);
@@ -55,7 +62,7 @@ public class Order implements ActionListener {
         drinksitem.addActionListener(this);
       
         f.setResizable(false);
-        f.setSize(665,850);
+        f.setSize(650,830);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
 

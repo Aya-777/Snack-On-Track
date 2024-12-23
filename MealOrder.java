@@ -1,33 +1,78 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MealOrder extends Order implements MouseListener {
-    
+    JLabel mealOrderIconLabel = new JLabel();
+    ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
     JLabel meal1label = new JLabel();
-    JLabel meal2label = new JLabel("0");
-    JLabel meal3label = new JLabel("0");
-    JLabel meal4label = new JLabel("0");
-    JLabel meal5label = new JLabel("0");
-    JLabel meal6label = new JLabel("0");
-    JLabel meal7label = new JLabel("0");
-
+    ImageIcon meal1Icon = new ImageIcon("menu meal 1.png");
+    JLabel meal2label = new JLabel();
+    ImageIcon meal2Icon = new ImageIcon("menu meal 2.png");
+    JLabel meal3label = new JLabel();
+    ImageIcon meal3Icon = new ImageIcon("menu meal 3.png");
+    JLabel meal4label = new JLabel();
+    ImageIcon meal4Icon = new ImageIcon("menu meal 4.png");
+    JLabel meal5label = new JLabel();
+    ImageIcon meal5Icon = new ImageIcon("menu meal 5.png");
+    JLabel meal6label = new JLabel();
+    ImageIcon meal6Icon = new ImageIcon("menu meal 6.png");
+    JLabel meal7label = new JLabel();
+    ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
 
     MealOrder(){
-        meal1label.setBounds(20,350 , 100, 20);
-        meal1label.setBackground(Color.red);
-        meal1label.setOpaque(true);
-        meal1label.addMouseListener(this);
+        mealOrderIconLabel.setBounds(0,0,650,830);
+        mealOrderIconLabel.setIcon(mealOrderIcon);
 
-        f.add(meal1label);
-        f.add(meal2label);
-        f.add(meal3label);
-        f.add(meal4label);
-        f.add(meal5label);
-        f.add(meal6label);
-        f.add(meal7label);
+        meal1label.setBounds(260,200 , 610, 145);
+        meal1label.setBorder(new LineBorder(Color.white,2));
+        meal1label.setOpaque(true);
+        meal1label.setIcon(meal1Icon);
+
+        meal2label.setBounds(15,355,610,145);
+        meal2label.setBorder(new LineBorder(Color.white,2));
+        meal2label.setOpaque(true);
+        meal2label.setIcon(meal2Icon);
+
+        meal3label.setBounds(15,510,610,145);
+        meal3label.setBorder(new LineBorder(Color.white,2));
+        meal3label.setOpaque(true);
+        meal3label.setIcon(meal3Icon);
+
+        meal4label.setBounds(15,665,610,145);
+        meal4label.setBorder(new LineBorder(Color.white,2));
+        meal4label.setOpaque(true);
+        meal4label.setIcon(meal4Icon);
+
+        meal5label.setBounds(15,820,610,145);
+        meal5label.setBorder(new LineBorder(Color.white,2));
+        meal5label.setOpaque(true);
+        meal5label.setIcon(meal5Icon);
+
+        meal6label.setBounds(15,975,610,145);
+        meal6label.setBorder(new LineBorder(Color.white,2));
+        meal6label.setOpaque(true);
+        meal6label.setIcon(meal6Icon);
+
+        meal7label.setBounds(15,1130,610,145);
+        meal7label.setBorder(new LineBorder(Color.white,2));
+        meal7label.setOpaque(true);
+        meal7label.setIcon(meal7Icon);
+
+
+        panelScroll.add(meal1label);
+        panelScroll.add(meal2label);
+        panelScroll.add(meal3label);
+        panelScroll.add(meal4label);
+        panelScroll.add(meal5label);
+        panelScroll.add(meal6label);
+        panelScroll.add(meal7label);
+
+
+        f.add(mealOrderIconLabel);
 
         mealsitem.setEnabled(false);
 

@@ -36,20 +36,20 @@ public class SignFrame extends JFrame implements ActionListener {
     boolean employeeNumberCheck;
     SignFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(665, 850);
+        this.setSize(650, 830);
         this.setLayout(null);
-        backImage = new ImageIcon("firstFrame.jpg");
+        backImage = new ImageIcon("firstFrame.png");
         label = new JLabel();
-        label.setBounds(0, 0, 800, 850);
+        label.setBounds(0, 0, 800, 830);
         label.setIcon(backImage);
         signButton = new JButton("sign in");
-        signButton.setBounds(210, 450, 80, 30);
+        signButton.setBounds(230, 450, 80, 30);
         signButton.setBackground(Color.white);
         signButton.setForeground(Color.black);
         signButton.setFocusable(false);
         signButton.addActionListener(this);
         newAccountButton = new JButton("new account");
-        newAccountButton.setBounds(300, 450, 110, 30);
+        newAccountButton.setBounds(320, 450, 110, 30);
         newAccountButton.setBackground(Color.white);
         newAccountButton.setForeground(Color.black);
         newAccountButton.setFocusable(false);
@@ -87,14 +87,14 @@ public class SignFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signButton) {
-            signButton.setBackground(Color.green);
-            newAccountButton.setBackground(Color.red);
+            signButton.setBackground(new Color(166,251,186));
+            newAccountButton.setBackground(new Color(251,120,113));
             submitButton.setEnabled(true);
             mainCheck = true;
         }
         if (e.getSource() == newAccountButton) {
-            signButton.setBackground(Color.red);
-            newAccountButton.setBackground(Color.green);
+            signButton.setBackground(new Color(251,120,113));
+            newAccountButton.setBackground(new Color(166,251,186));
             submitButton.setEnabled(true);
             mainCheck = false;
         }

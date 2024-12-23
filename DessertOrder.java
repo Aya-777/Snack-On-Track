@@ -1,26 +1,64 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class DessertOrder extends Order implements MouseListener{
 
-
-    JLabel dessert1label = new JLabel("0");
-    JLabel dessert2label = new JLabel("0");
-    JLabel dessert3label = new JLabel("0");
-    JLabel dessert4label = new JLabel("0");
-    JLabel dessert5label = new JLabel("0");
+    JLabel dessertOrderIconLabel = new JLabel();
+    ImageIcon dessertOrderIcon =new ImageIcon("main design sweets.png");
+    JLabel dessert1label = new JLabel();
+    ImageIcon dessert1Icon = new ImageIcon("menu sweets 1.png");
+    JLabel dessert2label = new JLabel();
+    ImageIcon dessert2Icon = new ImageIcon("menu sweets 2.png");
+    JLabel dessert3label = new JLabel();
+    ImageIcon dessert3Icon = new ImageIcon("menu sweets 3.png");
+    JLabel dessert4label = new JLabel();
+    ImageIcon dessert4Icon = new ImageIcon("menu sweets 4.png");
+    JLabel dessert5label = new JLabel();
+    ImageIcon dessert5Icon = new ImageIcon("menu sweets 5.png");
 
     static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
 
     DessertOrder(){
+        dessertOrderIconLabel.setBounds(0,0,650,830);
+        dessertOrderIconLabel.setIcon(dessertOrderIcon);
 
-        f.add(dessert1label);
-        f.add(dessert2label);
-        f.add(dessert3label);
-        f.add(dessert4label);
-        f.add(dessert5label);
+        dessert1label.setBounds(260,200,610,145);
+        dessert1label.setBorder(new LineBorder(Color.white,2));
+        dessert1label.setOpaque(true);
+        dessert1label.setIcon(dessert1Icon);
+
+        dessert2label.setBounds(15,355,610,145);
+        dessert2label.setBorder(new LineBorder(Color.white,2));
+        dessert2label.setOpaque(true);
+        dessert2label.setIcon(dessert2Icon);
+
+        dessert3label.setBounds(15,510,610,145);
+        dessert3label.setBorder(new LineBorder(Color.white,2));
+        dessert3label.setOpaque(true);
+        dessert3label.setIcon(dessert3Icon);
+
+        dessert4label.setBounds(15,665,610,145);
+        dessert4label.setBorder(new LineBorder(Color.white,2));
+        dessert4label.setOpaque(true);
+        dessert4label.setIcon(dessert4Icon);
+
+        dessert5label.setBounds(15,820,610,145);
+        dessert5label.setBorder(new LineBorder(Color.white,2));
+        dessert5label.setOpaque(true);
+        dessert5label.setIcon(dessert5Icon);
+
+
+        panelScroll.add(dessert1label);
+        panelScroll.add(dessert2label);
+        panelScroll.add(dessert3label);
+        panelScroll.add(dessert4label);
+        panelScroll.add(dessert5label);
+
+         f.add(dessertOrderIconLabel);
 
         dessertsitem.setEnabled(false);
     }
