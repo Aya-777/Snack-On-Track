@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -20,9 +22,12 @@ public class DessertOrder extends Order implements MouseListener{
     JLabel dessert5label = new JLabel();
     ImageIcon dessert5Icon = new ImageIcon("menu sweets 5.png");
 
+    boolean manager;
+
     static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
 
-    DessertOrder(){
+    DessertOrder(boolean manager){
+        super(manager);
         dessertOrderIconLabel.setBounds(0,0,650,830);
         dessertOrderIconLabel.setIcon(dessertOrderIcon);
 
@@ -66,13 +71,16 @@ public class DessertOrder extends Order implements MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
-            new MealOrder();
+            f.dispose();
+            new MealOrder(manager);
         }
         if(e.getSource() == saladsitem){
-            new SaladOrder();
+            f.dispose();
+            new SaladOrder(manager);
         }
         if(e.getSource()==drinksitem){
-            new DrinksOrder();
+            f.dispose();
+            new DrinksOrder(manager);
 
         }
         if(e.getSource() == dessertsitem){
@@ -88,25 +96,56 @@ public class DessertOrder extends Order implements MouseListener{
                 new Cart(MealFrame.order);
             }
         }
+        if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
+            super.actionPerformed(e);
+        }
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == dessert1label){
-            new MealFrame(11);
+            if(MealFrame.dessert1.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(12,manager);
+            }
         }
         if(e.getSource() == dessert2label){
-            new MealFrame(12);
+            if(MealFrame.dessert2.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(13,manager);
+            }
         }
         if(e.getSource() == dessert3label){
-            new MealFrame(13);
+            if(MealFrame.dessert3.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(14,manager);
+            }
         }
         if(e.getSource() == dessert4label){
-            new MealFrame(14);
+            if(MealFrame.dessert4.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(15,manager);
+            }
         }
         if(e.getSource() == dessert5label){
-            new MealFrame(15);
+            if(MealFrame.dessert5.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(16,manager);
+            }
         }
         
     }

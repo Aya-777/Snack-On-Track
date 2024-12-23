@@ -13,6 +13,9 @@ public class Order implements ActionListener {
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewcartbutton = new JButton("View cart");
+    JButton logoutButton = new JButton("Log out");
+    JButton addmealButton = new JButton("Add Meal");
+
     JLabel mealslabel = new JLabel("Meals :");
     
     JMenuBar mealsbar = new JMenuBar();
@@ -23,7 +26,7 @@ public class Order implements ActionListener {
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
 
-    Order(){
+    Order(boolean manager){
         f.setLayout(null);
 
         mealsbar.add(mealsitem);
@@ -47,20 +50,23 @@ public class Order implements ActionListener {
         panelScroll.setBorder(new LineBorder(Color.white,2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
+        logoutButton.setBounds(100, 200, 100, 20);;
+
         f.add(viewcartbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
         f.add(pricelabel);
         f.add(pricenumlabel);
         f.add(mealsbar);
-        f.add(scrollPane);
+        f.add(logoutButton);
 
         viewcartbutton.addActionListener(this);
         mealsitem.addActionListener(this);
         saladsitem.addActionListener(this);
         dessertsitem.addActionListener(this);
         drinksitem.addActionListener(this);
-      
+        logoutButton.addActionListener(this);
+
         f.setResizable(false);
         f.setSize(650,830);
         f.setVisible(true);
@@ -72,6 +78,19 @@ public class Order implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==logoutButton){
+            f.dispose();
+            price=0;
+            num=0;
+            mealnumlabel.setText(String.valueOf(num));
+            pricenumlabel.setText(String.valueOf(price));
+            MealFrame.meallist.clear();
+            MealFrame.fillLists();
+            new SignFrame();
+        }
+        if(e.getSource()==addmealButton){
+            new AddMeal();
+        }
 
     }
 }

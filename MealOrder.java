@@ -23,7 +23,9 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal7label = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
 
-    MealOrder(){
+    MealOrder(boolean manager){
+        super(manager);
+
         mealOrderIconLabel.setBounds(0,0,650,830);
         mealOrderIconLabel.setIcon(mealOrderIcon);
 
@@ -86,13 +88,16 @@ public class MealOrder extends Order implements MouseListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
         }
         if(e.getSource() == saladsitem){
-            new SaladOrder();
+            f.dispose();
+            new SaladOrder(manager);
         }
         if(e.getSource() == dessertsitem){
-            new DessertOrder();
+            f.dispose();
+            new DessertOrder(manager);
         }
         if(e.getSource()==drinksitem){
-            new DrinksOrder();
+            f.dispose();
+            new DrinksOrder(manager);
         }
 
         if(e.getSource() == viewcartbutton){
@@ -103,31 +108,73 @@ public class MealOrder extends Order implements MouseListener {
             else {
                 new Cart(MealFrame.order);}
         }
+        if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
+            super.actionPerformed(e);
+        }
 
 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == meal1label){
-            new MealFrame(1);
+            // System.out.println(MealFrame.m1.getDeleted());
+            if(MealFrame.m1.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(1,manager);
+            }
         }
         if(e.getSource() == meal2label){
-            new MealFrame(2);
+            if(MealFrame.m2.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(2,manager);
+            }
         }
         if(e.getSource() == meal3label){
-            new MealFrame(3);
+            if(MealFrame.m3.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(3,manager);
+            }
         }
         if(e.getSource() == meal4label){
-            new MealFrame(4);
+            if(MealFrame.m4.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(4,manager);
+            }
         }
         if(e.getSource() == meal5label){
-            new MealFrame(5);
+            if(MealFrame.m5.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(5,manager);
+            }
         }
         if(e.getSource() == meal6label){
-            new MealFrame(6);
+            if(MealFrame.m6.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(6,manager);
+            }
         }
         if(e.getSource() == meal7label){
-            new MealFrame(7);
+            if(MealFrame.m7.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(7,manager);
+            }
         }
     }
     @Override

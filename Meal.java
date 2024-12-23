@@ -6,15 +6,20 @@ public class Meal{
     private String desc;
     private String name;
     private int cals;
+    private boolean deleted;
 
-    Meal(int serialnum , int price,String name ,String desc ,int cals ){
+    Meal(int serialnum , int price , String name ,String desc ,int cals , boolean deleted){
         this.serialnum=serialnum;
         this.price=price;
         this.desc=desc;
         this.name=name;
         this.cals=cals;
+        this.deleted=deleted;
     }
 
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
     public void setPrice(int price) {
         this.price = price;
     }
@@ -45,6 +50,9 @@ public class Meal{
     }
     public String getName() {
         return name;
+    }
+    boolean getDeleted(){
+        return deleted;
     }
 
 }

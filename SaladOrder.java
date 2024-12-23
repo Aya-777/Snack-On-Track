@@ -16,10 +16,11 @@ public class SaladOrder extends Order implements MouseListener {
     ImageIcon salad3Icon = new ImageIcon("menu salad 3.png");
     JLabel salad4label = new JLabel();
     ImageIcon salad4Icon = new ImageIcon("menu salad 4.png");
-
+    boolean manager;
     static int num1=0,num2=0,num3=0,num4=0;
 
-    SaladOrder(){
+    SaladOrder(boolean manager){
+        super(manager);
         saladOrderIconLabel.setBounds(0,0,650,830);
         saladOrderIconLabel.setIcon(saladOrderIcon);
 
@@ -57,7 +58,8 @@ public class SaladOrder extends Order implements MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
-            new MealOrder();
+            f.dispose();
+            new MealOrder(manager);
 
         }
         if(e.getSource() == saladsitem){
@@ -65,7 +67,12 @@ public class SaladOrder extends Order implements MouseListener {
                     "Title",JOptionPane.WARNING_MESSAGE);
         }
          if(e.getSource() == dessertsitem){
-            new DessertOrder();
+            f.dispose();
+            new DessertOrder(manager);
+        }
+        if(e.getSource()==drinksitem){
+            f.dispose();
+            new DrinksOrder(manager);
         }
 
         if(e.getSource() == viewcartbutton){
@@ -76,25 +83,48 @@ public class SaladOrder extends Order implements MouseListener {
             else {
                 new Cart(MealFrame.order);}
         }
+        if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
+            super.actionPerformed(e);
+        }
 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == salad1label){
-            new MealFrame(8);
-
+            if(MealFrame.s1.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(8,manager);
+            }
         }
         if(e.getSource() == salad2label){
-            new MealFrame(9);
+            if(MealFrame.s2.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(9,manager);
+            }
 
         }
         if(e.getSource() == salad3label){
-            new MealFrame(10);
-
-
+            if(MealFrame.s3.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(10,manager);
+            }
         }
         if(e.getSource() == salad4label){
-            new MealFrame(11);
+            if(MealFrame.s4.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(11,manager);
+            }
         }
     }
     @Override

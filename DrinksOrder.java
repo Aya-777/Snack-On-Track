@@ -9,6 +9,7 @@ public class DrinksOrder extends Order implements MouseListener{
     JLabel drinksOrderIconLabel = new JLabel();
     ImageIcon drinksOrderIcon = new ImageIcon("main desin drinks.png");
 
+
     JLabel drink1label = new JLabel();
     ImageIcon drinksIcon1 = new ImageIcon("menu drinks 1.png");
     JLabel drink2label = new JLabel();
@@ -19,9 +20,9 @@ public class DrinksOrder extends Order implements MouseListener{
     ImageIcon drinksIcon4 = new ImageIcon("menu drinks 4.png");
     JLabel drink5label = new JLabel();
     ImageIcon drinksIcon5 = new ImageIcon("menu drinks 5.png");
-
     static int num1=0,num2=0,num3=0,num4=0,num5=0;
-    DrinksOrder(){
+    DrinksOrder(boolean manager){
+        super(manager);
         drinksOrderIconLabel.setBounds(0,0,650,830);
         drinksOrderIconLabel.setIcon(drinksOrderIcon);
 
@@ -66,17 +67,20 @@ public class DrinksOrder extends Order implements MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
-            new MealOrder();
+            f.dispose();
+            new MealOrder(manager);
         }
         if(e.getSource() == saladsitem){
-            new SaladOrder();
+            f.dispose();
+            new SaladOrder(manager);
         }
         if(e.getSource()==drinksitem){
             JOptionPane.showMessageDialog(null,"You are already on drink's order page.",
             "Title",JOptionPane.WARNING_MESSAGE);
         }
         if(e.getSource() == dessertsitem){
-            new DessertOrder();
+            f.dispose();
+            new DessertOrder(manager);
         }
         if(e.getSource() == viewcartbutton){
             if(Order.num == 0){
@@ -87,25 +91,56 @@ public class DrinksOrder extends Order implements MouseListener{
                 new Cart(MealFrame.order);
             }
         }
+        if(e.getSource()==logoutButton){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==addmealButton){
+            super.actionPerformed(e);
+        }
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == drink1label){
-            new MealFrame(16);
+            if(MealFrame.drink1.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(17,manager);
+            }
         }
         if(e.getSource() == drink2label){
-            new MealFrame(17);
+            if(MealFrame.drink2.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(18,manager);
+            }
         }
         if(e.getSource() == drink3label){
-            new MealFrame(18);
+            if(MealFrame.drink3.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(19,manager);
+            }
         }
         if(e.getSource() == drink4label){
-            new MealFrame(19);
+            if(MealFrame.drink4.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(20,manager);
+            }
         }
         if(e.getSource() == drink5label){
-            new MealFrame(20);
+            if(MealFrame.drink5.getDeleted()){
+                JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+            } else{
+                new MealFrame(21,manager);
+            }
         }
     }
     @Override
