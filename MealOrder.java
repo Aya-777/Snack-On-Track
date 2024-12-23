@@ -22,9 +22,11 @@ public class MealOrder extends Order implements MouseListener {
     ImageIcon meal6Icon = new ImageIcon("menu meal 6.png");
     JLabel meal7label = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
+    static boolean manager;
 
     MealOrder(boolean manager){
         super(manager);
+        this.manager=manager;
 
         mealOrderIconLabel.setBounds(0,0,650,830);
         mealOrderIconLabel.setIcon(mealOrderIcon);
@@ -72,7 +74,13 @@ public class MealOrder extends Order implements MouseListener {
         panelScroll.add(meal5label);
         panelScroll.add(meal6label);
         panelScroll.add(meal7label);
-
+        meal1label.addMouseListener(this);
+        meal2label.addMouseListener(this);
+        meal3label.addMouseListener(this);
+        meal4label.addMouseListener(this);
+        meal5label.addMouseListener(this);
+        meal6label.addMouseListener(this);
+        meal7label.addMouseListener(this);
 
         f.add(mealOrderIconLabel);
 

@@ -1,9 +1,10 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
+
 
 public class DrinksOrder extends Order implements MouseListener{
     JLabel drinksOrderIconLabel = new JLabel();
@@ -21,8 +22,10 @@ public class DrinksOrder extends Order implements MouseListener{
     JLabel drink5label = new JLabel();
     ImageIcon drinksIcon5 = new ImageIcon("menu drinks 5.png");
     static int num1=0,num2=0,num3=0,num4=0,num5=0;
+    boolean manager;
     DrinksOrder(boolean manager){
         super(manager);
+        this.manager=manager;
         drinksOrderIconLabel.setBounds(0,0,650,830);
         drinksOrderIconLabel.setIcon(drinksOrderIcon);
 
@@ -57,6 +60,11 @@ public class DrinksOrder extends Order implements MouseListener{
         panelScroll.add(drink3label);
         panelScroll.add(drink4label);
         panelScroll.add(drink5label);
+        drink1label.addMouseListener(this);
+        drink2label.addMouseListener(this);
+        drink3label.addMouseListener(this);
+        drink4label.addMouseListener(this);
+        drink5label.addMouseListener(this);
 
         f.add(drinksOrderIconLabel);
 

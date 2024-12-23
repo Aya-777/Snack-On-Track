@@ -28,6 +28,7 @@ public class DessertOrder extends Order implements MouseListener{
 
     DessertOrder(boolean manager){
         super(manager);
+        this.manager=manager;
         dessertOrderIconLabel.setBounds(0,0,650,830);
         dessertOrderIconLabel.setIcon(dessertOrderIcon);
 
@@ -62,6 +63,11 @@ public class DessertOrder extends Order implements MouseListener{
         panelScroll.add(dessert3label);
         panelScroll.add(dessert4label);
         panelScroll.add(dessert5label);
+        dessert1label.addMouseListener(this);
+        dessert2label.addMouseListener(this);
+        dessert3label.addMouseListener(this);
+        dessert4label.addMouseListener(this);
+        dessert5label.addMouseListener(this);
 
          f.add(dessertOrderIconLabel);
 

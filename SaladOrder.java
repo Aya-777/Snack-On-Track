@@ -21,6 +21,7 @@ public class SaladOrder extends Order implements MouseListener {
 
     SaladOrder(boolean manager){
         super(manager);
+        this.manager=manager;
         saladOrderIconLabel.setBounds(0,0,650,830);
         saladOrderIconLabel.setIcon(saladOrderIcon);
 
@@ -48,7 +49,10 @@ public class SaladOrder extends Order implements MouseListener {
         panelScroll.add(salad2label);
         panelScroll.add(salad3label);
         panelScroll.add(salad4label);
-
+        salad1label.addMouseListener(this);
+        salad2label.addMouseListener(this);
+        salad3label.addMouseListener(this);
+        salad4label.addMouseListener(this);
 
         f.add(saladOrderIconLabel);
 

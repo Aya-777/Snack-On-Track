@@ -50,7 +50,7 @@ public class Order implements ActionListener {
         panelScroll.setBorder(new LineBorder(Color.white,2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        logoutButton.setBounds(100, 200, 100, 20);;
+        logoutButton.setBounds(400, 115, 130, 30);;
 
         f.add(viewcartbutton);
         f.add(mealnumlabel);
@@ -59,6 +59,7 @@ public class Order implements ActionListener {
         f.add(pricenumlabel);
         f.add(mealsbar);
         f.add(logoutButton);
+        f.add(scrollPane);
 
         viewcartbutton.addActionListener(this);
         mealsitem.addActionListener(this);
