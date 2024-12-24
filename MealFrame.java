@@ -73,7 +73,6 @@ public class MealFrame implements ActionListener{
     int mealnum;
     Meal m;
     int num1 = 0;
-    JLabel mealnumlabel = new JLabel(String.valueOf(Order.num));
     JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
     JButton addbutton = new JButton("+");
     JButton minusbutton = new JButton("-");
@@ -85,6 +84,7 @@ public class MealFrame implements ActionListener{
 
     MealFrame(Integer mealnum , boolean manager){
         f.setLayout(new FlowLayout());
+        num1 = order.get(mealnum);
         this.mealnum=mealnum;
         this.m=meallist.get(mealnum);
         addbutton.addActionListener(this);
@@ -100,7 +100,6 @@ public class MealFrame implements ActionListener{
         f.add(singlemealnumlabel);
         f.add(addbutton);
         f.add(minusbutton);
-        f.add(mealnumlabel);
         f.add(pricelabel);
         f.add(pricenumlabel);
         
@@ -119,7 +118,6 @@ public class MealFrame implements ActionListener{
             order.set(mealnum, num1);
             Order.price += m.getPrice();
             singlemealnumlabel.setText(String.valueOf(num1));
-            mealnumlabel.setText(String.valueOf(Order.num));
             pricenumlabel.setText(String.valueOf(Order.price));
 
             Order.mealnumlabel.setText(String.valueOf(Order.num));
@@ -131,7 +129,6 @@ public class MealFrame implements ActionListener{
             order.set(mealnum, num1);
             Order.price-= m.getPrice();
             pricenumlabel.setText(String.valueOf(Order.price));
-            mealnumlabel.setText(String.valueOf(Order.num));
             singlemealnumlabel.setText(String.valueOf(num1));
 
             Order.mealnumlabel.setText(String.valueOf(Order.num));
