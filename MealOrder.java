@@ -122,6 +122,9 @@ public class MealOrder extends Order implements MouseListener {
         if(e.getSource()==addmealButton){
             super.actionPerformed(e);
         }
+        if(e.getSource()==myordersButton){
+            super.actionPerformed(e);
+        }
 
 
     }

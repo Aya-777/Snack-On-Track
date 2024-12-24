@@ -108,7 +108,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     check = accountsExsisted1(userName, password);
                     if (check) {
                         this.dispose();
-                        // new firstFrame();
+                        MealFrame.fillLists();
                         new MealOrder(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
@@ -118,7 +118,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     check = accountsExsisted2(userName, password, employeeNumber);
                     if (check) {
                         this.dispose();
-                        // new firstFrame();
+                        MealFrame.fillLists();
                         new MealOrder(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
@@ -133,7 +133,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     if (!check) {
                         customeAccounts.add(new customerAccounts(userName, password));
                         this.dispose();
-                        // new firstFrame();
+                        MealFrame.fillLists();
                         new MealOrder(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
@@ -144,7 +144,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     if (!check) {
                         mangeAccounts.add(new ManagementAccounts(password));
                         this.dispose();
-                        // new firstFrame();
+                        MealFrame.fillLists();
                         new MealOrder(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);

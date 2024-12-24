@@ -14,11 +14,10 @@ import java.util.List;
 import javax.swing.*;
 
 public class Details implements ActionListener{
-    JProgressBar detailsprogregressbar = new JProgressBar();
     static JFrame f = new JFrame();
     JButton backToOrderButton = new JButton("Back to Order");
     JLabel state = new JLabel("Accepting order...");
-    int x=200 ,y = 150 , xnum=400 , ynum=150;
+    int x=200 ,y = 150 , xnum=400 , ynum=150,xstate=70,ystate=200,xbar=70,ybar=150;
 
     Details(ArrayList<Integer> meals){
         int index=0;
@@ -46,44 +45,12 @@ public class Details implements ActionListener{
 
 
         backToOrderButton.setBounds(50, 100, 150, 20);
-        detailsprogregressbar.setBounds(70, 150, 100, 20);
         
         backToOrderButton.addActionListener(this);
 
         f.setLayout(null);
-        detailsprogregressbar.setValue(0);
-        detailsprogregressbar.setStringPainted(true);
 
-        SwingWorker<Void,Integer> worker = new SwingWorker<Void,Integer>() {
-            @Override
-            protected Void doInBackground() throws Exception {
-                for(int i = 0 ; i <= 100 ; i++){
-                    try {
-                        Thread.sleep(100);
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
-                    publish(i);
-                }
-                return null;
-            }
-            @Override
-            protected void process(List<Integer> chunks) {
-                int progress = chunks.get(chunks.size()-1);
-                detailsprogregressbar.setValue(progress);
-                if(progress==10){
-                    state.setText("Preparing...");}
-                if(progress==75){
-                    state.setText("Delivering...");
-                }
-
-            }
-            @Override
-            protected void done() {
-                System.out.println("completed");
-                state.setText("Done!");
-            }
-        };
+        
 
         index=0;
         f.add(state);
@@ -91,20 +58,68 @@ public class Details implements ActionListener{
             if(meals.get(i)>0){
                 JLabel mealname = new JLabel(MealFrame.meallist.get(index).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
+                JProgressBar detailsprogregressbar = new JProgressBar();
+
+                detailsprogregressbar.setValue(0);
+                detailsprogregressbar.setStringPainted(true);
+
+                detailsprogregressbar.setBounds(xbar, ybar, 100, 20);
                 mealname.setBounds(x, y, 200, 20);
                 mealnum.setBounds(xnum , ynum, 50, 20);
-                state.setBounds(70, 200 , 100, 20);
+                state.setBounds(xstate, ystate , 100, 20);
+
                 f.add(mealname);
                 f.add(mealnum);
+                f.add(detailsprogregressbar);
+
+                SwingWorker<Void,Integer> worker = new SwingWorker<Void,Integer>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        for(int i = 0 ; i <= 100 ; i++){
+                            try {
+                                Thread.sleep(100);
+                            } catch (Exception e) {
+                                // TODO: handle exception
+                            }
+                            publish(i);
+                        }
+                        return null;
+                    }
+                    @Override
+                    protected void process(List<Integer> chunks) {
+                        int progress = chunks.get(chunks.size()-1);
+                        detailsprogregressbar.setValue(progress);
+                        if(progress==10){
+                            state.setText("Preparing...");}
+                        if(progress==75){
+                            state.setText("Delivering...");
+                        }
+                        if(progress==50){
+                            
+                        }
+                        if(progress==100){
+                            detailsprogregressbar.setEnabled(false);
+                            
+                        }
+        
+                    }
+                    @Override
+                    protected void done() {
+                        System.out.println("completed");
+                        state.setText("Done!");
+                    }
+                };
+
                 worker.execute();
                 // x+=100;
                 y+=50;
                 ynum+=50;
+                ystate+=100;
+                ybar+=100;
                 }
                 index++;
             }
         f.add(backToOrderButton);
-        f.add(detailsprogregressbar);
         f.setResizable(false);
         f.setSize(665,850);
         f.setVisible(true);

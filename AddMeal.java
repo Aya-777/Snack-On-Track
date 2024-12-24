@@ -2,6 +2,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
@@ -11,12 +12,15 @@ class AddMeal implements ActionListener{
         JTextField mealpricefield = new JTextField("Price:");
         JTextField mealcaloriefield = new JTextField("Calories:");
         JButton submitbutton = new JButton("Submit");
+        String[] types = new String[]{"Meal","Salad","Dessert","Drink"};
+        JComboBox mealtypes = new JComboBox<>(types);
         JFrame f = new JFrame("Add Meal");
 
     AddMeal(){
         f.setLayout(new FlowLayout());
 
         submitbutton.addActionListener(this);
+        f.add(mealtypes);
         f.add(mealnamefield);
         f.add(mealdescriptionfield);
         f.add(mealpricefield);
@@ -35,7 +39,8 @@ class AddMeal implements ActionListener{
         if(e.getSource() == submitbutton){
             int price = Integer.parseInt(mealpricefield.getText());
             int calorie = Integer.parseInt(mealcaloriefield.getText());
-            MealFrame.addMeal(0,price,mealnamefield.getText(),mealdescriptionfield.getText(),calorie);
+            MealFrame.addMeal(0,price,mealnamefield.getText(),mealdescriptionfield.getText(),calorie
+            ,String.valueOf(mealtypes.getSelectedItem()));
             submitbutton.setEnabled(false);
         }
     }

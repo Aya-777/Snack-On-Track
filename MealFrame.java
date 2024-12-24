@@ -1,8 +1,10 @@
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.SampleModel;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -196,11 +198,76 @@ public class MealFrame implements ActionListener{
 
     }
 
-    public static void addMeal(int serialnum,int price,String name , String desc, int cals){
+    public static void addMeal(int serialnum,int price,String name , String desc, int cals,String type){
         serialnum = meallist.size()-1;
         Meal  newMeal = new Meal(serialnum, price, name, desc, cals,false);
         meallist.add(newMeal);
         System.out.println(meallist.size()); 
+
+        int ymeal=1285 , ysalad=820 , ydessert=975 , ydrink=975 ;
+        if(type == "Meal"){
+            ImageIcon newmealIcon = new ImageIcon("");
+            JLabel newmealLabel = new JLabel(newmealIcon);
+            JLabel newmealnameLabel = new JLabel(name);
+            JLabel newmealpriceLabel = new JLabel(String.valueOf(price));
+            JLabel newmealdescLabel = new JLabel(desc);
+            JLabel newmealcalsLabel = new JLabel(String.valueOf(cals));
+            newmealLabel.setBounds(260, ymeal,610 , 145);
+            MealOrder.f.add(newmealLabel);
+            MealOrder.f.add(newmealnameLabel);
+            MealOrder.f.add(newmealpriceLabel);
+            MealOrder.f.add(newmealdescLabel);
+            MealOrder.f.add(newmealcalsLabel);
+            ymeal+=155;
+        }
+        if(type == "Dessert"){
+            ImageIcon newmealIcon = new ImageIcon("");
+            JLabel newmealLabel = new JLabel(newmealIcon);
+            JLabel newmealnameLabel = new JLabel(name);
+            JLabel newmealpriceLabel = new JLabel(String.valueOf(price));
+            JLabel newmealdescLabel = new JLabel(desc);
+            JLabel newmealcalsLabel = new JLabel(String.valueOf(cals));
+            newmealLabel.setBounds(260, ydessert ,610 , 145);
+            DessertOrder.f.add(newmealLabel);
+            DessertOrder.f.add(newmealnameLabel);
+            DessertOrder.f.add(newmealpriceLabel);
+            DessertOrder.f.add(newmealdescLabel);
+            DessertOrder.f.add(newmealcalsLabel);
+            ydessert+=155;
+            
+        }
+        if(type == "Salad"){
+            ImageIcon newmealIcon = new ImageIcon("");
+            JLabel newmealLabel = new JLabel(newmealIcon);
+            JLabel newmealnameLabel = new JLabel(name);
+            JLabel newmealpriceLabel = new JLabel(String.valueOf(price));
+            JLabel newmealdescLabel = new JLabel(desc);
+            JLabel newmealcalsLabel = new JLabel(String.valueOf(cals));
+            newmealLabel.setBounds(260, ysalad ,610 , 145);
+            SaladOrder.f.add(newmealLabel);
+            SaladOrder.f.add(newmealnameLabel);
+            SaladOrder.f.add(newmealpriceLabel);
+            SaladOrder.f.add(newmealdescLabel);
+            SaladOrder.f.add(newmealcalsLabel);
+            ysalad+=155;
+            
+        }
+        if(type == "Drink"){
+            ImageIcon newmealIcon = new ImageIcon("");
+            JLabel newmealLabel = new JLabel(newmealIcon);
+            JLabel newmealnameLabel = new JLabel(name);
+            JLabel newmealpriceLabel = new JLabel(String.valueOf(price));
+            JLabel newmealdescLabel = new JLabel(desc);
+            JLabel newmealcalsLabel = new JLabel(String.valueOf(cals));
+            newmealLabel.setBounds(260, ydrink ,610 , 145);
+            DrinksOrder.f.add(newmealLabel);
+            DrinksOrder.f.add(newmealnameLabel);
+            DrinksOrder.f.add(newmealpriceLabel);
+            DrinksOrder.f.add(newmealdescLabel);
+            DrinksOrder.f.add(newmealcalsLabel);
+            ydrink+=155;
+            
+        }
         
     }
 
