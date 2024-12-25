@@ -209,7 +209,6 @@ public class MealOrder extends Order implements MouseListener {
         panelScroll.add(meal6label);
         panelScroll.add(meal7label);
 
-3
         meal1label.addMouseListener(this);
         meal2label.addMouseListener(this);
         meal3label.addMouseListener(this);
