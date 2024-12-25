@@ -12,13 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
+import javax.swing.text.View;
 
 public class Details implements ActionListener{
     static JFrame f = new JFrame();
     JButton backToOrderButton = new JButton("Back to Order");
+    JButton cancelButton = new JButton("Cancel Button");
     JLabel state = new JLabel("Accepting order...");
     JProgressBar detailsprogregressbar = new JProgressBar();
     static int x=200 ,y = 150 , xnum=400 , ynum=150,xstate=70,ystate=200,xbar=70,ybar=150;
+    SwingWorker<Void,Integer> worker;
 
     Details(ArrayList<Integer> meals){
         int index=0;
@@ -48,16 +51,30 @@ public class Details implements ActionListener{
         backToOrderButton.setBounds(50, 100, 150, 20);
         
         backToOrderButton.addActionListener(this);
+        cancelButton.addActionListener(this);
 
         f.setLayout(null);
 
+        for (int i = 0 ; i < meals.size() ; i++){
+            if(meals.get(i)>0){
+                x = xbar+150; y = ybar;
+                xnum=xbar+350 ; ynum = ybar;
+                break;
+            }
+        }
+
         state.setBounds(xstate, ystate , 100, 20);
         detailsprogregressbar.setBounds(xbar, ybar, 100, 20);
+        cancelButton.setBounds(xnum+50 , ynum , 150, 20);
 
         index=0;
+        f.add(cancelButton);
         f.add(state);
         f.add(detailsprogregressbar);
-        for(int i =0 ; i < meals.size() ; i++){
+
+        
+
+        for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
                 JLabel mealname = new JLabel(MealFrame.meallist.get(index).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
@@ -71,7 +88,7 @@ public class Details implements ActionListener{
                 f.add(mealname);
                 f.add(mealnum);
 
-                SwingWorker<Void,Integer> worker = new SwingWorker<Void,Integer>() {
+                worker = new SwingWorker<Void,Integer>() {
                     @Override
                     protected Void doInBackground() throws Exception {
                         for(int i = 0 ; i <= 100 ; i++){
@@ -81,6 +98,9 @@ public class Details implements ActionListener{
                                 // TODO: handle exception
                             }
                             publish(i);
+                            if(!cancelButton.isEnabled()){
+                                break;
+                            }
                         }
                         return null;
                     }
@@ -89,11 +109,13 @@ public class Details implements ActionListener{
                         int progress = chunks.get(chunks.size()-1);
                         detailsprogregressbar.setValue(progress);
                         if(progress==10){
-                            state.setText("Preparing...");}
+                            state.setText("Preparing...");
+                        }
                         if(progress==75){
                             state.setText("Delivering...");
                         }
                         if(progress==50){
+                            cancelButton.setEnabled(false);
                             
                         }
                         if(progress==100){
@@ -105,12 +127,15 @@ public class Details implements ActionListener{
                     @Override
                     protected void done() {
                         System.out.println("completed");
+                        if(!cancelButton.isEnabled()){
+                            state.setText("Canceled");
+                        } else{
                         state.setText("Done!");
+                        }
                     }
                 };
 
                 worker.execute();
-                // x+=100;
                 y+=50;
                 ynum+=50;
                 }
@@ -135,13 +160,17 @@ public class Details implements ActionListener{
             Order.num=0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            // MealFrame.meallist.clear();
-            // MealFrame.fillLists();
+            MealFrame.meallist.clear();
+            MealFrame.order.clear();
+            MealFrame.fillLists();
             if(MealOrder.manager){
                 new MealOrder(true);
             } else {
                 new MealOrder(false);
             }
+        }
+        if(e.getSource()==cancelButton){
+            cancelButton.setEnabled(false);
         }
     }
 

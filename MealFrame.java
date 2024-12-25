@@ -69,10 +69,12 @@ public class MealFrame implements ActionListener{
 
     static ArrayList<Integer> order = new ArrayList<>();
     static ArrayList<Meal> meallist = new ArrayList<>(); 
+    static ArrayList<Meal> newmeals = new ArrayList<>();
+
 
     int mealnum;
     Meal m;
-    int num1 = 0;
+    int num1 = order.get(mealnum);
     JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
     JButton addbutton = new JButton("+");
     JButton minusbutton = new JButton("-");
@@ -96,6 +98,7 @@ public class MealFrame implements ActionListener{
             f.add(deleteButton);
         }
         singlemealnumlabel.setText(String.valueOf(order.get(mealnum)));
+
         f.add(backButton);
         f.add(singlemealnumlabel);
         f.add(addbutton);
@@ -167,8 +170,10 @@ public class MealFrame implements ActionListener{
         meallist.add(drink3);
         meallist.add(drink4);
         meallist.add(drink5);
-
-
+        for (Meal meal : newmeals) {
+            meallist.add(meal);
+            order.add(0);
+        }
         order.add(0);
         order.add(0);
         order.add(0);
@@ -197,6 +202,8 @@ public class MealFrame implements ActionListener{
         serialnum = meallist.size()-1;
         Meal  newMeal = new Meal(serialnum, price, name, desc, cals,false);
         meallist.add(newMeal);
+        newmeals.add(newMeal);
+        order.add(0);
         System.out.println(meallist.size()); 
         
     }
