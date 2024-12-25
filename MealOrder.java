@@ -108,13 +108,13 @@ public class MealOrder extends Order implements MouseListener {
             new DrinksOrder(manager);
         }
 
-        if(e.getSource() == viewcartbutton){
+        if(e.getSource() == viewdetailsbutton){
             if(num == 0){
                 JOptionPane.showMessageDialog(null,"You have to select meals to buy."
                         ,"Title",JOptionPane.ERROR_MESSAGE);
             }
             else {
-                new Cart(MealFrame.order);}
+                new OrderDetails(MealFrame.order);}
         }
         if(e.getSource()==logoutButton){
             super.actionPerformed(e);

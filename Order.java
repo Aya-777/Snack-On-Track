@@ -13,7 +13,7 @@ public class Order implements ActionListener {
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
-    JButton viewcartbutton = new JButton("View cart");
+    JButton viewdetailsbutton = new JButton("View details");
     JButton logoutButton = new JButton("Log out");
     JButton addmealButton = new JButton("Add Meal");
 
@@ -41,7 +41,7 @@ public class Order implements ActionListener {
         mealsbar.add(dessertsitem);
         mealsbar.add(drinksitem);
 
-        viewcartbutton.setBounds(260,115 , 130, 30);
+        viewdetailsbutton.setBounds(260,115 , 130, 30);
         mealslabel.setBounds(275, 40, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
         mealnumlabel.setBounds(360, 40, 50, 20);
@@ -59,7 +59,7 @@ public class Order implements ActionListener {
 
         logoutButton.setBounds(400, 115, 130, 30);;
 
-        f.add(viewcartbutton);
+        f.add(viewdetailsbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
         f.add(pricelabel);
@@ -68,7 +68,7 @@ public class Order implements ActionListener {
         f.add(logoutButton);
         f.add(scrollPane);
 
-        viewcartbutton.addActionListener(this);
+        viewdetailsbutton.addActionListener(this);
         mealsitem.addActionListener(this);
         saladsitem.addActionListener(this);
         dessertsitem.addActionListener(this);

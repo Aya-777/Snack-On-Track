@@ -93,13 +93,13 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"You are already on dessert's order page.",
                         "Title",JOptionPane.WARNING_MESSAGE);
         }
-        if(e.getSource() == viewcartbutton){
+        if(e.getSource() == viewdetailsbutton){
             if(Order.num == 0){
                 JOptionPane.showMessageDialog(null,"You have to select meals to buy."
                         ,"Title",JOptionPane.ERROR_MESSAGE);
             }
             else {
-                new Cart(MealFrame.order);
+                new OrderDetails(MealFrame.order);
             }
         }
         if(e.getSource()==logoutButton){
