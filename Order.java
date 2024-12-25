@@ -42,6 +42,7 @@ public class Order implements ActionListener {
         mealsbar.add(drinksitem);
 
         viewdetailsbutton.setBounds(260,115 , 130, 30);
+        viewdetailsbutton.setFocusable(false);
         mealslabel.setBounds(275, 40, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
         mealnumlabel.setBounds(360, 40, 50, 20);
