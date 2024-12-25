@@ -9,7 +9,7 @@ public class Order implements ActionListener {
 
    
     static int num=0,price=0;
-    JFrame f = new JFrame();
+    static JFrame f = new JFrame();
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
@@ -33,7 +33,9 @@ public class Order implements ActionListener {
 
         this.manager=manager;
         if (manager) {
+            addmealButton.setBounds(400,80, 130, 30);
             f.add(addmealButton);
+            addmealButton.addActionListener(this);
         }
 
         mealsbar.add(mealsitem);

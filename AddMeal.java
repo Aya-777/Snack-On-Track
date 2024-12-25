@@ -1,8 +1,12 @@
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class AddMeal implements ActionListener{
@@ -12,6 +16,13 @@ class AddMeal implements ActionListener{
         JTextField mealcaloriefield = new JTextField("Calories:");
         JButton submitbutton = new JButton("Submit");
         JFrame f = new JFrame("Add Meal");
+        String[] types = new String[] {"Meal" , "Salad" , "Dessert" , "Drink"};
+        JComboBox mealtype = new JComboBox<>(types);
+        ImageIcon newmealIcon = new ImageIcon("");
+        JLabel newmealLabel = new JLabel(newmealIcon);
+        JLabel newmealNameLabel = new JLabel();
+        JLabel newmealPriceLabel = new JLabel();
+        JLabel newmealCalorieLabel = new JLabel();
 
     AddMeal(){
         f.setLayout(new FlowLayout());
@@ -35,8 +46,30 @@ class AddMeal implements ActionListener{
         if(e.getSource() == submitbutton){
             int price = Integer.parseInt(mealpricefield.getText());
             int calorie = Integer.parseInt(mealcaloriefield.getText());
-            MealFrame.addMeal(0,price,mealnamefield.getText(),mealdescriptionfield.getText(),calorie);
+            String name = mealnamefield.getText();
+            String desc = mealdescriptionfield.getText();
+            MealFrame.addMeal(0,price,name,desc,calorie);
+            newmealNameLabel.setText(name);
+            newmealCalorieLabel.setText(String.valueOf(calorie));
+            newmealPriceLabel.setText(String.valueOf(price));
+            newmealLabel.add(newmealNameLabel);
+            newmealLabel.add(newmealPriceLabel);
+            newmealLabel.add(newmealCalorieLabel);
+            newmealLabel.setLayout(new FlowLayout());
             submitbutton.setEnabled(false);
+
+            if(mealtype.getSelectedItem() == "Meal"){
+                MealOrder.f.add(newmealLabel);
+            }
+            if(mealtype.getSelectedItem() == "Salad"){
+                SaladOrder.f.add(newmealLabel);
+            }
+            if(mealtype.getSelectedItem() == "Dessert"){
+                DessertOrder.f.add(newmealLabel);
+            }
+            if(mealtype.getSelectedItem() == "Drink"){
+                DrinksOrder.f.add(newmealLabel);
+            }
         }
     }
 }
