@@ -87,75 +87,50 @@ public class MealFrame implements ActionListener{
     JLabel pricelabel = new JLabel("Price : ");
     JLabel pricenumlabel = new JLabel(String.valueOf(Order.price));
 
-    JFrame f = new JFrame();
+    JFrame f = new JFrame("");
 
     JLabel mainLabel = new JLabel();
-    ImageIcon drink1MainIcon = new ImageIcon("main drink 1.png");
-    ImageIcon drink2MainIcon = new ImageIcon("main drink 2.png");
-    ImageIcon drink3MainIcon = new ImageIcon("main drink 3.png");
-    ImageIcon drink4MainIcon = new ImageIcon("main drink 4.png");
-    ImageIcon drink5MainIcon = new ImageIcon("main drink 5.png");
+    static ImageIcon drink1MainIcon = new ImageIcon("main drink 1.png");
+    static ImageIcon drink2MainIcon = new ImageIcon("main drink 2.png");
+    static ImageIcon drink3MainIcon = new ImageIcon("main drink 3.png");
+    static ImageIcon drink4MainIcon = new ImageIcon("main drink 4.png");
+    static ImageIcon drink5MainIcon = new ImageIcon("main drink 5.png");
 
-    ImageIcon dessert1MainIcon = new ImageIcon("main dessert 1.png");
-    ImageIcon dessert2MainIcon = new ImageIcon("main dessert 2.png");
-    ImageIcon dessert3MainIcon = new ImageIcon("main dessert 3.png");
-    ImageIcon dessert4MainIcon = new ImageIcon("main dessert 4.png");
-    ImageIcon dessert5MainIcon = new ImageIcon("main dessert 5.png");
+    static ImageIcon dessert1MainIcon = new ImageIcon("main dessert 1.png");
+    static ImageIcon dessert2MainIcon = new ImageIcon("main dessert 2.png");
+    static ImageIcon dessert3MainIcon = new ImageIcon("main dessert 3.png");
+    static ImageIcon dessert4MainIcon = new ImageIcon("main dessert 4.png");
+    static ImageIcon dessert5MainIcon = new ImageIcon("main dessert 5.png");
 
-    ImageIcon salad1MainIcon = new ImageIcon("main salad 1.png");
-    ImageIcon salad2MainIcon = new ImageIcon("main salad 2.png");
-    ImageIcon salad3MainIcon = new ImageIcon("main salad 3.png");
-    ImageIcon salad4MainIcon = new ImageIcon("main salad 4.png");
+    static ImageIcon salad1MainIcon = new ImageIcon("main salad 1.png");
+    static ImageIcon salad2MainIcon = new ImageIcon("main salad 2.png");
+    static ImageIcon salad3MainIcon = new ImageIcon("main salad 3.png");
+    static ImageIcon salad4MainIcon = new ImageIcon("main salad 4.png");
 
-    ImageIcon meal1MainIcon = new ImageIcon("main meal 1.png");
-    ImageIcon meal2MainIcon = new ImageIcon("main meal 2.png");
-    ImageIcon meal3MainIcon = new ImageIcon("main meal 3.png");
-    ImageIcon meal4MainIcon = new ImageIcon("main meal 4.png");
-    ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
-    ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
-    ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
-    ArrayList<ImageIcon> arrayMeals = new ArrayList<>();
+    static ImageIcon meal1MainIcon = new ImageIcon("main meal 1.png");
+    static ImageIcon meal2MainIcon = new ImageIcon("main meal 2.png");
+    static ImageIcon meal3MainIcon = new ImageIcon("main meal 3.png");
+    static ImageIcon meal4MainIcon = new ImageIcon("main meal 4.png");
+    static ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
+    static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
+    static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
+    static ArrayList<ImageIcon> arrayMealsIcon = new ArrayList<>();
 
     MealFrame(Integer mealnum , boolean manager){
-        this.mealnum=mealnum-1;
-
-        arrayMeals.add(meal1MainIcon);
-        arrayMeals.add(meal2MainIcon);
-        arrayMeals.add(meal3MainIcon);
-        arrayMeals.add(meal4MainIcon);
-        arrayMeals.add(meal5MainIcon);
-        arrayMeals.add(meal6MainIcon);
-        arrayMeals.add(meal7MainIcon);
-
-        arrayMeals.add(salad1MainIcon);
-        arrayMeals.add(salad2MainIcon);
-        arrayMeals.add(salad3MainIcon);
-        arrayMeals.add(salad4MainIcon);
-
-        arrayMeals.add(dessert1MainIcon);
-        arrayMeals.add(dessert2MainIcon);
-        arrayMeals.add(dessert3MainIcon);
-        arrayMeals.add(dessert4MainIcon);
-        arrayMeals.add(dessert5MainIcon);
-
-
-        arrayMeals.add(drink1MainIcon);
-        arrayMeals.add(drink2MainIcon);
-        arrayMeals.add(drink3MainIcon);
-        arrayMeals.add(drink4MainIcon);
-        arrayMeals.add(drink5MainIcon);
-
-
-        mainLabel.setBounds(0,0,650,830);
-        mainLabel.setIcon(arrayMeals.get(mealnum));
-
-
-        f.add(mainLabel);
         f.setLayout(new FlowLayout());
-        mealnum--;
+        mealnum-=1;
         this.mealnum=mealnum;
         num1 = order.get(mealnum);
         this.m=meallist.get(mealnum);
+
+       
+
+        mainLabel.setBounds(0,0,650,830);
+        mainLabel.setIcon(arrayMealsIcon.get(mealnum));
+        mainLabel.setLayout(null);
+
+        f.add(mainLabel);
+
 
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
@@ -164,19 +139,21 @@ public class MealFrame implements ActionListener{
         backButton.addActionListener(this);
 
         if(manager){
-            f.add(deleteButton);
-            f.add(editButton);
+            deleteButton.setBounds(100, 200, 100, 20);
+            deleteButton.setBounds(320, 200, 100, 20);
+            mainLabel.add(deleteButton);
+            mainLabel.add(editButton);
         }
         singlemealnumlabel.setText(String.valueOf(order.get(mealnum)));
 
         //mainLabel.add(addbutton);
 
-        f.add(backButton);
-        f.add(singlemealnumlabel);
-        f.add(addbutton);
-        f.add(minusbutton);
-        f.add(pricelabel);
-        f.add(pricenumlabel);
+        mainLabel.add(backButton);
+        mainLabel.add(singlemealnumlabel);
+        mainLabel.add(addbutton);
+        mainLabel.add(minusbutton);
+        mainLabel.add(pricelabel);
+        mainLabel.add(pricenumlabel);
         
         f.setResizable(false);
         f.setSize(665,850);
@@ -189,7 +166,6 @@ public class MealFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == addbutton){
             Order.num++; num1++;
-            // order.add(mealnum-1, num1);
             order.set(mealnum, num1);
             Order.price += m.getPrice();
             singlemealnumlabel.setText(String.valueOf(num1));
@@ -200,7 +176,6 @@ public class MealFrame implements ActionListener{
         }
         if(e.getSource() == minusbutton && num1 > 0){
             Order.num--; num1--;
-            // order.add(mealnum-1 ,num1);
             order.set(mealnum, num1);
             Order.price-= m.getPrice();
             pricenumlabel.setText(String.valueOf(Order.price));
@@ -210,7 +185,6 @@ public class MealFrame implements ActionListener{
             Order.pricenumlabel.setText(String.valueOf(Order.price));
         }
         if(e.getSource() == deleteButton){
-            // meallist.remove(mealnum);
             meallist.get(mealnum).setDeleted(true);
             JOptionPane.showMessageDialog(null, "Meal Deleted.", "Title", JOptionPane.INFORMATION_MESSAGE);
             f.dispose();
@@ -271,6 +245,33 @@ public class MealFrame implements ActionListener{
         order.add(0);
         order.add(0);
         order.add(0);
+
+        arrayMealsIcon.add(meal1MainIcon);
+        arrayMealsIcon.add(meal2MainIcon);
+        arrayMealsIcon.add(meal3MainIcon);
+        arrayMealsIcon.add(meal4MainIcon);
+        arrayMealsIcon.add(meal5MainIcon);
+        arrayMealsIcon.add(meal6MainIcon);
+        arrayMealsIcon.add(meal7MainIcon);
+
+        arrayMealsIcon.add(salad1MainIcon);
+        arrayMealsIcon.add(salad2MainIcon);
+        arrayMealsIcon.add(salad3MainIcon);
+        arrayMealsIcon.add(salad4MainIcon);
+
+        arrayMealsIcon.add(dessert1MainIcon);
+        arrayMealsIcon.add(dessert2MainIcon);
+        arrayMealsIcon.add(dessert3MainIcon);
+        arrayMealsIcon.add(dessert4MainIcon);
+        arrayMealsIcon.add(dessert5MainIcon);
+
+
+        arrayMealsIcon.add(drink1MainIcon);
+        arrayMealsIcon.add(drink2MainIcon);
+        arrayMealsIcon.add(drink3MainIcon);
+        arrayMealsIcon.add(drink4MainIcon);
+        arrayMealsIcon.add(drink5MainIcon);
+
 
     }
 
