@@ -12,14 +12,24 @@ public class DessertOrder extends Order implements MouseListener{
     JLabel dessertOrderIconLabel = new JLabel();
     ImageIcon dessertOrderIcon =new ImageIcon("main design sweets.png");
     JLabel dessert1label = new JLabel();
+    JLabel dessert1LabelPrice = new JLabel();
+    JLabel dessert1LabelKalori = new JLabel();
     ImageIcon dessert1Icon = new ImageIcon("menu sweets 1.png");
     JLabel dessert2label = new JLabel();
+    JLabel dessert2LabelPrice = new JLabel();
+    JLabel dessert2LabelKalori = new JLabel();
     ImageIcon dessert2Icon = new ImageIcon("menu sweets 2.png");
     JLabel dessert3label = new JLabel();
+    JLabel dessert3LabelPrice = new JLabel();
+    JLabel dessert3LabelKalori = new JLabel();
     ImageIcon dessert3Icon = new ImageIcon("menu sweets 3.png");
     JLabel dessert4label = new JLabel();
+    JLabel dessert4LabelPrice = new JLabel();
+    JLabel dessert4LabelKalori = new JLabel();
     ImageIcon dessert4Icon = new ImageIcon("menu sweets 4.png");
     JLabel dessert5label = new JLabel();
+    JLabel dessert5LabelPrice = new JLabel();
+    JLabel dessert5LabelKalori = new JLabel();
     ImageIcon dessert5Icon = new ImageIcon("menu sweets 5.png");
 
     boolean manager;
@@ -32,30 +42,109 @@ public class DessertOrder extends Order implements MouseListener{
         dessertOrderIconLabel.setBounds(0,0,650,830);
         dessertOrderIconLabel.setIcon(dessertOrderIcon);
 
+
         dessert1label.setBounds(260,200,610,145);
         dessert1label.setBorder(new LineBorder(Color.white,2));
         dessert1label.setOpaque(true);
         dessert1label.setIcon(dessert1Icon);
+
+        dessert1LabelPrice.setBounds(205, 75, 150, 60);
+        dessert1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert1LabelPrice.setForeground(new Color(232,99,73));
+        dessert1LabelPrice.setText("7 $");
+        dessert1LabelPrice.setBackground(new Color(232,195,150));
+        dessert1LabelPrice.setOpaque(true);
+        dessert1LabelKalori.setBounds(23, 78, 160, 60);
+        dessert1LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert1LabelKalori.setForeground(new Color(91,74,38));
+        dessert1LabelKalori.setText("200 kcal");
+        dessert1LabelKalori.setBackground(new Color(232,195,150));
+        dessert1LabelKalori.setOpaque(true);
+
 
         dessert2label.setBounds(15,355,610,145);
         dessert2label.setBorder(new LineBorder(Color.white,2));
         dessert2label.setOpaque(true);
         dessert2label.setIcon(dessert2Icon);
 
+        dessert2LabelPrice.setBounds(205, 75, 150, 60);
+        dessert2LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert2LabelPrice.setForeground(new Color(232,99,73));
+        dessert2LabelPrice.setText("8 $");
+        dessert2LabelPrice.setBackground(new Color(232,195,150));
+        dessert2LabelPrice.setOpaque(true);
+        dessert2LabelKalori.setBounds(23, 78, 160, 60);
+        dessert2LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert2LabelKalori.setForeground(new Color(91,74,38));
+        dessert2LabelKalori.setText("250 kcal");
+        dessert2LabelKalori.setBackground(new Color(232,195,150));
+        dessert2LabelKalori.setOpaque(true);
+
         dessert3label.setBounds(15,510,610,145);
         dessert3label.setBorder(new LineBorder(Color.white,2));
         dessert3label.setOpaque(true);
         dessert3label.setIcon(dessert3Icon);
+
+        dessert3LabelPrice.setBounds(205, 78, 150, 60);
+        dessert3LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert3LabelPrice.setForeground(new Color(232,99,73));
+        dessert3LabelPrice.setText("12 $");
+        dessert3LabelPrice.setBackground(new Color(232,195,150));
+        dessert3LabelPrice.setOpaque(true);
+        dessert3LabelKalori.setBounds(23, 78, 160, 60);
+        dessert3LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert3LabelKalori.setForeground(new Color(91,74,38));
+        dessert3LabelKalori.setText("250 kcal");
+        dessert3LabelKalori.setBackground(new Color(232,195,150));
+        dessert3LabelKalori.setOpaque(true);
 
         dessert4label.setBounds(15,665,610,145);
         dessert4label.setBorder(new LineBorder(Color.white,2));
         dessert4label.setOpaque(true);
         dessert4label.setIcon(dessert4Icon);
 
+        dessert4LabelPrice.setBounds(205, 80, 150, 60);
+        dessert4LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert4LabelPrice.setForeground(new Color(232,99,73));
+        dessert4LabelPrice.setText("7 $");
+        dessert4LabelPrice.setBackground(new Color(232,195,150));
+        dessert4LabelPrice.setOpaque(true);
+        dessert4LabelKalori.setBounds(23, 78, 160, 60);
+        dessert4LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert4LabelKalori.setForeground(new Color(91,74,38));
+        dessert4LabelKalori.setText("150 kcal");
+        dessert4LabelKalori.setBackground(new Color(232,195,150));
+        dessert4LabelKalori.setOpaque(true);
+
         dessert5label.setBounds(15,820,610,145);
         dessert5label.setBorder(new LineBorder(Color.white,2));
         dessert5label.setOpaque(true);
         dessert5label.setIcon(dessert5Icon);
+
+        dessert5LabelPrice.setBounds(195, 80, 150, 60);
+        dessert5LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert5LabelPrice.setForeground(new Color(232,99,73));
+        dessert5LabelPrice.setText("8 $");
+        dessert5LabelPrice.setBackground(new Color(232,195,150));
+        dessert5LabelPrice.setOpaque(true);
+        dessert5LabelKalori.setBounds(23, 78, 155, 60);
+        dessert5LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
+        dessert5LabelKalori.setForeground(new Color(91,74,38));
+        dessert5LabelKalori.setText("250 kcal");
+        dessert5LabelKalori.setBackground(new Color(232,195,150));
+        dessert5LabelKalori.setOpaque(true);
+
+        dessert1label.add(dessert1LabelPrice);
+        dessert2label.add(dessert2LabelPrice);
+        dessert3label.add(dessert3LabelPrice);
+        dessert4label.add(dessert4LabelPrice);
+        dessert5label.add(dessert5LabelPrice);
+
+        dessert1label.add(dessert1LabelKalori);
+        dessert2label.add(dessert2LabelKalori);
+        dessert3label.add(dessert3LabelKalori);
+        dessert4label.add(dessert4LabelKalori);
+        dessert5label.add(dessert5LabelKalori);
 
 
         panelScroll.add(dessert1label);

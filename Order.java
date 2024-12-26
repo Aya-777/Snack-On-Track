@@ -35,6 +35,7 @@ public class Order implements ActionListener {
         mealsbar.add(drinksitem);
 
         viewcartbutton.setBounds(260,115 , 130, 30);
+        viewcartbutton.setFocusable(false);
         mealslabel.setBounds(275, 40, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
         mealnumlabel.setBounds(360, 40, 50, 20);
@@ -51,7 +52,7 @@ public class Order implements ActionListener {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         logoutButton.setBounds(400, 115, 130, 30);;
-
+        logoutButton.setFocusable(false);
         f.add(viewcartbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
