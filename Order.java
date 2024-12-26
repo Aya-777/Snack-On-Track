@@ -6,18 +6,17 @@ import java.awt.event.ActionListener;
 
 public class Order implements ActionListener {
 
-   
-    static int num=0,price=0;
-    JFrame f = new JFrame();
+    static int num = 0, price = 0;
+    static JFrame f = new JFrame();
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
-    JButton viewcartbutton = new JButton("View cart");
+    JButton viewdetailsbutton = new JButton("View details");
     JButton logoutButton = new JButton("Log out");
     JButton addmealButton = new JButton("Add Meal");
 
     JLabel mealslabel = new JLabel("Meals :");
-    
+
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");
@@ -27,12 +26,14 @@ public class Order implements ActionListener {
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static boolean manager;
 
-    Order(boolean manager){
+    Order(boolean manager) {
         f.setLayout(null);
 
-        this.manager=manager;
+        this.manager = manager;
         if (manager) {
+            addmealButton.setBounds(400, 80, 130, 30);
             f.add(addmealButton);
+            addmealButton.addActionListener(this);
         }
 
         mealsbar.add(mealsitem);
@@ -40,25 +41,30 @@ public class Order implements ActionListener {
         mealsbar.add(dessertsitem);
         mealsbar.add(drinksitem);
 
-        viewcartbutton.setBounds(260,115 , 130, 30);
+        viewdetailsbutton.setBounds(260, 115, 130, 30);
+        viewdetailsbutton.setFocusable(false);
         mealslabel.setBounds(275, 40, 100, 20);
-        mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
+        mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealnumlabel.setBounds(360, 40, 50, 20);
-        mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,20));
+        mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         pricelabel.setBounds(275, 75, 100, 20);
-        pricelabel.setFont(new Font("Franklin Gothic Demi",Font.PLAIN,20));
+        pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         pricenumlabel.setBounds(360, 75, 50, 20);
-        pricenumlabel.setFont(new Font("Franklin Gothic Demi",Font.PLAIN,20));
+        pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealsbar.setBounds(0, 160, 665, 25);
-        mealsbar.setFont(new Font("Franklin Gothic Demi",Font.PLAIN,200));
-        scrollPane.setBounds(10,190,615,600);
-        panelScroll.setLayout(new BoxLayout(panelScroll,BoxLayout.Y_AXIS));
-        panelScroll.setBorder(new LineBorder(Color.white,2));
+        mealsbar.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 200));
+        scrollPane.setBounds(10, 190, 615, 600);
+        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
+        panelScroll.setBorder(new LineBorder(Color.white, 2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        logoutButton.setBounds(400, 115, 130, 30);;
+        logoutButton.setBounds(400, 115, 130, 30);
+        ;
 
-        f.add(viewcartbutton);
+        f.add(viewdetailsbutton);
+        logoutButton.setFocusable(false);
+
+        f.add(viewdetailsbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
         f.add(pricelabel);
@@ -67,7 +73,7 @@ public class Order implements ActionListener {
         f.add(logoutButton);
         f.add(scrollPane);
 
-        viewcartbutton.addActionListener(this);
+        viewdetailsbutton.addActionListener(this);
         mealsitem.addActionListener(this);
         saladsitem.addActionListener(this);
         dessertsitem.addActionListener(this);
@@ -75,27 +81,25 @@ public class Order implements ActionListener {
         logoutButton.addActionListener(this);
 
         f.setResizable(false);
-        f.setSize(650,830);
+        f.setSize(650, 830);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
 
-        
     }
-  
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==logoutButton){
+        if (e.getSource() == logoutButton) {
             f.dispose();
-            price=0;
-            num=0;
+            price = 0;
+            num = 0;
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
             MealFrame.meallist.clear();
             MealFrame.fillLists();
             new SignFrame();
         }
-        if(e.getSource()==addmealButton){
+        if (e.getSource() == addmealButton) {
             new AddMeal();
         }
 
