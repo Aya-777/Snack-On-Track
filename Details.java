@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -25,7 +24,9 @@ public class Details implements ActionListener{
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static int x=200 ,y = 150 , xnum=400 , ynum=150,xstate=70,ystate=200,xbar=70,ybar=150;
+    static int gap=150;
     SwingWorker<Void,Integer> worker;
+    boolean cancelPressed=false;
 
     Details(ArrayList<Integer> meals){
         int index=0;
@@ -75,9 +76,9 @@ public class Details implements ActionListener{
             }
         }
 
-        state.setBounds(xstate, ystate , 100, 20);
-        detailsprogregressbar.setBounds(xbar, ybar, 100, 20);
-        cancelButton.setBounds(xnum+50 , ynum , 150, 20);
+        state.setBounds(xstate, gap+30 , 100, 20);
+        detailsprogregressbar.setBounds(xbar, gap, 100, 20);
+        cancelButton.setBounds(xnum+50 , gap , 150, 20);
 
         index=0;
 
@@ -85,7 +86,7 @@ public class Details implements ActionListener{
         f.add(state);
         f.add(detailsprogregressbar);
 
-        
+        y=gap; ynum=gap;
 
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
@@ -101,6 +102,10 @@ public class Details implements ActionListener{
                 f.add(mealname);
                 f.add(mealnum);
 
+                y+=50;
+                ynum+=50;
+                gap=ynum+50;
+
                 worker = new SwingWorker<Void,Integer>() {
                     @Override
                     protected Void doInBackground() throws Exception {
@@ -111,7 +116,7 @@ public class Details implements ActionListener{
                                 // TODO: handle exception
                             }
                             publish(i);
-                            if(!cancelButton.isEnabled()){
+                            if(!cancelButton.isEnabled() && cancelPressed){
                                 break;
                             }
                         }
@@ -140,7 +145,7 @@ public class Details implements ActionListener{
                     @Override
                     protected void done() {
                         System.out.println("completed");
-                        if(!cancelButton.isEnabled()){
+                        if(!cancelButton.isEnabled() && cancelPressed){
                             state.setText("Canceled");
                         } else{
                         state.setText("Done!");
@@ -149,8 +154,7 @@ public class Details implements ActionListener{
                 };
 
                 worker.execute();
-                y+=50;
-                ynum+=50;
+
                 }
                 index++;
             }
@@ -183,6 +187,7 @@ public class Details implements ActionListener{
             }
         }
         if(e.getSource()==cancelButton){
+            cancelPressed=true;
             cancelButton.setEnabled(false);
         }
     }

@@ -5,7 +5,7 @@ public class Main {
         try {
             Thread.sleep(2000);
             s.dispose();
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e){
             e.printStackTrace();
         }
         new SignFrame();
