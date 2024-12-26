@@ -146,10 +146,6 @@ public class MealFrame implements ActionListener{
         arrayMeals.add(drink5MainIcon);
 
 
-
-
-
-
         mainLabel.setBounds(0,0,650,830);
         mainLabel.setIcon(arrayMeals.get(mealnum));
 
@@ -172,6 +168,8 @@ public class MealFrame implements ActionListener{
             f.add(editButton);
         }
         singlemealnumlabel.setText(String.valueOf(order.get(mealnum)));
+
+        //mainLabel.add(addbutton);
 
         f.add(backButton);
         f.add(singlemealnumlabel);
