@@ -1,22 +1,36 @@
 import java.io.Serializable;
+
 public class ManagementAccounts implements Serializable {
     private final String name = "employee";
     private String password;
     private final String emploNum = "7879";
+    private int howManyTimes = 0;
+
+    
     public ManagementAccounts() {
     }
+
     ManagementAccounts(String password) {
         this.password = password;
     }
+
+    public int getHowManyTimes() {
+        return howManyTimes;
+    }
+
+    public void setHowManyTimes(int howManyTimes) {
+        this.howManyTimes = howManyTimes;
+    }
+
+
     public String getPassword() {
         return password;
     }
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
     public String getName() {
         return name;
     }
+
     public String getEmploNum() {
         return emploNum;
     }
