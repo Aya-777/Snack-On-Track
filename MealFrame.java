@@ -3,6 +3,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.*;
 
 public class MealFrame implements ActionListener{
@@ -53,7 +58,7 @@ public class MealFrame implements ActionListener{
 
         //Drinks
     static Meal drink1 = new Meal(16, 2, "Diet Coke",
-     "Just Coke..", 1,false);
+     "", 1,false);
     static Meal drink2 = new Meal(17, 5, "Watermelon Strawberry Smoothie",
      "Watermelon, strawberry, sugar, lemon.", 150,false);
     static Meal drink3 = new Meal(18, 6, "Peach and Raspberry Smoothie",
@@ -77,9 +82,11 @@ public class MealFrame implements ActionListener{
     JButton addbutton = new JButton("+");
     JButton minusbutton = new JButton("-");
     JButton deleteButton = new JButton("Delete Meal");
+    JButton editButton = new JButton("Edit Meal");
     JButton backButton = new JButton("Back");
     JLabel pricelabel = new JLabel("Price : ");
     JLabel pricenumlabel = new JLabel(String.valueOf(Order.price));
+
     JFrame f = new JFrame();
 
     JLabel mainLabel = new JLabel();
@@ -149,16 +156,20 @@ public class MealFrame implements ActionListener{
 
         f.add(mainLabel);
         f.setLayout(new FlowLayout());
-        this.mealnum=mealnum-1;
+        mealnum--;
+        this.mealnum=mealnum;
         num1 = order.get(mealnum);
         this.m=meallist.get(mealnum);
+
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
         deleteButton.addActionListener(this);
+        editButton.addActionListener(this);
         backButton.addActionListener(this);
 
         if(manager){
             f.add(deleteButton);
+            f.add(editButton);
         }
         singlemealnumlabel.setText(String.valueOf(order.get(mealnum)));
 
@@ -202,12 +213,16 @@ public class MealFrame implements ActionListener{
         }
         if(e.getSource() == deleteButton){
             // meallist.remove(mealnum);
-            meallist.get(mealnum-1).setDeleted(true);
+            meallist.get(mealnum).setDeleted(true);
             JOptionPane.showMessageDialog(null, "Meal Deleted.", "Title", JOptionPane.INFORMATION_MESSAGE);
             f.dispose();
         }
         if(e.getSource()==backButton){
             f.dispose();
+        }
+        if(e.getSource()==editButton){
+            f.dispose();
+            new EditMeal(m);
         }
     }
 

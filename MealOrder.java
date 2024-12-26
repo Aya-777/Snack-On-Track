@@ -55,13 +55,13 @@ public class MealOrder extends Order implements MouseListener {
         meal1LabelPrice.setBounds(188, 78, 150, 60);
         meal1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal1LabelPrice.setForeground(new Color(139,37,17));
-        meal1LabelPrice.setText("23 $");
+        meal1LabelPrice.setText(String.valueOf(MealFrame.m1.getPrice())+" $");
         meal1LabelPrice.setBackground(new Color(255,134,120));
         meal1LabelPrice.setOpaque(true);
         meal1LabelKalori.setBounds(25, 78, 140, 60);
         meal1LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal1LabelKalori.setForeground(new Color(229,230,202));
-        meal1LabelKalori.setText("590 kcal");
+        meal1LabelKalori.setText(String.valueOf(MealFrame.m1.getCals())+" kcal");
         meal1LabelKalori.setBackground(new Color(255,134,120));
         meal1LabelKalori.setOpaque(true);
 
@@ -75,13 +75,13 @@ public class MealOrder extends Order implements MouseListener {
         meal2LabelPrice.setBounds(195, 78, 150, 60);
         meal2LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal2LabelPrice.setForeground(new Color(139,37,17));
-        meal2LabelPrice.setText("20 $");
+        meal2LabelPrice.setText(String.valueOf(MealFrame.m2.getPrice())+" $");
         meal2LabelPrice.setBackground(new Color(255,134,120));
         meal2LabelPrice.setOpaque(true);
         meal2LabelKalori.setBounds(25, 78, 155, 60);
         meal2LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal2LabelKalori.setForeground(new Color(229,230,202));
-        meal2LabelKalori.setText("520 kcal");
+        meal2LabelKalori.setText(String.valueOf(MealFrame.m2.getCals())+" kcal");
         meal2LabelKalori.setBackground(new Color(255,134,120));
         meal2LabelKalori.setOpaque(true);
 
@@ -94,14 +94,14 @@ public class MealOrder extends Order implements MouseListener {
         meal3LabelPrice.setBounds(195, 78, 120, 60);
         meal3LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal3LabelPrice.setForeground(new Color(139,37,17));
-        meal3LabelPrice.setText("22 $");
+        meal3LabelPrice.setText(String.valueOf(MealFrame.m3.getPrice())+" $");
         meal3LabelPrice.setBackground(new Color(255,134,120));
         meal3LabelPrice.setOpaque(true);
 
         meal3LabelKalori.setBounds(25, 78, 155, 60);
         meal3LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal3LabelKalori.setForeground(new Color(229,230,202));
-        meal3LabelKalori.setText("500 kcal");
+        meal3LabelKalori.setText(String.valueOf(MealFrame.m3.getCals())+" kcal");
         meal3LabelKalori.setBackground(new Color(255,134,120));
         meal3LabelKalori.setOpaque(true);
 
@@ -115,14 +115,14 @@ public class MealOrder extends Order implements MouseListener {
         meal4LabelPrice.setBounds(195, 78, 150, 60);
         meal4LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal4LabelPrice.setForeground(new Color(139,37,17));
-        meal4LabelPrice.setText("22 $");
+        meal4LabelPrice.setText(String.valueOf(MealFrame.m4.getPrice())+" $");
 
         meal4LabelPrice.setBackground(new Color(255,134,120));
         meal4LabelPrice.setOpaque(true);
         meal4LabelKalori.setBounds(25, 78, 155, 60);
         meal4LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal4LabelKalori.setForeground(new Color(229,230,202));
-        meal4LabelKalori.setText("535 kcal");
+        meal4LabelKalori.setText(String.valueOf(MealFrame.m4.getCals())+" kcal");
         meal4LabelKalori.setBackground(new Color(255,134,120));
         meal4LabelKalori.setOpaque(true);
 
@@ -136,13 +136,13 @@ public class MealOrder extends Order implements MouseListener {
         meal5LabelPrice.setBounds(188, 78, 150, 60);
         meal5LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal5LabelPrice.setForeground(new Color(139,37,17));
-        meal5LabelPrice.setText("12 $");
+        meal5LabelPrice.setText(String.valueOf(MealFrame.m5.getPrice())+" $");
         meal5LabelPrice.setBackground(new Color(255,134,120));
         meal5LabelPrice.setOpaque(true);
         meal5LabelKalori.setBounds(25, 78, 140, 60);
         meal5LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal5LabelKalori.setForeground(new Color(229,230,202));
-        meal5LabelKalori.setText("225 kcal");
+        meal5LabelKalori.setText(String.valueOf(MealFrame.m5.getCals())+" kcal");
         meal5LabelKalori.setBackground(new Color(255,134,120));
         meal5LabelKalori.setOpaque(true);
 
@@ -155,13 +155,13 @@ public class MealOrder extends Order implements MouseListener {
         meal6LabelPrice.setBounds(188, 78, 150, 60);
         meal6LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal6LabelPrice.setForeground(new Color(139,37,17));
-        meal6LabelPrice.setText("15 $");
+        meal6LabelPrice.setText(String.valueOf(MealFrame.m6.getPrice())+" $");
         meal6LabelPrice.setBackground(new Color(255,134,120));
         meal6LabelPrice.setOpaque(true);
         meal6LabelKalori.setBounds(25, 78, 140, 60);
         meal6LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal6LabelKalori.setForeground(new Color(229,230,202));
-        meal6LabelKalori.setText("340 kcal");
+        meal6LabelKalori.setText(String.valueOf(MealFrame.m6.getCals())+" kcal");
         meal6LabelKalori.setBackground(new Color(255,134,120));
         meal6LabelKalori.setOpaque(true);
 
@@ -174,13 +174,13 @@ public class MealOrder extends Order implements MouseListener {
         meal7LabelPrice.setBounds(188, 78, 150, 55);
         meal7LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal7LabelPrice.setForeground(new Color(139,37,17));
-        meal7LabelPrice.setText("18 $");
+        meal7LabelPrice.setText(String.valueOf(MealFrame.m7.getPrice())+" $");
         meal7LabelPrice.setBackground(new Color(255,134,120));
         meal7LabelPrice.setOpaque(true);
         meal7LabelKalori.setBounds(25, 78, 140, 60);
         meal7LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal7LabelKalori.setForeground(new Color(229,230,202));
-        meal7LabelKalori.setText("410 kcal");
+        meal7LabelKalori.setText(String.valueOf(MealFrame.m7.getCals())+" kcal");
         meal7LabelKalori.setBackground(new Color(255,134,120));
         meal7LabelKalori.setOpaque(true);
 
@@ -209,7 +209,6 @@ public class MealOrder extends Order implements MouseListener {
         panelScroll.add(meal5label);
         panelScroll.add(meal6label);
         panelScroll.add(meal7label);
-
 
         meal1label.addMouseListener(this);
         meal2label.addMouseListener(this);
