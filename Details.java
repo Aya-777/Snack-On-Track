@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.text.View;
 
 public class Details implements ActionListener{
@@ -20,11 +22,21 @@ public class Details implements ActionListener{
     JButton cancelButton = new JButton("Cancel Button");
     JLabel state = new JLabel("Accepting order...");
     JProgressBar detailsprogregressbar = new JProgressBar();
+    JPanel panelScroll = new JPanel();
+    JScrollPane scrollPane = new JScrollPane(panelScroll);
     static int x=200 ,y = 150 , xnum=400 , ynum=150,xstate=70,ystate=200,xbar=70,ybar=150;
     SwingWorker<Void,Integer> worker;
 
     Details(ArrayList<Integer> meals){
         int index=0;
+
+        scrollPane.setBounds(0,0,650,830);
+        panelScroll.setLayout(new BoxLayout(panelScroll,BoxLayout.Y_AXIS));
+        panelScroll.setBorder(new LineBorder(Color.white,2));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+
+
         try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
             for(int i : meals){
                 writer.write(String.valueOf(index) + " ");
@@ -68,6 +80,7 @@ public class Details implements ActionListener{
         cancelButton.setBounds(xnum+50 , ynum , 150, 20);
 
         index=0;
+
         f.add(cancelButton);
         f.add(state);
         f.add(detailsprogregressbar);

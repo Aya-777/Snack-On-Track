@@ -184,6 +184,7 @@ public class MealOrder extends Order implements MouseListener {
         meal7LabelKalori.setBackground(new Color(255,134,120));
         meal7LabelKalori.setOpaque(true);
 
+
         meal1label.add(meal1LabelKalori);
         meal2label.add(meal2LabelKalori);
         meal3label.add(meal3LabelKalori);

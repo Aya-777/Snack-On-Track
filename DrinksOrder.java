@@ -150,6 +150,7 @@ public class DrinksOrder extends Order implements MouseListener{
         panelScroll.add(drink3label);
         panelScroll.add(drink4label);
         panelScroll.add(drink5label);
+
         drink1label.addMouseListener(this);
         drink2label.addMouseListener(this);
         drink3label.addMouseListener(this);

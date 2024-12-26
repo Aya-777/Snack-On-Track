@@ -3,10 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class MealFrame implements ActionListener{
         // Meals
@@ -84,10 +81,74 @@ public class MealFrame implements ActionListener{
     JLabel pricenumlabel = new JLabel(String.valueOf(Order.price));
     JFrame f = new JFrame();
 
+    JLabel mainLabel = new JLabel();
+    ImageIcon drink1MainIcon = new ImageIcon("main drink 1.png");
+    ImageIcon drink2MainIcon = new ImageIcon("main drink 2.png");
+    ImageIcon drink3MainIcon = new ImageIcon("main drink 3.png");
+    ImageIcon drink4MainIcon = new ImageIcon("main drink 4.png");
+    ImageIcon drink5MainIcon = new ImageIcon("main drink 5.png");
+
+    ImageIcon dessert1MainIcon = new ImageIcon("main dessert 1.png");
+    ImageIcon dessert2MainIcon = new ImageIcon("main dessert 2.png");
+    ImageIcon dessert3MainIcon = new ImageIcon("main dessert 3.png");
+    ImageIcon dessert4MainIcon = new ImageIcon("main dessert 4.png");
+    ImageIcon dessert5MainIcon = new ImageIcon("main dessert 5.png");
+
+    ImageIcon salad1MainIcon = new ImageIcon("main salad 1.png");
+    ImageIcon salad2MainIcon = new ImageIcon("main salad 2.png");
+    ImageIcon salad3MainIcon = new ImageIcon("main salad 3.png");
+    ImageIcon salad4MainIcon = new ImageIcon("main salad 4.png");
+
+    ImageIcon meal1MainIcon = new ImageIcon("main meal 1.png");
+    ImageIcon meal2MainIcon = new ImageIcon("main meal 2.png");
+    ImageIcon meal3MainIcon = new ImageIcon("main meal 3.png");
+    ImageIcon meal4MainIcon = new ImageIcon("main meal 4.png");
+    ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
+    ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
+    ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
+    ArrayList<ImageIcon> arrayMeals = new ArrayList<>();
+
     MealFrame(Integer mealnum , boolean manager){
+        this.mealnum=mealnum-1;
+
+        arrayMeals.add(meal1MainIcon);
+        arrayMeals.add(meal2MainIcon);
+        arrayMeals.add(meal3MainIcon);
+        arrayMeals.add(meal4MainIcon);
+        arrayMeals.add(meal5MainIcon);
+        arrayMeals.add(meal6MainIcon);
+        arrayMeals.add(meal7MainIcon);
+
+        arrayMeals.add(salad1MainIcon);
+        arrayMeals.add(salad2MainIcon);
+        arrayMeals.add(salad3MainIcon);
+        arrayMeals.add(salad4MainIcon);
+
+        arrayMeals.add(dessert1MainIcon);
+        arrayMeals.add(dessert2MainIcon);
+        arrayMeals.add(dessert3MainIcon);
+        arrayMeals.add(dessert4MainIcon);
+        arrayMeals.add(dessert5MainIcon);
+
+
+        arrayMeals.add(drink1MainIcon);
+        arrayMeals.add(drink2MainIcon);
+        arrayMeals.add(drink3MainIcon);
+        arrayMeals.add(drink4MainIcon);
+        arrayMeals.add(drink5MainIcon);
+
+
+
+
+
+
+        mainLabel.setBounds(0,0,650,830);
+        mainLabel.setIcon(arrayMeals.get( mealnum));
+
+
+        f.add(mainLabel);
         f.setLayout(new FlowLayout());
         num1 = order.get(mealnum);
-        this.mealnum=mealnum;
         this.m=meallist.get(mealnum);
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);

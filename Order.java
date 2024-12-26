@@ -60,6 +60,7 @@ public class Order implements ActionListener {
 
         logoutButton.setBounds(400, 115, 130, 30);;
         logoutButton.setFocusable(false);
+
         f.add(viewcartbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
