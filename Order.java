@@ -3,6 +3,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Order implements ActionListener {
 
@@ -25,9 +26,15 @@ public class Order implements ActionListener {
     JMenuItem drinksitem = new JMenuItem("Drinks");
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static boolean manager;
 
     Order(boolean manager){
         f.setLayout(null);
+
+        this.manager=manager;
+        if (manager) {
+            f.add(addmealButton);
+        }
 
         mealsbar.add(mealsitem);
         mealsbar.add(saladsitem);
