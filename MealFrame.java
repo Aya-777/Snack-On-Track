@@ -144,7 +144,7 @@ public class MealFrame implements ActionListener{
 
 
         mainLabel.setBounds(0,0,650,830);
-        mainLabel.setIcon(arrayMeals.get( mealnum));
+        mainLabel.setIcon(arrayMeals.get(mealnum));
 
 
         f.add(mainLabel);
