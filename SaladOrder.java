@@ -41,13 +41,13 @@ public class SaladOrder extends Order implements MouseListener {
         salad1LabelPrice.setBounds(195, 75, 150, 60);
         salad1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad1LabelPrice.setForeground(new Color(232,99,73));
-        salad1LabelPrice.setText("8 $");
+        salad1LabelPrice.setText(MealFrame.s1.getPrice()+" $");
         salad1LabelPrice.setBackground(new Color(166,251,186));
         salad1LabelPrice.setOpaque(true);
         salad1LabelKalori.setBounds(23, 75, 150, 60);
         salad1LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad1LabelKalori.setForeground(new Color(91,74,38));
-        salad1LabelKalori.setText("160 kcal");
+        salad1LabelKalori.setText(MealFrame.s1.getCals()+" kcal");
         salad1LabelKalori.setBackground(new Color(166,251,186));
         salad1LabelKalori.setOpaque(true);
 
@@ -59,13 +59,13 @@ public class SaladOrder extends Order implements MouseListener {
         salad2LabelPrice.setBounds(195, 75, 150, 60);
         salad2LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad2LabelPrice.setForeground(new Color(232,99,73));
-        salad2LabelPrice.setText("8 $");
+        salad2LabelPrice.setText(MealFrame.s2.getPrice()+" $");
         salad2LabelPrice.setBackground(new Color(166,251,186));
         salad2LabelPrice.setOpaque(true);
         salad2LabelKalori.setBounds(23, 75, 150, 60);
         salad2LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad2LabelKalori.setForeground(new Color(91,74,38));
-        salad2LabelKalori.setText("275 kcal");
+        salad2LabelKalori.setText(MealFrame.s2.getCals()+" kcal");
         salad2LabelKalori.setBackground(new Color(166,251,186));
         salad2LabelKalori.setOpaque(true);
 
@@ -78,13 +78,13 @@ public class SaladOrder extends Order implements MouseListener {
         salad3LabelPrice.setBounds(195, 75, 150, 60);
         salad3LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad3LabelPrice.setForeground(new Color(232,99,73));
-        salad3LabelPrice.setText("12 $");
+        salad3LabelPrice.setText(MealFrame.s3.getPrice()+" $");
         salad3LabelPrice.setBackground(new Color(166,251,186));
         salad3LabelPrice.setOpaque(true);
         salad3LabelKalori.setBounds(23, 75, 150, 60);
         salad3LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad3LabelKalori.setForeground(new Color(91,74,38));
-        salad3LabelKalori.setText("490 kcal");
+        salad3LabelKalori.setText(MealFrame.s3.getCals()+" kcal");
         salad3LabelKalori.setBackground(new Color(166,251,186));
         salad3LabelKalori.setOpaque(true);
 
@@ -96,13 +96,13 @@ public class SaladOrder extends Order implements MouseListener {
         salad4LabelPrice.setBounds(195, 75, 150, 60);
         salad4LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad4LabelPrice.setForeground(new Color(232,99,73));
-        salad4LabelPrice.setText("16 $");
+        salad4LabelPrice.setText(MealFrame.s4.getPrice()+" $");
         salad4LabelPrice.setBackground(new Color(166,251,186));
         salad4LabelPrice.setOpaque(true);
         salad4LabelKalori.setBounds(23, 75, 150, 60);
         salad4LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         salad4LabelKalori.setForeground(new Color(91,74,38));
-        salad4LabelKalori.setText("490 kcal");
+        salad4LabelKalori.setText(MealFrame.s4.getCals()+" kcal");
         salad4LabelKalori.setBackground(new Color(166,251,186));
         salad4LabelKalori.setOpaque(true);
 

@@ -109,6 +109,12 @@ public class SignFrame extends JFrame implements ActionListener {
 
             userName = userTextField.getText();
             password = passwordTextField.getText();
+
+            if(userName.isEmpty() || password.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Enter your username and password", 
+                    " ", JOptionPane.ERROR_MESSAGE);
+            } else{
+
             boolean check;
             if (!userName.equals("employee")) { // customer
                 check = accountsExsisted1(userName, password);
@@ -118,7 +124,8 @@ public class SignFrame extends JFrame implements ActionListener {
                     // System.out.println(customerAccounts.howManyTimes);
                     new MealOrder(false);
                 } else {
-                    JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "wrong account", 
+                    " ", JOptionPane.ERROR_MESSAGE);
                 }
             } else { // manager
                 employeeNumber = JOptionPane.showInputDialog("enter the employee password");
@@ -130,7 +137,9 @@ public class SignFrame extends JFrame implements ActionListener {
                     // new firstFrame();
                     new MealOrder(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "wrong account", " ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "wrong account", 
+                    " ", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }

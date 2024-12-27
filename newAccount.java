@@ -91,8 +91,15 @@ public class newAccount extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==submitButton){
         userName = userTextField.getText();
         password = passwordTextField.getText();
+
+        if(userName.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Enter your username and password", 
+                " ", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
         boolean check;
         if (!userName.equals("employee")) { // customer
             check = accountsExsisted1(userName, password);
@@ -122,6 +129,8 @@ public class newAccount extends JFrame implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(null, "wronge password", " ", JOptionPane.ERROR_MESSAGE);
 
+                    }
+                }
             }
         }
     }

@@ -48,13 +48,13 @@ public class DrinksOrder extends Order implements MouseListener{
         drink1labelPrice.setBounds(160, 75, 150, 60);
         drink1labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink1labelPrice.setForeground(new Color(232,99,73));
-        drink1labelPrice.setText("2 $");
+        drink1labelPrice.setText(MealFrame.drink1.getPrice()+" $");
         drink1labelPrice.setBackground(new Color(154,232,231));
         drink1labelPrice.setOpaque(true);
         drink1labelKalori.setBounds(25, 75, 110, 60);
         drink1labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink1labelKalori.setForeground(new Color(91,74,38));
-        drink1labelKalori.setText("1 kcal");
+        drink1labelKalori.setText(MealFrame.drink1.getCals()+" kcal");
         drink1labelKalori.setBackground(new Color(154,232,231));
         drink1labelKalori.setOpaque(true);
 
@@ -66,13 +66,13 @@ public class DrinksOrder extends Order implements MouseListener{
         drink2labelPrice.setBounds(205, 75, 150, 60);
         drink2labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink2labelPrice.setForeground(new Color(232,99,73));
-        drink2labelPrice.setText("5 $");
+        drink2labelPrice.setText(MealFrame.drink2.getPrice()+" $");
         drink2labelPrice.setBackground(new Color(154,232,231));
         drink2labelPrice.setOpaque(true);
         drink2labelKalori.setBounds(25, 75, 160, 60);
         drink2labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink2labelKalori.setForeground(new Color(91,74,38));
-        drink2labelKalori.setText("150 kcal");
+        drink2labelKalori.setText(MealFrame.drink2.getCals()+" kcal");
         drink2labelKalori.setBackground(new Color(154,232,231));
         drink2labelKalori.setOpaque(true);
 
@@ -85,13 +85,13 @@ public class DrinksOrder extends Order implements MouseListener{
         drink3labelPrice.setBounds(203, 75, 150, 60);
         drink3labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink3labelPrice.setForeground(new Color(232,99,73));
-        drink3labelPrice.setText("6 $");
+        drink3labelPrice.setText(MealFrame.drink3.getPrice()+" $");
         drink3labelPrice.setBackground(new Color(154,232,231));
         drink3labelPrice.setOpaque(true);
         drink3labelKalori.setBounds(25, 75, 160, 60);
         drink3labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink3labelKalori.setForeground(new Color(91,74,38));
-        drink3labelKalori.setText("175 kcal");
+        drink3labelKalori.setText(MealFrame.drink3.getCals()+" kcal");
         drink3labelKalori.setBackground(new Color(154,232,231));
         drink3labelKalori.setOpaque(true);
 
@@ -103,13 +103,13 @@ public class DrinksOrder extends Order implements MouseListener{
         drink4labelPrice.setBounds(205, 75, 150, 60);
         drink4labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink4labelPrice.setForeground(new Color(232,99,73));
-        drink4labelPrice.setText("4 $");
+        drink4labelPrice.setText(MealFrame.drink4.getPrice()+" $");
         drink4labelPrice.setBackground(new Color(154,232,231));
         drink4labelPrice.setOpaque(true);
         drink4labelKalori.setBounds(25, 75, 160, 60);
         drink4labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink4labelKalori.setForeground(new Color(91,74,38));
-        drink4labelKalori.setText("125 kcal");
+        drink4labelKalori.setText(MealFrame.drink4.getCals()+" kcal");
         drink4labelKalori.setBackground(new Color(154,232,231));
         drink4labelKalori.setOpaque(true);
 
@@ -122,13 +122,13 @@ public class DrinksOrder extends Order implements MouseListener{
         drink5labelPrice.setBounds(205, 75, 150, 60);
         drink5labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink5labelPrice.setForeground(new Color(232,99,73));
-        drink5labelPrice.setText("4 $");
+        drink5labelPrice.setText(MealFrame.drink5.getPrice()+" $");
         drink5labelPrice.setBackground(new Color(154,232,231));
         drink5labelPrice.setOpaque(true);
         drink5labelKalori.setBounds(25, 75, 160, 60);
         drink5labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         drink5labelKalori.setForeground(new Color(91,74,38));
-        drink5labelKalori.setText("125 kcal");
+        drink5labelKalori.setText(MealFrame.drink5.getCals()+" kcal");
         drink5labelKalori.setBackground(new Color(154,232,231));
         drink5labelKalori.setOpaque(true);
 

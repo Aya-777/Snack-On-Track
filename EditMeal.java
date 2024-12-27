@@ -14,11 +14,13 @@ class EditMeal implements ActionListener{
     JLabel descriptionlabel = new JLabel("Description: ");
     JButton confirmButton = new JButton("Confirm");
     Meal m;
+    int mealnum;
 
-    EditMeal(Meal m){
+    EditMeal(Meal m,int mealnum){
         f.setLayout(null);
 
         this.m=m;
+        this.mealnum=mealnum;
 
         confirmButton.setBounds(200,450,100,20);
         confirmButton.addActionListener(this);
@@ -57,9 +59,12 @@ class EditMeal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==confirmButton){
-            m.setCals(Integer.parseInt(calorieTextField.getText()));
-            m.setPrice(Integer.parseInt(priceTextField.getText()));
-            m.setDesc(descriptionTextField.getText());
+            // m.setCals(Integer.parseInt(calorieTextField.getText()));
+            // m.setPrice(Integer.parseInt(priceTextField.getText()));
+            // m.setDesc(descriptionTextField.getText());
+            MealFrame.meallist.get(mealnum).setCals(Integer.parseInt(calorieTextField.getText()));
+            MealFrame.meallist.get(mealnum).setPrice(Integer.parseInt(priceTextField.getText()));
+            MealFrame.meallist.get(mealnum).setDesc(descriptionTextField.getText());
             confirmButton.setEnabled(false);
             f.dispose();
             new MealOrder(true);

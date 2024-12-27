@@ -59,7 +59,6 @@ public class Order implements ActionListener {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         logoutButton.setBounds(400, 115, 130, 30);
-        ;
 
         f.add(viewdetailsbutton);
         logoutButton.setFocusable(false);

@@ -147,6 +147,7 @@ public class MealFrame implements ActionListener{
         singlemealnumlabel.setText(String.valueOf(order.get(mealnum)));
 
         //mainLabel.add(addbutton);
+        mainLabel.setLayout(new FlowLayout());
 
         mainLabel.add(backButton);
         mainLabel.add(singlemealnumlabel);
@@ -194,7 +195,7 @@ public class MealFrame implements ActionListener{
         }
         if(e.getSource()==editButton){
             f.dispose();
-            new EditMeal(m);
+            new EditMeal(m,mealnum);
         }
     }
 
