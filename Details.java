@@ -24,43 +24,16 @@ public class Details implements ActionListener{
     JProgressBar detailsprogregressbar = new JProgressBar();
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
-    static int x=200 ,y = 150 , xnum=400 , ynum=150,xstate=70,ystate=200,xbar=70,ybar=150;
+    int x=200 ,y = 150 , xnum=400 , ynum=150,xstate=70,ystate=200,xbar=70,ybar=150;
     static int gap=150;
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
 
     Details(ArrayList<Integer> meals){
-        int index=0;
-
         scrollPane.setBounds(0,0,650,830);
         panelScroll.setLayout(new BoxLayout(panelScroll,BoxLayout.Y_AXIS));
         panelScroll.setBorder(new LineBorder(Color.white,2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
-
-
-        try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
-            for(int i : meals){
-                writer.write(String.valueOf(index) + " ");
-                writer.write(String.valueOf(i)+ "\n");
-            }
-                writer.close();
-            }catch(Exception e){
-                System.out.println(e.getStackTrace());
-            }
-            
-
-        try(BufferedReader r = new BufferedReader(new FileReader("The order.txt"))) {
-            String line;
-            while((line=r.readLine()) != null){
-            System.out.println(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
         backToOrderButton.setBounds(50, 100, 150, 20);
         
@@ -81,17 +54,15 @@ public class Details implements ActionListener{
         detailsprogregressbar.setBounds(xbar, gap, 100, 20);
         cancelButton.setBounds(xnum+50 , gap , 150, 20);
 
-        index=0;
 
         f.add(cancelButton);
         f.add(state);
         f.add(detailsprogregressbar);
 
         y=gap; ynum=gap;
-
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                JLabel mealname = new JLabel(MealFrame.meallist.get(index).getName());
+                JLabel mealname = new JLabel(MealFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
                 detailsprogregressbar.setValue(0);
@@ -145,11 +116,34 @@ public class Details implements ActionListener{
                     }
                     @Override
                     protected void done() {
-                        System.out.println("completed");
                         if(!cancelButton.isEnabled() && cancelPressed){
                             state.setText("Canceled");
                         } else{
-                        state.setText("Done!");
+                            System.out.println("completed");
+                            state.setText("Done!");
+                            int index=0;
+                            try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
+                                for(int i : meals){
+                                    writer.write(String.valueOf(index) + " ");
+                                    writer.write(String.valueOf(i)+ "\n");
+                                    index++;
+                                }
+                                    writer.close();
+                                }catch(Exception e){
+                                    System.out.println(e.getStackTrace());
+                                }
+                                
+
+                            try(BufferedReader r = new BufferedReader(new FileReader("The order.txt"))) {
+                                String line;
+                                while((line=r.readLine()) != null){
+                                System.out.println(line);
+                                }
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 };
@@ -157,7 +151,6 @@ public class Details implements ActionListener{
                 worker.execute();
 
                 }
-                index++;
             }
         ystate+=100;
         ybar+=100;
@@ -178,9 +171,9 @@ public class Details implements ActionListener{
             Order.num=0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            MealFrame.meallist.clear();
-            MealFrame.order.clear();
-            MealFrame.fillLists();
+            // MealFrame.meallist.clear();
+            // MealFrame.order.clear();
+            // MealFrame.fillLists();
             if(MealOrder.manager){
                 new MealOrder(true);
             } else {
@@ -188,6 +181,9 @@ public class Details implements ActionListener{
             }
         }
         if(e.getSource()==cancelButton){
+            MealFrame.meallist.clear();
+            MealFrame.order.clear();
+            MealFrame.fillLists();
             cancelPressed=true;
             cancelButton.setEnabled(false);
         }

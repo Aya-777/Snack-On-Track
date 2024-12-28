@@ -11,7 +11,7 @@ class OrderDetails implements ActionListener{
     JFrame f = new JFrame();
     JButton confirmButton = new JButton("Confirm");
     ArrayList<Integer> meals = new ArrayList<>();
-    static int x=200 ,y = 150 , xnum=400 , ynum=150;
+    int x=200 ,y = 150 , xnum=400 , ynum=150;
     static int gap=150;
 
     OrderDetails(ArrayList<Integer> meals){
@@ -21,10 +21,9 @@ class OrderDetails implements ActionListener{
         confirmButton.setBounds(300, 300, 100, 20);
         confirmButton.addActionListener(this);
 
-        int index=0;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                JLabel mealname = new JLabel(MealFrame.meallist.get(index).getName());
+                JLabel mealname = new JLabel(MealFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
                 mealname.setBounds(x , y, 200, 20);
@@ -36,8 +35,8 @@ class OrderDetails implements ActionListener{
                 y+=50;
                 ynum+=50;
                 gap=ynum+50;
-                index++;
             }
+        }
 
 
         f.add(confirmButton);
@@ -49,7 +48,6 @@ class OrderDetails implements ActionListener{
 
 
         
-        }
     }
 
     @Override

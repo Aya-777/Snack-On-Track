@@ -36,9 +36,12 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal7LabelPrice = new JLabel();
     JLabel meal7LabelKalori = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
+    static int yNewMealLabel=1285;
+    // 15,1130,610,145
 
     static boolean manager;
 
+    MealOrder(){}
     MealOrder(boolean manager){
         super(manager);
         this.manager=manager;
@@ -56,7 +59,6 @@ public class MealOrder extends Order implements MouseListener {
         meal1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
         meal1LabelPrice.setForeground(new Color(139,37,17));
         meal1LabelPrice.setText(String.valueOf(MealFrame.m1.getPrice())+" $");
-        System.out.println(String.valueOf(MealFrame.m1.getPrice())+" $");
         meal1LabelPrice.setBackground(new Color(255,134,120));
         meal1LabelPrice.setOpaque(true);
         meal1LabelKalori.setBounds(25, 78, 140, 60);
@@ -224,6 +226,14 @@ public class MealOrder extends Order implements MouseListener {
         mealsitem.setEnabled(false);
 
 
+    }
+
+    @Override 
+    void addMeal( JLabel newmealLabel){
+        newmealLabel.setBounds(15, yNewMealLabel, 610, 145);
+        yNewMealLabel+=155;
+        newmealLabel.addMouseListener(this);
+        f.add(newmealLabel);
     }
 
     @Override

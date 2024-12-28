@@ -276,9 +276,7 @@ public class MealFrame implements ActionListener{
 
     }
 
-    public static void addMeal(int serialnum,int price,String name , String desc, int cals){
-        serialnum = meallist.size()-1;
-        Meal  newMeal = new Meal(serialnum, price, name, desc, cals,false);
+    public static void addMeal(Meal newMeal){
         meallist.add(newMeal);
         newmeals.add(newMeal);
         order.add(0);

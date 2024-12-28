@@ -15,6 +15,7 @@ public class Order implements ActionListener {
     JButton logoutButton = new JButton("Log out");
     JButton addmealButton = new JButton("Add Meal");
 
+
     JLabel mealslabel = new JLabel("Meals :");
 
     JMenuBar mealsbar = new JMenuBar();
@@ -26,6 +27,7 @@ public class Order implements ActionListener {
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static boolean manager;
 
+    Order(){}
     Order(boolean manager) {
         f.setLayout(null);
 
@@ -83,6 +85,9 @@ public class Order implements ActionListener {
         f.setSize(650, 830);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
+
+    }
+    void addMeal(JLabel newmealLabel){
 
     }
 

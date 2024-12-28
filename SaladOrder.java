@@ -25,8 +25,9 @@ public class SaladOrder extends Order implements MouseListener {
     JLabel salad4LabelKalori = new JLabel();
     ImageIcon salad4Icon = new ImageIcon("menu salad 4.png");
     boolean manager;
-    static int num1=0,num2=0,num3=0,num4=0;
+    static int num1=0,num2=0,num3=0,num4=0,yNewMealLabel=820;
 
+    SaladOrder(){}
     SaladOrder(boolean manager){
         super(manager);
         this.manager=manager;
@@ -132,6 +133,13 @@ public class SaladOrder extends Order implements MouseListener {
 
 
         saladsitem.setEnabled(false);
+    }
+    @Override 
+    void addMeal(JLabel newmealLabel){
+        newmealLabel.setBounds(15, yNewMealLabel, 610, 145);
+        yNewMealLabel+=155;
+        newmealLabel.addMouseListener(this);
+        f.add(newmealLabel);
     }
     @Override
     public void actionPerformed(ActionEvent e) {

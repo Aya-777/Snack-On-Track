@@ -34,7 +34,7 @@ public class DessertOrder extends Order implements MouseListener{
 
     boolean manager;
 
-    static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
+    static int num1=0,num2=0,num3=0 ,num4=0,num5=0,yNewMealLabel=975;
 
     DessertOrder(boolean manager){
         super(manager);
@@ -161,6 +161,14 @@ public class DessertOrder extends Order implements MouseListener{
          f.add(dessertOrderIconLabel);
 
         dessertsitem.setEnabled(false);
+    }
+    public DessertOrder(){}
+
+    @Override 
+    void addMeal(JLabel newmealLabel){
+        newmealLabel.setBounds(15, yNewMealLabel, 610, 145);
+        yNewMealLabel+=155;
+        f.add(newmealLabel);
     }
 
     @Override

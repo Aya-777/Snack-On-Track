@@ -60,37 +60,45 @@ class AddMeal implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Input invalid, Try again",
                         "Title", JOptionPane.OK_OPTION);
                 submitbutton.setEnabled(true);
-            }
-            if (!notvalid) {
-                System.out.println("Weeeeee");
+            } else {
                 ImageIcon newmealIcon = new ImageIcon("");
-                JLabel newmealLabel = new JLabel(newmealIcon);
                 int price = Integer.parseInt(mealpricefield.getText());
                 int calorie = Integer.parseInt(mealcaloriefield.getText());
                 String name = mealnamefield.getText();
                 String desc = mealdescriptionfield.getText();
-                MealFrame.addMeal(0, price, name, desc, calorie);
+                int serialnum = MealFrame.meallist.size()-1;
+                Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false);
+                MealFrame.addMeal(newMeal);
+
+                JLabel newmealLabel = new JLabel(newmealIcon);
                 newmealNameLabel.setText(name);
                 newmealCalorieLabel.setText(String.valueOf(calorie));
                 newmealPriceLabel.setText(String.valueOf(price));
+
                 newmealLabel.add(newmealNameLabel);
                 newmealLabel.add(newmealPriceLabel);
                 newmealLabel.add(newmealCalorieLabel);
                 newmealLabel.setLayout(new FlowLayout());
-                submitbutton.setEnabled(false);
 
                 if (mealtype.getSelectedItem() == "Meal") {
-                    // MealOrder.f.add(newmealLabel);
+                    MealOrder m = new MealOrder();
+                    m.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Salad") {
-                    // SaladOrder.f.add(newmealLabel);
+                    SaladOrder ss = new SaladOrder();
+                    ss.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Dessert") {
-                    // DessertOrder.f.add(newmealLabel);
+                    DessertOrder d = new DessertOrder();
+                    d.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Drink") {
-                    // DrinksOrder.f.add(newmealLabel);
+                    DrinksOrder d = new DrinksOrder();
+                    d.addMeal(newmealLabel);
                 }
+
+                submitbutton.setEnabled(false);
+
             }
         }
     }
