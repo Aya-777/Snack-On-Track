@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class Order implements ActionListener {
 
     static int num = 0, price = 0;
-    static JFrame f = new JFrame();
+    JFrame f = new JFrame();
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));

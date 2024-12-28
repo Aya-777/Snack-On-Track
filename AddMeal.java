@@ -80,16 +80,16 @@ class AddMeal implements ActionListener {
                 submitbutton.setEnabled(false);
 
                 if (mealtype.getSelectedItem() == "Meal") {
-                    MealOrder.f.add(newmealLabel);
+                    // MealOrder.f.add(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Salad") {
-                    SaladOrder.f.add(newmealLabel);
+                    // SaladOrder.f.add(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Dessert") {
-                    DessertOrder.f.add(newmealLabel);
+                    // DessertOrder.f.add(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Drink") {
-                    DrinksOrder.f.add(newmealLabel);
+                    // DrinksOrder.f.add(newmealLabel);
                 }
             }
         }
