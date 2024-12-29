@@ -8,6 +8,7 @@ public class Order implements ActionListener {
 
     static int num = 0, price = 0;
     JFrame f = new JFrame();
+    JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
@@ -15,8 +16,6 @@ public class Order implements ActionListener {
     JButton logoutButton = new JButton("Log out");
     JButton addmealButton = new JButton("Add Meal");
 
-
-    JLabel mealslabel = new JLabel("Meals :");
 
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");

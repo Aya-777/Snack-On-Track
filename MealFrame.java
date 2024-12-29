@@ -156,6 +156,7 @@ public class MealFrame implements ActionListener{
         mainLabel.add(pricelabel);
         mainLabel.add(pricenumlabel);
         
+        f.setTitle(m.getName());
         f.setResizable(false);
         f.setSize(665,850);
         f.setVisible(true);

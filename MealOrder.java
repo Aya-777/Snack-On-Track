@@ -36,8 +36,6 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal7LabelPrice = new JLabel();
     JLabel meal7LabelKalori = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
-    static int yNewMealLabel=1285;
-    // 15,1130,610,145
 
     static boolean manager;
 
@@ -50,7 +48,6 @@ public class MealOrder extends Order implements MouseListener {
         mealOrderIconLabel.setIcon(mealOrderIcon);
 
 
-        meal1label.setBounds(260,200 , 610, 145);
         meal1label.setBorder(new LineBorder(Color.white,2));
         meal1label.setOpaque(true);
         meal1label.setIcon(meal1Icon);
@@ -70,7 +67,6 @@ public class MealOrder extends Order implements MouseListener {
 
 
 
-        meal2label.setBounds(15,355,610,145);
         meal2label.setBorder(new LineBorder(Color.white,2));
         meal2label.setOpaque(true);
         meal2label.setIcon(meal2Icon);
@@ -89,7 +85,6 @@ public class MealOrder extends Order implements MouseListener {
         meal2LabelKalori.setOpaque(true);
 
 
-        meal3label.setBounds(15,510,610,145);
         meal3label.setBorder(new LineBorder(Color.white,2));
         meal3label.setOpaque(true);
         meal3label.setIcon(meal3Icon);
@@ -110,7 +105,6 @@ public class MealOrder extends Order implements MouseListener {
 
 
 
-        meal4label.setBounds(15,665,610,145);
         meal4label.setBorder(new LineBorder(Color.white,2));
         meal4label.setOpaque(true);
         meal4label.setIcon(meal4Icon);
@@ -131,7 +125,6 @@ public class MealOrder extends Order implements MouseListener {
 
 
 
-        meal5label.setBounds(15,820,610,145);
         meal5label.setBorder(new LineBorder(Color.white,2));
         meal5label.setOpaque(true);
         meal5label.setIcon(meal5Icon);
@@ -150,7 +143,6 @@ public class MealOrder extends Order implements MouseListener {
         meal5LabelKalori.setOpaque(true);
 
 
-        meal6label.setBounds(15,975,610,145);
         meal6label.setBorder(new LineBorder(Color.white,2));
         meal6label.setOpaque(true);
         meal6label.setIcon(meal6Icon);
@@ -169,7 +161,6 @@ public class MealOrder extends Order implements MouseListener {
         meal6LabelKalori.setOpaque(true);
 
 
-        meal7label.setBounds(15,1130,610,145);
         meal7label.setBorder(new LineBorder(Color.white,2));
         meal7label.setOpaque(true);
         meal7label.setIcon(meal7Icon);
@@ -222,7 +213,7 @@ public class MealOrder extends Order implements MouseListener {
         meal7label.addMouseListener(this);
 
         f.add(mealOrderIconLabel);
-
+        f.setTitle("Meals");
         mealsitem.setEnabled(false);
 
 
@@ -230,10 +221,8 @@ public class MealOrder extends Order implements MouseListener {
 
     @Override 
     void addMeal( JLabel newmealLabel){
-        newmealLabel.setBounds(15, yNewMealLabel, 610, 145);
-        yNewMealLabel+=155;
         newmealLabel.addMouseListener(this);
-        f.add(newmealLabel);
+        panelScroll.add(newmealLabel);
     }
 
     @Override

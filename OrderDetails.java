@@ -1,43 +1,66 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 class OrderDetails implements ActionListener{
 
-    JFrame f = new JFrame();
+    JFrame f = new JFrame("Cart");
     JButton confirmButton = new JButton("Confirm");
+    JLabel mealslabel = new JLabel("Meals :");
+    static JLabel mealnumlabel = new JLabel(String.valueOf(Order.num));
+    JLabel pricelabel = new JLabel("Price : ");
+    static JLabel pricenumlabel = new JLabel(String.valueOf(Order.price));
     ArrayList<Integer> meals = new ArrayList<>();
-    int x=200 ,y = 150 , xnum=400 , ynum=150;
     static int gap=150;
+    JPanel panelScroll = new JPanel();
+    JScrollPane scrollPane = new JScrollPane(panelScroll);
 
     OrderDetails(ArrayList<Integer> meals){
         f.setLayout(null);
         this.meals=meals;
 
-        confirmButton.setBounds(300, 300, 100, 20);
+        scrollPane.setBounds(5, 0, 465, 400);
+        panelScroll.setLayout(null);
+        panelScroll.setPreferredSize(new Dimension(465,400));
+        panelScroll.setBorder(new LineBorder(Color.white, 2));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        mealslabel.setBounds(275, 40, 100, 20);
+        mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        mealnumlabel.setBounds(360, 40, 50, 20);
+        mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        pricelabel.setBounds(275, 75, 100, 20);
+        pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        pricenumlabel.setBounds(360, 75, 50, 20);
+        pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+
+        confirmButton.setBounds(350, 430, 100, 20);
         confirmButton.addActionListener(this);
 
+        f.add(scrollPane);
+        panelScroll.add(mealnumlabel);
+        panelScroll.add(mealslabel);
+        panelScroll.add(pricelabel);
+        panelScroll.add(pricenumlabel);
+
+        int ind = 0;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
+                int xx = 10 ;
+                int yy = ind*30;
                 JLabel mealname = new JLabel(MealFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
-                mealname.setBounds(x , y, 200, 20);
-                mealnum.setBounds(xnum , ynum, 50, 20);
+                mealname.setBounds(xx , yy, 200, 20);
+                mealnum.setBounds(xx+220 , yy , 50, 20);
 
-                f.add(mealname);
-                f.add(mealnum);
-                
-                y+=50;
-                ynum+=50;
-                gap=ynum+50;
+                panelScroll.add(mealname);
+                panelScroll.add(mealnum);
+                ind++;
             }
         }
-
 
         f.add(confirmButton);
 
