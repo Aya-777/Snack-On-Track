@@ -59,9 +59,6 @@ class EditMeal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==confirmButton){
-            // m.setCals(Integer.parseInt(calorieTextField.getText()));
-            // m.setPrice(Integer.parseInt(priceTextField.getText()));
-            // m.setDesc(descriptionTextField.getText());
             MealFrame.meallist.get(mealnum).setCals(Integer.parseInt(calorieTextField.getText()));
             MealFrame.meallist.get(mealnum).setPrice(Integer.parseInt(priceTextField.getText()));
             MealFrame.meallist.get(mealnum).setDesc(descriptionTextField.getText());

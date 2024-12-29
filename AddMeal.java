@@ -61,7 +61,9 @@ class AddMeal implements ActionListener {
                         "Title", JOptionPane.OK_OPTION);
                 submitbutton.setEnabled(true);
             } else {
-                ImageIcon newmealIcon = new ImageIcon("");
+                JOptionPane.showMessageDialog(null, "Meal added.", 
+                "", JOptionPane.INFORMATION_MESSAGE);
+                ImageIcon newmealIcon = new ImageIcon("drink1icon.jpg");
                 int price = Integer.parseInt(mealpricefield.getText());
                 int calorie = Integer.parseInt(mealcaloriefield.getText());
                 String name = mealnamefield.getText();
@@ -71,6 +73,7 @@ class AddMeal implements ActionListener {
                 MealFrame.addMeal(newMeal);
 
                 JLabel newmealLabel = new JLabel(newmealIcon);
+                newmealLabel.setLayout(new FlowLayout());
                 newmealNameLabel.setText(name);
                 newmealCalorieLabel.setText(String.valueOf(calorie));
                 newmealPriceLabel.setText(String.valueOf(price));
@@ -78,26 +81,26 @@ class AddMeal implements ActionListener {
                 newmealLabel.add(newmealNameLabel);
                 newmealLabel.add(newmealPriceLabel);
                 newmealLabel.add(newmealCalorieLabel);
-                newmealLabel.setLayout(new FlowLayout());
 
                 if (mealtype.getSelectedItem() == "Meal") {
-                    MealOrder m = new MealOrder();
+                    MealOrder m = new MealOrder(true);
                     m.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Salad") {
-                    SaladOrder ss = new SaladOrder();
+                    SaladOrder ss = new SaladOrder(true);
                     ss.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Dessert") {
-                    DessertOrder d = new DessertOrder();
+                    DessertOrder d = new DessertOrder(true);
                     d.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Drink") {
-                    DrinksOrder d = new DrinksOrder();
+                    DrinksOrder d = new DrinksOrder(true);
                     d.addMeal(newmealLabel);
                 }
 
                 submitbutton.setEnabled(false);
+                f.dispose();
 
             }
         }

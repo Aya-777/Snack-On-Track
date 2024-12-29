@@ -182,9 +182,6 @@ public class MealFrame implements ActionListener{
             Order.price-= m.getPrice();
             pricenumlabel.setText(String.valueOf(Order.price));
             singlemealnumlabel.setText(String.valueOf(num1));
-
-            Order.mealnumlabel.setText(String.valueOf(Order.num));
-            Order.pricenumlabel.setText(String.valueOf(Order.price));
         }
         if(e.getSource() == deleteButton){
             meallist.get(mealnum).setDeleted(true);

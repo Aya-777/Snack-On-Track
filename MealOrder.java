@@ -9,7 +9,7 @@ public class MealOrder extends Order implements MouseListener {
     JLabel mealOrderIconLabel = new JLabel();
     ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
     JLabel meal1label = new JLabel();
-    JLabel meal1LabelPrice = new JLabel(String.valueOf(MealFrame.m1.getPrice())+" $");
+    JLabel meal1LabelPrice = new JLabel();
     JLabel meal1LabelKalori = new JLabel();
     ImageIcon meal1Icon = new ImageIcon("menu meal 1.png");
     JLabel meal2label = new JLabel();
@@ -36,13 +36,19 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal7LabelPrice = new JLabel();
     JLabel meal7LabelKalori = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
-
-    static boolean manager;
+    static boolean added=false;
+    static JPanel panelScroll = new JPanel();
+    static JScrollPane scrollPane = new JScrollPane(panelScroll);
 
     MealOrder(){}
     MealOrder(boolean manager){
         super(manager);
-        this.manager=manager;
+        Order.manager=manager;
+
+        scrollPane.setBounds(10, 190, 615, 600);
+        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
+        panelScroll.setBorder(new LineBorder(Color.white, 2));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         mealOrderIconLabel.setBounds(0,0,650,830);
         mealOrderIconLabel.setIcon(mealOrderIcon);
@@ -195,15 +201,6 @@ public class MealOrder extends Order implements MouseListener {
         meal6label.add(meal6LabelPrice);
         meal7label.add(meal7LabelPrice);
 
-
-        panelScroll.add(meal1label);
-        panelScroll.add(meal2label);
-        panelScroll.add(meal3label);
-        panelScroll.add(meal4label);
-        panelScroll.add(meal5label);
-        panelScroll.add(meal6label);
-        panelScroll.add(meal7label);
-
         meal1label.addMouseListener(this);
         meal2label.addMouseListener(this);
         meal3label.addMouseListener(this);
@@ -212,6 +209,18 @@ public class MealOrder extends Order implements MouseListener {
         meal6label.addMouseListener(this);
         meal7label.addMouseListener(this);
 
+        if(!added){
+            panelScroll.add(meal1label);
+            panelScroll.add(meal2label);
+            panelScroll.add(meal3label);
+            panelScroll.add(meal4label);
+            panelScroll.add(meal5label);
+            panelScroll.add(meal6label);
+            panelScroll.add(meal7label);
+            added=true;
+        }
+
+        f.add(scrollPane);
         f.add(mealOrderIconLabel);
         f.setTitle("Meals");
         mealsitem.setEnabled(false);
@@ -219,8 +228,8 @@ public class MealOrder extends Order implements MouseListener {
 
     }
 
-    @Override 
-    void addMeal( JLabel newmealLabel){
+    @Override
+     void addMeal( JLabel newmealLabel){
         newmealLabel.addMouseListener(this);
         panelScroll.add(newmealLabel);
     }

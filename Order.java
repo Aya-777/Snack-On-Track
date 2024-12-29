@@ -15,15 +15,11 @@ public class Order implements ActionListener {
     JButton viewdetailsbutton = new JButton("View details");
     JButton logoutButton = new JButton("Log out");
     JButton addmealButton = new JButton("Add Meal");
-
-
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");
     JMenuItem dessertsitem = new JMenuItem("Desserts");
-    JMenuItem drinksitem = new JMenuItem("Drinks");
-    JPanel panelScroll = new JPanel();
-    JScrollPane scrollPane = new JScrollPane(panelScroll);
+    JMenuItem drinksitem = new JMenuItem("Drinks");;
     static boolean manager;
 
     Order(){}
@@ -54,10 +50,6 @@ public class Order implements ActionListener {
         pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealsbar.setBounds(0, 160, 665, 25);
         mealsbar.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 200));
-        scrollPane.setBounds(10, 190, 615, 600);
-        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
-        panelScroll.setBorder(new LineBorder(Color.white, 2));
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         logoutButton.setBounds(400, 115, 130, 30);
 
@@ -71,7 +63,6 @@ public class Order implements ActionListener {
         f.add(pricenumlabel);
         f.add(mealsbar);
         f.add(logoutButton);
-        f.add(scrollPane);
 
         viewdetailsbutton.addActionListener(this);
         mealsitem.addActionListener(this);
@@ -86,9 +77,7 @@ public class Order implements ActionListener {
         f.setLocationRelativeTo(null);
 
     }
-    void addMeal(JLabel newmealLabel){
-
-    }
+    void addMeal(JLabel newmealLabel){}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -103,6 +92,7 @@ public class Order implements ActionListener {
             new SignFrame();
         }
         if (e.getSource() == addmealButton) {
+            f.dispose();
             new AddMeal();
         }
 

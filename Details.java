@@ -88,7 +88,6 @@ public class Details implements ActionListener{
         y=gap; ynum=gap;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                System.out.println(meals.get(i));
                 JLabel mealname = new JLabel(MealFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 

@@ -24,13 +24,22 @@ public class SaladOrder extends Order implements MouseListener {
     JLabel salad4LabelPrice = new JLabel();
     JLabel salad4LabelKalori = new JLabel();
     ImageIcon salad4Icon = new ImageIcon("menu salad 4.png");
-    boolean manager;
-    static int num1=0,num2=0,num3=0,num4=0,yNewMealLabel=820;
+    static boolean added=false;
+    static int num1=0,num2=0,num3=0,num4=0;
+    static JPanel panelScroll = new JPanel();
+    static JScrollPane scrollPane = new JScrollPane(panelScroll);
+    
 
     SaladOrder(){}
     SaladOrder(boolean manager){
         super(manager);
-        this.manager=manager;
+        Order.manager=manager;
+
+        scrollPane.setBounds(10, 190, 615, 600);
+        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
+        panelScroll.setBorder(new LineBorder(Color.white, 2));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
         saladOrderIconLabel.setBounds(0,0,650,830);
         saladOrderIconLabel.setIcon(saladOrderIcon);
 
@@ -118,11 +127,13 @@ public class SaladOrder extends Order implements MouseListener {
         salad3label.add(salad3LabelKalori);
         salad4label.add(salad4LabelKalori);
 
-
-        panelScroll.add(salad1label);
-        panelScroll.add(salad2label);
-        panelScroll.add(salad3label);
-        panelScroll.add(salad4label);
+        if(!added){
+            panelScroll.add(salad1label);
+            panelScroll.add(salad2label);
+            panelScroll.add(salad3label);
+            panelScroll.add(salad4label);
+            added=true;
+        }
 
         salad1label.addMouseListener(this);
         salad2label.addMouseListener(this);
@@ -130,16 +141,16 @@ public class SaladOrder extends Order implements MouseListener {
         salad4label.addMouseListener(this);
 
         f.add(saladOrderIconLabel);
+        f.add(scrollPane);
+        f.setTitle("Salads");
 
 
         saladsitem.setEnabled(false);
     }
     @Override 
     void addMeal(JLabel newmealLabel){
-        newmealLabel.setBounds(15, yNewMealLabel, 610, 145);
-        yNewMealLabel+=155;
         newmealLabel.addMouseListener(this);
-        f.add(newmealLabel);
+        panelScroll.add(newmealLabel);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
