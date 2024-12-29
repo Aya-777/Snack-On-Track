@@ -7,12 +7,12 @@ class EditMeal implements ActionListener{
     JFrame f = new JFrame("Edit Meal");
     JTextField priceTextField = new JTextField();
     JTextField calorieTextField = new JTextField();
-    JTextField descriptionTextField = new JTextField();
     JLabel namelabel = new JLabel();
     JLabel pricelabel = new JLabel("Price: ");
     JLabel calorielabel = new JLabel("Calories: ");
     JLabel descriptionlabel = new JLabel("Description: ");
     JButton confirmButton = new JButton("Confirm");
+    JTextArea textArea = new JTextArea(5,20);
     Meal m;
     int mealnum;
 
@@ -32,13 +32,17 @@ class EditMeal implements ActionListener{
 
         priceTextField.setBounds(140,100,100,20);
         calorieTextField.setBounds(140,130,100,20);
-        descriptionTextField.setBounds(140,160,250,100);
 
         namelabel.setText("Name: " + m.getName());
         priceTextField.setText(String.valueOf(m.getPrice()));
         calorieTextField.setText(String.valueOf(m.getCals()));
-        descriptionTextField.setText(m.getDesc());
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setText(m.getDesc());
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setBounds(140,160, 300, 50);
 
+        f.add(scrollPane);
         f.add(namelabel);
         f.add(confirmButton);
         f.add(pricelabel);
@@ -46,7 +50,6 @@ class EditMeal implements ActionListener{
         f.add(descriptionlabel);
         f.add(priceTextField);
         f.add(calorieTextField);
-        f.add(descriptionTextField);
 
         f.setResizable(false);
         f.setSize(665,850);
@@ -59,12 +62,17 @@ class EditMeal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==confirmButton){
-            MealFrame.meallist.get(mealnum).setCals(Integer.parseInt(calorieTextField.getText()));
-            MealFrame.meallist.get(mealnum).setPrice(Integer.parseInt(priceTextField.getText()));
-            MealFrame.meallist.get(mealnum).setDesc(descriptionTextField.getText());
-            confirmButton.setEnabled(false);
+            // System.out.println(mealnum);
+            // int price = Integer.parseInt(priceTextField.getText());
+            // int calorie = Integer.parseInt(calorieTextField.getText());
+            // String desc = textArea.getText();
+            // MealFrame.meallist.get(mealnum).setCals(calorie);
+            // MealFrame.meallist.get(mealnum).setPrice(price);
+            // MealFrame.meallist.get(mealnum).setDesc(desc);
+            // MealFrame.confirmEdit(m, price, calorie, desc);
+            // confirmButton.setEnabled(false);
             f.dispose();
-            new MealOrder(true);
+            new MealFrame(mealnum,true);
         }
     }
 }

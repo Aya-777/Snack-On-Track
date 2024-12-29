@@ -69,7 +69,7 @@ class AddMeal implements ActionListener {
                 String name = mealnamefield.getText();
                 String desc = mealdescriptionfield.getText();
                 int serialnum = MealFrame.meallist.size()-1;
-                Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false);
+                Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0);
                 MealFrame.addMeal(newMeal);
 
                 JLabel newmealLabel = new JLabel(newmealIcon);

@@ -7,16 +7,21 @@ public class Meal{
     private String name;
     private int cals;
     private boolean deleted;
+    private int popularity;
 
-    Meal(int serialnum , int price , String name ,String desc ,int cals , boolean deleted){
+    Meal(int serialnum , int price , String name ,String desc ,int cals , boolean deleted,int popularity){
         this.serialnum=serialnum;
         this.price=price;
         this.desc=desc;
         this.name=name;
         this.cals=cals;
         this.deleted=deleted;
+        this.popularity=popularity;
     }
 
+    public void setPopularity(int popularity) {
+        this.popularity = popularity;
+    }
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
@@ -36,6 +41,9 @@ public class Meal{
         this.name = name;
     }
 
+    public int getPopularity() {
+        return popularity;
+    }
     public int getPrice() {
         return price;
     }

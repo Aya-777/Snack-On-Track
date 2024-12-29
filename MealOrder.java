@@ -278,7 +278,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(1,manager);
+                new MealFrame(0,manager);
             }
         }
         if(e.getSource() == meal2label){
@@ -286,7 +286,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(2,manager);
+                new MealFrame(1,manager);
             }
         }
         if(e.getSource() == meal3label){
@@ -294,7 +294,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(3,manager);
+                new MealFrame(2,manager);
             }
         }
         if(e.getSource() == meal4label){
@@ -302,7 +302,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(4,manager);
+                new MealFrame(3,manager);
             }
         }
         if(e.getSource() == meal5label){
@@ -310,7 +310,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(5,manager);
+                new MealFrame(4,manager);
             }
         }
         if(e.getSource() == meal6label){
@@ -318,7 +318,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(6,manager);
+                new MealFrame(5,manager);
             }
         }
         if(e.getSource() == meal7label){
@@ -326,7 +326,7 @@ public class MealOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(7,manager);
+                new MealFrame(6,manager);
             }
         }
     }

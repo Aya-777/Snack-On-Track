@@ -222,7 +222,7 @@ public class DrinksOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(17,manager);
+                new MealFrame(16,manager);
             }
         }
         if(e.getSource() == drink2label){
@@ -230,7 +230,7 @@ public class DrinksOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(18,manager);
+                new MealFrame(17,manager);
             }
         }
         if(e.getSource() == drink3label){
@@ -238,7 +238,7 @@ public class DrinksOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(19,manager);
+                new MealFrame(18,manager);
             }
         }
         if(e.getSource() == drink4label){
@@ -246,7 +246,7 @@ public class DrinksOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(20,manager);
+                new MealFrame(19,manager);
             }
         }
         if(e.getSource() == drink5label){
@@ -254,7 +254,7 @@ public class DrinksOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(21,manager);
+                new MealFrame(20,manager);
             }
         }
     }

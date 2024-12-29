@@ -54,7 +54,7 @@ public class Details implements ActionListener{
 
         backToOrderButton.setBounds(50, 100, 150, 20);
         
-        scrollPane.setBounds(0, 140, 630, 600);
+        scrollPane.setBounds(12, 140, 630, 600);
         panelScroll.setLayout(null);
         panelScroll.setPreferredSize(new Dimension(630,600));
         panelScroll.setBorder(new LineBorder(Color.white, 2));

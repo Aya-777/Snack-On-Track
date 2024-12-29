@@ -226,7 +226,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(12,manager);
+                new MealFrame(11,manager);
             }
         }
         if(e.getSource() == dessert2label){
@@ -234,7 +234,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(13,manager);
+                new MealFrame(12,manager);
             }
         }
         if(e.getSource() == dessert3label){
@@ -242,7 +242,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(14,manager);
+                new MealFrame(13,manager);
             }
         }
         if(e.getSource() == dessert4label){
@@ -250,7 +250,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(15,manager);
+                new MealFrame(14,manager);
             }
         }
         if(e.getSource() == dessert5label){
@@ -258,7 +258,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(16,manager);
+                new MealFrame(15,manager);
             }
         }
         

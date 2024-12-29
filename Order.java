@@ -15,6 +15,7 @@ public class Order implements ActionListener {
     JButton viewdetailsbutton = new JButton("View details");
     JButton logoutButton = new JButton("Log out");
     JButton addmealButton = new JButton("Add Meal");
+    JButton ordersButton = new JButton("Orders");
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");
@@ -28,9 +29,14 @@ public class Order implements ActionListener {
 
         this.manager = manager;
         if (manager) {
+            ordersButton.setBounds(400,40,130,30);
             addmealButton.setBounds(400, 80, 130, 30);
+            f.add(ordersButton);
             f.add(addmealButton);
+            ordersButton.addActionListener(this);
             addmealButton.addActionListener(this);
+            ordersButton.setFocusable(false);
+            addmealButton.setFocusable(false);
         }
 
         mealsbar.add(mealsitem);
@@ -53,7 +59,6 @@ public class Order implements ActionListener {
 
         logoutButton.setBounds(400, 115, 130, 30);
 
-        f.add(viewdetailsbutton);
         logoutButton.setFocusable(false);
 
         f.add(viewdetailsbutton);
@@ -94,6 +99,10 @@ public class Order implements ActionListener {
         if (e.getSource() == addmealButton) {
             f.dispose();
             new AddMeal();
+        }
+        if(e.getSource()==ordersButton){
+            
+
         }
 
     }
