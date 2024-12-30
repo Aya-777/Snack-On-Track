@@ -78,6 +78,7 @@ public class MealFrame implements ActionListener{
     static ArrayList<ImageIcon> arrayMealsIcon = new ArrayList<>();
 
 
+
     int mealnum,src;
     Meal m;
     int num1 = order.get(mealnum);
@@ -301,6 +302,10 @@ public class MealFrame implements ActionListener{
         arrayMealsIcon.add(drink4MainIcon);
         arrayMealsIcon.add(drink5MainIcon);
 
+        new MealOrder().fillmeallabellist();
+        new SaladOrder().fillmeallabellist();
+        new DessertOrder().fillmeallabellist();
+        new DrinksOrder().fillmeallabellist();
 
     }
 

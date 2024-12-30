@@ -10,23 +10,23 @@ import javax.swing.*;
 public class DrinksOrder extends Order implements MouseListener{
     JLabel drinksOrderIconLabel = new JLabel();
     ImageIcon drinksOrderIcon = new ImageIcon("main desin drinks.png");
-    JLabel drink1label = new JLabel();
+    JLabel drink1label = new JLabel("16");
     JLabel drink1labelPrice = new JLabel();
     JLabel drink1labelKalori = new JLabel();
     ImageIcon drinksIcon1 = new ImageIcon("menu drinks 1.png");
-    JLabel drink2label = new JLabel();
+    JLabel drink2label = new JLabel("17");
     JLabel drink2labelPrice = new JLabel();
     JLabel drink2labelKalori = new JLabel();
     ImageIcon drinksIcon2 = new ImageIcon("menu drinks 2.png");
-    JLabel drink3label = new JLabel();
+    JLabel drink3label = new JLabel("18");
     JLabel drink3labelPrice = new JLabel();
     JLabel drink3labelKalori = new JLabel();
     ImageIcon drinksIcon3 = new ImageIcon("menu drinks 3.png");
-    JLabel drink4label = new JLabel();
+    JLabel drink4label = new JLabel("19");
     JLabel drink4labelPrice = new JLabel();
     JLabel drink4labelKalori = new JLabel();
     ImageIcon drinksIcon4 = new ImageIcon("menu drinks 4.png");
-    JLabel drink5label = new JLabel();
+    JLabel drink5label = new JLabel("20");
     JLabel drink5labelPrice = new JLabel();
     JLabel drink5labelKalori = new JLabel();
     ImageIcon drinksIcon5 = new ImageIcon("menu drinks 5.png");
@@ -168,13 +168,25 @@ public class DrinksOrder extends Order implements MouseListener{
     
     
         }
+
+        void fillmeallabellist(){
+            Order.meallabels.add(drink1label);
+            Order.meallabels.add(drink2label);
+            Order.meallabels.add(drink3label);
+            Order.meallabels.add(drink4label);
+            Order.meallabels.add(drink5label);
+    
+        }
+
     @Override 
     void addMeal(JLabel newmealLabel){    
+        newmeals++;
         newmealLabel.addMouseListener(this);
-        panelScroll.add(newmealLabel);    
+        newmealLabel.setText(String.valueOf(newmeals));
+        panelScroll.add(newmealLabel);
         newmeallabels.add(newmealLabel);
+        Order.meallabels.add(newmealLabel);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
@@ -213,46 +225,7 @@ public class DrinksOrder extends Order implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == drink1label){
-            if(MealFrame.drink1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(16,manager,4);
-            }
-        }
-        if(e.getSource() == drink2label){
-            if(MealFrame.drink2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(17,manager,4);
-            }
-        }
-        if(e.getSource() == drink3label){
-            if(MealFrame.drink3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(18,manager,4);
-            }
-        }
-        if(e.getSource() == drink4label){
-            if(MealFrame.drink4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(19,manager,4);
-            }
-        }
-        if(e.getSource() == drink5label){
-            if(MealFrame.drink5.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(20,manager,4);
-            }
-        }
+        super.mouseClicked(e);
     }
     @Override
     public void mousePressed(MouseEvent e) {

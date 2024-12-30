@@ -9,19 +9,19 @@ import java.util.ArrayList;
 public class SaladOrder extends Order implements MouseListener {
     JLabel saladOrderIconLabel = new JLabel();
     ImageIcon saladOrderIcon = new ImageIcon("main design salad.png");
-    JLabel salad1label = new JLabel();
+    JLabel salad1label = new JLabel("7");
     JLabel salad1LabelPrice = new JLabel();
     JLabel salad1LabelKalori = new JLabel();
     ImageIcon salad1Icon = new ImageIcon("menu salad 1.png");
-    JLabel salad2label = new JLabel();
+    JLabel salad2label = new JLabel("8");
     JLabel salad2LabelPrice = new JLabel();
     JLabel salad2LabelKalori = new JLabel();
     ImageIcon salad2Icon = new ImageIcon("menu salad 2.png");
-    JLabel salad3label = new JLabel();
+    JLabel salad3label = new JLabel("9");
     JLabel salad3LabelPrice = new JLabel();
     JLabel salad3LabelKalori = new JLabel();
     ImageIcon salad3Icon = new ImageIcon("menu salad 3.png");
-    JLabel salad4label = new JLabel();
+    JLabel salad4label = new JLabel("10");
     JLabel salad4LabelPrice = new JLabel();
     JLabel salad4LabelKalori = new JLabel();
     ImageIcon salad4Icon = new ImageIcon("menu salad 4.png");
@@ -146,11 +146,22 @@ public class SaladOrder extends Order implements MouseListener {
 
         saladsitem.setEnabled(false);
     }
+
+    void fillmeallabellist(){
+        Order.meallabels.add(salad1label);
+        Order.meallabels.add(salad2label);
+        Order.meallabels.add(salad3label);
+        Order.meallabels.add(salad4label);
+    }
+
     @Override 
     void addMeal(JLabel newmealLabel){
+        newmeals++;
         newmealLabel.addMouseListener(this);
-        panelScroll.add(newmealLabel);
-        newmeallabels.add(newmealLabel);
+            newmealLabel.setText(String.valueOf(newmeals));
+            panelScroll.add(newmealLabel);
+            newmeallabels.add(newmealLabel);
+            Order.meallabels.add(newmealLabel);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -190,54 +201,14 @@ public class SaladOrder extends Order implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == salad1label){
-            if(MealFrame.s1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(7,manager,2);
-            }
-        }
-        if(e.getSource() == salad2label){
-            if(MealFrame.s2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(8,manager,2);
-            }
-
-        }
-        if(e.getSource() == salad3label){
-            if(MealFrame.s3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(9,manager,2);
-            }
-        }
-        if(e.getSource() == salad4label){
-            if(MealFrame.s4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(10,manager,2);
-            }
-        }
+        super.mouseClicked(e);
     }
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
     @Override
-    public void mouseReleased(MouseEvent e) {
-     
-    }
+    public void mouseReleased(MouseEvent e) {}
     @Override
-    public void mouseEntered(MouseEvent e) {
-   
-    }
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 }

@@ -9,36 +9,35 @@ import java.util.ArrayList;
 public class MealOrder extends Order implements MouseListener {
     JLabel mealOrderIconLabel = new JLabel();
     ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
-    JLabel meal1label = new JLabel();
+    JLabel meal1label = new JLabel("0");
     JLabel meal1LabelPrice;
     JLabel meal1LabelKalori = new JLabel();
     ImageIcon meal1Icon = new ImageIcon("menu meal 1.png");
-    JLabel meal2label = new JLabel();
+    JLabel meal2label = new JLabel("1");
     JLabel meal2LabelPrice = new JLabel();
     JLabel meal2LabelKalori = new JLabel();
     ImageIcon meal2Icon = new ImageIcon("menu meal 2.png");
-    JLabel meal3label = new JLabel();
+    JLabel meal3label = new JLabel("2");
     JLabel meal3LabelPrice = new JLabel();
     JLabel meal3LabelKalori = new JLabel();
     ImageIcon meal3Icon = new ImageIcon("menu meal 3.png");
-    JLabel meal4label = new JLabel();
+    JLabel meal4label = new JLabel("3");
     JLabel meal4LabelPrice = new JLabel();
     JLabel meal4LabelKalori = new JLabel();
     ImageIcon meal4Icon = new ImageIcon("menu meal 4.png");
-    JLabel meal5label = new JLabel();
+    JLabel meal5label = new JLabel("4");
     JLabel meal5LabelPrice = new JLabel();
     JLabel meal5LabelKalori = new JLabel();
     ImageIcon meal5Icon = new ImageIcon("menu meal 5.png");
-    JLabel meal6label = new JLabel();
+    JLabel meal6label = new JLabel("5");
     JLabel meal6LabelPrice = new JLabel();
     JLabel meal6LabelKalori = new JLabel();
     ImageIcon meal6Icon = new ImageIcon("menu meal 6.png");
-    JLabel meal7label = new JLabel();
+    JLabel meal7label = new JLabel("6");
     JLabel meal7LabelPrice = new JLabel();
     JLabel meal7LabelKalori = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
     static ArrayList<JLabel>newmeallabels=new ArrayList<>();
-    static int newmeals = 0;
     
         MealOrder(){}
         MealOrder(boolean manager){
@@ -178,6 +177,39 @@ public class MealOrder extends Order implements MouseListener {
             meal7LabelKalori.setText(String.valueOf(MealFrame.m7.getCals())+" kcal");
             meal7LabelKalori.setBackground(new Color(255,134,120));
             meal7LabelKalori.setOpaque(true);
+
+            for (JLabel jLabel : newmeallabels){
+                Meal m = MealFrame.meallist.get(Integer.parseInt(jLabel.getText()));
+                JLabel pricLabel = new JLabel(String.valueOf(m.getPrice()));
+                JLabel nameLabel = new JLabel(m.getName());
+                JLabel caloriLabel = new JLabel(String.valueOf(m.getCals()));
+
+                pricLabel.setFont(null);
+                caloriLabel.setFont(null);
+                nameLabel.setFont(null);
+
+                pricLabel.setBounds(188, 78, 150, 55);
+                caloriLabel.setBounds(188, 78, 150, 55);
+                nameLabel.setBounds(188, 78, 150, 55);
+
+                pricLabel.setForeground(new Color(139,37,17));
+                caloriLabel.setForeground(new Color(139,37,17));
+                nameLabel.setForeground(new Color(139,37,17));
+
+                pricLabel.setOpaque(true);
+                caloriLabel.setOpaque(true);
+                nameLabel.setOpaque(true);
+
+                pricLabel.setBackground(new Color(255,134,120));
+                caloriLabel.setBackground(new Color(255,134,120));
+                nameLabel.setBackground(new Color(255,134,120));
+
+                jLabel.setLayout(new FlowLayout());
+                jLabel.add(nameLabel);
+                jLabel.add(pricLabel);
+                jLabel.add(caloriLabel);
+                
+            }
     
     
             meal1label.add(meal1LabelKalori);
@@ -222,6 +254,17 @@ public class MealOrder extends Order implements MouseListener {
 
     
         }
+
+        void fillmeallabellist(){
+            Order.meallabels.add(meal1label);
+            Order.meallabels.add(meal2label);
+            Order.meallabels.add(meal3label);
+            Order.meallabels.add(meal4label);
+            Order.meallabels.add(meal5label);
+            Order.meallabels.add(meal6label);
+            Order.meallabels.add(meal7label);
+
+        }
     
         @Override
          void addMeal( JLabel newmealLabel){
@@ -230,6 +273,7 @@ public class MealOrder extends Order implements MouseListener {
             newmealLabel.setText(String.valueOf(newmeals));
             panelScroll.add(newmealLabel);
             newmeallabels.add(newmealLabel);
+            Order.meallabels.add(newmealLabel);
     }
 
     @Override
@@ -270,84 +314,14 @@ public class MealOrder extends Order implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == meal1label){
-            if(MealFrame.m1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(0,manager,1);
-            }
-        }
-        if(e.getSource() == meal2label){
-            if(MealFrame.m2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(1,manager,1);
-            }
-        }
-        if(e.getSource() == meal3label){
-            if(MealFrame.m3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(2,manager,1);
-            }
-        }
-        if(e.getSource() == meal4label){
-            if(MealFrame.m4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(3,manager,1);
-            }
-        }
-        if(e.getSource() == meal5label){
-            if(MealFrame.m5.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(4,manager,1);
-            }
-        }
-        if(e.getSource() == meal6label){
-            if(MealFrame.m6.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(5,manager,1);
-            }
-        }
-        if(e.getSource() == meal7label){
-            if(MealFrame.m7.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(6,manager,1);
-            }
-        }
-        if(e.getSource() instanceof JLabel){
-            System.out.println(((JLabel) e.getSource()).getText());
-            System.out.println("kk");
-            for (JLabel jLabel : newmeallabels) {
-                if(jLabel.getText()==((JLabel) e.getSource()).getText()){
-                    int mealnum=MealFrame.meallist.size()-1;
-                    new MealFrame(mealnum,manager ,1 );
-                }
-            }
-        }
-
+        super.mouseClicked(e);
     }
     @Override
-    public void mousePressed(MouseEvent e) {
-    }
+    public void mousePressed(MouseEvent e) {}
     @Override
-    public void mouseReleased(MouseEvent e) {
-    }
+    public void mouseReleased(MouseEvent e) {}
     @Override
-    public void mouseEntered(MouseEvent e) {
-    }
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-    }
+    public void mouseExited(MouseEvent e) {}
 }

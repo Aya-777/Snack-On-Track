@@ -12,23 +12,23 @@ public class DessertOrder extends Order implements MouseListener{
 
     JLabel dessertOrderIconLabel = new JLabel();
     ImageIcon dessertOrderIcon =new ImageIcon("main design sweets.png");
-    JLabel dessert1label = new JLabel();
+    JLabel dessert1label = new JLabel("11");
     JLabel dessert1LabelPrice = new JLabel();
     JLabel dessert1LabelKalori = new JLabel();
     ImageIcon dessert1Icon = new ImageIcon("menu sweets 1.png");
-    JLabel dessert2label = new JLabel();
+    JLabel dessert2label = new JLabel("12");
     JLabel dessert2LabelPrice = new JLabel();
     JLabel dessert2LabelKalori = new JLabel();
     ImageIcon dessert2Icon = new ImageIcon("menu sweets 2.png");
-    JLabel dessert3label = new JLabel();
+    JLabel dessert3label = new JLabel("13");
     JLabel dessert3LabelPrice = new JLabel();
     JLabel dessert3LabelKalori = new JLabel();
     ImageIcon dessert3Icon = new ImageIcon("menu sweets 3.png");
-    JLabel dessert4label = new JLabel();
+    JLabel dessert4label = new JLabel("14");
     JLabel dessert4LabelPrice = new JLabel();
     JLabel dessert4LabelKalori = new JLabel();
     ImageIcon dessert4Icon = new ImageIcon("menu sweets 4.png");
-    JLabel dessert5label = new JLabel();
+    JLabel dessert5label = new JLabel("15");
     JLabel dessert5LabelPrice = new JLabel();
     JLabel dessert5LabelKalori = new JLabel();
     ImageIcon dessert5Icon = new ImageIcon("menu sweets 5.png");
@@ -171,11 +171,23 @@ public class DessertOrder extends Order implements MouseListener{
     }
     public DessertOrder(){}
 
+
+    void fillmeallabellist(){
+        Order.meallabels.add(dessert1label);
+        Order.meallabels.add(dessert2label);
+        Order.meallabels.add(dessert3label);
+        Order.meallabels.add(dessert4label);
+        Order.meallabels.add(dessert5label);
+
+    }
     @Override 
     void addMeal(JLabel newmealLabel){
+        newmeals++; 
         newmealLabel.addMouseListener(this);
+        newmealLabel.setText(String.valueOf(newmeals));
         panelScroll.add(newmealLabel);
-        newmeallabels.add(newmealLabel);   
+        newmeallabels.add(newmealLabel);
+        Order.meallabels.add(newmealLabel);
     }
 
     @Override
@@ -217,62 +229,18 @@ public class DessertOrder extends Order implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == dessert1label){
-            if(MealFrame.dessert1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(11,manager,3);
-            }
-        }
-        if(e.getSource() == dessert2label){
-            if(MealFrame.dessert2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(12,manager,3);
-            }
-        }
-        if(e.getSource() == dessert3label){
-            if(MealFrame.dessert3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(13,manager,3);
-            }
-        }
-        if(e.getSource() == dessert4label){
-            if(MealFrame.dessert4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(14,manager,3);
-            }
-        }
-        if(e.getSource() == dessert5label){
-            if(MealFrame.dessert5.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new MealFrame(15,manager,3);
-            }
-        }
-        
+        super.mouseClicked(e);
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-    }
+    public void mouseExited(MouseEvent e) {}
 }

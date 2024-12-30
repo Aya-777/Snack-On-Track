@@ -3,10 +3,13 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
-public class Order implements ActionListener {
+public class Order implements ActionListener, MouseListener{
 
-    static int num = 0, price = 0;
+    static int num = 0, price = 0, newmeals=MealFrame.meallist.size()-1;
     JFrame f = new JFrame();
     JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
@@ -24,6 +27,7 @@ public class Order implements ActionListener {
     static boolean manager;
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static ArrayList<JLabel>meallabels=new ArrayList<>();
 
     Order(){}
     Order(boolean manager) {
@@ -112,4 +116,30 @@ public class Order implements ActionListener {
         }
 
     }
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() instanceof JLabel){
+            // System.out.println(((JLabel) e.getSource()).getText());
+            for (JLabel jLabel : Order.meallabels) {
+                if(jLabel.getText()==((JLabel) e.getSource()).getText()){
+                    int mealnum=Integer.parseInt(jLabel.getText());
+                    if(MealFrame.meallist.get(mealnum).getDeleted()){
+                        JOptionPane.showMessageDialog(null,"This meal is not available.",
+                    "Title",JOptionPane.OK_OPTION);
+                    } else{
+                        new MealFrame(mealnum,manager ,1 );
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {}
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }
