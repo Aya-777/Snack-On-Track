@@ -123,11 +123,20 @@ public class Order implements ActionListener, MouseListener{
             for (JLabel jLabel : Order.meallabels) {
                 if(jLabel.getText()==((JLabel) e.getSource()).getText()){
                     int mealnum=Integer.parseInt(jLabel.getText());
-                    if(MealFrame.meallist.get(mealnum).getDeleted()){
+                    Meal m = MealFrame.meallist.get(mealnum);
+                    if(m.getDeleted()){
                         JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
                     } else{
-                        new MealFrame(mealnum,manager ,1 );
+                        if(m.getType()=="Meal"){
+                            new MealFrame(mealnum,manager ,1 );
+                        }else if(m.getType()=="Salad"){
+                            new MealFrame(mealnum,manager ,2 );
+                        }else if(m.getType()=="Dessert"){
+                            new MealFrame(mealnum,manager ,3 );
+                        }else if(m.getType()=="Drink"){
+                            new MealFrame(mealnum,manager ,4 );
+                        }
                         break;
                     }
                 }

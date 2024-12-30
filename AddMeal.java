@@ -70,8 +70,6 @@ class AddMeal implements ActionListener {
                 String desc = mealdescriptionfield.getText();
                 int serialnum = MealFrame.meallist.size()-1;
                 // System.out.println(serialnum + " " + price + " " + calorie + " " + name);
-                Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0);
-                MealFrame.addMeal(newMeal);
 
                 JLabel newmealLabel = new JLabel(newmealIcon);
                 newmealLabel.setLayout(new FlowLayout());
@@ -84,21 +82,30 @@ class AddMeal implements ActionListener {
                 newmealLabel.add(newmealCalorieLabel);
 
                 if (mealtype.getSelectedItem() == "Meal") {
+                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Meal");
+                    MealFrame.addMeal(newMeal);
                     MealOrder m = new MealOrder(true);
                     m.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Salad") {
+                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Salad");
+                    MealFrame.addMeal(newMeal);
                     SaladOrder ss = new SaladOrder(true);
                     ss.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Dessert") {
+                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Dessert");
+                    MealFrame.addMeal(newMeal);
                     DessertOrder d = new DessertOrder(true);
                     d.addMeal(newmealLabel);
                 }
                 if (mealtype.getSelectedItem() == "Drink") {
+                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Drink");
+                    MealFrame.addMeal(newMeal);
                     DrinksOrder d = new DrinksOrder(true);
                     d.addMeal(newmealLabel);
                 }
+                
 
                 submitbutton.setEnabled(false);
                 f.dispose();

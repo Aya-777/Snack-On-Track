@@ -115,6 +115,39 @@ public class SaladOrder extends Order implements MouseListener {
         salad4LabelKalori.setBackground(new Color(166,251,186));
         salad4LabelKalori.setOpaque(true);
 
+        for (JLabel jLabel : newmeallabels){
+            Meal m = MealFrame.meallist.get(Integer.parseInt(jLabel.getText()));
+            JLabel pricLabel = new JLabel(String.valueOf(m.getPrice()));
+            JLabel nameLabel = new JLabel(m.getName());
+            JLabel caloriLabel = new JLabel(String.valueOf(m.getCals()));
+
+            pricLabel.setFont(null);
+            caloriLabel.setFont(null);
+            nameLabel.setFont(null);
+
+            pricLabel.setBounds(188, 78, 150, 55);
+            caloriLabel.setBounds(188, 78, 150, 55);
+            nameLabel.setBounds(188, 78, 150, 55);
+
+            pricLabel.setForeground(new Color(139,37,17));
+            caloriLabel.setForeground(new Color(139,37,17));
+            nameLabel.setForeground(new Color(139,37,17));
+
+            pricLabel.setOpaque(true);
+            caloriLabel.setOpaque(true);
+            nameLabel.setOpaque(true);
+
+            pricLabel.setBackground(new Color(255,134,120));
+            caloriLabel.setBackground(new Color(255,134,120));
+            nameLabel.setBackground(new Color(255,134,120));
+
+            jLabel.setLayout(new FlowLayout());
+            jLabel.add(nameLabel);
+            jLabel.add(pricLabel);
+            jLabel.add(caloriLabel);
+            
+        }
+
 
         salad1label.add(salad1LabelPrice);
         salad2label.add(salad2LabelPrice);
