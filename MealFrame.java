@@ -78,7 +78,7 @@ public class MealFrame implements ActionListener{
     static ArrayList<ImageIcon> arrayMealsIcon = new ArrayList<>();
 
 
-    int mealnum;
+    int mealnum,src;
     Meal m;
     int num1 = order.get(mealnum);
     JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
@@ -120,14 +120,20 @@ public class MealFrame implements ActionListener{
     static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
     static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
 
-    MealFrame(Integer mealnum , boolean manager){
+    MealFrame(Integer mealnum , boolean manager,int src){
         f.setLayout(null);
         this.mealnum=mealnum;
         num1 = order.get(mealnum);
         this.m=meallist.get(mealnum);
+        this.src=src;
 
         mainLabel.setBounds(0,0,650,830);
-        mainLabel.setIcon(arrayMealsIcon.get(mealnum));
+        try {
+            mainLabel.setIcon(arrayMealsIcon.get(mealnum));
+        } catch (IndexOutOfBoundsException e) {
+            // mainLabel.setIcon(); // new meal icon
+        }
+        
         mainLabel.setLayout(null);
         f.add(mainLabel);
 
@@ -217,16 +223,9 @@ public class MealFrame implements ActionListener{
         }
         if(e.getSource()==editButton){
             f.dispose();
-            new EditMeal(m,mealnum);
+            new EditMeal(m,mealnum,src);
         }
     }
-
-    // public static void confirmEdit(Meal m ,int price,int calorie,String desc){
-    //     m.setCals(calorie);
-    //     m.setDesc(desc);
-    //     m.setPrice(price);
-    //     // new MealOrder(true);
-    // }
 
     public static void fillLists(){
         meallist.add(m1);
@@ -309,7 +308,7 @@ public class MealFrame implements ActionListener{
         meallist.add(newMeal);
         newmeals.add(newMeal);
         order.add(0);
-        System.out.println(meallist.size()); 
+        // System.out.println(meallist.size()); 
         
     }
 

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class SaladOrder extends Order implements MouseListener {
     JLabel saladOrderIconLabel = new JLabel();
@@ -24,10 +25,8 @@ public class SaladOrder extends Order implements MouseListener {
     JLabel salad4LabelPrice = new JLabel();
     JLabel salad4LabelKalori = new JLabel();
     ImageIcon salad4Icon = new ImageIcon("menu salad 4.png");
-    static boolean added=false;
     static int num1=0,num2=0,num3=0,num4=0;
-    static JPanel panelScroll = new JPanel();
-    static JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
     
 
     SaladOrder(){}
@@ -127,12 +126,12 @@ public class SaladOrder extends Order implements MouseListener {
         salad3label.add(salad3LabelKalori);
         salad4label.add(salad4LabelKalori);
 
-        if(!added){
-            panelScroll.add(salad1label);
-            panelScroll.add(salad2label);
-            panelScroll.add(salad3label);
-            panelScroll.add(salad4label);
-            added=true;
+        panelScroll.add(salad1label);
+        panelScroll.add(salad2label);
+        panelScroll.add(salad3label);
+        panelScroll.add(salad4label);
+        for (JLabel jLabel : newmeallabels) {
+            panelScroll.add(jLabel);
         }
 
         salad1label.addMouseListener(this);
@@ -151,6 +150,7 @@ public class SaladOrder extends Order implements MouseListener {
     void addMeal(JLabel newmealLabel){
         newmealLabel.addMouseListener(this);
         panelScroll.add(newmealLabel);
+        newmeallabels.add(newmealLabel);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -195,7 +195,7 @@ public class SaladOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(7,manager);
+                new MealFrame(7,manager,2);
             }
         }
         if(e.getSource() == salad2label){
@@ -203,7 +203,7 @@ public class SaladOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(8,manager);
+                new MealFrame(8,manager,2);
             }
 
         }
@@ -212,7 +212,7 @@ public class SaladOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(9,manager);
+                new MealFrame(9,manager,2);
             }
         }
         if(e.getSource() == salad4label){
@@ -220,7 +220,7 @@ public class SaladOrder extends Order implements MouseListener {
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(10,manager);
+                new MealFrame(10,manager,2);
             }
         }
     }

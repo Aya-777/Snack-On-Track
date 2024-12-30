@@ -14,13 +14,14 @@ class EditMeal implements ActionListener{
     JButton confirmButton = new JButton("Confirm");
     JTextArea textArea = new JTextArea(5,20);
     Meal m;
-    int mealnum;
+    int mealnum,src;
 
-    EditMeal(Meal m,int mealnum){
+    EditMeal(Meal m,int mealnum,int src){
         f.setLayout(null);
 
         this.m=m;
         this.mealnum=mealnum;
+        this.src=src;
 
         confirmButton.setBounds(200,450,100,20);
         confirmButton.addActionListener(this);
@@ -62,17 +63,30 @@ class EditMeal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==confirmButton){
-            // System.out.println(mealnum);
-            // int price = Integer.parseInt(priceTextField.getText());
-            // int calorie = Integer.parseInt(calorieTextField.getText());
-            // String desc = textArea.getText();
-            // MealFrame.meallist.get(mealnum).setCals(calorie);
-            // MealFrame.meallist.get(mealnum).setPrice(price);
-            // MealFrame.meallist.get(mealnum).setDesc(desc);
-            // MealFrame.confirmEdit(m, price, calorie, desc);
-            // confirmButton.setEnabled(false);
+            int price = Integer.parseInt(priceTextField.getText());
+            int calorie = Integer.parseInt(calorieTextField.getText());
+            String desc = textArea.getText();
+            MealFrame.meallist.get(mealnum).setCals(calorie);
+            MealFrame.meallist.get(mealnum).setPrice(price);
+            MealFrame.meallist.get(mealnum).setDesc(desc);
+            confirmButton.setEnabled(false);
             f.dispose();
-            new MealFrame(mealnum,true);
+            if (src==1) {
+                new MealOrder(true);    
+            }
+            else if (src==2) {
+                new SaladOrder(true);
+            }
+            else if (src==3) {
+                new DessertOrder(true);
+            }
+            else if(src==4){
+                new DrinksOrder(true);
+            }
+            else{
+                new MealOrder(true);
+            }
+            
         }
     }
 }

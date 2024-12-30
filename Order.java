@@ -22,6 +22,8 @@ public class Order implements ActionListener {
     JMenuItem dessertsitem = new JMenuItem("Desserts");
     JMenuItem drinksitem = new JMenuItem("Drinks");;
     static boolean manager;
+    JPanel panelScroll = new JPanel();
+    JScrollPane scrollPane = new JScrollPane(panelScroll);
 
     Order(){}
     Order(boolean manager) {
@@ -39,6 +41,11 @@ public class Order implements ActionListener {
             addmealButton.setFocusable(false);
         }
 
+        scrollPane.setBounds(10, 190, 615, 600);
+        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
+        panelScroll.setBorder(new LineBorder(Color.white, 2));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
         mealsbar.add(mealsitem);
         mealsbar.add(saladsitem);
         mealsbar.add(dessertsitem);
@@ -97,7 +104,6 @@ public class Order implements ActionListener {
             new SignFrame();
         }
         if (e.getSource() == addmealButton) {
-            f.dispose();
             new AddMeal();
         }
         if(e.getSource()==ordersButton){

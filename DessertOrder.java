@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class DessertOrder extends Order implements MouseListener{
 
@@ -32,19 +33,12 @@ public class DessertOrder extends Order implements MouseListener{
     JLabel dessert5LabelKalori = new JLabel();
     ImageIcon dessert5Icon = new ImageIcon("menu sweets 5.png");
     static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
-    static boolean added=false;
-    static JPanel panelScroll = new JPanel();
-    static JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
 
 
     DessertOrder(boolean manager){
         super(manager);
         Order.manager=manager;
-
-        scrollPane.setBounds(10, 190, 615, 600);
-        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
-        panelScroll.setBorder(new LineBorder(Color.white, 2));
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         dessertOrderIconLabel.setBounds(0,0,650,830);
         dessertOrderIconLabel.setIcon(dessertOrderIcon);
@@ -154,14 +148,15 @@ public class DessertOrder extends Order implements MouseListener{
         dessert5label.add(dessert5LabelKalori);
 
 
-        if(!added){
         panelScroll.add(dessert1label);
         panelScroll.add(dessert2label);
         panelScroll.add(dessert3label);
         panelScroll.add(dessert4label);
         panelScroll.add(dessert5label);
-        added=true;
-    }
+        for (JLabel jLabel : newmeallabels) {
+            panelScroll.add(jLabel);
+        }
+
         dessert1label.addMouseListener(this);
         dessert2label.addMouseListener(this);
         dessert3label.addMouseListener(this);
@@ -179,7 +174,8 @@ public class DessertOrder extends Order implements MouseListener{
     @Override 
     void addMeal(JLabel newmealLabel){
         newmealLabel.addMouseListener(this);
-        panelScroll.add(newmealLabel);   
+        panelScroll.add(newmealLabel);
+        newmeallabels.add(newmealLabel);   
     }
 
     @Override
@@ -226,7 +222,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(11,manager);
+                new MealFrame(11,manager,3);
             }
         }
         if(e.getSource() == dessert2label){
@@ -234,7 +230,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(12,manager);
+                new MealFrame(12,manager,3);
             }
         }
         if(e.getSource() == dessert3label){
@@ -242,7 +238,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(13,manager);
+                new MealFrame(13,manager,3);
             }
         }
         if(e.getSource() == dessert4label){
@@ -250,7 +246,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(14,manager);
+                new MealFrame(14,manager,3);
             }
         }
         if(e.getSource() == dessert5label){
@@ -258,7 +254,7 @@ public class DessertOrder extends Order implements MouseListener{
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(15,manager);
+                new MealFrame(15,manager,3);
             }
         }
         
