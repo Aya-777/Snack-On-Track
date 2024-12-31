@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 
 public class Bank {
     private String bankName;
     private String cardID;
     private String password;
-    private int balance = 100000;
+    private int balance = 10000;
+
+    static ArrayList<Bank> list = new ArrayList<>();
 
     public Bank() {
     }
@@ -28,6 +31,10 @@ public class Bank {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
 }

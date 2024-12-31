@@ -22,17 +22,19 @@ public class Cart implements ActionListener {
     JTextField detailsfield = new JTextField();
     JLabel tiplabel = new JLabel("Tip(optional): ");
     JTextField tipfield = new JTextField();
-
+    myAccount m1 = new myAccount();
     JButton continuenutton = new JButton("Continue order");
     JLabel pricelabel = new JLabel("Price : ");
 
     int i = 1;
+    boolean openIt = false; // to open the next frame after paying with bank account
 
     Cart() {
     }
 
     Cart(ArrayList<Integer> ll) {
         meals = ll;
+
         f.setLayout(null);
         // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -104,7 +106,6 @@ public class Cart implements ActionListener {
                 tablenumlabel.setVisible(true);
                 tablenumtextfield.setVisible(true);
 
-                System.out.println("here1");
                 f.repaint();
                 f.revalidate();
 
@@ -123,7 +124,7 @@ public class Cart implements ActionListener {
                 addressfield.setVisible(true);
                 f.add(addressfield);
                 f.add(addresslabel);
-                System.out.println("here2");
+
                 f.repaint();
                 f.revalidate();
             }
@@ -134,9 +135,11 @@ public class Cart implements ActionListener {
         }
         if (e.getSource() == cashCheckBox) {
             bankCheckBox.setSelected(false);
-        }
+        } // the end of check box condithions
+        // ==========================================================================================================================
 
-        if (e.getSource() == continuenutton) {
+        if (e.getSource() == continuenutton) { // countinue button
+            boolean emptyField = false;
             String details = detailsfield.getText();
             String tip = tipfield.getText();
             if (delivery.isSelected()) {
@@ -146,8 +149,7 @@ public class Cart implements ActionListener {
                             "Title", JOptionPane.WARNING_MESSAGE);
                     addressfield.setCaretColor(Color.red);
                 } else {
-                    f.dispose();
-                    new Details(meals);
+                    emptyField = true;
                 }
             } else {
                 String table = tablenumtextfield.getText();
@@ -155,13 +157,80 @@ public class Cart implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Enter the table number!",
                             "Title", JOptionPane.WARNING_MESSAGE);
                     tablenumtextfield.setCaretColor(Color.red);
-                } else {
-                    f.dispose();
-                    new Details(meals);
 
+                } else {
+                    emptyField = true;
                 }
             }
+            if (emptyField) {
+                if (bankCheckBox.isSelected()) {
 
+                    if (m1.havingAccount()) {
+                        if (m1.whichOne()) { // customer
+                            if (myAccount.customer.getBankAccount() != null) {
+
+                                try {
+                                    int newBalance = myAccount.customer.getBankAccount().getBalance() - Order.price;
+                                    myAccount.customer.getBankAccount().setBalance(newBalance);
+                                    openIt = true;
+                                    System.out.println(myAccount.customer.getBankAccount().getBalance());
+                                    System.out.println("customer");
+                                } catch (Exception ex) {
+                                    System.out.println("cart 160");
+                                }
+
+                            } else {
+                                String[] yes_no = { "Yes", "No" };
+                                int wouldU = JOptionPane.showOptionDialog(null,
+                                        "You have not added a bank account before , would you add one ?",
+                                        "", JOptionPane.YES_NO_OPTION, 0, null, yes_no, 0);
+
+                                if (wouldU == 0) {
+                                    f.dispose();
+                                    new bankFrame();
+                                    new Cart(meals).f.toBack();
+
+                                }
+
+                            }
+                        } else { // employee
+
+                            if (myAccount.employee.getBankAccount() != null) {
+                                try {
+                                    int newBalance = myAccount.employee.getBankAccount().getBalance() - Order.price;
+                                    myAccount.employee.getBankAccount().setBalance(newBalance);
+                                    openIt = true;
+                                    System.out.println(myAccount.employee.getBankAccount().getBalance());
+                                    System.out.println("empolyee");
+                                } catch (Exception ex) {
+                                    System.out.println("cart 186");
+                                }
+                            } else {
+                                String[] yes_no = { "Yes", "No" };
+                                int wouldU = JOptionPane.showOptionDialog(null,
+                                        "You have not added a bank account before , would you add one ?",
+                                        "", JOptionPane.YES_NO_OPTION, 0, null, yes_no, 0);
+                                        if (wouldU == 0) {
+                                            new bankFrame();
+                                            f.repaint();
+                                            f.revalidate();
+                                        }
+                                    }
+                                }
+                            }
+                            if (openIt) {
+                                f.dispose();
+                                new Details(meals);
+                            }
+                        }
+                        if (cashCheckBox.isSelected()) {
+                            f.dispose();
+                            new Details(meals);
+                        }
+        
+                    }
+        
+                }
+            }
+        
         }
-    }
-}
