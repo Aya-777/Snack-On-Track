@@ -58,7 +58,6 @@ public class Order implements ActionListener {
         mealsbar.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 200));
 
         logoutButton.setBounds(400, 115, 130, 30);
-
         logoutButton.setFocusable(false);
 
         f.add(viewdetailsbutton);
@@ -92,8 +91,8 @@ public class Order implements ActionListener {
             num = 0;
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
-            MealFrame.meallist.clear();
-            MealFrame.fillLists();
+            AllMealsFrame.meallist.clear();
+            AllMealsFrame.fillLists();
             new SignFrame();
         }
         if (e.getSource() == addmealButton) {

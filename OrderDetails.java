@@ -7,6 +7,9 @@ import javax.swing.border.LineBorder;
 class OrderDetails implements ActionListener{
 
     JFrame f = new JFrame("Cart");
+    JLabel cartLabel = new JLabel();
+    ImageIcon cartIcon = new ImageIcon("cart.png");
+
     JButton confirmButton = new JButton("Confirm");
     JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(Order.num));
@@ -21,40 +24,54 @@ class OrderDetails implements ActionListener{
         f.setLayout(null);
         this.meals=meals;
 
-        scrollPane.setBounds(5, 0, 465, 400);
-        panelScroll.setLayout(null);
-        panelScroll.setPreferredSize(new Dimension(465,400));
-        panelScroll.setBorder(new LineBorder(Color.white, 2));
+        cartLabel.setBounds(0,0,500,500);
+        cartLabel.setIcon(cartIcon);
+
+        scrollPane.setBounds(50, 10, 385, 400);
+        scrollPane.setBackground(new Color(252,244,154));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        mealslabel.setBounds(275, 40, 100, 20);
+        panelScroll.setLayout(null);
+        panelScroll.setBounds(10,10,700,400);
+        panelScroll.setBackground(new Color(252,244,154));
+        panelScroll.setPreferredSize(new Dimension(465,400));
+        panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
+
+
+        mealslabel.setBounds(60, 425, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        mealnumlabel.setBounds(360, 40, 50, 20);
+        mealnumlabel.setBounds(130, 425, 50, 20);
         mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        pricelabel.setBounds(275, 75, 100, 20);
+        pricelabel.setBounds(200, 425, 100, 20);
         pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        pricenumlabel.setBounds(360, 75, 50, 20);
+        pricenumlabel.setBounds(270, 425, 50, 20);
         pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
 
-        confirmButton.setBounds(350, 430, 100, 20);
+        confirmButton.setBounds(340, 423, 120, 25);
         confirmButton.addActionListener(this);
 
+
+        cartLabel.add(mealnumlabel);
+        cartLabel.add(mealslabel);
+        cartLabel.add(pricelabel);
+        cartLabel.add(pricenumlabel);
+
+        f.add(cartLabel);
         f.add(scrollPane);
-        panelScroll.add(mealnumlabel);
-        panelScroll.add(mealslabel);
-        panelScroll.add(pricelabel);
-        panelScroll.add(pricenumlabel);
+
 
         int ind = 0;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                int xx = 10 ;
-                int yy = ind*30;
-                JLabel mealname = new JLabel(MealFrame.meallist.get(i).getName());
+                int xx = 15 ;
+                int yy = ind*60;
+                JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
-                mealname.setBounds(xx , yy, 200, 20);
-                mealnum.setBounds(xx+220 , yy , 50, 20);
+                mealname.setBounds(xx , yy, 320, 30);
+                mealname.setFont(new Font("Eras Medium ITC", Font.PLAIN, 25));
+                mealnum.setBounds(xx+320, yy , 50, 30);
+                mealnum.setFont(new Font("Eras Medium ITC", Font.PLAIN, 25));
 
                 panelScroll.add(mealname);
                 panelScroll.add(mealnum);

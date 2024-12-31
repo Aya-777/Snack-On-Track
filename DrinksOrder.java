@@ -54,13 +54,13 @@ public class DrinksOrder extends Order implements MouseListener{
             drink1labelPrice.setBounds(160, 75, 150, 60);
             drink1labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink1labelPrice.setForeground(new Color(232,99,73));
-            drink1labelPrice.setText(MealFrame.drink1.getPrice()+" $");
+            drink1labelPrice.setText(AllMealsFrame.drink1.getPrice()+" $");
             drink1labelPrice.setBackground(new Color(154,232,231));
             drink1labelPrice.setOpaque(true);
             drink1labelKalori.setBounds(25, 75, 110, 60);
             drink1labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink1labelKalori.setForeground(new Color(91,74,38));
-            drink1labelKalori.setText(MealFrame.drink1.getCals()+" kcal");
+            drink1labelKalori.setText(AllMealsFrame.drink1.getCals()+" kcal");
             drink1labelKalori.setBackground(new Color(154,232,231));
             drink1labelKalori.setOpaque(true);
     
@@ -72,13 +72,13 @@ public class DrinksOrder extends Order implements MouseListener{
             drink2labelPrice.setBounds(205, 75, 150, 60);
             drink2labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink2labelPrice.setForeground(new Color(232,99,73));
-            drink2labelPrice.setText(MealFrame.drink2.getPrice()+" $");
+            drink2labelPrice.setText(AllMealsFrame.drink2.getPrice()+" $");
             drink2labelPrice.setBackground(new Color(154,232,231));
             drink2labelPrice.setOpaque(true);
             drink2labelKalori.setBounds(25, 75, 160, 60);
             drink2labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink2labelKalori.setForeground(new Color(91,74,38));
-            drink2labelKalori.setText(MealFrame.drink2.getCals()+" kcal");
+            drink2labelKalori.setText(AllMealsFrame.drink2.getCals()+" kcal");
             drink2labelKalori.setBackground(new Color(154,232,231));
             drink2labelKalori.setOpaque(true);
     
@@ -91,13 +91,13 @@ public class DrinksOrder extends Order implements MouseListener{
             drink3labelPrice.setBounds(203, 75, 150, 60);
             drink3labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink3labelPrice.setForeground(new Color(232,99,73));
-            drink3labelPrice.setText(MealFrame.drink3.getPrice()+" $");
+            drink3labelPrice.setText(AllMealsFrame.drink3.getPrice()+" $");
             drink3labelPrice.setBackground(new Color(154,232,231));
             drink3labelPrice.setOpaque(true);
             drink3labelKalori.setBounds(25, 75, 160, 60);
             drink3labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink3labelKalori.setForeground(new Color(91,74,38));
-            drink3labelKalori.setText(MealFrame.drink3.getCals()+" kcal");
+            drink3labelKalori.setText(AllMealsFrame.drink3.getCals()+" kcal");
             drink3labelKalori.setBackground(new Color(154,232,231));
             drink3labelKalori.setOpaque(true);
     
@@ -109,13 +109,13 @@ public class DrinksOrder extends Order implements MouseListener{
             drink4labelPrice.setBounds(205, 75, 150, 60);
             drink4labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink4labelPrice.setForeground(new Color(232,99,73));
-            drink4labelPrice.setText(MealFrame.drink4.getPrice()+" $");
+            drink4labelPrice.setText(AllMealsFrame.drink4.getPrice()+" $");
             drink4labelPrice.setBackground(new Color(154,232,231));
             drink4labelPrice.setOpaque(true);
             drink4labelKalori.setBounds(25, 75, 160, 60);
             drink4labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink4labelKalori.setForeground(new Color(91,74,38));
-            drink4labelKalori.setText(MealFrame.drink4.getCals()+" kcal");
+            drink4labelKalori.setText(AllMealsFrame.drink4.getCals()+" kcal");
             drink4labelKalori.setBackground(new Color(154,232,231));
             drink4labelKalori.setOpaque(true);
     
@@ -128,13 +128,13 @@ public class DrinksOrder extends Order implements MouseListener{
             drink5labelPrice.setBounds(205, 75, 150, 60);
             drink5labelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink5labelPrice.setForeground(new Color(232,99,73));
-            drink5labelPrice.setText(MealFrame.drink5.getPrice()+" $");
+            drink5labelPrice.setText(AllMealsFrame.drink5.getPrice()+" $");
             drink5labelPrice.setBackground(new Color(154,232,231));
             drink5labelPrice.setOpaque(true);
             drink5labelKalori.setBounds(25, 75, 160, 60);
             drink5labelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
             drink5labelKalori.setForeground(new Color(91,74,38));
-            drink5labelKalori.setText(MealFrame.drink5.getCals()+" kcal");
+            drink5labelKalori.setText(AllMealsFrame.drink5.getCals()+" kcal");
             drink5labelKalori.setBackground(new Color(154,232,231));
             drink5labelKalori.setOpaque(true);
     
@@ -203,7 +203,7 @@ public class DrinksOrder extends Order implements MouseListener{
                         ,"Title",JOptionPane.ERROR_MESSAGE);
             }
             else {
-                new OrderDetails(MealFrame.order);
+                new OrderDetails(AllMealsFrame.order);
             }
         }
         if(e.getSource()==logoutButton){
@@ -218,43 +218,43 @@ public class DrinksOrder extends Order implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == drink1label){
-            if(MealFrame.drink1.getDeleted()){
+            if(AllMealsFrame.drink1.getDeleted()){
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(16,manager);
+                new AllMealsFrame(16,manager);
             }
         }
         if(e.getSource() == drink2label){
-            if(MealFrame.drink2.getDeleted()){
+            if(AllMealsFrame.drink2.getDeleted()){
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(17,manager);
+                new AllMealsFrame(17,manager);
             }
         }
         if(e.getSource() == drink3label){
-            if(MealFrame.drink3.getDeleted()){
+            if(AllMealsFrame.drink3.getDeleted()){
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(18,manager);
+                new AllMealsFrame(18,manager);
             }
         }
         if(e.getSource() == drink4label){
-            if(MealFrame.drink4.getDeleted()){
+            if(AllMealsFrame.drink4.getDeleted()){
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(19,manager);
+                new AllMealsFrame(19,manager);
             }
         }
         if(e.getSource() == drink5label){
-            if(MealFrame.drink5.getDeleted()){
+            if(AllMealsFrame.drink5.getDeleted()){
                 JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
             } else{
-                new MealFrame(20,manager);
+                new AllMealsFrame(20,manager);
             }
         }
     }

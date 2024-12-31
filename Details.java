@@ -63,7 +63,7 @@ public class Details implements ActionListener{
         cancelButton.addActionListener(this);
 
         f.setLayout(null);
-        f.setSize(665,850);
+        f.setSize(650,830);
 
         for (int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
@@ -88,7 +88,7 @@ public class Details implements ActionListener{
         y=gap; ynum=gap;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                JLabel mealname = new JLabel(MealFrame.meallist.get(i).getName());
+                JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
                 mealname.setBounds(x , y, 200, 20);
@@ -173,9 +173,9 @@ public class Details implements ActionListener{
             Order.num=0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            MealFrame.meallist.clear();
-            MealFrame.order.clear();
-            MealFrame.fillLists();
+            AllMealsFrame.meallist.clear();
+            AllMealsFrame.order.clear();
+            AllMealsFrame.fillLists();
             if(MealOrder.manager){
                 new MealOrder(true);
             } else {
@@ -183,9 +183,9 @@ public class Details implements ActionListener{
             }
         }
         if(e.getSource()==cancelButton){
-            MealFrame.meallist.clear();
-            MealFrame.order.clear();
-            MealFrame.fillLists();
+            AllMealsFrame.meallist.clear();
+            AllMealsFrame.order.clear();
+            AllMealsFrame.fillLists();
             cancelPressed=true;
             cancelButton.setEnabled(false);
         }

@@ -68,9 +68,9 @@ class AddMeal implements ActionListener {
                 int calorie = Integer.parseInt(mealcaloriefield.getText());
                 String name = mealnamefield.getText();
                 String desc = mealdescriptionfield.getText();
-                int serialnum = MealFrame.meallist.size()-1;
+                int serialnum = AllMealsFrame.meallist.size()-1;
                 Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0);
-                MealFrame.addMeal(newMeal);
+                AllMealsFrame.addMeal(newMeal);
 
                 JLabel newmealLabel = new JLabel(newmealIcon);
                 newmealLabel.setLayout(new FlowLayout());

@@ -72,7 +72,7 @@ class EditMeal implements ActionListener{
             // MealFrame.confirmEdit(m, price, calorie, desc);
             // confirmButton.setEnabled(false);
             f.dispose();
-            new MealFrame(mealnum,true);
+            new AllMealsFrame(mealnum,true);
         }
     }
 }
