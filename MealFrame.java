@@ -79,8 +79,9 @@ public class MealFrame implements ActionListener{
 
 
 
-    int mealnum,src;
+    int mealnum;
     Meal m;
+    String type;
     int num1 = order.get(mealnum);
     JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
     JButton addbutton = new JButton("+");
@@ -121,12 +122,12 @@ public class MealFrame implements ActionListener{
     static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
     static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
 
-    MealFrame(Integer mealnum , boolean manager,int src){
+    MealFrame(Integer mealnum , boolean manager,String type){
         f.setLayout(null);
         this.mealnum=mealnum;
         num1 = order.get(mealnum);
         this.m=meallist.get(mealnum);
-        this.src=src;
+        this.type=type;
 
         mainLabel.setBounds(0,0,650,830);
         try {
@@ -224,7 +225,7 @@ public class MealFrame implements ActionListener{
         }
         if(e.getSource()==editButton){
             f.dispose();
-            new EditMeal(m,mealnum,src);
+            new EditMeal(m,mealnum,type);
         }
     }
 

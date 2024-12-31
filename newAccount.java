@@ -106,8 +106,6 @@ public class newAccount extends JFrame implements ActionListener {
             if (!check) {
                 customeAccounts.add(new customerAccounts(userName, password));
                 this.dispose();
-                // customerAccounts.howManyTimes += 1;
-                // System.out.println(customerAccounts.howManyTimes);
                 new MealOrder(false);
             } else {
                 JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
@@ -119,8 +117,6 @@ public class newAccount extends JFrame implements ActionListener {
                 check = accountsExsisted2(userName, password, employeeNumber);
                 if (!check) {
                     mangeAccounts.add(new ManagementAccounts(password));
-                    // ManagementAccounts.howManyTimes += 1;
-                    // System.out.println(ManagementAccounts.howManyTimes);
                     this.dispose();
                     new MealOrder(true);
                 } else {
@@ -137,8 +133,6 @@ public class newAccount extends JFrame implements ActionListener {
 
     boolean accountsExsisted1(String user, String pass) { // customers
         boolean tempoCheck = false;
-        // boolean justForUser = user.equals("user name") || user.equals("enter a user
-        // name");
         if (!customeAccounts.isEmpty()) {
             for (int n = 0; n < customeAccounts.size(); n++) {
                 if (user.equals(customeAccounts.get(n).getName())) {

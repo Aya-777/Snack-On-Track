@@ -224,10 +224,19 @@ public class SaladOrder extends Order implements MouseListener {
             else {
                 new OrderDetails(MealFrame.order);}
         }
-        if(e.getSource()==logoutButton){
+        if(e.getSource()==logoutitem){
             super.actionPerformed(e);
         }
-        if(e.getSource()==addmealButton){
+        if(e.getSource()==addmealitem){
+            super.actionPerformed(e);
+        }
+        if (e.getSource() == addmealitem){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==manageritem){
+            super.actionPerformed(e);
+        }
+        if(e.getSource() == recommendationsitem){
             super.actionPerformed(e);
         }
 

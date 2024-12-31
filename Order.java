@@ -16,14 +16,20 @@ public class Order implements ActionListener, MouseListener{
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewdetailsbutton = new JButton("View details");
-    JButton logoutButton = new JButton("Log out");
-    JButton addmealButton = new JButton("Add Meal");
-    JButton ordersButton = new JButton("Orders");
+    // JButton logoutButton = new JButton("Log out");
+    // JButton addmealButton = new JButton("Add Meal");
+    // JButton managerButton = new JButton("Manager details");
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");
     JMenuItem dessertsitem = new JMenuItem("Desserts");
-    JMenuItem drinksitem = new JMenuItem("Drinks");;
+    JMenuItem drinksitem = new JMenuItem("Drinks");
+    JMenuBar menuBar= new JMenuBar();
+    JMenu menu = new JMenu("|||");
+    JMenuItem recommendationsitem = new JMenuItem("Recommendations");
+    JMenuItem logoutitem = new JMenuItem("Log out");
+    JMenuItem addmealitem = new JMenuItem("Add meal");
+    JMenuItem manageritem = new JMenuItem("Manager details");
     static boolean manager;
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
@@ -33,17 +39,19 @@ public class Order implements ActionListener, MouseListener{
     Order(boolean manager) {
         f.setLayout(null);
 
-        this.manager = manager;
+        Order.manager = manager;
         if (manager) {
-            ordersButton.setBounds(400,40,130,30);
-            addmealButton.setBounds(400, 80, 130, 30);
-            f.add(ordersButton);
-            f.add(addmealButton);
-            ordersButton.addActionListener(this);
-            addmealButton.addActionListener(this);
-            ordersButton.setFocusable(false);
-            addmealButton.setFocusable(false);
+            menu.add(addmealitem);
+            menu.add(manageritem);
+            // f.add(managerButton);
+            // f.add(addmealButton);
         }
+
+        menuBar.setBounds(0, 0, 635 , 15);
+        // menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        menuBar.add(menu);
+        menu.add(recommendationsitem);
+        menu.add(logoutitem);
 
         scrollPane.setBounds(10, 190, 615, 600);
         panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
@@ -68,24 +76,36 @@ public class Order implements ActionListener, MouseListener{
         mealsbar.setBounds(0, 160, 665, 25);
         mealsbar.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 200));
 
-        logoutButton.setBounds(400, 115, 130, 30);
+        // logoutButton.setBounds(400, 115, 130, 30);
+        // managerButton.setBounds(400,40,130,30);
+        // addmealButton.setBounds(400, 80, 130, 30);
 
-        logoutButton.setFocusable(false);
 
         f.add(viewdetailsbutton);
         f.add(mealnumlabel);
         f.add(mealslabel);
         f.add(pricelabel);
         f.add(pricenumlabel);
+        f.add(menuBar);
         f.add(mealsbar);
-        f.add(logoutButton);
+        // f.add(logoutButton);
 
         viewdetailsbutton.addActionListener(this);
         mealsitem.addActionListener(this);
         saladsitem.addActionListener(this);
         dessertsitem.addActionListener(this);
         drinksitem.addActionListener(this);
-        logoutButton.addActionListener(this);
+        addmealitem.addActionListener(this);
+        recommendationsitem.addActionListener(this);
+        logoutitem.addActionListener(this);
+        manageritem.addActionListener(this);
+        // logoutButton.addActionListener(this);
+        // managerButton.addActionListener(this);
+        // addmealButton.addActionListener(this);
+        // managerButton.setFocusable(false);
+        // addmealButton.setFocusable(false);
+        // logoutButton.setFocusable(false);
+
 
         f.setResizable(false);
         f.setSize(650, 830);
@@ -97,30 +117,34 @@ public class Order implements ActionListener, MouseListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == logoutButton) {
+        if (e.getSource() == logoutitem) {
             f.dispose();
             price = 0;
             num = 0;
+            Details.gap=150;
+            Details.x=130; Details.y=150; Details.xnum=350; Details.ynum=150;
+            Details.xstate=40; Details.ystate=200; Details.xbar=40; Details.ybar=150;
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
             MealFrame.meallist.clear();
             MealFrame.fillLists();
             new SignFrame();
         }
-        if (e.getSource() == addmealButton) {
+        if (e.getSource() == addmealitem){
             new AddMeal();
         }
-        if(e.getSource()==ordersButton){
-            
-
+        if(e.getSource()==manageritem){
+            new ManagerDetails(MealFrame.meallist);
+        }
+        if(e.getSource() == recommendationsitem){
+            new Recommendations(MealFrame.meallist);
         }
 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() instanceof JLabel){
-            // System.out.println(((JLabel) e.getSource()).getText());
-            for (JLabel jLabel : Order.meallabels) {
+            for (JLabel jLabel : meallabels) {
                 if(jLabel.getText()==((JLabel) e.getSource()).getText()){
                     int mealnum=Integer.parseInt(jLabel.getText());
                     Meal m = MealFrame.meallist.get(mealnum);
@@ -128,15 +152,7 @@ public class Order implements ActionListener, MouseListener{
                         JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
                     } else{
-                        if(m.getType()=="Meal"){
-                            new MealFrame(mealnum,manager ,1 );
-                        }else if(m.getType()=="Salad"){
-                            new MealFrame(mealnum,manager ,2 );
-                        }else if(m.getType()=="Dessert"){
-                            new MealFrame(mealnum,manager ,3 );
-                        }else if(m.getType()=="Drink"){
-                            new MealFrame(mealnum,manager ,4 );
-                        }
+                        new MealFrame(mealnum,manager ,m.getType());
                         break;
                     }
                 }

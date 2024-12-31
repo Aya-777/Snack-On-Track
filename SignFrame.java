@@ -119,9 +119,7 @@ public class SignFrame extends JFrame implements ActionListener {
             if (!userName.equals("employee")) { // customer
                 check = accountsExsisted1(userName, password);
                 if (check) {
-                    // customerAccounts.howManyTimes += 1;
                     this.dispose();
-                    // System.out.println(customerAccounts.howManyTimes);
                     new MealOrder(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "wrong account", 
@@ -132,9 +130,7 @@ public class SignFrame extends JFrame implements ActionListener {
                 check = accountsExsisted2(userName, password, employeeNumber);
                 if (check) {
 
-                    // System.out.println(ManagementAccounts.howManyTimes);
                     this.dispose();
-                    // new firstFrame();
                     new MealOrder(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "wrong account", 
@@ -145,23 +141,9 @@ public class SignFrame extends JFrame implements ActionListener {
         }
     } // the end of submite button's conditions
 
-    void extera() {
-        if (userTextField.getText().isEmpty()) {
-            userTextField.setBorder(border);
-            userTextField.setText("enter a user name");
-            emptyCheck = false;
-        }
-        if (passwordTextField.getText().isEmpty()) {
-            passwordTextField.setBorder(border);
-            passwordTextField.setText("enter a password");
-            emptyCheck = false;
-        }
-    }
 
     boolean accountsExsisted1(String user, String pass) { // customers
         boolean tempoCheck = false;
-        // boolean justForUser = user.equals("user name") || user.equals("enter a user
-        // name");
         if (!customeAccounts.isEmpty()) {
             for (int n = 0; n < customeAccounts.size(); n++) {
                 if (user.equals(customeAccounts.get(n).getName())) {
