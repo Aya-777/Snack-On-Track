@@ -3,45 +3,40 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class DrinksOrder extends Order implements MouseListener{
     JLabel drinksOrderIconLabel = new JLabel();
     ImageIcon drinksOrderIcon = new ImageIcon("main desin drinks.png");
-    JLabel drink1label = new JLabel();
+    JLabel drink1label = new JLabel("16");
     JLabel drink1labelPrice = new JLabel();
     JLabel drink1labelKalori = new JLabel();
     ImageIcon drinksIcon1 = new ImageIcon("menu drinks 1.png");
-    JLabel drink2label = new JLabel();
+    JLabel drink2label = new JLabel("17");
     JLabel drink2labelPrice = new JLabel();
     JLabel drink2labelKalori = new JLabel();
     ImageIcon drinksIcon2 = new ImageIcon("menu drinks 2.png");
-    JLabel drink3label = new JLabel();
+    JLabel drink3label = new JLabel("18");
     JLabel drink3labelPrice = new JLabel();
     JLabel drink3labelKalori = new JLabel();
     ImageIcon drinksIcon3 = new ImageIcon("menu drinks 3.png");
-    JLabel drink4label = new JLabel();
+    JLabel drink4label = new JLabel("19");
     JLabel drink4labelPrice = new JLabel();
     JLabel drink4labelKalori = new JLabel();
     ImageIcon drinksIcon4 = new ImageIcon("menu drinks 4.png");
-    JLabel drink5label = new JLabel();
+    JLabel drink5label = new JLabel("20");
     JLabel drink5labelPrice = new JLabel();
     JLabel drink5labelKalori = new JLabel();
     ImageIcon drinksIcon5 = new ImageIcon("menu drinks 5.png");
     static int num1=0,num2=0,num3=0,num4=0,num5=0;
-    static boolean added=false;
-    static JPanel panelScroll = new JPanel();
-    static JScrollPane scrollPane = new JScrollPane(panelScroll);
-    
+    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
+
         DrinksOrder(){}
         DrinksOrder(boolean manager){
             super(manager);
             Order.manager=manager;
-
-            scrollPane.setBounds(10, 190, 615, 600);
-            panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
-            panelScroll.setBorder(new LineBorder(Color.white, 2));
-            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
             drinksOrderIconLabel.setBounds(0,0,650,830);
             drinksOrderIconLabel.setIcon(drinksOrderIcon);
@@ -150,13 +145,13 @@ public class DrinksOrder extends Order implements MouseListener{
             drink4label.add(drink4labelKalori);
             drink5label.add(drink5labelKalori);
     
-            if(!added){
-                panelScroll.add(drink1label);
-                panelScroll.add(drink2label);
-                panelScroll.add(drink3label);
-                panelScroll.add(drink4label);
-                panelScroll.add(drink5label);
-                added=true;
+            panelScroll.add(drink1label);
+            panelScroll.add(drink2label);
+            panelScroll.add(drink3label);
+            panelScroll.add(drink4label);
+            panelScroll.add(drink5label);
+            for (JLabel jLabel : newmeallabels) {
+                panelScroll.add(jLabel);
             }
     
             drink1label.addMouseListener(this);
@@ -173,12 +168,25 @@ public class DrinksOrder extends Order implements MouseListener{
     
     
         }
-    @Override 
-    void addMeal(JLabel newmealLabel){    
-        newmealLabel.addMouseListener(this);
-        panelScroll.add(newmealLabel);    
-    }
 
+        void fillmeallabellist(){
+            Order.meallabels.add(drink1label);
+            Order.meallabels.add(drink2label);
+            Order.meallabels.add(drink3label);
+            Order.meallabels.add(drink4label);
+            Order.meallabels.add(drink5label);
+
+        }
+
+    @Override
+    void addMeal(JLabel newmealLabel){    
+        newmeals++;
+        newmealLabel.addMouseListener(this);
+        newmealLabel.setText(String.valueOf(newmeals));
+        panelScroll.add(newmealLabel);
+        newmeallabels.add(newmealLabel);
+        Order.meallabels.add(newmealLabel);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mealsitem){
@@ -217,46 +225,7 @@ public class DrinksOrder extends Order implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == drink1label){
-            if(AllMealsFrame.drink1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(16,manager);
-            }
-        }
-        if(e.getSource() == drink2label){
-            if(AllMealsFrame.drink2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(17,manager);
-            }
-        }
-        if(e.getSource() == drink3label){
-            if(AllMealsFrame.drink3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(18,manager);
-            }
-        }
-        if(e.getSource() == drink4label){
-            if(AllMealsFrame.drink4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(19,manager);
-            }
-        }
-        if(e.getSource() == drink5label){
-            if(AllMealsFrame.drink5.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(20,manager);
-            }
-        }
+        super.mouseClicked(e);
     }
     @Override
     public void mousePressed(MouseEvent e) {

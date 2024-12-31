@@ -8,68 +8,68 @@ public class AllMealsFrame implements ActionListener{
         // Meals
     static Meal m1 = new Meal(0,23,"Healthy Steak Meal",
         "Grilled fillet, broccoli, fries, served with special sauce and rice, "
-       + "cooked with an aromatic bouquet.",590,false,0);
+       + "cooked with an aromatic bouquet.",590,false,0,"Meal");
     static Meal m2 = new Meal(1,20,"Teryaki Chicken",
             "Chicken cooked in soy sauce,honey and apple juice,"
             +" mixed with capsicum, carrot, served with rice and broccoli." 
-            ,520,false,0);
+            ,520,false,0,"Meal");
     static Meal m3 = new Meal(2,22,"Healthy Chicken Meal",
             "Grilled chicken, grilled broccoli, grilled carrots,grilled beans," 
             +"grilled fresh mushrooms, grilled potatoes,served with special sauce and rice"+
-            " cooked with an aromatic bouquet.",500,false,0);
+            " cooked with an aromatic bouquet.",500,false,0,"Meal");
     static Meal m4 = new Meal(3,22,"Curry Chicken",
             "Chicken cooked with skimmed coconut milk, mixed with capsicum," +
-            "ginger, chicken broth, garlic, curry powder.",535,false,0);
+            "ginger, chicken broth, garlic, curry powder.",535,false,0,"Meal");
     static Meal m5 = new Meal(4,12,"Turkey",
             "Tortilla bread served with turkey, rocca, pickels and special yogurt sauce."
-                    ,525,false,0);
+                    ,525,false,0,"Meal");
     static Meal m6 = new Meal(5,15,"Tuna",
             "Seven grain brown loofah bread served with olive tabinade, rocca, tomato,"+
-        "lemon fillet, capers and diet tuna.",340,false,0);
+        "lemon fillet, capers and diet tuna.",340,false,0,"Meal");
     static Meal m7 = new Meal(6,18,"Chicken Avocado",
             "Grilled chicken, roasted red pepper, roaster mushrooms, cashew cream, avocado,"
             +" ciabatta bread seven seeds.",
-            410,false,0);
+            410,false,0,"Meal");
 
         // Salads
     static Meal s1 = new Meal(7,8,"Broccoli Salad",
         "Broccoli, cherry tomato, la russo lettuce, rocca, lemon, olive oil." 
-        ,160,false,0);
+        ,160,false,0,"Salad");
     static Meal s2 = new Meal(8,8,"Greek Salad",
-        "Tomato, cucumber, mixed pepper, olive, lemon, olive oil." ,275,false,0);  
+        "Tomato, cucumber, mixed pepper, olive, lemon, olive oil." ,275,false,0,"Salad");
     static Meal s3 = new Meal(9,12,"Quinoa Salad",
         "Quinoa, avocado, cherry tomato. walnut, red pepper, carrot," +
             "cucumber, mixed greens, red beans, lemon and olive oil.",
-            490,false,0);
+            490,false,0,"Salad");
     static Meal s4 = new Meal(10,16,"Asian Salad",
         "Mixed peppers, mixed greens, artichoke, noodles, red beans"+
         ", edmamme, grilled chicken served with light soy sauce and orange.",
-        490,false,0);
+        490,false,0,"Salad");
 
         //Desserts    
-        static Meal dessert1 = new Meal(11,7,"Vegan Mango Shia Pudding",
-        "Shia seeds, mango slices, mango juice, sugar.",200,false,0);
-    static Meal dessert2 = new Meal(12,8,"Chocolate Shia Pudding",
-        "Shia seeds, cocoa powder, banana, milk, chocolate shavings.",250,false,0);
-    static Meal dessert3 = new Meal(13,12,"Granola Bars",
+        static Meal dessert4 = new Meal(11,7,"Vegan Mango Shia Pudding",
+        "Shia seeds, mango slices, mango juice, sugar.",200,false,0,"Dessert");
+    static Meal dessert1 = new Meal(12,8,"Chocolate Shia Pudding",
+        "Shia seeds, cocoa powder, banana, milk, chocolate shavings.",250,false,0,"Dessert");
+    static Meal dessert2 = new Meal(13,12,"Granola Bars",
         "Shia seeds, oatmeal, raisins, almond, sunflower seeds, pumpkin seeds,"
-        +" coconut flakes, honey.",250,false,0);
-    static Meal dessert4 = new Meal(14,7,"Muhalabia",
-        "Milk, sugar, roses." ,150,false, 0);
+        +" coconut flakes, honey.",250,false,0,"Dessert");
+    static Meal dessert3 = new Meal(14,7,"Muhalabia(arabian milk pudding)",
+        "Milk, sugar, roses." ,150,false, 0,"Dessert");
     static Meal dessert5 = new Meal(15,8,"Flan",
-        "Milk, sugar, caramel" ,250,false, 0);
+        "Milk, sugar, caramel" ,250,false, 0,"Dessert");
 
         //Drinks
     static Meal drink1 = new Meal(16, 2, "Diet Coke",
-     "", 1,false, 0);
-    static Meal drink2 = new Meal(17, 5, "Watermelon Strawberry",
-        "Watermelon, strawberry, sugar, lemon.", 150,false, 0);
-    static Meal drink3 = new Meal(18, 6, "Peach and Raspberry",
-        "Raspberry, peach, red orange, pomegranet, milk, sugar.", 175,false, 0);
+     "", 1,false, 0,"Drink");
+    static Meal drink2 = new Meal(17, 5, "Watermelon Strawberry Smoothie",
+        "Watermelon, strawberry, sugar, lemon.", 150,false, 0,"Drink");
+    static Meal drink3 = new Meal(18, 6, "Peach and Raspberry Smoothie",
+        "Raspberry, peach, red orange, pomegranet, milk, sugar.", 175,false, 0,"Drink");
      static Meal drink4 = new Meal(19, 4, "Strawberry Iced Tea",
-        "Strawberry, tea, sugar." , 125,false, 0);
+        "Strawberry, tea, sugar." , 125,false, 0,"Drink");
      static Meal drink5 = new Meal(20, 4, "Orange Coconut Water",
-        "Orange, coconut, mint, sugar.", 125,false, 0); 
+        "Orange, coconut, mint, sugar.", 125,false, 0,"Drink");
        
 
     static ArrayList<Integer> order = new ArrayList<>();
@@ -78,7 +78,8 @@ public class AllMealsFrame implements ActionListener{
     static ArrayList<ImageIcon> arrayMealsIcon = new ArrayList<>();
 
 
-    int mealnum;
+
+    int mealnum,src;
     Meal m;
     int num1 = order.get(mealnum);
     JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
@@ -125,9 +126,15 @@ public class AllMealsFrame implements ActionListener{
         this.mealnum=mealnum;
         num1 = order.get(mealnum);
         this.m=meallist.get(mealnum);
+        this.src=src;
 
         mainLabel.setBounds(0,0,650,830);
-        mainLabel.setIcon(arrayMealsIcon.get(mealnum));
+        try {
+            mainLabel.setIcon(arrayMealsIcon.get(mealnum));
+        } catch (IndexOutOfBoundsException e) {
+            // mainLabel.setIcon(); // new meal icon
+        }
+
         mainLabel.setLayout(null);
         f.add(mainLabel);
 
@@ -158,8 +165,7 @@ public class AllMealsFrame implements ActionListener{
         pricenumlabel.setFont(new Font("consolas", Font.BOLD, 20));
         mealpricLabel.setBounds(530, 350, 100, 30);
         mealpricLabel.setFont(new Font("consolas", Font.BOLD, 20));
-
-        /*descTextArea.setText(m.getDesc());
+        descTextArea.setText(m.getDesc());
         descTextArea.setWrapStyleWord(true);
         descTextArea.setLineWrap(true);
         descTextArea.setEditable(false);
@@ -169,6 +175,7 @@ public class AllMealsFrame implements ActionListener{
         descTextArea.setBounds(40, 600, 400, 300);
         descTextArea.setFont(new Font("consolas", Font.BOLD , 15));*/
 
+        mainLabel.add(descTextArea);
         mainLabel.add(backButton);
         mainLabel.add(singlemealnumlabel);
         mainLabel.add(addbutton);
@@ -217,7 +224,7 @@ public class AllMealsFrame implements ActionListener{
         }
         if(e.getSource()==editButton){
             f.dispose();
-            new EditMeal(m,mealnum);
+            new EditMeal(m,mealnum,src);
         }
     }
 
@@ -302,6 +309,10 @@ public class AllMealsFrame implements ActionListener{
         arrayMealsIcon.add(drink4MainIcon);
         arrayMealsIcon.add(drink5MainIcon);
 
+        new MealOrder().fillmeallabellist();
+        new SaladOrder().fillmeallabellist();
+        new DessertOrder().fillmeallabellist();
+        new DrinksOrder().fillmeallabellist();
 
     }
 
@@ -309,7 +320,7 @@ public class AllMealsFrame implements ActionListener{
         meallist.add(newMeal);
         newmeals.add(newMeal);
         order.add(0);
-        System.out.println(meallist.size()); 
+        // System.out.println(meallist.size());
         
     }
 

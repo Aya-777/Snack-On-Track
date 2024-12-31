@@ -4,30 +4,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class SaladOrder extends Order implements MouseListener {
     JLabel saladOrderIconLabel = new JLabel();
     ImageIcon saladOrderIcon = new ImageIcon("main design salad.png");
-    JLabel salad1label = new JLabel();
+    JLabel salad1label = new JLabel("7");
     JLabel salad1LabelPrice = new JLabel();
     JLabel salad1LabelKalori = new JLabel();
     ImageIcon salad1Icon = new ImageIcon("menu salad 1.png");
-    JLabel salad2label = new JLabel();
+    JLabel salad2label = new JLabel("8");
     JLabel salad2LabelPrice = new JLabel();
     JLabel salad2LabelKalori = new JLabel();
     ImageIcon salad2Icon = new ImageIcon("menu salad 2.png");
-    JLabel salad3label = new JLabel();
+    JLabel salad3label = new JLabel("9");
     JLabel salad3LabelPrice = new JLabel();
     JLabel salad3LabelKalori = new JLabel();
     ImageIcon salad3Icon = new ImageIcon("menu salad 3.png");
-    JLabel salad4label = new JLabel();
+    JLabel salad4label = new JLabel("10");
     JLabel salad4LabelPrice = new JLabel();
     JLabel salad4LabelKalori = new JLabel();
     ImageIcon salad4Icon = new ImageIcon("menu salad 4.png");
-    static boolean added=false;
     static int num1=0,num2=0,num3=0,num4=0;
-    static JPanel panelScroll = new JPanel();
-    static JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
     
 
     SaladOrder(){}
@@ -116,6 +115,39 @@ public class SaladOrder extends Order implements MouseListener {
         salad4LabelKalori.setBackground(new Color(166,251,186));
         salad4LabelKalori.setOpaque(true);
 
+        for (JLabel jLabel : newmeallabels){
+            Meal m = AllMealsFrame.meallist.get(Integer.parseInt(jLabel.getText()));
+            JLabel pricLabel = new JLabel(String.valueOf(m.getPrice()));
+            JLabel nameLabel = new JLabel(m.getName());
+            JLabel caloriLabel = new JLabel(String.valueOf(m.getCals()));
+
+            pricLabel.setFont(null);
+            caloriLabel.setFont(null);
+            nameLabel.setFont(null);
+
+            pricLabel.setBounds(188, 78, 150, 55);
+            caloriLabel.setBounds(188, 78, 150, 55);
+            nameLabel.setBounds(188, 78, 150, 55);
+
+            pricLabel.setForeground(new Color(139,37,17));
+            caloriLabel.setForeground(new Color(139,37,17));
+            nameLabel.setForeground(new Color(139,37,17));
+
+            pricLabel.setOpaque(true);
+            caloriLabel.setOpaque(true);
+            nameLabel.setOpaque(true);
+
+            pricLabel.setBackground(new Color(255,134,120));
+            caloriLabel.setBackground(new Color(255,134,120));
+            nameLabel.setBackground(new Color(255,134,120));
+
+            jLabel.setLayout(new FlowLayout());
+            jLabel.add(nameLabel);
+            jLabel.add(pricLabel);
+            jLabel.add(caloriLabel);
+
+        }
+
 
         salad1label.add(salad1LabelPrice);
         salad2label.add(salad2LabelPrice);
@@ -127,12 +159,12 @@ public class SaladOrder extends Order implements MouseListener {
         salad3label.add(salad3LabelKalori);
         salad4label.add(salad4LabelKalori);
 
-        if(!added){
-            panelScroll.add(salad1label);
-            panelScroll.add(salad2label);
-            panelScroll.add(salad3label);
-            panelScroll.add(salad4label);
-            added=true;
+        panelScroll.add(salad1label);
+        panelScroll.add(salad2label);
+        panelScroll.add(salad3label);
+        panelScroll.add(salad4label);
+        for (JLabel jLabel : newmeallabels) {
+            panelScroll.add(jLabel);
         }
 
         salad1label.addMouseListener(this);
@@ -147,10 +179,22 @@ public class SaladOrder extends Order implements MouseListener {
 
         saladsitem.setEnabled(false);
     }
-    @Override 
+
+    void fillmeallabellist(){
+        Order.meallabels.add(salad1label);
+        Order.meallabels.add(salad2label);
+        Order.meallabels.add(salad3label);
+        Order.meallabels.add(salad4label);
+    }
+
+    @Override
     void addMeal(JLabel newmealLabel){
+        newmeals++;
         newmealLabel.addMouseListener(this);
-        panelScroll.add(newmealLabel);
+            newmealLabel.setText(String.valueOf(newmeals));
+            panelScroll.add(newmealLabel);
+            newmeallabels.add(newmealLabel);
+            Order.meallabels.add(newmealLabel);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -223,21 +267,14 @@ public class SaladOrder extends Order implements MouseListener {
                 new AllMealsFrame(10,manager);
             }
         }
+        super.mouseClicked(e);
     }
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
     @Override
-    public void mouseReleased(MouseEvent e) {
-     
-    }
+    public void mouseReleased(MouseEvent e) {}
     @Override
-    public void mouseEntered(MouseEvent e) {
-   
-    }
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 }

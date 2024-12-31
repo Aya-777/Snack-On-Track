@@ -8,8 +8,9 @@ public class Meal{
     private int cals;
     private boolean deleted;
     private int popularity;
+    private String type;
 
-    Meal(int serialnum , int price , String name ,String desc ,int cals , boolean deleted,int popularity){
+    Meal(int serialnum , int price , String name ,String desc ,int cals , boolean deleted,int popularity,String type){
         this.serialnum=serialnum;
         this.price=price;
         this.desc=desc;
@@ -17,8 +18,12 @@ public class Meal{
         this.cals=cals;
         this.deleted=deleted;
         this.popularity=popularity;
+        this.type=type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
     public void setPopularity(int popularity) {
         this.popularity = popularity;
     }
@@ -41,6 +46,9 @@ public class Meal{
         this.name = name;
     }
 
+    public String getType() {
+        return type;
+    }
     public int getPopularity() {
         return popularity;
     }

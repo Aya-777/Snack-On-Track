@@ -6,45 +6,39 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class DessertOrder extends Order implements MouseListener{
 
     JLabel dessertOrderIconLabel = new JLabel();
     ImageIcon dessertOrderIcon =new ImageIcon("main design sweets.png");
-    JLabel dessert1label = new JLabel();
+    JLabel dessert1label = new JLabel("11");
     JLabel dessert1LabelPrice = new JLabel();
     JLabel dessert1LabelKalori = new JLabel();
     ImageIcon dessert1Icon = new ImageIcon("menu sweets 1.png");
-    JLabel dessert2label = new JLabel();
+    JLabel dessert2label = new JLabel("12");
     JLabel dessert2LabelPrice = new JLabel();
     JLabel dessert2LabelKalori = new JLabel();
     ImageIcon dessert2Icon = new ImageIcon("menu sweets 2.png");
-    JLabel dessert3label = new JLabel();
+    JLabel dessert3label = new JLabel("13");
     JLabel dessert3LabelPrice = new JLabel();
     JLabel dessert3LabelKalori = new JLabel();
     ImageIcon dessert3Icon = new ImageIcon("menu sweets 3.png");
-    JLabel dessert4label = new JLabel();
+    JLabel dessert4label = new JLabel("14");
     JLabel dessert4LabelPrice = new JLabel();
     JLabel dessert4LabelKalori = new JLabel();
     ImageIcon dessert4Icon = new ImageIcon("menu sweets 4.png");
-    JLabel dessert5label = new JLabel();
+    JLabel dessert5label = new JLabel("15");
     JLabel dessert5LabelPrice = new JLabel();
     JLabel dessert5LabelKalori = new JLabel();
     ImageIcon dessert5Icon = new ImageIcon("menu sweets 5.png");
     static int num1=0,num2=0,num3=0 ,num4=0,num5=0;
-    static boolean added=false;
-    static JPanel panelScroll = new JPanel();
-    static JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
 
 
     DessertOrder(boolean manager){
         super(manager);
         Order.manager=manager;
-
-        scrollPane.setBounds(10, 190, 615, 600);
-        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
-        panelScroll.setBorder(new LineBorder(Color.white, 2));
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         dessertOrderIconLabel.setBounds(0,0,650,830);
         dessertOrderIconLabel.setIcon(dessertOrderIcon);
@@ -160,8 +154,10 @@ public class DessertOrder extends Order implements MouseListener{
         panelScroll.add(dessert3label);
         panelScroll.add(dessert4label);
         panelScroll.add(dessert5label);
-        added=true;
-    }
+        for (JLabel jLabel : newmeallabels) {
+            panelScroll.add(jLabel);
+        }
+
         dessert1label.addMouseListener(this);
         dessert2label.addMouseListener(this);
         dessert3label.addMouseListener(this);
@@ -176,10 +172,23 @@ public class DessertOrder extends Order implements MouseListener{
     }
     public DessertOrder(){}
 
-    @Override 
+
+    void fillmeallabellist(){
+        Order.meallabels.add(dessert1label);
+        Order.meallabels.add(dessert2label);
+        Order.meallabels.add(dessert3label);
+        Order.meallabels.add(dessert4label);
+        Order.meallabels.add(dessert5label);
+
+    }
+    @Override
     void addMeal(JLabel newmealLabel){
+        newmeals++;
         newmealLabel.addMouseListener(this);
-        panelScroll.add(newmealLabel);   
+        newmealLabel.setText(String.valueOf(newmeals));
+        panelScroll.add(newmealLabel);
+        newmeallabels.add(newmealLabel);
+        Order.meallabels.add(newmealLabel);
     }
 
     @Override
@@ -221,62 +230,18 @@ public class DessertOrder extends Order implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == dessert1label){
-            if(AllMealsFrame.dessert1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(11,manager);
-            }
-        }
-        if(e.getSource() == dessert2label){
-            if(AllMealsFrame.dessert2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(12,manager);
-            }
-        }
-        if(e.getSource() == dessert3label){
-            if(AllMealsFrame.dessert3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(13,manager);
-            }
-        }
-        if(e.getSource() == dessert4label){
-            if(AllMealsFrame.dessert4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(14,manager);
-            }
-        }
-        if(e.getSource() == dessert5label){
-            if(AllMealsFrame.dessert5.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(15,manager);
-            }
-        }
-        
+        super.mouseClicked(e);
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-    }
+    public void mouseExited(MouseEvent e) {}
 }
