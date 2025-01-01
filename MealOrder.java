@@ -10,7 +10,7 @@ public class MealOrder extends Order implements MouseListener {
     JLabel mealOrderIconLabel = new JLabel();
     ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
     JLabel meal1label = new JLabel("0");
-    JLabel meal1LabelPrice;
+    JLabel meal1LabelPrice=new JLabel();
     JLabel meal1LabelKalori = new JLabel();
     ImageIcon meal1Icon = new ImageIcon("menu meal 1.png");
     JLabel meal2label = new JLabel("1");
