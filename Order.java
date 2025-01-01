@@ -122,9 +122,10 @@ public class Order implements ActionListener, MouseListener{
             f.dispose();
             price = 0;
             num = 0;
-            Details.gap=150;
+            Details.gap=30;
             Details.x=130; Details.y=150; Details.xnum=350; Details.ynum=150;
-            Details.xstate=40; Details.ystate=200; Details.xbar=40; Details.ybar=150;
+            Details.xstate=40; Details.ystate=200; Details.xbar=20; Details.ybar=30;
+            Details.panelScroll=new JPanel();
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
             AllMealsFrame.meallist.clear();

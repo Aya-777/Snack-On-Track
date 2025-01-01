@@ -22,7 +22,7 @@ public class Details implements ActionListener{
     JButton cancelButton = new JButton("Cancel Button");
     JLabel state = new JLabel("Accepting order...");
     JProgressBar detailsprogregressbar = new JProgressBar();
-    JPanel panelScroll = new JPanel();
+    static JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static int x=130 ,y=150 , xnum=350 , ynum=150,xstate=40,ystate=200,xbar=20,ybar=30;
     static int gap=30;
