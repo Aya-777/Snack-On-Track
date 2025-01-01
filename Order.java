@@ -80,6 +80,8 @@ public class Order implements ActionListener, MouseListener{
         // managerButton.setBounds(400,40,130,30);
         // addmealButton.setBounds(400, 80, 130, 30);
 
+        mealnumlabel.setText(String.valueOf(num));
+        pricenumlabel.setText(String.valueOf(price));
 
         f.add(viewdetailsbutton);
         f.add(mealnumlabel);
@@ -129,6 +131,7 @@ public class Order implements ActionListener, MouseListener{
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
             AllMealsFrame.meallist.clear();
+            AllMealsFrame.order.clear();
             AllMealsFrame.fillLists();
             new SignFrame();
         }
