@@ -157,6 +157,7 @@ public class Order implements ActionListener, MouseListener{
                     if(m.getDeleted()){
                         JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
+                        break;
                     } else{
                         new AllMealsFrame(mealnum,manager ,m.getType());
                         break;

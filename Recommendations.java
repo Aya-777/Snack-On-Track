@@ -30,11 +30,12 @@ class Recommendations{
         }
         if(min>0){
             try {
+                f.add(new JLabel("Most popular meal :"));
                 mostpopularmealLabel = new JLabel(mostpopularmeal.getName());
-                JLabel l = new JLabel();
-                l=Order.meallabels.get(mostpopularmeal.getSerialnum());
+                // JLabel l = new JLabel();
+                // l=Order.meallabels.get(mostpopularmeal.getSerialnum());
                 f.add(mostpopularmealLabel);
-                f.add(l);
+                // f.add(l);
             } catch (Exception e) {}
             RecommendationExist=true;
         }
@@ -49,6 +50,7 @@ class Recommendations{
         }
         if(min>0){
             try {
+                f.add(new JLabel("Most popular salad :"));
                 mostpopularsaladLabel = new JLabel(mostpopularsalad.getName()); 
                 // JLabel l = Order.meallabels.get(mostpopularmeal.getSerialnum()); 
                 f.add(mostpopularsaladLabel);
@@ -67,6 +69,7 @@ class Recommendations{
         }
         if(min>0){
             try {
+                f.add(new JLabel("Most popular dessert :"));
                 mostpopulardessertLabel = new JLabel(mostpopulardessert.getName()); 
                 // JLabel l = Order.meallabels.get(mostpopularmeal.getSerialnum()); 
                 f.add(mostpopulardessertLabel);
@@ -85,6 +88,7 @@ class Recommendations{
         }
         if(min>0){
             try {
+                f.add(new JLabel("Most popular drink :"));
                 mostpopulardrinkLabel = new JLabel(mostpopulardrink.getName()); 
                 f.add(mostpopulardrinkLabel);
             } catch (Exception e) {}

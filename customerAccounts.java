@@ -3,7 +3,7 @@ import java.io.Serializable;
 public class customerAccounts implements Serializable {
     private String name;
     private String password;
-    private int howManyTimes = 0;
+    private int howManyTimes = 1;
     private Bank bankAccount = null;
 
     customerAccounts(String name, String password) {
