@@ -47,14 +47,14 @@ public class AllMealsFrame implements ActionListener{
         490,false,0,"Salad");
 
         //Desserts    
-        static Meal dessert4 = new Meal(11,7,"Vegan Mango Shia Pudding",
+        static Meal dessert1 = new Meal(11,7,"Vegan Mango Shia Pudding",
         "Shia seeds, mango slices, mango juice, sugar.",200,false,0,"Dessert");
-    static Meal dessert1 = new Meal(12,8,"Chocolate Shia Pudding",
+    static Meal dessert2 = new Meal(12,8,"Chocolate Shia Pudding",
         "Shia seeds, cocoa powder, banana, milk, chocolate shavings.",250,false,0,"Dessert");
-    static Meal dessert2 = new Meal(13,12,"Granola Bars",
+    static Meal dessert3 = new Meal(13,12,"Granola Bars",
         "Shia seeds, oatmeal, raisins, almond, sunflower seeds, pumpkin seeds,"
         +" coconut flakes, honey.",250,false,0,"Dessert");
-    static Meal dessert3 = new Meal(14,7,"Muhalabia(arabian milk pudding)",
+    static Meal dessert4 = new Meal(14,7,"Muhalabia(arabian milk pudding)",
         "Milk, sugar, roses." ,150,false, 0,"Dessert");
     static Meal dessert5 = new Meal(15,8,"Flan",
         "Milk, sugar, caramel" ,250,false, 0,"Dessert");
@@ -120,8 +120,7 @@ public class AllMealsFrame implements ActionListener{
     static ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
     static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
     static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
-
-    AllMealsFrame(Integer mealnum , boolean manager){
+    AllMealsFrame(Integer mealnum , boolean manager,int src){
         f.setLayout(null);
         this.mealnum=mealnum;
         num1 = order.get(mealnum);
@@ -173,7 +172,7 @@ public class AllMealsFrame implements ActionListener{
         descTextArea.setOpaque(false);
         descTextArea.setBorder(null);
         descTextArea.setBounds(40, 600, 400, 300);
-        descTextArea.setFont(new Font("consolas", Font.BOLD , 15));*/
+        descTextArea.setFont(new Font("consolas", Font.BOLD , 15));
 
         mainLabel.add(descTextArea);
         mainLabel.add(backButton);

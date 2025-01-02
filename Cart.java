@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -8,6 +8,10 @@ public class Cart implements ActionListener {
 
     ArrayList<Integer> meals = new ArrayList<>();
     JFrame f = new JFrame();
+
+    JLabel cartLabel = new JLabel();
+    ImageIcon cartIcon = new ImageIcon("cart.png");
+
     JLabel l = new JLabel("Your Order");
     JCheckBox delivery = new JCheckBox("Delivery");
     JCheckBox bankCheckBox = new JCheckBox("Bank");
@@ -35,54 +39,66 @@ public class Cart implements ActionListener {
         meals = ll;
         f.setLayout(null);
         // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        cartLabel.setBounds(0,0,500,500);
+        cartLabel.setIcon(cartIcon);
+        cartLabel.setOpaque(true);
 
-        l.setBounds(50, 50, 100, 20);
+        l.setBounds(178, 85, 400, 40);
+        l.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 25));
 
-        delivery.setBounds(170, 100, 100, 20);
+        delivery.setBounds(200, 135, 100, 20);
+        delivery.setBackground(new Color(252,244,154));
         delivery.setBorder(null);
         delivery.addActionListener(this);
 
-        bankCheckBox.setBounds(200, 300, 80, 50);
+        bankCheckBox.setBounds(315, 330, 80, 50);
+        bankCheckBox.setBackground(new Color(252,244,154));
         bankCheckBox.setSelected(false);
         bankCheckBox.addActionListener(this);
 
-        cashCheckBox.setBounds(100, 300, 80, 50);
+        cashCheckBox.setBounds(150, 330, 80, 50);
+        cashCheckBox.setBackground(new Color(252,244,154));
         cashCheckBox.setSelected(true);
         cashCheckBox.addActionListener(this);
 
-        continuenutton.setBounds(180, 400, 150, 20);
+        continuenutton.setBounds(175, 400, 150, 25);
         continuenutton.addActionListener(this);
 
-        detailslabel.setBounds(50, 200, 100, 20);
-        detailsfield.setBounds(150, 200, 100, 20);
+        detailslabel.setBounds(80, 235, 350, 20);
+        detailslabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
+        detailsfield.setBounds(262, 237, 100, 20);
 
-        tiplabel.setBounds(50, 250, 100, 20);
-        tipfield.setBounds(150, 250, 100, 20);
+        tiplabel.setBounds(80, 290, 200, 20);
+        tiplabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
+        tipfield.setBounds(225, 292, 100, 20);
 
         tablenumlabel = new JLabel("Table number: ");
         tablenumtextfield = new JTextField();
 
-        tablenumlabel.setBounds(50, 150, 100, 20);
-        tablenumtextfield.setBounds(150, 150, 100, 20);
+        tablenumlabel.setBounds(80, 180, 300, 20);
+        tablenumlabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
+        tablenumtextfield.setBounds(232, 182, 100, 20);
 
         tablenumlabel.setVisible(true);
         tablenumtextfield.setVisible(true);
 
-        f.add(tablenumlabel);
-        f.add(tablenumtextfield);
-        f.add(bankCheckBox);
-        f.add(cashCheckBox);
-        f.add(detailsfield);
-        f.add(detailslabel);
-        f.add(l);
-        f.add(delivery);
-        f.add(tipfield);
-        f.add(tiplabel);
+
+        cartLabel.add(tablenumlabel);
+        cartLabel.add(tablenumtextfield);
+        cartLabel.add(bankCheckBox);
+        cartLabel.add(cashCheckBox);
+        cartLabel.add(detailsfield);
+        cartLabel.add(detailslabel);
+        cartLabel.add(l);
+        cartLabel.add(delivery);
+        cartLabel.add(tipfield);
+        cartLabel.add(tiplabel);
 
         // f.add(addressfield);
         // f.add(addresslabel);
-        f.add(pricelabel);
-        f.add(continuenutton);
+        cartLabel.add(pricelabel);
+        cartLabel.add(continuenutton);
+        f.add(cartLabel);
 
         f.setResizable(false);
         f.setSize(500, 500);

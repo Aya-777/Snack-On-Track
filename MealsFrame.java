@@ -7,7 +7,7 @@ public class MealsFrame extends AllMealsFrame {
     JLabel mealLabel = new JLabel();*/
 
     MealsFrame(Integer mealnum, boolean manager) {
-        super(mealnum, manager);
+        super(mealnum, manager,1);
 
        /* addbutton.setBounds(245, 480, 50, 30);
         singlemealnumlabel.setBounds(313, 490, 50, 20);

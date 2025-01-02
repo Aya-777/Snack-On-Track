@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Order implements ActionListener, MouseListener{
 
-    static int num = 0, price = 0, newmeals=MealFrame.meallist.size()-1;
+    static int num = 0, price = 0, newmeals=AllMealsFrame.meallist.size()-1;
     JFrame f = new JFrame();
     JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
@@ -122,19 +122,19 @@ public class Order implements ActionListener, MouseListener{
             for (JLabel jLabel : Order.meallabels) {
                 if(jLabel.getText()==((JLabel) e.getSource()).getText()){
                     int mealnum=Integer.parseInt(jLabel.getText());
-                    Meal m = MealFrame.meallist.get(mealnum);
+                    Meal m = AllMealsFrame.meallist.get(mealnum);
                     if(m.getDeleted()){
                         JOptionPane.showMessageDialog(null,"This meal is not available.",
                     "Title",JOptionPane.OK_OPTION);
                     } else{
                         if(m.getType()=="Meal"){
-                            new MealFrame(mealnum,manager ,1 );
+                            new AllMealsFrame(mealnum,manager ,1 );
                         }else if(m.getType()=="Salad"){
-                            new MealFrame(mealnum,manager ,2 );
+                            new AllMealsFrame(mealnum,manager ,2 );
                         }else if(m.getType()=="Dessert"){
-                            new MealFrame(mealnum,manager ,3 );
+                            new AllMealsFrame(mealnum,manager ,3 );
                         }else if(m.getType()=="Drink"){
-                            new MealFrame(mealnum,manager ,4 );
+                            new AllMealsFrame(mealnum,manager ,4 );
                         }
                         break;
                     }

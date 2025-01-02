@@ -37,296 +37,156 @@ public class MealOrder extends Order implements MouseListener {
     JLabel meal7LabelPrice = new JLabel();
     JLabel meal7LabelKalori = new JLabel();
     ImageIcon meal7Icon = new ImageIcon("menu meal 7.png");
-    static boolean added=false;
-    static JPanel panelScroll = new JPanel();
-    static JScrollPane scrollPane = new JScrollPane(panelScroll);
+    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
+
 
     MealOrder(){}
-    MealOrder(boolean manager){
+    MealOrder(boolean manager) {
         super(manager);
-        Order.manager=manager;
+        Order.manager = manager;
 
         scrollPane.setBounds(10, 190, 615, 600);
         panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
         panelScroll.setBorder(new LineBorder(Color.white, 2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        mealOrderIconLabel.setBounds(0,0,650,830);
+        mealOrderIconLabel.setBounds(0, 0, 650, 830);
         mealOrderIconLabel.setIcon(mealOrderIcon);
 
 
-        meal1label.setBorder(new LineBorder(Color.white,2));
+        meal1label.setBorder(new LineBorder(Color.white, 2));
         meal1label.setOpaque(true);
         meal1label.setIcon(meal1Icon);
 
         meal1LabelPrice.setBounds(188, 78, 150, 60);
-        meal1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal1LabelPrice.setForeground(new Color(139,37,17));
-        meal1LabelPrice.setText(String.valueOf(AllMealsFrame.m1.getPrice())+" $");
-        meal1LabelPrice.setBackground(new Color(255,134,120));
+        meal1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal1LabelPrice.setForeground(new Color(139, 37, 17));
+        meal1LabelPrice.setText(String.valueOf(AllMealsFrame.m1.getPrice()) + " $");
+        meal1LabelPrice.setBackground(new Color(255, 134, 120));
         meal1LabelPrice.setOpaque(true);
         meal1LabelKalori.setBounds(25, 78, 140, 60);
-        meal1LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal1LabelKalori.setForeground(new Color(229,230,202));
-        meal1LabelKalori.setText(String.valueOf(AllMealsFrame.m1.getCals())+" kcal");
-        meal1LabelKalori.setBackground(new Color(255,134,120));
+        meal1LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal1LabelKalori.setForeground(new Color(229, 230, 202));
+        meal1LabelKalori.setText(String.valueOf(AllMealsFrame.m1.getCals()) + " kcal");
+        meal1LabelKalori.setBackground(new Color(255, 134, 120));
         meal1LabelKalori.setOpaque(true);
 
 
-
-        meal2label.setBorder(new LineBorder(Color.white,2));
+        meal2label.setBorder(new LineBorder(Color.white, 2));
         meal2label.setOpaque(true);
         meal2label.setIcon(meal2Icon);
 
         meal2LabelPrice.setBounds(195, 78, 150, 60);
-        meal2LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal2LabelPrice.setForeground(new Color(139,37,17));
-        meal2LabelPrice.setText(String.valueOf(AllMealsFrame.m2.getPrice())+" $");
-        meal2LabelPrice.setBackground(new Color(255,134,120));
+        meal2LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal2LabelPrice.setForeground(new Color(139, 37, 17));
+        meal2LabelPrice.setText(String.valueOf(AllMealsFrame.m2.getPrice()) + " $");
+        meal2LabelPrice.setBackground(new Color(255, 134, 120));
         meal2LabelPrice.setOpaque(true);
         meal2LabelKalori.setBounds(25, 78, 155, 60);
-        meal2LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal2LabelKalori.setForeground(new Color(229,230,202));
-        meal2LabelKalori.setText(String.valueOf(AllMealsFrame.m2.getCals())+" kcal");
-        meal2LabelKalori.setBackground(new Color(255,134,120));
+        meal2LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal2LabelKalori.setForeground(new Color(229, 230, 202));
+        meal2LabelKalori.setText(String.valueOf(AllMealsFrame.m2.getCals()) + " kcal");
+        meal2LabelKalori.setBackground(new Color(255, 134, 120));
         meal2LabelKalori.setOpaque(true);
 
 
-        meal3label.setBorder(new LineBorder(Color.white,2));
+        meal3label.setBorder(new LineBorder(Color.white, 2));
         meal3label.setOpaque(true);
         meal3label.setIcon(meal3Icon);
 
         meal3LabelPrice.setBounds(195, 78, 120, 60);
-        meal3LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal3LabelPrice.setForeground(new Color(139,37,17));
-        meal3LabelPrice.setText(String.valueOf(AllMealsFrame.m3.getPrice())+" $");
-        meal3LabelPrice.setBackground(new Color(255,134,120));
+        meal3LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal3LabelPrice.setForeground(new Color(139, 37, 17));
+        meal3LabelPrice.setText(String.valueOf(AllMealsFrame.m3.getPrice()) + " $");
+        meal3LabelPrice.setBackground(new Color(255, 134, 120));
         meal3LabelPrice.setOpaque(true);
 
         meal3LabelKalori.setBounds(25, 78, 155, 60);
-        meal3LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal3LabelKalori.setForeground(new Color(229,230,202));
-        meal3LabelKalori.setText(String.valueOf(AllMealsFrame.m3.getCals())+" kcal");
-        meal3LabelKalori.setBackground(new Color(255,134,120));
+        meal3LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal3LabelKalori.setForeground(new Color(229, 230, 202));
+        meal3LabelKalori.setText(String.valueOf(AllMealsFrame.m3.getCals()) + " kcal");
+        meal3LabelKalori.setBackground(new Color(255, 134, 120));
         meal3LabelKalori.setOpaque(true);
 
 
-
-        meal4label.setBorder(new LineBorder(Color.white,2));
+        meal4label.setBorder(new LineBorder(Color.white, 2));
         meal4label.setOpaque(true);
         meal4label.setIcon(meal4Icon);
 
         meal4LabelPrice.setBounds(195, 78, 150, 60);
-        meal4LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal4LabelPrice.setForeground(new Color(139,37,17));
-        meal4LabelPrice.setText(String.valueOf(AllMealsFrame.m4.getPrice())+" $");
+        meal4LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal4LabelPrice.setForeground(new Color(139, 37, 17));
+        meal4LabelPrice.setText(String.valueOf(AllMealsFrame.m4.getPrice()) + " $");
 
-        meal4LabelPrice.setBackground(new Color(255,134,120));
+        meal4LabelPrice.setBackground(new Color(255, 134, 120));
         meal4LabelPrice.setOpaque(true);
         meal4LabelKalori.setBounds(25, 78, 155, 60);
-        meal4LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal4LabelKalori.setForeground(new Color(229,230,202));
-        meal4LabelKalori.setText(String.valueOf(AllMealsFrame.m4.getCals())+" kcal");
-        meal4LabelKalori.setBackground(new Color(255,134,120));
+        meal4LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal4LabelKalori.setForeground(new Color(229, 230, 202));
+        meal4LabelKalori.setText(String.valueOf(AllMealsFrame.m4.getCals()) + " kcal");
+        meal4LabelKalori.setBackground(new Color(255, 134, 120));
         meal4LabelKalori.setOpaque(true);
 
 
-
-        meal5label.setBorder(new LineBorder(Color.white,2));
+        meal5label.setBorder(new LineBorder(Color.white, 2));
         meal5label.setOpaque(true);
         meal5label.setIcon(meal5Icon);
 
         meal5LabelPrice.setBounds(188, 78, 150, 60);
-        meal5LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal5LabelPrice.setForeground(new Color(139,37,17));
-        meal5LabelPrice.setText(String.valueOf(AllMealsFrame.m5.getPrice())+" $");
-        meal5LabelPrice.setBackground(new Color(255,134,120));
+        meal5LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal5LabelPrice.setForeground(new Color(139, 37, 17));
+        meal5LabelPrice.setText(String.valueOf(AllMealsFrame.m5.getPrice()) + " $");
+        meal5LabelPrice.setBackground(new Color(255, 134, 120));
         meal5LabelPrice.setOpaque(true);
         meal5LabelKalori.setBounds(25, 78, 140, 60);
-        meal5LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal5LabelKalori.setForeground(new Color(229,230,202));
-        meal5LabelKalori.setText(String.valueOf(AllMealsFrame.m5.getCals())+" kcal");
-        meal5LabelKalori.setBackground(new Color(255,134,120));
+        meal5LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal5LabelKalori.setForeground(new Color(229, 230, 202));
+        meal5LabelKalori.setText(String.valueOf(AllMealsFrame.m5.getCals()) + " kcal");
+        meal5LabelKalori.setBackground(new Color(255, 134, 120));
         meal5LabelKalori.setOpaque(true);
 
 
-        meal6label.setBorder(new LineBorder(Color.white,2));
+        meal6label.setBorder(new LineBorder(Color.white, 2));
         meal6label.setOpaque(true);
         meal6label.setIcon(meal6Icon);
 
         meal6LabelPrice.setBounds(188, 78, 150, 60);
-        meal6LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal6LabelPrice.setForeground(new Color(139,37,17));
-        meal6LabelPrice.setText(String.valueOf(AllMealsFrame.m6.getPrice())+" $");
-        meal6LabelPrice.setBackground(new Color(255,134,120));
+        meal6LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal6LabelPrice.setForeground(new Color(139, 37, 17));
+        meal6LabelPrice.setText(String.valueOf(AllMealsFrame.m6.getPrice()) + " $");
+        meal6LabelPrice.setBackground(new Color(255, 134, 120));
         meal6LabelPrice.setOpaque(true);
         meal6LabelKalori.setBounds(25, 78, 140, 60);
-        meal6LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal6LabelKalori.setForeground(new Color(229,230,202));
-        meal6LabelKalori.setText(String.valueOf(AllMealsFrame.m6.getCals())+" kcal");
-        meal6LabelKalori.setBackground(new Color(255,134,120));
+        meal6LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal6LabelKalori.setForeground(new Color(229, 230, 202));
+        meal6LabelKalori.setText(String.valueOf(AllMealsFrame.m6.getCals()) + " kcal");
+        meal6LabelKalori.setBackground(new Color(255, 134, 120));
         meal6LabelKalori.setOpaque(true);
 
 
-        meal7label.setBorder(new LineBorder(Color.white,2));
+        meal7label.setBorder(new LineBorder(Color.white, 2));
         meal7label.setOpaque(true);
         meal7label.setIcon(meal7Icon);
 
         meal7LabelPrice.setBounds(188, 78, 150, 55);
-        meal7LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal7LabelPrice.setForeground(new Color(139,37,17));
-        meal7LabelPrice.setText(String.valueOf(AllMealsFrame.m7.getPrice())+" $");
-        meal7LabelPrice.setBackground(new Color(255,134,120));
+        meal7LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal7LabelPrice.setForeground(new Color(139, 37, 17));
+        meal7LabelPrice.setText(String.valueOf(AllMealsFrame.m7.getPrice()) + " $");
+        meal7LabelPrice.setBackground(new Color(255, 134, 120));
         meal7LabelPrice.setOpaque(true);
         meal7LabelKalori.setBounds(25, 78, 140, 60);
-        meal7LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-        meal7LabelKalori.setForeground(new Color(229,230,202));
-        meal7LabelKalori.setText(String.valueOf(AllMealsFrame.m7.getCals())+" kcal");
-        meal7LabelKalori.setBackground(new Color(255,134,120));
+        meal7LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+        meal7LabelKalori.setForeground(new Color(229, 230, 202));
+        meal7LabelKalori.setText(String.valueOf(AllMealsFrame.m7.getCals()) + " kcal");
+        meal7LabelKalori.setBackground(new Color(255, 134, 120));
         meal7LabelKalori.setOpaque(true);
-    static ArrayList<JLabel>newmeallabels=new ArrayList<>();
-
-        MealOrder(){}
-        MealOrder(boolean manager){
-            super(manager);
-            Order.manager=manager;
-
-
-            mealOrderIconLabel.setBounds(0,0,650,830);
-            mealOrderIconLabel.setIcon(mealOrderIcon);
-
-            meal1label.setBorder(new LineBorder(Color.white,2));
-            meal1label.setOpaque(true);
-            meal1label.setIcon(meal1Icon);
-
-            meal1LabelPrice=new JLabel(String.valueOf(MealFrame.m1.getPrice())+ "$");
-            meal1LabelPrice.setBounds(188, 78, 150, 60);
-            meal1LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal1LabelPrice.setForeground(new Color(139,37,17));
-            meal1LabelPrice.setBackground(new Color(255,134,120));
-            meal1LabelPrice.setOpaque(true);
-            meal1LabelKalori.setBounds(25, 78, 140, 60);
-            meal1LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal1LabelKalori.setForeground(new Color(229,230,202));
-            meal1LabelKalori.setText(String.valueOf(MealFrame.m1.getCals())+" kcal");
-            meal1LabelKalori.setBackground(new Color(255,134,120));
-            meal1LabelKalori.setOpaque(true);
 
 
 
-            meal2label.setBorder(new LineBorder(Color.white,2));
-            meal2label.setOpaque(true);
-            meal2label.setIcon(meal2Icon);
 
-            meal2LabelPrice.setBounds(195, 78, 150, 60);
-            meal2LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal2LabelPrice.setForeground(new Color(139,37,17));
-            meal2LabelPrice.setText(String.valueOf(MealFrame.m2.getPrice())+" $");
-            meal2LabelPrice.setBackground(new Color(255,134,120));
-            meal2LabelPrice.setOpaque(true);
-            meal2LabelKalori.setBounds(25, 78, 155, 60);
-            meal2LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal2LabelKalori.setForeground(new Color(229,230,202));
-            meal2LabelKalori.setText(String.valueOf(MealFrame.m2.getCals())+" kcal");
-            meal2LabelKalori.setBackground(new Color(255,134,120));
-            meal2LabelKalori.setOpaque(true);
-
-
-            meal3label.setBorder(new LineBorder(Color.white,2));
-            meal3label.setOpaque(true);
-            meal3label.setIcon(meal3Icon);
-
-            meal3LabelPrice.setBounds(195, 78, 120, 60);
-            meal3LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal3LabelPrice.setForeground(new Color(139,37,17));
-            meal3LabelPrice.setText(String.valueOf(MealFrame.m3.getPrice())+" $");
-            meal3LabelPrice.setBackground(new Color(255,134,120));
-            meal3LabelPrice.setOpaque(true);
-
-            meal3LabelKalori.setBounds(25, 78, 155, 60);
-            meal3LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal3LabelKalori.setForeground(new Color(229,230,202));
-            meal3LabelKalori.setText(String.valueOf(MealFrame.m3.getCals())+" kcal");
-            meal3LabelKalori.setBackground(new Color(255,134,120));
-            meal3LabelKalori.setOpaque(true);
-
-
-
-            meal4label.setBorder(new LineBorder(Color.white,2));
-            meal4label.setOpaque(true);
-            meal4label.setIcon(meal4Icon);
-
-            meal4LabelPrice.setBounds(195, 78, 150, 60);
-            meal4LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal4LabelPrice.setForeground(new Color(139,37,17));
-            meal4LabelPrice.setText(String.valueOf(MealFrame.m4.getPrice())+" $");
-
-            meal4LabelPrice.setBackground(new Color(255,134,120));
-            meal4LabelPrice.setOpaque(true);
-            meal4LabelKalori.setBounds(25, 78, 155, 60);
-            meal4LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal4LabelKalori.setForeground(new Color(229,230,202));
-            meal4LabelKalori.setText(String.valueOf(MealFrame.m4.getCals())+" kcal");
-            meal4LabelKalori.setBackground(new Color(255,134,120));
-            meal4LabelKalori.setOpaque(true);
-
-
-
-            meal5label.setBorder(new LineBorder(Color.white,2));
-            meal5label.setOpaque(true);
-            meal5label.setIcon(meal5Icon);
-
-            meal5LabelPrice.setBounds(188, 78, 150, 60);
-            meal5LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal5LabelPrice.setForeground(new Color(139,37,17));
-            meal5LabelPrice.setText(String.valueOf(MealFrame.m5.getPrice())+" $");
-            meal5LabelPrice.setBackground(new Color(255,134,120));
-            meal5LabelPrice.setOpaque(true);
-            meal5LabelKalori.setBounds(25, 78, 140, 60);
-            meal5LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal5LabelKalori.setForeground(new Color(229,230,202));
-            meal5LabelKalori.setText(String.valueOf(MealFrame.m5.getCals())+" kcal");
-            meal5LabelKalori.setBackground(new Color(255,134,120));
-            meal5LabelKalori.setOpaque(true);
-
-
-            meal6label.setBorder(new LineBorder(Color.white,2));
-            meal6label.setOpaque(true);
-            meal6label.setIcon(meal6Icon);
-
-            meal6LabelPrice.setBounds(188, 78, 150, 60);
-            meal6LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal6LabelPrice.setForeground(new Color(139,37,17));
-            meal6LabelPrice.setText(String.valueOf(MealFrame.m6.getPrice())+" $");
-            meal6LabelPrice.setBackground(new Color(255,134,120));
-            meal6LabelPrice.setOpaque(true);
-            meal6LabelKalori.setBounds(25, 78, 140, 60);
-            meal6LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal6LabelKalori.setForeground(new Color(229,230,202));
-            meal6LabelKalori.setText(String.valueOf(MealFrame.m6.getCals())+" kcal");
-            meal6LabelKalori.setBackground(new Color(255,134,120));
-            meal6LabelKalori.setOpaque(true);
-
-
-            meal7label.setBorder(new LineBorder(Color.white,2));
-            meal7label.setOpaque(true);
-            meal7label.setIcon(meal7Icon);
-
-            meal7LabelPrice.setBounds(188, 78, 150, 55);
-            meal7LabelPrice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal7LabelPrice.setForeground(new Color(139,37,17));
-            meal7LabelPrice.setText(String.valueOf(MealFrame.m7.getPrice())+" $");
-            meal7LabelPrice.setBackground(new Color(255,134,120));
-            meal7LabelPrice.setOpaque(true);
-            meal7LabelKalori.setBounds(25, 78, 140, 60);
-            meal7LabelKalori.setFont(new Font("Franklin Gothic Demi", Font.PLAIN ,32));
-            meal7LabelKalori.setForeground(new Color(229,230,202));
-            meal7LabelKalori.setText(String.valueOf(MealFrame.m7.getCals())+" kcal");
-            meal7LabelKalori.setBackground(new Color(255,134,120));
-            meal7LabelKalori.setOpaque(true);
 
             for (JLabel jLabel : newmeallabels){
-                Meal m = MealFrame.meallist.get(Integer.parseInt(jLabel.getText()));
+                Meal m = AllMealsFrame.meallist.get(Integer.parseInt(jLabel.getText()));
                 JLabel pricLabel = new JLabel(String.valueOf(m.getPrice()));
                 JLabel nameLabel = new JLabel(m.getName());
                 JLabel caloriLabel = new JLabel(String.valueOf(m.getCals()));
@@ -461,63 +321,7 @@ public class MealOrder extends Order implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == meal1label){
-            // System.out.println(MealFrame.m1.getDeleted());
-            if(AllMealsFrame.m1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(0,manager);
-            }
-        }
-        if(e.getSource() == meal2label){
-            if(AllMealsFrame.m2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(1,manager);
-            }
-        }
-        if(e.getSource() == meal3label){
-            if(AllMealsFrame.m3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(2,manager);
-            }
-        }
-        if(e.getSource() == meal4label){
-            if(AllMealsFrame.m4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(3,manager);
-            }
-        }
-        if(e.getSource() == meal5label){
-            if(AllMealsFrame.m5.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(4,manager);
-            }
-        }
-        if(e.getSource() == meal6label){
-            if(AllMealsFrame.m6.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(5,manager);
-            }
-        }
-        if(e.getSource() == meal7label){
-            if(AllMealsFrame.m7.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(6,manager);
-            }
-        }
+
         super.mouseClicked(e);
     }
     @Override

@@ -148,7 +148,6 @@ public class DessertOrder extends Order implements MouseListener{
         dessert5label.add(dessert5LabelKalori);
 
 
-        if(!added){
         panelScroll.add(dessert1label);
         panelScroll.add(dessert2label);
         panelScroll.add(dessert3label);

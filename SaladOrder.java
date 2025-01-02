@@ -234,39 +234,7 @@ public class SaladOrder extends Order implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == salad1label){
-            if(AllMealsFrame.s1.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(7,manager);
-            }
-        }
-        if(e.getSource() == salad2label){
-            if(AllMealsFrame.s2.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(8,manager);
-            }
 
-        }
-        if(e.getSource() == salad3label){
-            if(AllMealsFrame.s3.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(9,manager);
-            }
-        }
-        if(e.getSource() == salad4label){
-            if(AllMealsFrame.s4.getDeleted()){
-                JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
-            } else{
-                new AllMealsFrame(10,manager);
-            }
-        }
         super.mouseClicked(e);
     }
     @Override
