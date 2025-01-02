@@ -121,6 +121,7 @@ public class AllMealsFrame implements ActionListener{
     static ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
     static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
     static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
+
     AllMealsFrame(Integer mealnum , boolean manager,String type){
         f.setLayout(null);
         this.mealnum=mealnum;

@@ -34,11 +34,6 @@ public class SaladOrder extends Order implements MouseListener {
         super(manager);
         Order.manager=manager;
 
-        scrollPane.setBounds(10, 190, 615, 600);
-        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
-        panelScroll.setBorder(new LineBorder(Color.white, 2));
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
         saladOrderIconLabel.setBounds(0,0,650,830);
         saladOrderIconLabel.setIcon(saladOrderIcon);
 
@@ -163,6 +158,7 @@ public class SaladOrder extends Order implements MouseListener {
         panelScroll.add(salad2label);
         panelScroll.add(salad3label);
         panelScroll.add(salad4label);
+
         for (JLabel jLabel : newmeallabels) {
             panelScroll.add(jLabel);
         }

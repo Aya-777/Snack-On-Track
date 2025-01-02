@@ -45,11 +45,6 @@ public class MealOrder extends Order implements MouseListener {
         super(manager);
         Order.manager = manager;
 
-        scrollPane.setBounds(10, 190, 615, 600);
-        panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
-        panelScroll.setBorder(new LineBorder(Color.white, 2));
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
         mealOrderIconLabel.setBounds(0, 0, 650, 830);
         mealOrderIconLabel.setIcon(mealOrderIcon);
 
@@ -183,8 +178,6 @@ public class MealOrder extends Order implements MouseListener {
 
 
 
-
-
             for (JLabel jLabel : newmeallabels){
                 Meal m = AllMealsFrame.meallist.get(Integer.parseInt(jLabel.getText()));
                 JLabel pricLabel = new JLabel(String.valueOf(m.getPrice()));
@@ -235,13 +228,6 @@ public class MealOrder extends Order implements MouseListener {
             meal6label.add(meal6LabelPrice);
             meal7label.add(meal7LabelPrice);
 
-            meal1label.addMouseListener(this);
-            meal2label.addMouseListener(this);
-            meal3label.addMouseListener(this);
-            meal4label.addMouseListener(this);
-            meal5label.addMouseListener(this);
-            meal6label.addMouseListener(this);
-            meal7label.addMouseListener(this);
 
             panelScroll.add(meal1label);
             panelScroll.add(meal2label);
@@ -250,12 +236,21 @@ public class MealOrder extends Order implements MouseListener {
             panelScroll.add(meal5label);
             panelScroll.add(meal6label);
             panelScroll.add(meal7label);
+
+
             for (JLabel jLabel : newmeallabels) {
                 panelScroll.add(jLabel);
             }
+        meal1label.addMouseListener(this);
+        meal2label.addMouseListener(this);
+        meal3label.addMouseListener(this);
+        meal4label.addMouseListener(this);
+        meal5label.addMouseListener(this);
+        meal6label.addMouseListener(this);
+        meal7label.addMouseListener(this);
 
-            f.add(scrollPane);
             f.add(mealOrderIconLabel);
+            f.add(scrollPane);
             f.setTitle("Meals");
             mealsitem.setEnabled(false);
 

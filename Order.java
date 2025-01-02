@@ -99,6 +99,7 @@ public class Order implements ActionListener, MouseListener{
         recommendationsitem.addActionListener(this);
         logoutitem.addActionListener(this);
         manageritem.addActionListener(this);
+
         // logoutButton.addActionListener(this);
         // managerButton.addActionListener(this);
         // addmealButton.addActionListener(this);
