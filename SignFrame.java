@@ -39,6 +39,8 @@ public class SignFrame extends JFrame implements ActionListener {
     JLabel userLabel;
     JLabel passLabel;
 
+    int index = 0; // to know the index of the right element from the array list
+
     SignFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(650, 830);
@@ -109,64 +111,55 @@ public class SignFrame extends JFrame implements ActionListener {
 
             userName = userTextField.getText();
             password = passwordTextField.getText();
+            if (userName.isEmpty() && password.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Enter your username and password",
+                        " ", JOptionPane.ERROR_MESSAGE);
+            } else if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Enter your username ",
+                        " ", JOptionPane.ERROR_MESSAGE);
+            } else if (password.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Enter your  password",
+                        " ", JOptionPane.ERROR_MESSAGE);
 
-            if(userName.isEmpty() || password.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Enter your username and password", 
-                    " ", JOptionPane.ERROR_MESSAGE);
-            } else{
+            } else {
 
-            boolean check;
-            if (!userName.equals("employee")) { // customer
-                check = accountsExsisted1(userName, password);
-                if (check) {
-                    // customerAccounts.howManyTimes += 1;
-                    this.dispose();
-                    // System.out.println(customerAccounts.howManyTimes);
-                    new MealOrder(false);
-                } else {
-                    JOptionPane.showMessageDialog(null, "wrong account", 
-                    " ", JOptionPane.ERROR_MESSAGE);
-                }
-            } else { // manager
-                employeeNumber = JOptionPane.showInputDialog("enter the employee password");
-                check = accountsExsisted2(userName, password, employeeNumber);
-                if (check) {
+                boolean check;
+                if (!userName.equals("employee")) { // customer
+                    check = accountsExsisted1(userName, password);
+                    if (check) {
+                        myAccount.customer = customeAccounts.get(index);
 
-                    // System.out.println(ManagementAccounts.howManyTimes);
-                    this.dispose();
-                    // new firstFrame();
-                    new MealOrder(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "wrong account", 
-                    " ", JOptionPane.ERROR_MESSAGE);
+                        this.dispose();
+                        new MealOrder(false);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "wrong account",
+                                " ", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else { // manager
+                    employeeNumber = JOptionPane.showInputDialog("enter the employee password");
+                    check = accountsExsisted2(userName, password, employeeNumber);
+                    if (check) {
+                        myAccount.employee = mangeAccounts.get(index);
+                        this.dispose();
+                        new MealOrder(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "wrong account",
+                                " ", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
         }
     } // the end of submite button's conditions
 
-    void extera() {
-        if (userTextField.getText().isEmpty()) {
-            userTextField.setBorder(border);
-            userTextField.setText("enter a user name");
-            emptyCheck = false;
-        }
-        if (passwordTextField.getText().isEmpty()) {
-            passwordTextField.setBorder(border);
-            passwordTextField.setText("enter a password");
-            emptyCheck = false;
-        }
-    }
-
     boolean accountsExsisted1(String user, String pass) { // customers
         boolean tempoCheck = false;
-        // boolean justForUser = user.equals("user name") || user.equals("enter a user
-        // name");
         if (!customeAccounts.isEmpty()) {
             for (int n = 0; n < customeAccounts.size(); n++) {
                 if (user.equals(customeAccounts.get(n).getName())) {
                     if (pass.equals(customeAccounts.get(n).getPassword())) {
                         tempoCheck = true;
+                        index = n;
                         customeAccounts.get(n).setHowManyTimes(customeAccounts.get(n).getHowManyTimes() + 1);
                         break;
                     }
@@ -184,6 +177,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     if (pass.equals(mangeAccounts.get(n).getPassword())) {
                         if (employeeNum.equals("7879")) {
                             tempoCheck = true;
+                            index = n;
                             mangeAccounts.get(n).setHowManyTimes(mangeAccounts.get(n).getHowManyTimes() + 1);
 
                             break;

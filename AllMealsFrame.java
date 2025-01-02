@@ -79,8 +79,9 @@ public class AllMealsFrame implements ActionListener{
 
 
 
-    int mealnum,src;
+    int mealnum,src;;
     Meal m;
+    String type;
     int num1 = order.get(mealnum);
     JLabel singlemealnumlabel = new JLabel(String.valueOf(order.get(mealnum)));
     JButton addbutton = new JButton("+");
@@ -120,12 +121,12 @@ public class AllMealsFrame implements ActionListener{
     static ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
     static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
     static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
-    AllMealsFrame(Integer mealnum , boolean manager,int src){
+    AllMealsFrame(Integer mealnum , boolean manager,String type){
         f.setLayout(null);
         this.mealnum=mealnum;
         num1 = order.get(mealnum);
         this.m=meallist.get(mealnum);
-        this.src=src;
+        this.type=type;
 
         mainLabel.setBounds(0,0,650,830);
         try {
@@ -155,7 +156,7 @@ public class AllMealsFrame implements ActionListener{
 
         addbutton.setBounds(245, 480, 50, 30);
         singlemealnumlabel.setBounds(313, 490, 50, 20);
-        minusbutton.setBounds(345, 480, 350, 0);
+        minusbutton.setBounds(345, 480, 50, 30);
         singlemealnumlabel.setFont(new Font("consolas",Font.BOLD,20));
         backButton.setBounds(480, 670, 150, 30);
         pricelabel.setBounds(480, 630, 100, 30);
@@ -223,16 +224,9 @@ public class AllMealsFrame implements ActionListener{
         }
         if(e.getSource()==editButton){
             f.dispose();
-            new EditMeal(m,mealnum,src);
+            new EditMeal(m,mealnum,type);
         }
     }
-
-    // public static void confirmEdit(Meal m ,int price,int calorie,String desc){
-    //     m.setCals(calorie);
-    //     m.setDesc(desc);
-    //     m.setPrice(price);
-    //     // new MealOrder(true);
-    // }
 
     public static void fillLists(){
         meallist.add(m1);

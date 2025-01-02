@@ -24,6 +24,7 @@ public class newAccount extends JFrame implements ActionListener {
     JTextField userTextField;
     JTextField passwordTextField;
     JButton submitButton;
+    JButton addBankButton;
     JCheckBox checkBox;
     boolean mainCheck; // to check if the operation is sign in or to make a new account
     boolean emptyCheck = true; // tho check if the text field is empty or not
@@ -33,6 +34,8 @@ public class newAccount extends JFrame implements ActionListener {
     boolean userCheck;
     boolean passwordCheck;
     boolean employeeNumberCheck;
+
+    static myAccount m1 = new myAccount();
 
     JLabel userLabel;
     JLabel passLabel;
@@ -55,6 +58,14 @@ public class newAccount extends JFrame implements ActionListener {
         submitButton.setFocusable(false);
         submitButton.setEnabled(true);
         submitButton.addActionListener(this);
+
+        addBankButton = new JButton("Bank account");
+        addBankButton.setBounds(120, 595, 120, 30);
+        addBankButton.setBackground(Color.BLACK);
+        addBankButton.setForeground(Color.white);
+        addBankButton.setFocusable(false);
+        addBankButton.setEnabled(true);
+        addBankButton.addActionListener(this);
 
         userTextField = new JTextField();
         userTextField.setBounds(220, 491, 170, 50);
@@ -81,6 +92,7 @@ public class newAccount extends JFrame implements ActionListener {
         label.add(submitButton);
         label.add(userLabel);
         label.add(passLabel);
+        label.add(addBankButton);
 
         this.add(label);
         this.setLocationRelativeTo(null);
@@ -91,43 +103,61 @@ public class newAccount extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    if(e.getSource()==submitButton){
-        userName = userTextField.getText();
-        password = passwordTextField.getText();
-
-        if(userName.isEmpty() || password.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Enter your username and password", 
-                " ", JOptionPane.ERROR_MESSAGE);
+        if (e.getSource() == addBankButton) {
+            new bankFrame();
         }
-        else{
-        boolean check;
-        if (!userName.equals("employee")) { // customer
-            check = accountsExsisted1(userName, password);
-            if (!check) {
-                customeAccounts.add(new customerAccounts(userName, password));
-                this.dispose();
-                // customerAccounts.howManyTimes += 1;
-                // System.out.println(customerAccounts.howManyTimes);
-                new MealOrder(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
-            }
-        } else { // manager
-            employeeNumber = JOptionPane.showInputDialog("enter the employee password");
-            if (employeeNumber.equals("7879")) {
 
-                check = accountsExsisted2(userName, password, employeeNumber);
-                if (!check) {
-                    mangeAccounts.add(new ManagementAccounts(password));
-                    // ManagementAccounts.howManyTimes += 1;
-                    // System.out.println(ManagementAccounts.howManyTimes);
-                    this.dispose();
-                    new MealOrder(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
-                }
+        if (e.getSource() == submitButton) {
+            userName = userTextField.getText();
+            password = passwordTextField.getText();
+            if (userName.isEmpty() && password.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Enter your username and password",
+                        " ", JOptionPane.ERROR_MESSAGE);
+            } else if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Enter your username ",
+                        " ", JOptionPane.ERROR_MESSAGE);
+            } else if (password.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Enter your  password",
+                        " ", JOptionPane.ERROR_MESSAGE);
+
             } else {
-                JOptionPane.showMessageDialog(null, "wronge password", " ", JOptionPane.ERROR_MESSAGE);
+                boolean check;
+                if (!userName.equals("employee")) { // customer
+                    check = accountsExsisted1(userName, password);
+                    if (!check) {
+                        customeAccounts.add(new customerAccounts(userName, password));
+                        myAccount.customer = customeAccounts.get(customeAccounts.size() - 1);
+                        myAccount.customer.setBankAccount(myAccount.bankAccount);
+
+                        if (myAccount.customer.getBankAccount() == null) {
+                            System.out.println("it is null");
+                        } else {
+                            System.out.println("it is not null");
+                        }
+                        this.dispose();
+                        new MealOrder(false);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "change your informations", " ", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else { // manager
+                    employeeNumber = JOptionPane.showInputDialog("enter the employee password");
+                    if (employeeNumber.equals("7879")) {
+
+                        check = accountsExsisted2(userName, password, employeeNumber);
+                        if (!check) {
+                            mangeAccounts.add(new ManagementAccounts(password));
+                            myAccount.employee = mangeAccounts.get(mangeAccounts.size() - 1);
+                            myAccount.employee.setBankAccount(myAccount.bankAccount);
+
+                            this.dispose();
+                            new MealOrder(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "change your informations", " ",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "wronge password", " ", JOptionPane.ERROR_MESSAGE);
 
                     }
                 }
@@ -137,8 +167,6 @@ public class newAccount extends JFrame implements ActionListener {
 
     boolean accountsExsisted1(String user, String pass) { // customers
         boolean tempoCheck = false;
-        // boolean justForUser = user.equals("user name") || user.equals("enter a user
-        // name");
         if (!customeAccounts.isEmpty()) {
             for (int n = 0; n < customeAccounts.size(); n++) {
                 if (user.equals(customeAccounts.get(n).getName())) {

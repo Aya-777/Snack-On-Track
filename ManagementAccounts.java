@@ -5,8 +5,8 @@ public class ManagementAccounts implements Serializable {
     private String password;
     private final String emploNum = "7879";
     private int howManyTimes = 0;
+    private Bank bankAccount = null;
 
-    
     public ManagementAccounts() {
     }
 
@@ -22,7 +22,6 @@ public class ManagementAccounts implements Serializable {
         this.howManyTimes = howManyTimes;
     }
 
-
     public String getPassword() {
         return password;
     }
@@ -34,4 +33,13 @@ public class ManagementAccounts implements Serializable {
     public String getEmploNum() {
         return emploNum;
     }
+
+    public Bank getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(Bank bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
 }

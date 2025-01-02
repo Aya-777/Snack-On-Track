@@ -11,15 +11,13 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.text.View;
 
 public class Details implements ActionListener{
     JLabel detailsLabel = new JLabel();
     ImageIcon detailsIcon = new ImageIcon("your order.png");
-    static JFrame f = new JFrame("Your Order");
+    JFrame f = new JFrame("Your Order");
     JButton backToOrderButton = new JButton("Back to Order");
     JButton cancelButton = new JButton("Cancel Button");
     JLabel state = new JLabel("Accepting order...");

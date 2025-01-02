@@ -14,14 +14,15 @@ class EditMeal implements ActionListener{
     JButton confirmButton = new JButton("Confirm");
     JTextArea textArea = new JTextArea(5,20);
     Meal m;
-    int mealnum,src;
+    int mealnum;
+    String type;
 
-    EditMeal(Meal m,int mealnum,int src){
+    EditMeal(Meal m,int mealnum,String type){
         f.setLayout(null);
 
         this.m=m;
         this.mealnum=mealnum;
-        this.src=src;
+        this.type=type;
 
         confirmButton.setBounds(200,450,100,20);
         confirmButton.addActionListener(this);
@@ -71,16 +72,16 @@ class EditMeal implements ActionListener{
             AllMealsFrame.meallist.get(mealnum).setDesc(desc);
             confirmButton.setEnabled(false);
             f.dispose();
-            if (src==1) {
+            if (type=="Meal") {
                 new MealOrder(true);
             }
-            else if (src==2) {
+            else if (type=="Salad") {
                 new SaladOrder(true);
             }
-            else if (src==3) {
+            else if (type=="Dessert") {
                 new DessertOrder(true);
             }
-            else if(src==4){
+            else if(type=="Drink"){
                 new DrinksOrder(true);
             }
             else{

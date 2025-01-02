@@ -1,15 +1,11 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class DessertOrder extends Order implements MouseListener{
-
+public class DessertOrder extends Order {
     JLabel dessertOrderIconLabel = new JLabel();
     ImageIcon dessertOrderIcon =new ImageIcon("main design sweets.png");
     JLabel dessert1label = new JLabel("11");
@@ -218,10 +214,19 @@ public class DessertOrder extends Order implements MouseListener{
                 new OrderDetails(AllMealsFrame.order);
             }
         }
-        if(e.getSource()==logoutButton){
+        if(e.getSource()==logoutitem){
             super.actionPerformed(e);
         }
-        if(e.getSource()==addmealButton){
+        if(e.getSource()==addmealitem){
+            super.actionPerformed(e);
+        }
+        if (e.getSource() == addmealitem){
+            super.actionPerformed(e);
+        }
+        if(e.getSource()==manageritem){
+            super.actionPerformed(e);
+        }
+        if(e.getSource() == recommendationsitem){
             super.actionPerformed(e);
         }
 
