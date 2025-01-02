@@ -17,6 +17,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.View;
 
 public class Details implements ActionListener{
+    JLabel detailsLabel = new JLabel();
+    ImageIcon detailsIcon = new ImageIcon("your order.png");
     static JFrame f = new JFrame("Your Order");
     JButton backToOrderButton = new JButton("Back to Order");
     JButton cancelButton = new JButton("Cancel Button");
@@ -24,8 +26,8 @@ public class Details implements ActionListener{
     JProgressBar detailsprogregressbar = new JProgressBar();
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
-    static int x=130 ,y=150 , xnum=350 , ynum=150,xstate=40,ystate=200,xbar=40,ybar=150;
-    static int gap=150;
+    static int x=130 ,y=150 , xnum=350 , ynum=150,xstate=40,ystate=200,xbar=20,ybar=30;
+    static int gap=30;
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
 
@@ -51,33 +53,38 @@ public class Details implements ActionListener{
             } catch (IOException e) {
                 e.printStackTrace();
                 }
+        detailsLabel.setBounds(0,0,600,700);
+        detailsLabel.setIcon(detailsIcon);
 
-        backToOrderButton.setBounds(50, 100, 150, 20);
+        backToOrderButton.setBounds(225, 85, 150, 28);
         
-        scrollPane.setBounds(12, 140, 630, 600);
+        scrollPane.setBounds(65, 140, 470, 480);
         panelScroll.setLayout(null);
-        panelScroll.setPreferredSize(new Dimension(630,600));
+        panelScroll.setPreferredSize(new Dimension(470,700));
+        panelScroll.setBackground(new Color(252,244,154));
         panelScroll.setBorder(new LineBorder(Color.white, 2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         backToOrderButton.addActionListener(this);
         cancelButton.addActionListener(this);
 
+        f.add(detailsLabel);
         f.setLayout(null);
-        f.setSize(650,830);
+        f.setSize(600,700);
 
         for (int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                x = xbar+150; y = ybar;
-                xnum=xbar+350 ; ynum = ybar;
+                x = xbar+115; y = ybar;
+                xnum=xbar+375 ; ynum = ybar;
                 break;
             }
         }
 
         state.setBounds(xstate, gap+30 , 100, 20);
         detailsprogregressbar.setBounds(xbar, gap, 100, 20);
+
         detailsprogregressbar.setValue(0);
         detailsprogregressbar.setStringPainted(true);
-        cancelButton.setBounds(xnum+50 , gap , 150, 20);
+
 
 
         panelScroll.add(cancelButton);
@@ -91,20 +98,27 @@ public class Details implements ActionListener{
                 JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
-                mealname.setBounds(x , y, 200, 20);
+                mealname.setBounds(x , y, 250, 20);
+                mealname.setFont(new Font("Eras Medium ITC", Font.PLAIN, 18));
                 mealnum.setBounds(xnum , ynum, 50, 20);
+                mealnum.setFont(new Font("Eras Medium ITC", Font.PLAIN, 18));
 
                 panelScroll.add(mealname);
                 panelScroll.add(mealnum);
 
-                y+=50;
-                ynum+=50;
-                gap=ynum+50;
+                y+=70;
+                ynum+=70;
+                gap=ynum+70;
                 }
+            cancelButton.setBounds(170, y-10 , 130, 25);
             }
 
-            panelScroll.setBounds(50,150,450,600);
-            panelScroll.setPreferredSize(new Dimension(450,600));
+        panelScroll.setBounds(50,150,470,600);
+        if(y>=480){
+            panelScroll.setPreferredSize(new Dimension(470,y+50));}
+        else
+            panelScroll.setPreferredSize(new Dimension(470,480));
+
 
             worker = new SwingWorker<Void,Integer>() {
                 @Override
@@ -155,8 +169,8 @@ public class Details implements ActionListener{
 
         worker.execute();
 
-        ystate+=100;
-        ybar+=100;
+        ystate+=50;
+        ybar+=50;
 
         f.add(backToOrderButton);
         f.setResizable(false);

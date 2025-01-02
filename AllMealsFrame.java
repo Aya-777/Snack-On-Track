@@ -54,7 +54,7 @@ public class AllMealsFrame implements ActionListener{
     static Meal dessert3 = new Meal(13,12,"Granola Bars",
         "Shia seeds, oatmeal, raisins, almond, sunflower seeds, pumpkin seeds,"
         +" coconut flakes, honey.",250,false,0,"Dessert");
-    static Meal dessert4 = new Meal(14,7,"Muhalabia(arabian milk pudding)",
+    static Meal dessert4 = new Meal(14,7,"Muhalabia",
         "Milk, sugar, roses." ,150,false, 0,"Dessert");
     static Meal dessert5 = new Meal(15,8,"Flan",
         "Milk, sugar, caramel" ,250,false, 0,"Dessert");
@@ -62,9 +62,9 @@ public class AllMealsFrame implements ActionListener{
         //Drinks
     static Meal drink1 = new Meal(16, 2, "Diet Coke",
      "", 1,false, 0,"Drink");
-    static Meal drink2 = new Meal(17, 5, "Watermelon Strawberry Smoothie",
+    static Meal drink2 = new Meal(17, 5, "Watermelon Strawberry",
         "Watermelon, strawberry, sugar, lemon.", 150,false, 0,"Drink");
-    static Meal drink3 = new Meal(18, 6, "Peach and Raspberry Smoothie",
+    static Meal drink3 = new Meal(18, 6, "Peach and Raspberry",
         "Raspberry, peach, red orange, pomegranet, milk, sugar.", 175,false, 0,"Drink");
      static Meal drink4 = new Meal(19, 4, "Strawberry Iced Tea",
         "Strawberry, tea, sugar." , 125,false, 0,"Drink");

@@ -32,9 +32,9 @@ class OrderDetails implements ActionListener{
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         panelScroll.setLayout(null);
-        panelScroll.setBounds(10,10,700,400);
+        panelScroll.setBounds(10,10,385,400);
         panelScroll.setBackground(new Color(252,244,154));
-        panelScroll.setPreferredSize(new Dimension(465,400));
+        panelScroll.setPreferredSize(new Dimension(465,40));
         panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
 
 
@@ -76,8 +76,19 @@ class OrderDetails implements ActionListener{
                 panelScroll.add(mealname);
                 panelScroll.add(mealnum);
                 ind++;
+
+                if (yy>400){
+
+                    panelScroll.setPreferredSize(new Dimension(385,yy));}
+                else
+
+                    panelScroll.setPreferredSize(new Dimension(385,400));
+
             }
+
         }
+
+
 
         f.add(confirmButton);
 
