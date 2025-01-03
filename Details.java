@@ -1,15 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -35,22 +28,18 @@ public class Details implements ActionListener{
     so we need a third list that has the orders
     */
 
-    Details(ArrayList<Integer> meals, ManagementAccounts manager , customerAccounts customer){
+    Details(ArrayList<Integer> meals){
 
-        if(manager!=null){
-            manager.myorder.add(meals);
-            manageArrayList.add(manager.myorder);
-        }
-        else{
-            customer.myorder.add(meals);
-            manageArrayList.add(customer.myorder);
-        }
+        ManagementAccounts.customerOrders.add(meals);
+        manageArrayList.add(ManagementAccounts.customerOrders);
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))){
             oos.writeObject(manageArrayList);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println(manageArrayList.get(0).get(0).get(0));
 
 
         // int index=0;

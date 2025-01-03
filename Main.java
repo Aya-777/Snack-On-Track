@@ -32,15 +32,22 @@ public class Main {
         return OrderFiles;
     }
     @SuppressWarnings("unchecked")
-    static ArrayList<customerAccounts> loadAccounts(){
-        File file = new File("CustomerAccounts.dat");
-        if(file.exists()){
-            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))){
+    static void loadAccounts(){
+        File customerfile = new File("CustomerAccounts.dat");
+        if(customerfile.exists()){
+            try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(customerfile))){
                 newAccount.customeAccounts = (ArrayList<customerAccounts>) ois.readObject();
             }catch (Exception ee) {
                 ee.printStackTrace();
             }
+            File managerfile = new File("ManagerAccounts.dat");
+            if(managerfile.exists()){
+                try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(managerfile))){
+                    newAccount.mangeAccounts = (ArrayList<ManagementAccounts>) ois.readObject();
+                }catch (Exception ee) {
+                    ee.printStackTrace();
+                }
         }
-        return newAccount.customeAccounts;
+        }
     }
 }

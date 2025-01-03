@@ -6,8 +6,6 @@ public class customerAccounts implements Serializable {
     private String password;
     private int howManyTimes = 1;
     private Bank bankAccount = null; 
-    ArrayList<ArrayList<Integer>> myorder=new ArrayList<>();
-
     customerAccounts(String name, String password) {
         this.name = name;
         this.password = password;

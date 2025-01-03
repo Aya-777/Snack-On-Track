@@ -236,12 +236,12 @@ public class Cart implements ActionListener {
                             }
                             if (openIt) {
                                 f.dispose();
-                                new Details(meals,myAccount.employee,myAccount.customer);
+                                new Details(meals);
                             }
                         }
                         if (cashCheckBox.isSelected()) {
                             f.dispose();
-                            new Details(meals,myAccount.employee,myAccount.customer);
+                            new Details(meals);
                         }
         
                     }

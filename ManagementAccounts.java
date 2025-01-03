@@ -7,7 +7,7 @@ public class ManagementAccounts implements Serializable {
     private final String emploNum = "7879";
     private int howManyTimes = 1;
     private Bank bankAccount = null;
-    ArrayList<ArrayList<Integer>> myorder=new ArrayList<>();
+    static ArrayList<ArrayList<Integer>> customerOrders =new ArrayList<>();
 
     public ManagementAccounts() {
     }

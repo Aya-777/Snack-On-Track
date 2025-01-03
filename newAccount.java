@@ -161,6 +161,12 @@ public class newAccount extends JFrame implements ActionListener {
                             myAccount.employee = mangeAccounts.get(mangeAccounts.size() - 1);
                             myAccount.employee.setBankAccount(myAccount.bankAccount);
 
+                            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ManagerAccounts.dat"))){
+                                oos.writeObject(mangeAccounts);
+                                } catch (Exception ee) {
+                                    ee.printStackTrace();
+                                }
+
                             this.dispose();
                             new MealOrder(true);
                         } else {
