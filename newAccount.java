@@ -2,6 +2,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -101,6 +106,7 @@ public class newAccount extends JFrame implements ActionListener {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addBankButton) {
@@ -134,6 +140,11 @@ public class newAccount extends JFrame implements ActionListener {
                         } else {
                             System.out.println("it is not null");
                         }
+                        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("CustomerAccounts.dat"))){
+                            oos.writeObject(customeAccounts);
+                            } catch (Exception ee) {
+                                ee.printStackTrace();
+                            }
                         this.dispose();
                         new MealOrder(false);
 

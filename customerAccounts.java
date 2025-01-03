@@ -1,10 +1,12 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class customerAccounts implements Serializable {
     private String name;
     private String password;
     private int howManyTimes = 1;
-    private Bank bankAccount = null;
+    private Bank bankAccount = null; 
+    ArrayList<ArrayList<Integer>> myorder=new ArrayList<>();
 
     customerAccounts(String name, String password) {
         this.name = name;
