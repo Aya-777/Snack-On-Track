@@ -112,6 +112,7 @@ public class Details implements ActionListener{
             }
 
         panelScroll.setBounds(50,150,470,600);
+
         if(y>=480){
             panelScroll.setPreferredSize(new Dimension(470,y+50));}
         else

@@ -133,13 +133,16 @@ public class Cart implements ActionListener {
                 addresslabel = new JLabel("Address: ");
                 addressfield = new JTextField();
 
-                addresslabel.setBounds(50, 150, 100, 20);
-                addressfield.setBounds(150, 150, 100, 20);
+                addresslabel.setBounds(80, 180, 300, 20);
+                addresslabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
+                addressfield.setBounds(232, 182, 100, 20);
+
 
                 addresslabel.setVisible(true);
                 addressfield.setVisible(true);
-                f.add(addressfield);
-                f.add(addresslabel);
+
+                cartLabel.add(addressfield);
+                cartLabel.add(addresslabel);
 
                 f.repaint();
                 f.revalidate();
