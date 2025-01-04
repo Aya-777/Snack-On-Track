@@ -1,11 +1,13 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class ManagementAccounts implements Serializable {
     private final String name = "employee";
     private String password;
     private final String emploNum = "7879";
-    private int howManyTimes = 0;
+    private int howManyTimes = 1;
     private Bank bankAccount = null;
+    static ArrayList<ArrayList<Integer>> customerOrders =new ArrayList<>();
 
     public ManagementAccounts() {
     }

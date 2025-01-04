@@ -1,14 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -22,35 +16,53 @@ public class Details implements ActionListener{
     JButton cancelButton = new JButton("Cancel Button");
     JLabel state = new JLabel("Accepting order...");
     JProgressBar detailsprogregressbar = new JProgressBar();
-    JPanel panelScroll = new JPanel();
+    static JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static int x=130 ,y=150 , xnum=350 , ynum=150,xstate=40,ystate=200,xbar=20,ybar=30;
     static int gap=30;
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
+    static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
+    /*  the first is the list that 
+    contains every account and the second is the list that contains every accounts' orderS 
+    so we need a third list that has the orders
+    */
 
     Details(ArrayList<Integer> meals){
-        int index=0;
-        try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
-            for(int i : meals){
-                writer.write(String.valueOf(index) + " ");
-                writer.write(String.valueOf(i)+ "\n");
-                index++;
-                }
-                writer.close();
-            }catch(Exception e){
-                System.out.println(e.getStackTrace());
-            }                     
-        try(BufferedReader r = new BufferedReader(new FileReader("The order.txt"))) {
-            String line;
-            while((line=r.readLine()) != null){
-                System.out.println(line);
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-                }
+
+        ManagementAccounts.customerOrders.add(meals);
+        manageArrayList.add(ManagementAccounts.customerOrders);
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))){
+            oos.writeObject(manageArrayList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(manageArrayList.get(0).get(0).get(0));
+
+
+        // int index=0;
+        // try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
+        //     for(int i : meals){
+        //         writer.write(String.valueOf(index) + " ");
+        //         writer.write(String.valueOf(i)+ "\n");
+        //         index++;
+        //         }
+        //         writer.close();
+        //     }catch(Exception e){
+        //         System.out.println(e.getStackTrace());
+        //     }                     
+        // try(BufferedReader r = new BufferedReader(new FileReader("The order.txt"))) {
+        //     String line;
+        //     while((line=r.readLine()) != null){
+        //         System.out.println(line);
+        //         }
+        //     } catch (FileNotFoundException e) {
+        //         e.printStackTrace();
+        //     } catch (IOException e) {
+        //         e.printStackTrace();
+        //         }
         detailsLabel.setBounds(0,0,600,700);
         detailsLabel.setIcon(detailsIcon);
 

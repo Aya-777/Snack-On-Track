@@ -50,6 +50,9 @@ class OrderDetails implements ActionListener{
         confirmButton.setBounds(340, 423, 120, 25);
         confirmButton.addActionListener(this);
 
+        pricenumlabel.setText(String.valueOf(Order.price));
+        mealnumlabel.setText(String.valueOf(Order.num));
+
 
         cartLabel.add(mealnumlabel);
         cartLabel.add(mealslabel);
@@ -60,11 +63,12 @@ class OrderDetails implements ActionListener{
         f.add(scrollPane);
 
 
-        int ind = 0;
+        int ind = 1;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
                 int xx = 15 ;
                 int yy = ind*60;
+                yy-=30;
                 JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
