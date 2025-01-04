@@ -79,7 +79,7 @@ public class AllMealsFrame implements ActionListener{
 
 
 
-    int mealnum,src;;
+    int mealnum,src;
     Meal m;
     String type;
     int num1 = order.get(mealnum);
@@ -153,6 +153,8 @@ public class AllMealsFrame implements ActionListener{
         singlemealnumlabel.setText(String.valueOf(num1));
         mealpricLabel = new JLabel(String.valueOf(m.getPrice())+" $");
         mealKcaloriLabel= new JLabel((m.getCals())+" kcal");
+        backButton.setBounds(250, 720, 150, 30);
+        mainLabel.add(backButton);
 
 
         if(type=="Meal"){
@@ -161,7 +163,6 @@ public class AllMealsFrame implements ActionListener{
             singlemealnumlabel.setBounds(313, 620, 50, 20);
             minusbutton.setBounds(345, 615, 50, 30);
             singlemealnumlabel.setFont(new Font("Franklin Gothic Demi",Font.BOLD,20));
-            backButton.setBounds(250, 720, 150, 30);
             pricelabel.setBounds(265, 110, 100, 30);
             pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             pricenumlabel.setBounds(380, 110, 50, 30);
@@ -185,6 +186,16 @@ public class AllMealsFrame implements ActionListener{
             descTextArea.setBounds(55, 450, 560, 300);
             descTextArea.setFont(new Font("MV Boli", Font.BOLD , 22));
             descTextArea.setForeground(new Color(75,59,9));
+            mainLabel.add(addbutton);
+            mainLabel.add(minusbutton);
+            mainLabel.add(extraDetailscLabel);
+            mainLabel.add(extraDetailsFiled);
+            mainLabel.add(mealKcaloriLabel);
+            mainLabel.add(descTextArea);
+            mainLabel.add(singlemealnumlabel);
+            mainLabel.add(pricelabel);
+            mainLabel.add(pricenumlabel);
+            mainLabel.add(mealpricLabel);
 
         }
         if(type=="Salad"){
@@ -192,7 +203,7 @@ public class AllMealsFrame implements ActionListener{
             singlemealnumlabel.setBounds(313, 580, 50, 20);
             minusbutton.setBounds(345, 575, 50, 30);
             singlemealnumlabel.setFont(new Font("Franklin Gothic Demi",Font.BOLD,20));
-            backButton.setBounds(250, 700, 150, 30);
+            // backButton.setBounds(250, 700, 150, 30);
             pricelabel.setBounds(265, 110, 100, 30);
             pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             pricenumlabel.setBounds(380, 110, 50, 30);
@@ -216,13 +227,24 @@ public class AllMealsFrame implements ActionListener{
             descTextArea.setBounds(55, 450, 560, 300);
             descTextArea.setFont(new Font("MV Boli", Font.BOLD , 22));
             descTextArea.setForeground(new Color(75,59,9));
+            mainLabel.add(addbutton);
+            mainLabel.add(minusbutton);
+            mainLabel.add(extraDetailscLabel);
+            mainLabel.add(extraDetailsFiled);
+            mainLabel.add(mealKcaloriLabel);
+            mainLabel.add(descTextArea);
+            mainLabel.add(singlemealnumlabel);
+            mainLabel.add(pricelabel);
+            mainLabel.add(pricenumlabel);
+            mainLabel.add(mealpricLabel);
+            // mainLabel.add(backButton);
         }
         if (type=="Dessert"){
             addbutton.setBounds(245, 590, 50, 30);
             singlemealnumlabel.setBounds(313, 595, 50, 20);
             minusbutton.setBounds(345, 590, 50, 30);
             singlemealnumlabel.setFont(new Font("Franklin Gothic Demi",Font.BOLD,20));
-            backButton.setBounds(250, 700, 150, 30);
+            // backButton.setBounds(250, 700, 150, 30);
             pricelabel.setBounds(265, 100, 100, 30);
             pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             pricenumlabel.setBounds(380, 100, 50, 30);
@@ -246,13 +268,24 @@ public class AllMealsFrame implements ActionListener{
             descTextArea.setBounds(110, 350, 220, 500);
             descTextArea.setFont(new Font("MV Boli", Font.BOLD , 22));
             descTextArea.setForeground(new Color(75,59,9));
+            mainLabel.add(addbutton);
+            mainLabel.add(minusbutton);
+            mainLabel.add(extraDetailscLabel);
+            mainLabel.add(extraDetailsFiled);
+            mainLabel.add(mealKcaloriLabel);
+            mainLabel.add(descTextArea);
+            mainLabel.add(singlemealnumlabel);
+            mainLabel.add(pricelabel);
+            mainLabel.add(pricenumlabel);
+            mainLabel.add(mealpricLabel);
+            // mainLabel.add(backButton);
         }
         if (type=="Drink"){
             addbutton.setBounds(245, 605, 50, 30);
             singlemealnumlabel.setBounds(313, 610, 50, 20);
             minusbutton.setBounds(345, 605, 50, 30);
             singlemealnumlabel.setFont(new Font("Franklin Gothic Demi",Font.BOLD,20));
-            backButton.setBounds(250, 700, 150, 30);
+            // backButton.setBounds(250, 700, 150, 30);
             pricelabel.setBounds(265, 100, 100, 30);
             pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             pricenumlabel.setBounds(380, 100, 50, 30);
@@ -276,6 +309,17 @@ public class AllMealsFrame implements ActionListener{
             descTextArea.setBounds(110, 350, 220, 500);
             descTextArea.setFont(new Font("MV Boli", Font.BOLD , 22));
             descTextArea.setForeground(new Color(75,59,9));
+            mainLabel.add(addbutton);
+            mainLabel.add(minusbutton);
+            mainLabel.add(extraDetailscLabel);
+            mainLabel.add(extraDetailsFiled);
+            mainLabel.add(mealKcaloriLabel);
+            mainLabel.add(descTextArea);
+            mainLabel.add(singlemealnumlabel);
+            mainLabel.add(pricelabel);
+            mainLabel.add(pricenumlabel);
+            mainLabel.add(mealpricLabel);
+            // mainLabel.add(backButton);
         }
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
@@ -283,17 +327,6 @@ public class AllMealsFrame implements ActionListener{
         editButton.addActionListener(this);
         backButton.addActionListener(this);
 
-        mainLabel.add(extraDetailscLabel);
-        mainLabel.add(extraDetailsFiled);
-        mainLabel.add(mealKcaloriLabel);
-        mainLabel.add(descTextArea);
-        mainLabel.add(singlemealnumlabel);
-        mainLabel.add(addbutton);
-        mainLabel.add(minusbutton);
-        mainLabel.add(pricelabel);
-        mainLabel.add(pricenumlabel);
-        mainLabel.add(mealpricLabel);
-        mainLabel.add(backButton);
 
         
         f.setTitle(m.getName());
