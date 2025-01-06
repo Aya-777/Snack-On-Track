@@ -110,7 +110,7 @@ public class MealOrder extends Order {
         AllMealsFrame.fillLists();
 
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mealsitem) {
@@ -151,6 +151,9 @@ public class MealOrder extends Order {
             super.actionPerformed(e);
         }
         if (e.getSource() == recommendationsitem) {
+            super.actionPerformed(e);
+        }
+        if(e.getSource() == myordersitem){
             super.actionPerformed(e);
         }
 

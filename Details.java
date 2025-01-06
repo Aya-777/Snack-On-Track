@@ -23,13 +23,14 @@ public class Details implements ActionListener{
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
     static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
+    ArrayList<Integer> meals = new ArrayList<>();
     /*  the first is the list that 
     contains every account and the second is the list that contains every accounts' orderS 
     so we need a third list that has the orders
     */
 
     Details(ArrayList<Integer> meals){
-
+        
         ManagementAccounts.customerOrders.add(meals);
         manageArrayList.add(ManagementAccounts.customerOrders);
 
@@ -83,8 +84,8 @@ public class Details implements ActionListener{
 
         for (int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                x = xbar+115; y = ybar;
-                xnum=xbar+375 ; ynum = ybar;
+                x = xbar+115;
+                xnum=xbar+375 ;
                 break;
             }
         }
@@ -97,14 +98,12 @@ public class Details implements ActionListener{
 
 
 
-        panelScroll.add(cancelButton);
-        panelScroll.add(state);
-        panelScroll.add(detailsprogregressbar);
-
         f.add(scrollPane);
+        boolean mealsExist=false;
         y=gap; ynum=gap;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
+                mealsExist=true;
                 JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
@@ -178,10 +177,14 @@ public class Details implements ActionListener{
             }
         };
 
-        worker.execute();
-
-        ystate+=50;
-        ybar+=50;
+        if(mealsExist){
+            panelScroll.add(cancelButton);
+            panelScroll.add(state);
+            panelScroll.add(detailsprogregressbar);
+            worker.execute();
+            ystate+=50;
+            ybar+=50;
+        }
 
         f.add(backToOrderButton);
         f.setResizable(false);

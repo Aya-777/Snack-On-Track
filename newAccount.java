@@ -30,6 +30,7 @@ public class newAccount extends JFrame implements ActionListener {
     JTextField passwordTextField;
     JButton submitButton;
     JButton addBankButton;
+    JButton backButton;
     JCheckBox checkBox;
     boolean mainCheck; // to check if the operation is sign in or to make a new account
     boolean emptyCheck = true; // tho check if the text field is empty or not
@@ -72,6 +73,14 @@ public class newAccount extends JFrame implements ActionListener {
         addBankButton.setEnabled(true);
         addBankButton.addActionListener(this);
 
+        backButton = new JButton("Back");
+        backButton.setBounds(120,630,120,30);
+        backButton.setBackground(Color.BLACK);
+        backButton.setForeground(Color.white);
+        backButton.setFocusable(false);
+        backButton.setEnabled(true);
+        backButton.addActionListener(this);
+
         userTextField = new JTextField();
         userTextField.setBounds(220, 491, 170, 50);
         userTextField.setFont(new Font("consolas", Font.PLAIN, 15));
@@ -98,6 +107,7 @@ public class newAccount extends JFrame implements ActionListener {
         label.add(userLabel);
         label.add(passLabel);
         label.add(addBankButton);
+        label.add(backButton);
 
         this.add(label);
         this.setLocationRelativeTo(null);
@@ -111,6 +121,10 @@ public class newAccount extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addBankButton) {
             new bankFrame();
+        }
+        if(e.getSource() == backButton){
+            this.dispose();
+            new SignFrame();
         }
 
         if (e.getSource() == submitButton) {

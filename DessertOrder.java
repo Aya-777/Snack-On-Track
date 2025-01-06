@@ -153,7 +153,9 @@ public class DessertOrder extends Order {
         if (e.getSource() == recommendationsitem) {
             super.actionPerformed(e);
         }
-
+        if(e.getSource() == myordersitem){
+            super.actionPerformed(e);
+        }
     }
 
     @Override

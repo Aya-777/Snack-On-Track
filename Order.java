@@ -16,6 +16,7 @@ public class Order implements ActionListener, MouseListener{
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewdetailsbutton = new JButton("View details");
+    // JButton myordersButton = new JButton("My Orders");
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");
@@ -27,6 +28,7 @@ public class Order implements ActionListener, MouseListener{
     JMenuItem logoutitem = new JMenuItem("Log out");
     JMenuItem addmealitem = new JMenuItem("Add meal");
     JMenuItem manageritem = new JMenuItem("Manager details");
+    JMenuItem myordersitem = new JMenuItem("My Orders");
     static boolean manager;
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
@@ -45,6 +47,7 @@ public class Order implements ActionListener, MouseListener{
 
         menuBar.setBounds(0, 0, 635 , 15);
         menuBar.add(menu);
+        menu.add(myordersitem);
         menu.add(recommendationsitem);
         menu.add(logoutitem);
 
@@ -58,11 +61,11 @@ public class Order implements ActionListener, MouseListener{
         mealsbar.add(dessertsitem);
         mealsbar.add(drinksitem);
 
-        viewdetailsbutton.setBounds(260, 115, 130, 30);
+        viewdetailsbutton.setBounds(300, 110, 200, 33);
         viewdetailsbutton.setFocusable(false);
-        mealslabel.setBounds(275, 40, 100, 20);
+        mealslabel.setBounds(420, 75, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        mealnumlabel.setBounds(360, 40, 50, 20);
+        mealnumlabel.setBounds(510, 75, 50, 20);
         mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         pricelabel.setBounds(275, 75, 100, 20);
         pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
@@ -91,6 +94,7 @@ public class Order implements ActionListener, MouseListener{
         recommendationsitem.addActionListener(this);
         logoutitem.addActionListener(this);
         manageritem.addActionListener(this);
+        myordersitem.addActionListener(this);
 
 
         f.setResizable(false);
@@ -126,6 +130,9 @@ public class Order implements ActionListener, MouseListener{
         }
         if(e.getSource() == recommendationsitem){
             new Recommendations(AllMealsFrame.meallist);
+        }
+        if(e.getSource() == myordersitem){
+            new Details(AllMealsFrame.order);
         }
 
     }
