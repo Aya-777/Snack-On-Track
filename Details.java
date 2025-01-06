@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -22,26 +23,34 @@ public class Details implements ActionListener{
     static int gap=30;
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
-    static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
-    ArrayList<Integer> meals = new ArrayList<>();
+    static ArrayList<OrderFile> saveFileArray = new ArrayList<>();
+    // static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
     /*  the first is the list that 
     contains every account and the second is the list that contains every accounts' orderS 
     so we need a third list that has the orders
     */
 
     Details(ArrayList<Integer> meals){
+
+        if(myAccount.customer==null){
+            OrderFile file = new OrderFile(meals, myAccount.employee.getName(), LocalDate.now() );
+            saveFileArray.add(file);
+        } else{
+            OrderFile file = new OrderFile(meals, myAccount.customer.getName(), LocalDate.now());
+            saveFileArray.add(file);
+        }
         
-        ManagementAccounts.customerOrders.add(meals);
-        manageArrayList.add(ManagementAccounts.customerOrders);
+        // ManagementAccounts.customerOrders.add(meals);
+        // manageArrayList.add(ManagementAccounts.customerOrders);
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))){
-            oos.writeObject(manageArrayList);
+            // oos.writeObject(manageArrayList);
+            oos.writeObject(saveFileArray);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // System.out.println(manageArrayList.get(0).get(0).get(0));
-
+        System.out.println(saveFileArray.get(0).getUsername());
 
         // int index=0;
         // try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){

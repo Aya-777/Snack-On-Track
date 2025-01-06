@@ -13,7 +13,8 @@ public class Main {
         // } catch (Exception ee) {
         //     ee.printStackTrace();
         // }
-        Details.manageArrayList = loadfiles();
+        // Details.manageArrayList = loadfiles();
+        loadfiles();
         loadAccounts();
         loadMeals();
         firstFrame s = new firstFrame();
@@ -27,17 +28,15 @@ public class Main {
     }
 
     @SuppressWarnings("unchecked")
-    static ArrayList<ArrayList<ArrayList<Integer>>> loadfiles() {
-        ArrayList<ArrayList<ArrayList<Integer>>> OrderFiles = new ArrayList<>();
+    static void loadfiles() {
         File file = new File("Orders.dat");
         if (file.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-                OrderFiles = (ArrayList<ArrayList<ArrayList<Integer>>>) ois.readObject();
+                Details.saveFileArray = (ArrayList<OrderFile>) ois.readObject();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return OrderFiles;
     }
 
     @SuppressWarnings("unchecked")
