@@ -39,7 +39,7 @@ public class Details implements ActionListener{
             e.printStackTrace();
         }
 
-        System.out.println(manageArrayList.get(0).get(0).get(0));
+        // System.out.println(manageArrayList.get(0).get(0).get(0));
 
 
         // int index=0;
@@ -198,8 +198,10 @@ public class Details implements ActionListener{
             Order.num=0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            AllMealsFrame.meallist.clear();
+            // AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
+            AllMealsFrame.arrayMealsIcon.clear();
+            AllMealsFrame.arrayMenuMealsIcon.clear();
             AllMealsFrame.fillLists();
             if(MealOrder.manager){
                 new MealOrder(true);
