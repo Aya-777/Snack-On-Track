@@ -276,6 +276,8 @@ public class AllMealsFrame implements ActionListener{
             descTextArea.setBounds(110, 350, 220, 500);
             descTextArea.setFont(new Font("MV Boli", Font.BOLD , 22));
             descTextArea.setForeground(new Color(75,59,9));
+
+
         }
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
