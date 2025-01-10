@@ -41,7 +41,7 @@ public class Cart implements ActionListener {
 
         f.setLayout(null);
         // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        cartLabel.setBounds(0,0,500,500);
+        cartLabel.setBounds(0, 0, 500, 500);
         cartLabel.setIcon(cartIcon);
         cartLabel.setOpaque(true);
 
@@ -49,17 +49,17 @@ public class Cart implements ActionListener {
         l.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 25));
 
         delivery.setBounds(200, 135, 100, 20);
-        delivery.setBackground(new Color(252,244,154));
+        delivery.setBackground(new Color(252, 244, 154));
         delivery.setBorder(null);
         delivery.addActionListener(this);
 
         bankCheckBox.setBounds(315, 330, 80, 50);
-        bankCheckBox.setBackground(new Color(252,244,154));
+        bankCheckBox.setBackground(new Color(252, 244, 154));
         bankCheckBox.setSelected(false);
         bankCheckBox.addActionListener(this);
 
         cashCheckBox.setBounds(150, 330, 80, 50);
-        cashCheckBox.setBackground(new Color(252,244,154));
+        cashCheckBox.setBackground(new Color(252, 244, 154));
         cashCheckBox.setSelected(true);
         cashCheckBox.addActionListener(this);
 
@@ -83,7 +83,6 @@ public class Cart implements ActionListener {
 
         tablenumlabel.setVisible(true);
         tablenumtextfield.setVisible(true);
-
 
         cartLabel.add(tablenumlabel);
         cartLabel.add(tablenumtextfield);
@@ -137,7 +136,6 @@ public class Cart implements ActionListener {
                 addresslabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
                 addressfield.setBounds(232, 182, 100, 20);
 
-
                 addresslabel.setVisible(true);
                 addressfield.setVisible(true);
 
@@ -155,7 +153,7 @@ public class Cart implements ActionListener {
         if (e.getSource() == cashCheckBox) {
             bankCheckBox.setSelected(false);
         } // the end of check box condithions
-        // ==========================================================================================================================
+          // ==========================================================================================================================
 
         if (e.getSource() == continuenutton) { // countinue button
             boolean emptyField = false;
@@ -229,27 +227,27 @@ public class Cart implements ActionListener {
                                 int wouldU = JOptionPane.showOptionDialog(null,
                                         "You have not added a bank account before , would you add one ?",
                                         "", JOptionPane.YES_NO_OPTION, 0, null, yes_no, 0);
-                                        if (wouldU == 0) {
-                                            new bankFrame();
-                                            f.repaint();
-                                            f.revalidate();
-                                        }
-                                    }
+                                if (wouldU == 0) {
+                                    new bankFrame();
+                                    f.repaint();
+                                    f.revalidate();
                                 }
                             }
-                            if (openIt) {
-                                f.dispose();
-                                new Details(meals);
-                            }
                         }
-                        if (cashCheckBox.isSelected()) {
-                            f.dispose();
-                            new Details(meals);
-                        }
-        
                     }
-        
+                    if (openIt) {
+                        f.dispose();
+                        new Details(meals);
+                    }
                 }
+                if (cashCheckBox.isSelected()) {
+                    f.dispose();
+                    new Details(meals);
+                }
+
             }
-        
+
         }
+    }
+
+}

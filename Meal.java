@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Meal{
+public class Meal implements Serializable{
 
     private int price;
     private int serialnum ;

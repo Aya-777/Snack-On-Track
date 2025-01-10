@@ -16,9 +16,7 @@ public class Order implements ActionListener, MouseListener{
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewdetailsbutton = new JButton("View details");
-    // JButton logoutButton = new JButton("Log out");
-    // JButton addmealButton = new JButton("Add Meal");
-    // JButton managerButton = new JButton("Manager details");
+    // JButton myordersButton = new JButton("My Orders");
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");
@@ -30,11 +28,13 @@ public class Order implements ActionListener, MouseListener{
     JMenuItem logoutitem = new JMenuItem("Log out");
     JMenuItem addmealitem = new JMenuItem("Add meal");
     JMenuItem manageritem = new JMenuItem("Manager details");
+    JMenuItem myordersitem = new JMenuItem("My Orders");
     static boolean manager;
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static ArrayList<JLabel>meallabels=new ArrayList<>();
-
+    static ImageIcon newmealIcon = new ImageIcon("menu sweets 5.png");
+    
     Order(){}
     Order(boolean manager) {
         f.setLayout(null);
@@ -43,13 +43,11 @@ public class Order implements ActionListener, MouseListener{
         if (manager) {
             menu.add(addmealitem);
             menu.add(manageritem);
-            // f.add(managerButton);
-            // f.add(addmealButton);
         }
 
         menuBar.setBounds(0, 0, 635 , 15);
-        // menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menuBar.add(menu);
+        menu.add(myordersitem);
         menu.add(recommendationsitem);
         menu.add(logoutitem);
 
@@ -63,11 +61,11 @@ public class Order implements ActionListener, MouseListener{
         mealsbar.add(dessertsitem);
         mealsbar.add(drinksitem);
 
-        viewdetailsbutton.setBounds(260, 115, 130, 30);
+        viewdetailsbutton.setBounds(300, 110, 200, 33);
         viewdetailsbutton.setFocusable(false);
-        mealslabel.setBounds(275, 40, 100, 20);
+        mealslabel.setBounds(420, 75, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        mealnumlabel.setBounds(360, 40, 50, 20);
+        mealnumlabel.setBounds(510, 75, 50, 20);
         mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         pricelabel.setBounds(275, 75, 100, 20);
         pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
@@ -75,10 +73,6 @@ public class Order implements ActionListener, MouseListener{
         pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealsbar.setBounds(0, 160, 665, 25);
         mealsbar.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 200));
-
-        // logoutButton.setBounds(400, 115, 130, 30);
-        // managerButton.setBounds(400,40,130,30);
-        // addmealButton.setBounds(400, 80, 130, 30);
 
         mealnumlabel.setText(String.valueOf(num));
         pricenumlabel.setText(String.valueOf(price));
@@ -90,7 +84,6 @@ public class Order implements ActionListener, MouseListener{
         f.add(pricenumlabel);
         f.add(menuBar);
         f.add(mealsbar);
-        // f.add(logoutButton);
 
         viewdetailsbutton.addActionListener(this);
         mealsitem.addActionListener(this);
@@ -101,13 +94,7 @@ public class Order implements ActionListener, MouseListener{
         recommendationsitem.addActionListener(this);
         logoutitem.addActionListener(this);
         manageritem.addActionListener(this);
-
-        // logoutButton.addActionListener(this);
-        // managerButton.addActionListener(this);
-        // addmealButton.addActionListener(this);
-        // managerButton.setFocusable(false);
-        // addmealButton.setFocusable(false);
-        // logoutButton.setFocusable(false);
+        myordersitem.addActionListener(this);
 
 
         f.setResizable(false);
@@ -116,7 +103,7 @@ public class Order implements ActionListener, MouseListener{
         f.setLocationRelativeTo(null);
 
     }
-    void addMeal(JLabel newmealLabel){}
+    void addMeal(JLabel newmealLabel , Meal newMeal){}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -144,14 +131,16 @@ public class Order implements ActionListener, MouseListener{
         if(e.getSource() == recommendationsitem){
             new Recommendations(AllMealsFrame.meallist);
         }
+        if(e.getSource() == myordersitem){
+            new Details(AllMealsFrame.order);
+        }
 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() instanceof JLabel){
-            // System.out.println(((JLabel) e.getSource()).getText());
-            for (JLabel jLabel : Order.meallabels) {
-                if(jLabel.getText()==((JLabel) e.getSource()).getText()){
+            for (JLabel jLabel : meallabels) {
+                if(jLabel.getText().equals(((JLabel) e.getSource()).getText())){
                     int mealnum=Integer.parseInt(jLabel.getText());
                     Meal m = AllMealsFrame.meallist.get(mealnum);
                     if(m.getDeleted()){

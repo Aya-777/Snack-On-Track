@@ -21,7 +21,7 @@ class Recommendations{
         f.setLayout(new FlowLayout());
         int min=0;
         for(Meal m : meals){
-            if(m.getType()=="Meal"){
+            if(m.getType().equals("Meal")){
                 if(m.getPopularity()>min){
                     mostpopularmeal=m;
                     min=m.getPopularity();
@@ -41,7 +41,7 @@ class Recommendations{
         }
         min=0;
         for(Meal m : meals){
-            if(m.getType()=="Salad"){
+            if(m.getType().equals("Salad")){
                 if(m.getPopularity()>min){
                     mostpopularsalad=m;
                     min=m.getPopularity();
@@ -60,7 +60,7 @@ class Recommendations{
         }
         min=0;
         for(Meal m : meals){
-            if(m.getType()=="Dessert"){
+            if(m.getType().equals("Dessert")){
                 if(m.getPopularity()>min){
                     mostpopulardessert=m;
                     min=m.getPopularity();
@@ -79,7 +79,7 @@ class Recommendations{
         }
         min=0;
         for(Meal m : meals){
-            if(m.getType()=="Drink"){
+            if(m.getType().equals("Drink")){
                 if(m.getPopularity()>min){
                     mostpopulardrink=m;
                     min=m.getPopularity();

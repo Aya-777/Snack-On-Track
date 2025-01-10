@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -22,7 +23,8 @@ public class Details implements ActionListener{
     static int gap=30;
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
-    static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
+    static ArrayList<OrderFile> saveFileArray = new ArrayList<>();
+    // static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
     /*  the first is the list that 
     contains every account and the second is the list that contains every accounts' orderS 
     so we need a third list that has the orders
@@ -30,17 +32,25 @@ public class Details implements ActionListener{
 
     Details(ArrayList<Integer> meals){
 
-        ManagementAccounts.customerOrders.add(meals);
-        manageArrayList.add(ManagementAccounts.customerOrders);
+        if(myAccount.customer==null){
+            OrderFile file = new OrderFile(meals, myAccount.employee.getName(), LocalDate.now() );
+            saveFileArray.add(file);
+        } else{
+            OrderFile file = new OrderFile(meals, myAccount.customer.getName(), LocalDate.now());
+            saveFileArray.add(file);
+        }
+        
+        // ManagementAccounts.customerOrders.add(meals);
+        // manageArrayList.add(ManagementAccounts.customerOrders);
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))){
-            oos.writeObject(manageArrayList);
+            // oos.writeObject(manageArrayList);
+            oos.writeObject(saveFileArray);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        System.out.println(manageArrayList.get(0).get(0).get(0));
-
+        System.out.println(saveFileArray.get(0).getUsername());
 
         // int index=0;
         // try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
@@ -83,8 +93,8 @@ public class Details implements ActionListener{
 
         for (int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
-                x = xbar+115; y = ybar;
-                xnum=xbar+375 ; ynum = ybar;
+                x = xbar+115;
+                xnum=xbar+375 ;
                 break;
             }
         }
@@ -97,14 +107,12 @@ public class Details implements ActionListener{
 
 
 
-        panelScroll.add(cancelButton);
-        panelScroll.add(state);
-        panelScroll.add(detailsprogregressbar);
-
         f.add(scrollPane);
+        boolean mealsExist=false;
         y=gap; ynum=gap;
         for(int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
+                mealsExist=true;
                 JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
                 JLabel mealnum = new JLabel(String.valueOf(meals.get(i)));
 
@@ -178,10 +186,14 @@ public class Details implements ActionListener{
             }
         };
 
-        worker.execute();
-
-        ystate+=50;
-        ybar+=50;
+        if(mealsExist){
+            panelScroll.add(cancelButton);
+            panelScroll.add(state);
+            panelScroll.add(detailsprogregressbar);
+            worker.execute();
+            ystate+=50;
+            ybar+=50;
+        }
 
         f.add(backToOrderButton);
         f.setResizable(false);
@@ -198,8 +210,10 @@ public class Details implements ActionListener{
             Order.num=0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            AllMealsFrame.meallist.clear();
+            // AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
+            AllMealsFrame.arrayMealsIcon.clear();
+            AllMealsFrame.arrayMenuMealsIcon.clear();
             AllMealsFrame.fillLists();
             if(MealOrder.manager){
                 new MealOrder(true);

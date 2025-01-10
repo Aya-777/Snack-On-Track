@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 import javax.swing.*;
 
 class EditMeal implements ActionListener{
@@ -87,6 +90,11 @@ class EditMeal implements ActionListener{
             else{
                 new MealOrder(true);
             }
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))){
+                oos.writeObject(AllMealsFrame.meallist);
+                } catch (Exception ee) {
+                   ee.printStackTrace();
+                }
 
         }
     }

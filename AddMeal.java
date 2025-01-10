@@ -1,6 +1,8 @@
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -63,14 +65,13 @@ class AddMeal implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(null, "Meal added.", 
                 "", JOptionPane.INFORMATION_MESSAGE);
+                f.dispose();
                 ImageIcon newmealIcon = new ImageIcon("drink1icon.jpg");
                 int price = Integer.parseInt(mealpricefield.getText());
                 int calorie = Integer.parseInt(mealcaloriefield.getText());
                 String name = mealnamefield.getText();
                 String desc = mealdescriptionfield.getText();
 
-
-                // System.out.println(serialnum + " " + price + " " + calorie + " " + name);
 
                 JLabel newmealLabel = new JLabel(newmealIcon);
                 newmealLabel.setLayout(new FlowLayout());
@@ -85,44 +86,38 @@ class AddMeal implements ActionListener {
                 if (mealtype.getSelectedItem() == "Meal") {
                     int serialnum = AllMealsFrame.meallist.size()-1;
                     Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Meal");
-                    AllMealsFrame.addMeal(newMeal);
+                    // AllMealsFrame.addMeal(newMeal);
                     MealOrder m = new MealOrder(true);
-                    m.addMeal(newmealLabel);
-                    AllMealsFrame.addMeal(newMeal);
+                    m.addMeal(newmealLabel,newMeal);
 
                 }
                 if (mealtype.getSelectedItem() == "Salad") {
 
                     int serialnum = AllMealsFrame.meallist.size()-1;
                     Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Salad");
-                    AllMealsFrame.addMeal(newMeal);
+                    // AllMealsFrame.addMeal(newMeal);
                     SaladOrder ss = new SaladOrder(true);
-                    ss.addMeal(newmealLabel);
-                    AllMealsFrame.addMeal(newMeal);
+                    ss.addMeal(newmealLabel,newMeal);
                 }
                 if (mealtype.getSelectedItem() == "Dessert") {
 
 
                     int serialnum = AllMealsFrame.meallist.size()-1;
                     Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Dessert");
-                    AllMealsFrame.addMeal(newMeal);
+                    // AllMealsFrame.addMeal(newMeal);
                     DessertOrder d = new DessertOrder(true);
-                    d.addMeal(newmealLabel);
-                    AllMealsFrame.addMeal(newMeal);
+                    d.addMeal(newmealLabel,newMeal);
                 }
                 if (mealtype.getSelectedItem() == "Drink") {
 
                     int serialnum = AllMealsFrame.meallist.size()-1;
                     Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Drink");
-                    AllMealsFrame.addMeal(newMeal);
+                    // AllMealsFrame.addMeal(newMeal);
                     DrinksOrder d = new DrinksOrder(true);
-                    d.addMeal(newmealLabel);
-                    AllMealsFrame.addMeal(newMeal);
+                    d.addMeal(newmealLabel,newMeal);
                 }
 
-
                 submitbutton.setEnabled(false);
-                f.dispose();
 
             }
         }
