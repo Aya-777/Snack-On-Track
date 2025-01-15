@@ -128,6 +128,7 @@ public class SignFrame extends JFrame implements ActionListener {
                     check = accountsExsisted1(userName, password);
                     if (check) {
                         myAccount.customer = customeAccounts.get(index);
+                        myAccount.employee=null;
 
                         this.dispose();
                         new MealOrder(false);
@@ -141,6 +142,8 @@ public class SignFrame extends JFrame implements ActionListener {
                     check = accountsExsisted2(userName, password, employeeNumber);
                     if (check) {
                         myAccount.employee = mangeAccounts.get(index);
+                        myAccount.customer=null;
+                        
                         this.dispose();
                         new MealOrder(true);
                     } else {
