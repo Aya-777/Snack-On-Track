@@ -85,7 +85,6 @@ class OrderDetails implements ActionListener{
 
                     panelScroll.setPreferredSize(new Dimension(385,yy));}
                 else
-
                     panelScroll.setPreferredSize(new Dimension(385,400));
 
             }
