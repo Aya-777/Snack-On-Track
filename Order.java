@@ -134,7 +134,7 @@ public class Order implements ActionListener, MouseListener{
             new Recommendations(AllMealsFrame.meallist);
         }
         if(e.getSource() == myordersitem){
-            new Details(AllMealsFrame.order);
+            new Details(new ArrayList<>());
         }
 
     }

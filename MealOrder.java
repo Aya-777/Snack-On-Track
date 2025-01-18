@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class MealOrder extends Order {
     JLabel mealOrderIconLabel = new JLabel();
-    ImageIcon mealOrderIcon = new ImageIcon("D:\\lujain\\Restaurant\\main design meal.png");
+    ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
     static int index = 0;
 
     JLabel mealprice;

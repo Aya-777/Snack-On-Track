@@ -82,7 +82,6 @@ public class Details implements ActionListener{
         f.add(detailsLabel);
         f.setLayout(null);
         f.setSize(600,700);
-
         for (int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
                 x = xbar+115;
@@ -202,7 +201,6 @@ public class Details implements ActionListener{
             Order.num=0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            // AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.arrayMealsIcon.clear();
             AllMealsFrame.arrayMenuMealsIcon.clear();
@@ -214,7 +212,6 @@ public class Details implements ActionListener{
             }
         }
         if(e.getSource()==cancelButton){
-            AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.fillLists();
             cancelPressed=true;

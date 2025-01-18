@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        AllMealsFrame.restartapp();
-        AllMealsFrame.fillLists();
+        // AllMealsFrame.restartapp();
         // try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
         //     oos.writeObject(AllMealsFrame.meallist);
         // } catch (Exception ee) {
         //     ee.printStackTrace();
         // }
+        AllMealsFrame.fillLists();
         loadfiles();
         loadAccounts();
         loadMeals();
