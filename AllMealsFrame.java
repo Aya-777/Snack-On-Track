@@ -3,7 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -390,6 +392,11 @@ public class AllMealsFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Meal Deleted.", "Title",
                     JOptionPane.INFORMATION_MESSAGE);
             f.dispose();
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))){
+            oos.writeObject(meallist);
+                } catch (Exception ee) {
+                 ee.printStackTrace();
+                }
         }
         if (e.getSource() == backButton) {
             f.dispose();
