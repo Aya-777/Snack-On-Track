@@ -13,7 +13,6 @@ public class Main {
         // } catch (Exception ee) {
         //     ee.printStackTrace();
         // }
-        // Details.manageArrayList = loadfiles();
         loadfiles();
         loadAccounts();
         loadMeals();

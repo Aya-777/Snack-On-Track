@@ -123,7 +123,7 @@ public class AllMealsFrame implements ActionListener {
     static ImageIcon salad4MainIcon = new ImageIcon("main salad 4.png");
 
     static ImageIcon meal1MainIcon = new ImageIcon("main meal 1.png");
-    static ImageIcon meal2MainIcon = new ImageIcon("main meal 2.png");
+    static ImageIcon meal2MainIcon = new ImageIcon("main meal  2.png");
     static ImageIcon meal3MainIcon = new ImageIcon("main meal 3.png");
     static ImageIcon meal4MainIcon = new ImageIcon("main meal 4.png");
     static ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");

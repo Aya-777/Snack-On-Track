@@ -24,11 +24,6 @@ public class Details implements ActionListener{
     SwingWorker<Void,Integer> worker;
     boolean cancelPressed=false;
     static ArrayList<OrderFile> saveFileArray = new ArrayList<>();
-    // static ArrayList<ArrayList<ArrayList<Integer>>> manageArrayList= new ArrayList<>();
-    /*  the first is the list that 
-    contains every account and the second is the list that contains every accounts' orderS 
-    so we need a third list that has the orders
-    */
 
     Details(ArrayList<Integer> meals){
 
@@ -39,12 +34,7 @@ public class Details implements ActionListener{
             OrderFile file = new OrderFile(meals, myAccount.customer.getName(), LocalDate.now());
             saveFileArray.add(file);
         }
-        
-        // ManagementAccounts.customerOrders.add(meals);
-        // manageArrayList.add(ManagementAccounts.customerOrders);
-
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))){
-            // oos.writeObject(manageArrayList);
             oos.writeObject(saveFileArray);
         } catch (Exception e) {
             e.printStackTrace();
