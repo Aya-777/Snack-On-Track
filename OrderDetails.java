@@ -49,6 +49,7 @@ class OrderDetails implements ActionListener{
 
         confirmButton.setBounds(340, 423, 120, 25);
         confirmButton.addActionListener(this);
+        confirmButton.setFocusable(false);
 
         pricenumlabel.setText(String.valueOf(Order.price));
         mealnumlabel.setText(String.valueOf(Order.num));
@@ -85,7 +86,6 @@ class OrderDetails implements ActionListener{
 
                     panelScroll.setPreferredSize(new Dimension(385,yy));}
                 else
-
                     panelScroll.setPreferredSize(new Dimension(385,400));
 
             }

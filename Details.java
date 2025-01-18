@@ -75,7 +75,9 @@ public class Details implements ActionListener{
         panelScroll.setBorder(new LineBorder(Color.white, 2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         backToOrderButton.addActionListener(this);
+        backToOrderButton.setFocusable(false);
         cancelButton.addActionListener(this);
+        cancelButton.setFocusable(false);
 
         f.add(detailsLabel);
         f.setLayout(null);

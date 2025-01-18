@@ -8,10 +8,13 @@ import java.io.ObjectOutputStream;
 
 public class MealOrder extends Order {
     JLabel mealOrderIconLabel = new JLabel();
-    ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
+    ImageIcon mealOrderIcon = new ImageIcon("D:\\lujain\\Restaurant\\main design meal.png");
     static int index = 0;
+
     JLabel mealprice;
     JLabel mealcalorie;
+    ImageIcon newmealmenuicon = new ImageIcon("add meal.png");
+    JLabel newmealNameLabel;
 
     MealOrder() {}
 
@@ -55,7 +58,9 @@ public class MealOrder extends Order {
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Meal") && m.getSerialnum() >= 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(21));
+                jLabel.setIcon(newmealmenuicon);
+
+                newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
                     AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
@@ -63,6 +68,10 @@ public class MealOrder extends Order {
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
+
+                newmealNameLabel.setBounds(20,30,400,50);
+                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                newmealNameLabel.setBackground( Color.white);
 
                 mealprice.setBounds(188, 78, 150, 60);
                 mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
@@ -76,6 +85,7 @@ public class MealOrder extends Order {
                 mealcalorie.setBackground(new Color(255, 134, 120));
                 mealcalorie.setOpaque(true);
 
+                jLabel.add(newmealNameLabel);
                 jLabel.add(mealprice);
                 jLabel.add(mealcalorie);
                 jLabel.addMouseListener(this);

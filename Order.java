@@ -35,7 +35,7 @@ public class Order implements ActionListener, MouseListener{
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
     static ArrayList<JLabel>meallabels=new ArrayList<>();
-    static ImageIcon newmealIcon = new ImageIcon("menu sweets 5.png");
+
     
     Order(){}
     Order(boolean manager) {

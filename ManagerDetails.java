@@ -1,18 +1,27 @@
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 class ManagerDetails{
 
     JFrame f = new JFrame();
     JLabel favcustomerLabel = new JLabel("The most visiting customer : ");
     JLabel favcutomernamLabel = new JLabel();
+    JLabel backGroundLabel = new JLabel();
+    ImageIcon backGroundIcon = new ImageIcon("cart.png");
 
 
 
     ManagerDetails(ArrayList<Meal> meals){
         f.setLayout(new FlowLayout());
+        backGroundLabel.setBounds(0,0,500,500);
+        backGroundLabel.setIcon(backGroundIcon);
+
+        favcustomerLabel.setBounds(80,90,300,30);
+        favcustomerLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        favcutomernamLabel.setBounds(360,90,200,30);
+        favcutomernamLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        f.add(backGroundLabel);
    
         int min=0;
         String name ="";
@@ -25,7 +34,7 @@ class ManagerDetails{
         }
         try {
             favcutomernamLabel.setText(name);
-            f.add(favcutomernamLabel);
+            backGroundLabel.add(favcutomernamLabel);
 
         } catch (NullPointerException e) {
             favcustomerLabel.setText("No customers");
@@ -34,11 +43,11 @@ class ManagerDetails{
         // favcustomerLabel.setBounds(min, min, min, min);
         // favcutomernamLabel.setBounds(min, min, min, min);
 
-        f.add(favcustomerLabel);
+        backGroundLabel.add(favcustomerLabel);
         
 
         f.setResizable(false);
-        f.setSize(650, 830);
+        f.setSize(500, 500);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
         

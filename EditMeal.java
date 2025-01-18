@@ -8,6 +8,8 @@ import javax.swing.*;
 
 class EditMeal implements ActionListener{
     JFrame f = new JFrame("Edit Meal");
+    JLabel editMealIconLabel = new JLabel();
+    ImageIcon editMealIcon = new ImageIcon("cart.png");
     JTextField priceTextField = new JTextField();
     JTextField calorieTextField = new JTextField();
     JLabel namelabel = new JLabel();
@@ -23,41 +25,57 @@ class EditMeal implements ActionListener{
     EditMeal(Meal m,int mealnum,String type){
         f.setLayout(null);
 
+        editMealIconLabel.setBounds(0,0,500,500);
+        editMealIconLabel.setIcon(editMealIcon);
+
+
         this.m=m;
         this.mealnum=mealnum;
         this.type=type;
 
-        confirmButton.setBounds(200,450,100,20);
+        confirmButton.setBounds(190,375,120,25);
         confirmButton.addActionListener(this);
+        confirmButton.setFocusable(false);
 
-        namelabel.setBounds(30,50,200,30);
-        pricelabel.setBounds(50,100,80,20);
-        calorielabel.setBounds(50,130,80,20);
-        descriptionlabel.setBounds(50,160,80,20);
+        namelabel.setBounds(80,95,400,22);
+        namelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 25));
 
-        priceTextField.setBounds(140,100,100,20);
-        calorieTextField.setBounds(140,130,100,20);
+        pricelabel.setBounds(80,160,120,25);
+        pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        priceTextField.setBounds(150,162,70,23);
+        priceTextField.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
+
+        calorielabel.setBounds(80,220,100,25);
+        calorielabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        calorieTextField.setBounds(175,222,70,23);
+        calorieTextField.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
+
+        descriptionlabel.setBounds(80,290,120,25);
+        descriptionlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
 
         namelabel.setText("Name: " + m.getName());
         priceTextField.setText(String.valueOf(m.getPrice()));
         calorieTextField.setText(String.valueOf(m.getCals()));
+        textArea.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 13));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setText(m.getDesc());
         JScrollPane scrollPane = new JScrollPane(textArea);
-        scrollPane.setBounds(140,160, 300, 50);
+        scrollPane.setBounds(200,280, 270, 50);
 
-        f.add(scrollPane);
-        f.add(namelabel);
-        f.add(confirmButton);
-        f.add(pricelabel);
-        f.add(calorielabel);
-        f.add(descriptionlabel);
-        f.add(priceTextField);
-        f.add(calorieTextField);
+        editMealIconLabel.add(scrollPane);
+        editMealIconLabel.add(namelabel);
+        editMealIconLabel.add(confirmButton);
+        editMealIconLabel.add(pricelabel);
+        editMealIconLabel.add(calorielabel);
+        editMealIconLabel.add(descriptionlabel);
+        editMealIconLabel.add(priceTextField);
+        editMealIconLabel.add(calorieTextField);
 
+
+        f.add(editMealIconLabel);
         f.setResizable(false);
-        f.setSize(665,850);
+        f.setSize(500,500);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
 
