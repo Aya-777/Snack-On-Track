@@ -210,10 +210,13 @@ public class Details implements ActionListener {
             ybar += 50;
         }
 
+        f.add(scrollPane);
+        f.add(detailsLabel);
         f.add(backToOrderButton);
         f.setResizable(false);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
+        f.setSize(600,700);
 
     }
 
@@ -229,11 +232,7 @@ public class Details implements ActionListener {
             AllMealsFrame.arrayMealsIcon.clear();
             AllMealsFrame.arrayMenuMealsIcon.clear();
             AllMealsFrame.fillLists();
-            if (MealOrder.manager) {
-                new MealOrder(true);
-            } else {
-                new MealOrder(false);
-            }
+            new MealOrder(MealOrder.manager);
         }
         if (e.getSource() == cancelButton) {
             Order.price = 0;

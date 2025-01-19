@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Order implements ActionListener, MouseListener {
 
-    static int num = 0, price = 0, newmeals = AllMealsFrame.meallist.size() - 1;
+    static int num = 0, price = 0;
     JFrame f = new JFrame();
     JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
@@ -131,7 +131,6 @@ public class Order implements ActionListener, MouseListener {
             Details.panelScroll = new JPanel();
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
-            AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.fillLists();
             new SignFrame();
@@ -161,9 +160,25 @@ public class Order implements ActionListener, MouseListener {
                 if (jLabel.getText().equals(((JLabel) e.getSource()).getText())) {
                     int mealnum = Integer.parseInt(jLabel.getText());
                     Meal m = AllMealsFrame.meallist.get(mealnum);
-                    if (m.getDeleted()) {
-                        JOptionPane.showMessageDialog(null, "This meal is not available.",
-                                "Title", JOptionPane.OK_OPTION);
+                    if(m.getDeleted()){
+                        if(myAccount.customer != null){ //customer
+                            JOptionPane.showMessageDialog(null,"This meal is not available.",
+                        "Title",JOptionPane.OK_OPTION);
+                        
+                        } else{ //employee
+                            int yes = JOptionPane.showConfirmDialog(null,"This meal is not available, Do you want to restore it?",
+                        "Title",JOptionPane.YES_NO_OPTION);
+                            if (yes==0){
+                                m.setDeleted(false);
+                                JOptionPane.showMessageDialog(null,"Meal Restored.",
+                            "Title",JOptionPane.INFORMATION_MESSAGE);
+                                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))){
+                                oos.writeObject(AllMealsFrame.meallist);
+                                } catch (Exception ee) {
+                                    ee.printStackTrace();
+                                }
+                            }
+                        }
                         break;
                     } else {
                         new AllMealsFrame(mealnum, manager, m.getType());

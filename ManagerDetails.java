@@ -27,7 +27,6 @@ class ManagerDetails{
         String name ="";
         for (customerAccounts c : newAccount.customeAccounts) {
             if(c.getHowManyTimes()>min){
-                System.out.println(c.getName());
                 name=c.getName();
                 min=c.getHowManyTimes();
             }

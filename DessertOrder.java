@@ -11,7 +11,6 @@ public class DessertOrder extends Order {
     ImageIcon dessertOrderIcon = new ImageIcon("Snack-On-Track\\main design sweets.png");
     JLabel mealprice;
     JLabel mealcalorie;
-    ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.png");
     JLabel newmealNameLabel;
 
     DessertOrder(boolean manager) {
@@ -55,7 +54,7 @@ public class DessertOrder extends Order {
             if (m.getType().equals("Dessert") && m.getSerialnum() >= 20) {
 
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(newDessertMenuIcon);
+                jLabel.setIcon(AddMeal.newDessertMenuIcon);
 
                 newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
@@ -104,9 +103,7 @@ public class DessertOrder extends Order {
 
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
-        newmeals++;
         newmealLabel.addMouseListener(this);
-        newmealLabel.setText(String.valueOf(newmeals));
         panelScroll.add(newmealLabel);
         AllMealsFrame.order.add(0);
         AllMealsFrame.meallist.add(newMeal);
@@ -151,9 +148,6 @@ public class DessertOrder extends Order {
             super.actionPerformed(e);
         }
         if (e.getSource() == logoutitem) {
-            super.actionPerformed(e);
-        }
-        if (e.getSource() == addmealitem) {
             super.actionPerformed(e);
         }
         if (e.getSource() == addmealitem) {
