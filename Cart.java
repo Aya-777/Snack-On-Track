@@ -65,6 +65,7 @@ public class Cart implements ActionListener {
 
         continuenutton.setBounds(175, 400, 150, 25);
         continuenutton.addActionListener(this);
+        continuenutton.setFocusable(false);
 
         detailslabel.setBounds(80, 235, 350, 20);
         detailslabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));

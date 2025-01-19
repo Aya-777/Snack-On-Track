@@ -31,14 +31,14 @@ class AddMeal implements ActionListener {
     JLabel newmealPriceLabel = new JLabel();
     JLabel newmealCalorieLabel = new JLabel();
 
-    ArrayList<ImageIcon> newMealsIconArray = new ArrayList<>();
-    ImageIcon newMealMenuIcon = new ImageIcon("add meal.png");
-    ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
+    ImageIcon newmealmenuicon = new ImageIcon("add meal.png");
     ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.png");
     ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.png");
+    ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
 
     JLabel addMealIconLabel = new JLabel();
     ImageIcon addMealIcon = new ImageIcon("cart.png");
+
     AddMeal() {
         f.setLayout(new FlowLayout());
 
@@ -69,9 +69,7 @@ class AddMeal implements ActionListener {
         mealdescriptionfield.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
 
         submitbutton.setBounds(190,375,120,25);
-        //submitbutton.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-
-
+        submitbutton.setFocusable(false);
         submitbutton.addActionListener(this);
 
         addMealIconLabel.add(mealtype);
@@ -85,6 +83,7 @@ class AddMeal implements ActionListener {
         addMealIconLabel.add(mealcalorielabel);
         addMealIconLabel.add(submitbutton);
 
+        f.setLayout(null);
         f.add(addMealIconLabel);
         f.setSize(500, 485);
         f.setVisible(true);
@@ -111,63 +110,142 @@ class AddMeal implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Input invalid, Try again",
                         "Title", JOptionPane.OK_OPTION);
                 submitbutton.setEnabled(true);
-                JOptionPane.showMessageDialog(null, "Meal added.",
-                "", JOptionPane.INFORMATION_MESSAGE);
-                f.dispose();
-                ImageIcon newmealIcon = new ImageIcon("drink1icon.jpg");
-                int price = Integer.parseInt(mealpricefield.getText());
-                int calorie = Integer.parseInt(mealcaloriefield.getText());
-                String name = mealnamefield.getText();
-                String desc = mealdescriptionfield.getText();
+            } else{
+                    JOptionPane.showMessageDialog(null, "Meal added.",
+                            "", JOptionPane.INFORMATION_MESSAGE);
+                    f.dispose();
+                    ImageIcon newmealIcon = new ImageIcon("drink1icon.jpg");
+                    int price = Integer.parseInt(mealpricefield.getText());
+                    int calorie = Integer.parseInt(mealcaloriefield.getText());
+                    String name = mealnamefield.getText();
+                    String desc = mealdescriptionfield.getText();
 
 
-                JLabel newmealLabel = new JLabel(newmealIcon);
-                newmealLabel.setLayout(new FlowLayout());
-                newmealNameLabel.setText(name);
-                newmealCalorieLabel.setText(String.valueOf(calorie));
-                newmealPriceLabel.setText(String.valueOf(price));
+                    JLabel newmealLabel = new JLabel(newmealIcon);
+                    newmealLabel.setLayout(new FlowLayout());
+                    newmealNameLabel.setText(name);
+                    newmealCalorieLabel.setText(String.valueOf(calorie)+" kcal");
+                    newmealPriceLabel.setText(String.valueOf(price)+" $");
 
-                newmealLabel.add(newmealNameLabel);
-                newmealLabel.add(newmealPriceLabel);
-                newmealLabel.add(newmealCalorieLabel);
 
-                if (mealtype.getSelectedItem() == "Meal") {
-                    int serialnum = AllMealsFrame.meallist.size()-1;
-                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Meal");
-                    // AllMealsFrame.addMeal(newMeal);
-                    MealOrder m = new MealOrder(true);
-                    m.addMeal(newmealLabel,newMeal);
+                    newmealLabel.add(newmealNameLabel);
+                    newmealLabel.add(newmealPriceLabel);
+                    newmealLabel.add(newmealCalorieLabel);
+                    newmealLabel.setLayout(null);
 
+                    if (mealtype.getSelectedItem() == "Meal") {
+                        int serialnum = AllMealsFrame.meallist.size();
+                        Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Meal");
+
+                        newmealNameLabel.setBounds(25,30,400,50);
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setForeground(new Color(255,255,255));
+
+                        newmealPriceLabel.setBounds(188, 78, 150, 60);
+                        newmealPriceLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealPriceLabel.setForeground(new Color(139, 37, 17));
+                        newmealPriceLabel.setBackground(new Color(255, 134, 120));
+                        newmealPriceLabel.setOpaque(true);
+
+                        newmealCalorieLabel.setBounds(25, 78, 140, 60);
+                        newmealCalorieLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealCalorieLabel.setForeground(new Color(229, 230, 202));
+                        newmealCalorieLabel.setBackground(new Color(255, 134, 120));
+                        newmealCalorieLabel.setOpaque(true);
+
+
+                        // AllMealsFrame.addMeal(newMeal);
+
+                        newmealLabel.setIcon(newmealmenuicon);
+                        MealOrder m = new MealOrder(true);
+                        m.addMeal(newmealLabel, newMeal);
+
+                    }
+                    if (mealtype.getSelectedItem() == "Salad") {
+
+                        int serialnum = AllMealsFrame.meallist.size();
+                        Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Salad");
+                        // AllMealsFrame.addMeal(newMeal);
+
+                        newmealNameLabel.setBounds(20,30,400,50);
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setForeground(new Color(91,74,38));
+
+                        newmealPriceLabel.setBounds(188, 78, 150, 60);
+                        newmealPriceLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealPriceLabel.setForeground(new Color(232, 99, 73));
+                        newmealPriceLabel.setBackground(new Color(166, 251, 186));
+                        newmealPriceLabel.setOpaque(true);
+
+                        newmealCalorieLabel.setBounds(25, 78, 140, 60);
+                        newmealCalorieLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealCalorieLabel.setForeground(new Color(91, 74, 38));
+                        newmealCalorieLabel.setBackground(new Color(166, 251, 186));
+                        newmealCalorieLabel.setOpaque(true);
+
+
+                        newmealLabel.setIcon(newSaladMenuIcon);
+                        SaladOrder ss = new SaladOrder(true);
+                        ss.addMeal(newmealLabel, newMeal);
+                    }
+                    if (mealtype.getSelectedItem() == "Dessert") {
+
+
+                        int serialnum = AllMealsFrame.meallist.size();
+                        Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Dessert");
+                        // AllMealsFrame.addMeal(newMeal);
+                        newmealNameLabel.setBounds(20,30,400,50);
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setForeground(new Color(91,74,38));
+
+                        newmealPriceLabel.setBounds(180, 78, 150, 60);
+                        newmealPriceLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealPriceLabel.setForeground(new Color(232, 99, 73));
+                        newmealPriceLabel.setBackground(new Color(232, 195, 150));
+                        newmealPriceLabel.setOpaque(true);
+
+                        newmealCalorieLabel.setBounds(25, 78, 140, 60);
+                        newmealCalorieLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealCalorieLabel.setForeground(new Color(91, 74, 38));
+                        newmealCalorieLabel.setBackground(new Color(232, 195, 150));
+                        newmealCalorieLabel.setOpaque(true);
+
+                        newmealLabel.setIcon(newDessertMenuIcon);
+
+                        DessertOrder d = new DessertOrder(true);
+                        d.addMeal(newmealLabel, newMeal);
+                    }
+                    if (mealtype.getSelectedItem() == "Drink") {
+
+                        int serialnum = AllMealsFrame.meallist.size();
+                        Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Drink");
+                        // AllMealsFrame.addMeal(newMeal);
+
+                        newmealNameLabel.setBounds(20,30,500,50);
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setForeground(new Color(224,64,78));
+
+                        newmealPriceLabel.setBounds(188, 78, 150, 60);
+                        newmealPriceLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealPriceLabel.setForeground(new Color(232, 99, 73));
+                        newmealPriceLabel.setBackground(new Color(154, 232, 231));
+                        newmealPriceLabel.setOpaque(true);
+
+                        newmealCalorieLabel.setBounds(25, 78, 140, 60);
+                        newmealCalorieLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
+                        newmealCalorieLabel.setForeground(new Color(91, 74, 38));
+                        newmealCalorieLabel.setBackground(new Color(154, 232, 231));
+                        newmealCalorieLabel.setOpaque(true);
+
+                        newmealLabel.setIcon(newDrinkMenuIcon);
+
+                        DrinksOrder d = new DrinksOrder(true);
+                        d.addMeal(newmealLabel, newMeal);
+                    }
+
+                    submitbutton.setEnabled(false);
                 }
-                if (mealtype.getSelectedItem() == "Salad") {
-
-                    int serialnum = AllMealsFrame.meallist.size()-1;
-                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Salad");
-                    // AllMealsFrame.addMeal(newMeal);
-                    SaladOrder ss = new SaladOrder(true);
-                    ss.addMeal(newmealLabel,newMeal);
-                }
-                if (mealtype.getSelectedItem() == "Dessert") {
-
-
-                    int serialnum = AllMealsFrame.meallist.size()-1;
-                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Dessert");
-                    // AllMealsFrame.addMeal(newMeal);
-                    DessertOrder d = new DessertOrder(true);
-                    d.addMeal(newmealLabel,newMeal);
-                }
-                if (mealtype.getSelectedItem() == "Drink") {
-
-                    int serialnum = AllMealsFrame.meallist.size()-1;
-                    Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false,0,"Drink");
-                    // AllMealsFrame.addMeal(newMeal);
-                    DrinksOrder d = new DrinksOrder(true);
-                    d.addMeal(newmealLabel,newMeal);
-                }
-
-                submitbutton.setEnabled(false);
 
             }
         }
     }
-}

@@ -11,6 +11,8 @@ public class DessertOrder extends Order {
     ImageIcon dessertOrderIcon = new ImageIcon("main design sweets.png");
     JLabel mealprice;
     JLabel mealcalorie;
+    ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.png");
+    JLabel newmealNameLabel;
 
     DessertOrder(boolean manager) {
         super(manager);
@@ -30,7 +32,7 @@ public class DessertOrder extends Order {
             jLabel.setBorder(new LineBorder(Color.white, 2));
             jLabel.setOpaque(true);
 
-            mealprice.setBounds(180, 78, 150, 60);
+            mealprice.setBounds(175, 80, 150, 60);
             mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
             mealprice.setForeground(new Color(232, 99, 73));
             mealprice.setBackground(new Color(232, 195, 150));
@@ -51,8 +53,11 @@ public class DessertOrder extends Order {
         }
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Dessert") && m.getSerialnum() >= 20) {
+
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(21));
+                jLabel.setIcon(newDessertMenuIcon);
+
+                newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
                     AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
@@ -60,6 +65,10 @@ public class DessertOrder extends Order {
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
+
+                newmealNameLabel.setBounds(20,30,400,50);
+                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                newmealNameLabel.setForeground(new Color(91,74,38));
 
                 mealprice.setBounds(180, 78, 150, 60);
                 mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
@@ -73,6 +82,7 @@ public class DessertOrder extends Order {
                 mealcalorie.setBackground(new Color(232, 195, 150));
                 mealcalorie.setOpaque(true);
 
+                jLabel.add(newmealNameLabel);
                 jLabel.add(mealprice);
                 jLabel.add(mealcalorie);
                 jLabel.addMouseListener(this);
