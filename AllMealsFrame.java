@@ -173,7 +173,7 @@ public class AllMealsFrame implements ActionListener {
 
                 mainLabel.setBounds(0, 0, 650, 830);
                 try {
-                        System.out.println(mealnum);
+
                         mainLabel.setIcon(arrayMealsIcon.get(mealnum));
                 } catch (IndexOutOfBoundsException e) {
                         System.out.println("wee");

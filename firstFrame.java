@@ -7,7 +7,7 @@ public class firstFrame extends JFrame {
     JLabel label;
 
     firstFrame() {
-        frontImage = new ImageIcon("Snack-On-Track\\firstFrame.png");
+        frontImage = new ImageIcon("frontFrame.png");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(650, 830);
         this.setLayout(null);

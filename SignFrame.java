@@ -46,7 +46,7 @@ public class SignFrame extends JFrame implements ActionListener {
         this.setSize(650, 830);
         this.setLayout(null);
 
-        backImage = new ImageIcon("Snack-On-Track\\firstFrame.png");
+        backImage = new ImageIcon("firstFrame.png");
 
         label = new JLabel();
         label.setBounds(0, 0, 800, 830);
