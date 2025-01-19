@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class DrinksOrder extends Order {
     JLabel drinksOrderIconLabel = new JLabel();
-    ImageIcon drinksOrderIcon = new ImageIcon("Snack-On-Track\\main desin drinks.png");
+    ImageIcon drinksOrderIcon = new ImageIcon("main desin drinks.png");
     JLabel mealprice;
     JLabel mealcalorie;
     JLabel newmealNameLabel;
@@ -100,10 +100,13 @@ public class DrinksOrder extends Order {
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
         newmealLabel.addMouseListener(this);
+        newmealLabel.setIcon(AddMeal.newDrinkMenuIcon);
+        newmealLabel.setText(String.valueOf(newMeal.getSerialnum()));
         panelScroll.add(newmealLabel);
         Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
         AllMealsFrame.meallist.add(newMeal);
+        
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
             oos.writeObject(AllMealsFrame.meallist);
         } catch (Exception ee) {

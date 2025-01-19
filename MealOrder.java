@@ -9,14 +9,10 @@ import java.io.ObjectOutputStream;
 public class MealOrder extends Order {
     JLabel mealOrderIconLabel = new JLabel();
     ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
-
     JLabel mealprice;
     JLabel mealcalorie;
-    ImageIcon newmealmenuicon = new ImageIcon("add meal.png");
     JLabel newmealNameLabel;
 
-    MealOrder() {
-    }
 
     MealOrder(boolean manager) {
         super(manager);
@@ -104,10 +100,12 @@ public class MealOrder extends Order {
     void addMeal(JLabel newmealLabel, Meal newMeal) {
         newmealLabel.addMouseListener(this);
         newmealLabel.setIcon(AddMeal.newmealmenuicon);
+        newmealLabel.setText(String.valueOf(newMeal.getSerialnum()));
         panelScroll.add(newmealLabel);
         Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
         AllMealsFrame.meallist.add(newMeal);
+
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
             oos.writeObject(AllMealsFrame.meallist);
         } catch (Exception ee) {

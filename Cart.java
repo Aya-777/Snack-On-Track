@@ -10,7 +10,7 @@ public class Cart implements ActionListener {
     JFrame f = new JFrame();
 
     JLabel cartLabel = new JLabel();
-    ImageIcon cartIcon = new ImageIcon("Snack-On-Track\\cart backgroung.png");
+    ImageIcon cartIcon = new ImageIcon("cart.png");
 
     JLabel l = new JLabel("Your Order");
     JCheckBox delivery = new JCheckBox("Delivery");

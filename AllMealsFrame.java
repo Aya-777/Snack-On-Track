@@ -155,10 +155,10 @@ public class AllMealsFrame implements ActionListener {
     static ImageIcon drinksIcon4 = new ImageIcon("menu drinks 4.png");
     static ImageIcon drinksIcon5 = new ImageIcon("menu drinks 5.png");
 
-    static ImageIcon newMealsIcon = new ImageIcon("add meals.png");
-    static ImageIcon newSaladsIcon = new ImageIcon("add salads.png");
-    static ImageIcon newDessertsIcon = new ImageIcon("add sweets.png");
-    static ImageIcon newDrinksIcon = new ImageIcon("add drinks.png");
+    static ImageIcon newMealsIcon = new ImageIcon("newmealsicon.jpg");
+    static ImageIcon newSaladsIcon = new ImageIcon("newsaladicon.jpg");
+    static ImageIcon newDessertsIcon = new ImageIcon("newdesserticon.jpg");
+    static ImageIcon newDrinksIcon = new ImageIcon("newdrinksicon.jpg");
 
     AllMealsFrame(Integer mealnum, boolean manager, String type) {
 
@@ -170,21 +170,21 @@ public class AllMealsFrame implements ActionListener {
         this.type = type;
 
         mainLabel.setBounds(0, 0, 650, 830);
-        try {
+        if(mealnum>20){
+                if (type.equals("Meal")) {
+                        mainLabel.setIcon(newMealsIcon);
+                    }
+                    if (type.equals("Salad")) {
+                        mainLabel.setIcon(newSaladsIcon);
+                    }
+                    if (type.equals("Dessert")) {
+                        mainLabel.setIcon(newDessertsIcon);
+                    }
+                    if (type.equals("Drink")) {
+                        mainLabel.setIcon(newDrinksIcon);
+                    }
+        } else{
             mainLabel.setIcon(arrayMealsIcon.get(mealnum));
-        } catch (IndexOutOfBoundsException e) {
-            if (type == "Meal") {
-                mainLabel.setIcon(newMealsIcon);
-            }
-            if (type == "Salad") {
-                mainLabel.setIcon(newSaladsIcon);
-            }
-            if (type == "Dessert") {
-                mainLabel.setIcon(newDessertsIcon);
-            }
-            if (type == "Drink") {
-                mainLabel.setIcon(newDrinksIcon);
-            }
         }
 
         if (manager) {

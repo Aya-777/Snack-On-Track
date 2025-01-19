@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,22 +16,24 @@ public class OrderManagment extends JFrame {
 
     Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
     ArrayList<OrderFile> list;
-    int y = 52;
+    int y = 0;
     JLabel emptyLabel;
     JLabel detailsLabel;
+    JLabel mainJLabel = new JLabel();
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
+    ImageIcon mainicon = new ImageIcon("OrderMangement.jpg");
 
     OrderManagment() {
 
         this.setSize(600, 500);
         this.setLayout(null);
-        this.setBackground(Color.GREEN);
 
         list = Details.saveFileArray;
         int size = list.size();
 
         detailsLabel = mainLabel(list);
+        mainJLabel.setBounds(0, 0, 600, 500);
 
         emptyLabel = new JLabel("There is no order for today until now");
         emptyLabel.setBounds(0, y, 600, 50);
@@ -38,13 +41,13 @@ public class OrderManagment extends JFrame {
         emptyLabel.setHorizontalAlignment(JLabel.CENTER);
         emptyLabel.setVerticalAlignment(JLabel.CENTER);
 
-        scrollPane.setBounds(0, 52, 580, 448);
+        scrollPane.setBounds(30, 52, 530, 400);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         panelScroll.setLayout(null);
         panelScroll.setBounds(0, 0, 550, 448);
         panelScroll.setBackground(Color.white);
-        // panelScroll.setPreferredSize(new Dimension(600, 448));
+        panelScroll.setPreferredSize(new Dimension(600, 448));
         panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
 
         for (int i = 0; i < size; i++) {
@@ -59,13 +62,12 @@ public class OrderManagment extends JFrame {
             }
         }
 
-        if (list.isEmpty()) {
-            panelScroll.add(emptyLabel);
-            // System.out.println("gigi is empty");
-        }
 
-        this.add(scrollPane);
-        this.add(detailsLabel);
+        mainJLabel.setIcon(mainicon);
+
+        mainJLabel.add(scrollPane);
+        mainJLabel.add(detailsLabel);
+        this.add(mainJLabel);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -82,15 +84,15 @@ public class OrderManagment extends JFrame {
         }
 
         JLabel howManyOrdersLabel = new JLabel();
-        howManyOrdersLabel.setBounds(0, 0, 200, 50);
+        howManyOrdersLabel.setBounds(10, 10, 200, 50);
         howManyOrdersLabel.setText("Orders :" + size);
         howManyOrdersLabel.setFont(new Font("consolas", Font.PLAIN, 30));
         howManyOrdersLabel.setHorizontalAlignment(JLabel.CENTER);
         howManyOrdersLabel.setVerticalAlignment(JLabel.CENTER);
 
         JLabel pricLabel = new JLabel();
-        pricLabel.setBounds(200, 0, 400, 50);
-        pricLabel.setText("Daily price :" + dailyPrice);
+        pricLabel.setBounds(180, 10, 400, 50);
+        pricLabel.setText("Daily income :" + dailyPrice);
         pricLabel.setFont(new Font("consolas", Font.PLAIN, 30));
         pricLabel.setHorizontalAlignment(JLabel.CENTER);
         pricLabel.setVerticalAlignment(JLabel.CENTER);
@@ -105,24 +107,22 @@ public class OrderManagment extends JFrame {
     JLabel launchLabel(String name, String date, String status) {
 
         JLabel nameLabel = new JLabel(name);
-        nameLabel.setBounds(0, 0, 200, 50);
-        nameLabel.setFont(new Font("consolas", Font.PLAIN, 30));
+        nameLabel.setBounds(10, 20, 200, 20);
+        nameLabel.setFont(new Font("consolas", Font.PLAIN, 20));
         nameLabel.setForeground(Color.black);
-        nameLabel.setHorizontalAlignment(JLabel.CENTER);
-        nameLabel.setVerticalAlignment(JLabel.BOTTOM);
+        nameLabel.setHorizontalAlignment(JLabel.LEFT);
 
         JLabel dateLabel = new JLabel(date);
-        dateLabel.setBounds(200, 0, 200, 50);
-        dateLabel.setFont(new Font("consolas", Font.PLAIN, 30));
+        dateLabel.setBounds(170, 20, 200, 20);
+        dateLabel.setFont(new Font("consolas", Font.PLAIN, 20));
         dateLabel.setForeground(Color.black);
         dateLabel.setHorizontalAlignment(JLabel.CENTER);
-        dateLabel.setVerticalAlignment(JLabel.BOTTOM);
 
         JLabel statusLabel = new JLabel(status);
-        statusLabel.setBounds(400, 0, 200, 50);
-        statusLabel.setFont(new Font("consolas", Font.PLAIN, 30));
+        statusLabel.setBounds(350, 20, 200, 20);
+        statusLabel.setFont(new Font("consolas", Font.PLAIN, 20));
         statusLabel.setHorizontalAlignment(JLabel.CENTER);
-        statusLabel.setVerticalAlignment(JLabel.BOTTOM);
+        
         if (status.equals("Done")) {
             statusLabel.setForeground(Color.green);
         } else if (status.equals("Prepering")) {
@@ -132,6 +132,7 @@ public class OrderManagment extends JFrame {
         }
 
         JLabel label = new JLabel();
+        label.setLayout(null);
         label.setBounds(0, y, 600, 50);
         label.setBorder(border);
         label.add(nameLabel);

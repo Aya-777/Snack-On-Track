@@ -2,10 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -51,7 +48,7 @@ public class newAccount extends JFrame implements ActionListener {
         this.setSize(650, 830);
         this.setLayout(null);
 
-        backImage = new ImageIcon("Snack-On-Track\\firstFrame.png");
+        backImage = new ImageIcon("firstFrame.png");
 
         label = new JLabel();
         label.setBounds(0, 0, 800, 830);
@@ -116,7 +113,6 @@ public class newAccount extends JFrame implements ActionListener {
 
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addBankButton) {

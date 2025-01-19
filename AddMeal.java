@@ -31,10 +31,10 @@ class AddMeal implements ActionListener {
     JLabel newmealPriceLabel = new JLabel();
     JLabel newmealCalorieLabel = new JLabel();
 
-    static ImageIcon newmealmenuicon = new ImageIcon("add meal.png");
-    static ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.png");
-    static ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.png");
-    static ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
+    static ImageIcon newmealmenuicon = new ImageIcon("add meal.jpg");
+    static ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.jpg");
+    static ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.jpg");
+    static ImageIcon newSaladMenuIcon = new ImageIcon("add salad.jpg");
 
     JLabel addMealIconLabel = new JLabel();
     ImageIcon addMealIcon = new ImageIcon("cart.png");

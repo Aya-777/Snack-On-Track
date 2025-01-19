@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class DessertOrder extends Order {
     JLabel dessertOrderIconLabel = new JLabel();
-    ImageIcon dessertOrderIcon = new ImageIcon("Snack-On-Track\\main design sweets.png");
+    ImageIcon dessertOrderIcon = new ImageIcon("main design sweets.png");
     JLabel mealprice;
     JLabel mealcalorie;
     JLabel newmealNameLabel;
@@ -104,9 +104,13 @@ public class DessertOrder extends Order {
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
         newmealLabel.addMouseListener(this);
+        newmealLabel.setIcon(AddMeal.newDessertMenuIcon);
+        newmealLabel.setText(String.valueOf(newMeal.getSerialnum()));
         panelScroll.add(newmealLabel);
+        Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
         AllMealsFrame.meallist.add(newMeal);
+        
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
             oos.writeObject(AllMealsFrame.meallist);
         } catch (Exception ee) {

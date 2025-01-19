@@ -8,13 +8,10 @@ import java.io.ObjectOutputStream;
 
 public class SaladOrder extends Order {
     JLabel saladOrderIconLabel = new JLabel();
-    ImageIcon saladOrderIcon = new ImageIcon("Snack-On-Track\\main design salad.png");
+    ImageIcon saladOrderIcon = new ImageIcon("main design salad.png");
     JLabel mealprice;
     JLabel mealcalorie;
     JLabel newmealNameLabel;
-
-    SaladOrder() {
-    }
 
     SaladOrder(boolean manager) {
         super(manager);
@@ -105,10 +102,13 @@ public class SaladOrder extends Order {
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
         newmealLabel.addMouseListener(this);
+        newmealLabel.setIcon(AddMeal.newSaladMenuIcon);
+        newmealLabel.setText(String.valueOf(newMeal.getSerialnum()));
         panelScroll.add(newmealLabel);
         Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
         AllMealsFrame.meallist.add(newMeal);
+        
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
             oos.writeObject(AllMealsFrame.meallist);
         } catch (Exception ee) {
