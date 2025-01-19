@@ -3,7 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -123,13 +125,13 @@ public class AllMealsFrame implements ActionListener {
         static ImageIcon salad3MainIcon = new ImageIcon("Snack-On-Track\\main salad 3.png");
         static ImageIcon salad4MainIcon = new ImageIcon("Snack-On-Track\\main salad 4.png");
 
-        static ImageIcon meal1MainIcon = new ImageIcon("Snack-On-Track\\main meal 1.png");
+        static ImageIcon meal1MainIcon = new ImageIcon("main meal 1.png");
         static ImageIcon meal2MainIcon = new ImageIcon("main meal  2.png");
-        static ImageIcon meal3MainIcon = new ImageIcon("Snack-On-Track\\main meal 3.png");
-        static ImageIcon meal4MainIcon = new ImageIcon("Snack-On-Track\\main meal 4.png");
-        static ImageIcon meal5MainIcon = new ImageIcon("Snack-On-Track\\main meal 5.png");
-        static ImageIcon meal6MainIcon = new ImageIcon("Snack-On-Track\\main meal 6.png");
-        static ImageIcon meal7MainIcon = new ImageIcon("Snack-On-Track\\main meal 7.png");
+        static ImageIcon meal3MainIcon = new ImageIcon("main meal 3.png");
+        static ImageIcon meal4MainIcon = new ImageIcon("main meal 4.png");
+        static ImageIcon meal5MainIcon = new ImageIcon("main meal 5.png");
+        static ImageIcon meal6MainIcon = new ImageIcon("main meal 6.png");
+        static ImageIcon meal7MainIcon = new ImageIcon("main meal 7.png");
 
         static ImageIcon meal1Icon = new ImageIcon("Snack-On-Track\\menu meal 1.png");
         static ImageIcon meal2Icon = new ImageIcon("Snack-On-Track\\menu meal 2.png");
@@ -150,13 +152,19 @@ public class AllMealsFrame implements ActionListener {
         static ImageIcon dessert4Icon = new ImageIcon("Snack-On-Track\\menu sweets 4.png");
         static ImageIcon dessert5Icon = new ImageIcon("Snack-On-Track\\menu sweets 5.png");
 
-        static ImageIcon drinksIcon1 = new ImageIcon("Snack-On-Track\\menu drinks 1.png");
-        static ImageIcon drinksIcon2 = new ImageIcon("Snack-On-Track\\menu drinks 2.png");
-        static ImageIcon drinksIcon3 = new ImageIcon("Snack-On-Track\\menu drinks 3.png");
-        static ImageIcon drinksIcon4 = new ImageIcon("Snack-On-Track\\menu drinks 4.png");
-        static ImageIcon drinksIcon5 = new ImageIcon("Snack-On-Track\\menu drinks 5.png");
+        static ImageIcon drinksIcon1 = new ImageIcon("menu drinks 1.png");
+        static ImageIcon drinksIcon2 = new ImageIcon("menu drinks 2.png");
+        static ImageIcon drinksIcon3 = new ImageIcon("menu drinks 3.png");
+        static ImageIcon drinksIcon4 = new ImageIcon("menu drinks 4.png");
+        static ImageIcon drinksIcon5 = new ImageIcon("menu drinks 5.png");
+
+        static ImageIcon newMealsIcon = new ImageIcon("add meals.png");
+        static ImageIcon newSaladsIcon = new ImageIcon("add salads.png");
+        static ImageIcon newDessertsIcon = new ImageIcon("add sweets.png");
+        static ImageIcon newDrinksIcon = new ImageIcon("add drinks.png");
 
         AllMealsFrame(Integer mealnum, boolean manager, String type) {
+
                 f.setLayout(null);
                 this.mealnum = mealnum;
                 num1 = order.get(mealnum);
@@ -165,18 +173,32 @@ public class AllMealsFrame implements ActionListener {
 
                 mainLabel.setBounds(0, 0, 650, 830);
                 try {
+                        System.out.println(mealnum);
                         mainLabel.setIcon(arrayMealsIcon.get(mealnum));
                 } catch (IndexOutOfBoundsException e) {
                         System.out.println("wee");
-                        // mainLabel.setIcon(); // new meal icon
+                        if (type == "Meal") {
+                                mainLabel.setIcon(newMealsIcon);
+                        }
+                        if (type == "Salad") {
+                                mainLabel.setIcon(newSaladsIcon);
+                        }
+                        if (type == "Dessert") {
+                                mainLabel.setIcon(newDessertsIcon);
+                        }
+                        if (type == "Drink") {
+                                mainLabel.setIcon(newDrinksIcon);
+                        }
                 }
 
                 mainLabel.setLayout(null);
                 f.add(mainLabel);
 
                 if (manager) {
-                        deleteButton.setBounds(240, 30, 150, 30);
-                        editButton.setBounds(240, 70, 150, 30);
+                        deleteButton.setBounds(340, 55, 120, 30);
+                        editButton.setBounds(200, 55, 120, 30);
+                        editButton.setFocusable(false);
+                        deleteButton.setFocusable(false);
                         mainLabel.add(deleteButton);
                         mainLabel.add(editButton);
                 }
@@ -184,13 +206,14 @@ public class AllMealsFrame implements ActionListener {
                 singlemealnumlabel.setText(String.valueOf(num1));
                 // mealpricLabel = new JLabel(String.valueOf(
                 // AllMealsFrame.meallist.get(mealnum).getPrice())+" $");
-                mealpricLabel = new JLabel(String.valueOf(m.getPrice()));
+                mealpricLabel = new JLabel(String.valueOf(m.getPrice()) + " $");
                 mealKcaloriLabel = new JLabel(String.valueOf(m.getCals()) + " kcal");
                 descTextArea.setText(m.getDesc());
-                backButton.setBounds(250, 720, 150, 30);
+
                 mainLabel.add(backButton);
 
                 if (type.equals("Meal")) {
+                        backButton.setBounds(250, 720, 150, 30);
                         addbutton.setBounds(245, 615, 50, 30);
                         singlemealnumlabel.setBounds(313, 620, 50, 20);
                         minusbutton.setBounds(345, 615, 50, 30);
@@ -230,6 +253,7 @@ public class AllMealsFrame implements ActionListener {
 
                 }
                 if (type.equals("Salad")) {
+                        backButton.setBounds(250, 695, 150, 30);
                         addbutton.setBounds(245, 575, 50, 30);
                         singlemealnumlabel.setBounds(313, 580, 50, 20);
                         minusbutton.setBounds(345, 575, 50, 30);
@@ -269,6 +293,7 @@ public class AllMealsFrame implements ActionListener {
                         mainLabel.add(mealpricLabel);
                 }
                 if (type.equals("Dessert")) {
+                        backButton.setBounds(250, 710, 150, 30);
                         addbutton.setBounds(245, 590, 50, 30);
                         singlemealnumlabel.setBounds(313, 595, 50, 20);
                         minusbutton.setBounds(345, 590, 50, 30);
@@ -308,6 +333,7 @@ public class AllMealsFrame implements ActionListener {
                         mainLabel.add(mealpricLabel);
                 }
                 if (type.equals("Drink")) {
+                        backButton.setBounds(250, 710, 150, 30);
                         addbutton.setBounds(245, 605, 50, 30);
                         singlemealnumlabel.setBounds(313, 610, 50, 20);
                         minusbutton.setBounds(345, 605, 50, 30);
@@ -352,6 +378,9 @@ public class AllMealsFrame implements ActionListener {
                 editButton.addActionListener(this);
                 backButton.addActionListener(this);
 
+                addbutton.setFocusable(false);
+                minusbutton.setFocusable(false);
+                backButton.setFocusable(false);
                 f.setTitle(m.getName());
                 f.setResizable(false);
                 f.setSize(650, 830);
@@ -392,6 +421,11 @@ public class AllMealsFrame implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Meal Deleted.", "Title",
                                         JOptionPane.INFORMATION_MESSAGE);
                         f.dispose();
+                        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
+                                oos.writeObject(meallist);
+                        } catch (Exception ee) {
+                                ee.printStackTrace();
+                        }
                 }
                 if (e.getSource() == backButton) {
                         f.dispose();
@@ -500,7 +534,6 @@ public class AllMealsFrame implements ActionListener {
                 arrayMenuMealsIcon.add(drinksIcon4);
                 arrayMenuMealsIcon.add(drinksIcon5);
 
-                arrayMenuMealsIcon.add(Order.newmealIcon);
                 for (Meal m : meallist) {
                         order.add(0);
                 }

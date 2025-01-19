@@ -48,6 +48,7 @@ class OrderDetails implements ActionListener {
 
         confirmButton.setBounds(340, 423, 120, 25);
         confirmButton.addActionListener(this);
+        confirmButton.setFocusable(false);
 
         pricenumlabel.setText(String.valueOf(Order.price));
         mealnumlabel.setText(String.valueOf(Order.num));

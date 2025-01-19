@@ -87,7 +87,9 @@ public class Details implements ActionListener {
         panelScroll.setBorder(new LineBorder(Color.white, 2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         backToOrderButton.addActionListener(this);
+        backToOrderButton.setFocusable(false);
         cancelButton.addActionListener(this);
+        cancelButton.setFocusable(false);
 
         f.add(detailsLabel);
         f.setLayout(null);
@@ -223,7 +225,6 @@ public class Details implements ActionListener {
             Order.num = 0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));
             Order.pricenumlabel.setText(String.valueOf(Order.price));
-            // AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.arrayMealsIcon.clear();
             AllMealsFrame.arrayMenuMealsIcon.clear();

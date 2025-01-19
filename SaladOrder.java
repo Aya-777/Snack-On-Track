@@ -11,6 +11,8 @@ public class SaladOrder extends Order {
     ImageIcon saladOrderIcon = new ImageIcon("Snack-On-Track\\main design salad.png");
     JLabel mealprice;
     JLabel mealcalorie;
+    ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
+    JLabel newmealNameLabel;
 
     SaladOrder() {
     }
@@ -32,17 +34,21 @@ public class SaladOrder extends Order {
             jLabel.setBorder(new LineBorder(Color.white, 2));
             jLabel.setOpaque(true);
 
-            mealprice.setBounds(180, 75, 150, 60);
+
+
+
+            mealprice.setBounds(180, 78, 150, 60);
             mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
             mealprice.setForeground(new Color(232, 99, 73));
             mealprice.setBackground(new Color(166, 251, 186));
             mealprice.setOpaque(true);
 
-            mealcalorie.setBounds(23, 78, 160, 60);
+            mealcalorie.setBounds(25, 78, 160, 60);
             mealcalorie.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
             mealcalorie.setForeground(new Color(91, 74, 38));
             mealcalorie.setBackground(new Color(166, 251, 186));
             mealcalorie.setOpaque(true);
+
 
             jLabel.add(mealprice);
             jLabel.add(mealcalorie);
@@ -54,7 +60,8 @@ public class SaladOrder extends Order {
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Salad") && m.getSerialnum() >= 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(21));
+                jLabel.setIcon(newSaladMenuIcon);
+                newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
                         AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
@@ -62,6 +69,10 @@ public class SaladOrder extends Order {
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
+
+                newmealNameLabel.setBounds(20,30,400,50);
+                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                newmealNameLabel.setForeground(new Color(91,74,38));
 
                 mealprice.setBounds(188, 78, 150, 60);
                 mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
@@ -75,6 +86,7 @@ public class SaladOrder extends Order {
                 mealcalorie.setBackground(new Color(166, 251, 186));
                 mealcalorie.setOpaque(true);
 
+                jLabel.add(newmealNameLabel);
                 jLabel.add(mealprice);
                 jLabel.add(mealcalorie);
                 jLabel.addMouseListener(this);

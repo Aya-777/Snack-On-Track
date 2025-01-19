@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Order implements ActionListener, MouseListener {
@@ -129,6 +131,7 @@ public class Order implements ActionListener, MouseListener {
             Details.panelScroll = new JPanel();
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
+            AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.fillLists();
             new SignFrame();

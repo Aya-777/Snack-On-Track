@@ -12,7 +12,8 @@ public class DrinksOrder extends Order {
     ImageIcon drinksOrderIcon = new ImageIcon("Snack-On-Track\\main desin drinks.png");
     JLabel mealprice;
     JLabel mealcalorie;
-
+    ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.png");
+    JLabel newmealNameLabel;
     DrinksOrder() {
     }
 
@@ -55,7 +56,8 @@ public class DrinksOrder extends Order {
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Drink") && m.getSerialnum() >= 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(21));
+                jLabel.setIcon(newDrinkMenuIcon);
+                newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
                         AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
@@ -63,6 +65,10 @@ public class DrinksOrder extends Order {
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
+
+                newmealNameLabel.setBounds(20,30,500,50);
+                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                newmealNameLabel.setForeground(new Color(224,64,78));
 
                 mealprice.setBounds(188, 78, 150, 60);
                 mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
@@ -76,6 +82,7 @@ public class DrinksOrder extends Order {
                 mealcalorie.setBackground(new Color(154, 232, 231));
                 mealcalorie.setOpaque(true);
 
+                jLabel.add(newmealNameLabel);
                 jLabel.add(mealprice);
                 jLabel.add(mealcalorie);
                 jLabel.addMouseListener(this);

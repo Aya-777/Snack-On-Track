@@ -22,7 +22,7 @@ public class Main {
         loadMeals();
         firstFrame s = new firstFrame();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
             s.dispose();
         } catch (InterruptedException e) {
             e.printStackTrace();
