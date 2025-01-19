@@ -71,7 +71,7 @@ public class SignFrame extends JFrame implements ActionListener {
         userTextField.setBounds(220, 491, 170, 50);
         userTextField.setFont(new Font("consolas", Font.PLAIN, 15));
         userTextField.setBackground(Color.white);
-        userTextField.setCaretColor(Color.white);
+        userTextField.setCaretColor(Color.black);
 
         userLabel = new JLabel("User Name");
         userLabel.setBounds(130, 491, 70, 40);
@@ -81,7 +81,7 @@ public class SignFrame extends JFrame implements ActionListener {
         passwordTextField.setBounds(220, 541, 170, 50);
         passwordTextField.setFont(new Font("consolas", Font.PLAIN, 15));
         passwordTextField.setBackground(Color.white);
-        passwordTextField.setCaretColor(Color.white);
+        passwordTextField.setCaretColor(Color.black);
 
         passLabel = new JLabel("Password");
         passLabel.setBounds(130, 541, 70, 40);
@@ -109,8 +109,8 @@ public class SignFrame extends JFrame implements ActionListener {
         }
         if (e.getSource() == submitButton) {
 
-            userName = userTextField.getText();
-            password = passwordTextField.getText();
+            userName = userTextField.getText().strip();
+            password = passwordTextField.getText().strip();
             if (userName.isEmpty() && password.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Enter your username and password",
                         " ", JOptionPane.ERROR_MESSAGE);

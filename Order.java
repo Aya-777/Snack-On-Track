@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Order implements ActionListener, MouseListener{
 
-    static int num = 0, price = 0, newmeals=AllMealsFrame.meallist.size()-1;
+    static int num = 0, price = 0;
     JFrame f = new JFrame();
     JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
@@ -119,7 +119,6 @@ public class Order implements ActionListener, MouseListener{
             Details.panelScroll=new JPanel();
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
-            // AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.fillLists();
             new SignFrame();
@@ -153,7 +152,6 @@ public class Order implements ActionListener, MouseListener{
                         } else{ //employee
                             int yes = JOptionPane.showConfirmDialog(null,"This meal is not available, Do you want to restore it?",
                         "Title",JOptionPane.YES_NO_OPTION);
-                            // System.out.println(yes);
                             if (yes==0){
                                 m.setDeleted(false);
                                 JOptionPane.showMessageDialog(null,"Meal Restored.",

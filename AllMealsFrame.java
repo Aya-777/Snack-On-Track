@@ -163,6 +163,7 @@ public class AllMealsFrame implements ActionListener {
     AllMealsFrame(Integer mealnum, boolean manager, String type) {
 
         f.setLayout(null);
+        mainLabel.setLayout(null);
         this.mealnum = mealnum;
         num1 = order.get(mealnum);
         this.m = meallist.get(mealnum);
@@ -170,10 +171,8 @@ public class AllMealsFrame implements ActionListener {
 
         mainLabel.setBounds(0, 0, 650, 830);
         try {
-            System.out.println(mealnum);
             mainLabel.setIcon(arrayMealsIcon.get(mealnum));
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("wee");
             if (type == "Meal") {
                 mainLabel.setIcon(newMealsIcon);
             }
@@ -188,9 +187,6 @@ public class AllMealsFrame implements ActionListener {
             }
         }
 
-        mainLabel.setLayout(null);
-        f.add(mainLabel);
-
         if (manager) {
             deleteButton.setBounds(340, 55, 120, 30);
             editButton.setBounds(200, 55, 120, 30);
@@ -201,173 +197,78 @@ public class AllMealsFrame implements ActionListener {
         }
 
         singlemealnumlabel.setText(String.valueOf(num1));
-        // mealpricLabel = new JLabel(String.valueOf(
-        // AllMealsFrame.meallist.get(mealnum).getPrice())+" $");
         mealpricLabel = new JLabel(String.valueOf(m.getPrice())+" $");
         mealKcaloriLabel = new JLabel(String.valueOf(m.getCals()) + " kcal");
         descTextArea.setText(m.getDesc());
 
+        backButton.setFocusable(false);
         mainLabel.add(backButton);
 
-        if (type.equals("Meal")) {
-            backButton.setBounds(250, 720, 150, 30);
-            addbutton.setBounds(245, 615, 50, 30);
-            singlemealnumlabel.setBounds(313, 620, 50, 20);
-            minusbutton.setBounds(345, 615, 50, 30);
-            singlemealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 20));
-            pricelabel.setBounds(265, 110, 100, 30);
-            pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
-            pricenumlabel.setBounds(380, 110, 50, 30);
-            pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
-            mealKcaloriLabel.setBounds(480, 290, 150, 40);
-            mealKcaloriLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
-            mealKcaloriLabel.setForeground(Color.WHITE);
-            mealpricLabel.setBounds(510, 335, 100, 50);
-            mealpricLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
-            mealpricLabel.setForeground(new Color(210, 48, 11));
-            extraDetailsFiled.setBounds(200, 670, 320, 25);
-            extraDetailscLabel.setBounds(85, 670, 250, 25);
-            extraDetailscLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 15));
-            descTextArea.setWrapStyleWord(true);
-            descTextArea.setLineWrap(true);
-            descTextArea.setEditable(false);
-            descTextArea.setFocusable(false);
-            descTextArea.setOpaque(false);
-            descTextArea.setBorder(null);
-            descTextArea.setBounds(55, 450, 560, 300);
-            descTextArea.setFont(new Font("MV Boli", Font.BOLD, 22));
-            descTextArea.setForeground(new Color(75, 59, 9));
-            mainLabel.add(addbutton);
-            mainLabel.add(minusbutton);
-            mainLabel.add(extraDetailscLabel);
-            mainLabel.add(extraDetailsFiled);
-            mainLabel.add(mealKcaloriLabel);
-            mainLabel.add(descTextArea);
-            mainLabel.add(singlemealnumlabel);
-            mainLabel.add(pricelabel);
-            mainLabel.add(pricenumlabel);
-            mainLabel.add(mealpricLabel);
+        backButton.setBounds(250, 720, 150, 30);
+        addbutton.setBounds(245, 615, 50, 30);
+        singlemealnumlabel.setBounds(313, 620, 50, 20);
+        minusbutton.setBounds(345, 615, 50, 30);
+        singlemealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 20));
+        pricelabel.setBounds(265, 110, 100, 30);
+        pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
+        pricenumlabel.setBounds(380, 110, 50, 30);
+        pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
+        mealKcaloriLabel.setBounds(480, 290, 150, 40);
+        mealKcaloriLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
+        mealpricLabel.setBounds(510, 335, 100, 50);
+        mealpricLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
+        extraDetailsFiled.setBounds(200, 670, 320, 25);
+        extraDetailscLabel.setBounds(85, 670, 250, 25);
+        extraDetailscLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 15));
+        descTextArea.setWrapStyleWord(true);
+        descTextArea.setLineWrap(true);
+        descTextArea.setEditable(false);
+        descTextArea.setFocusable(false);
+        descTextArea.setOpaque(false);
+        descTextArea.setBorder(null);
+        descTextArea.setBounds(55, 450, 560, 300);
+        descTextArea.setFont(new Font("MV Boli", Font.BOLD, 22));
+        descTextArea.setForeground(new Color(75, 59, 9));
+        mainLabel.add(addbutton);
+        mainLabel.add(minusbutton);
+        mainLabel.add(extraDetailscLabel);
+        mainLabel.add(extraDetailsFiled);
+        mainLabel.add(mealKcaloriLabel);
+        mainLabel.add(descTextArea);
+        mainLabel.add(singlemealnumlabel);
+        mainLabel.add(pricelabel);
+        mainLabel.add(pricenumlabel);
+        mainLabel.add(mealpricLabel);
 
+
+
+        if (type.equals("Meal")) {
+            mealKcaloriLabel.setForeground(Color.WHITE);
+            mealpricLabel.setForeground(new Color(210, 48, 11));
         }
         if (type.equals("Salad")) {
-            backButton.setBounds(250, 695, 150, 30);
-            addbutton.setBounds(245, 575, 50, 30);
-            singlemealnumlabel.setBounds(313, 580, 50, 20);
-            minusbutton.setBounds(345, 575, 50, 30);
-            singlemealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 20));
-            pricelabel.setBounds(265, 110, 100, 30);
-            pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
-            pricenumlabel.setBounds(380, 110, 50, 30);
-            pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
-            mealKcaloriLabel.setBounds(480, 290, 150, 40);
-            mealKcaloriLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
             mealKcaloriLabel.setForeground(new Color(75, 59, 9));
-            mealpricLabel.setBounds(510, 335, 100, 50);
-            mealpricLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
             mealpricLabel.setForeground(new Color(210, 48, 11));
-            extraDetailsFiled.setBounds(200, 630, 320, 25);
-            extraDetailscLabel.setBounds(85, 630, 250, 25);
-            extraDetailscLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 15));
-            descTextArea.setText(m.getDesc());
-            descTextArea.setWrapStyleWord(true);
-            descTextArea.setLineWrap(true);
-            descTextArea.setEditable(false);
-            descTextArea.setFocusable(false);
-            descTextArea.setOpaque(false);
-            descTextArea.setBorder(null);
-            descTextArea.setBounds(55, 450, 560, 300);
-            descTextArea.setFont(new Font("MV Boli", Font.BOLD, 22));
-            descTextArea.setForeground(new Color(75, 59, 9));
-            mainLabel.add(addbutton);
-            mainLabel.add(minusbutton);
-            mainLabel.add(extraDetailscLabel);
-            mainLabel.add(extraDetailsFiled);
-            mainLabel.add(mealKcaloriLabel);
-            mainLabel.add(descTextArea);
-            mainLabel.add(singlemealnumlabel);
-            mainLabel.add(pricelabel);
-            mainLabel.add(pricenumlabel);
-            mainLabel.add(mealpricLabel);
         }
         if (type.equals("Dessert")) {
-            backButton.setBounds(250, 710, 150, 30);
-            addbutton.setBounds(245, 590, 50, 30);
-            singlemealnumlabel.setBounds(313, 595, 50, 20);
-            minusbutton.setBounds(345, 590, 50, 30);
-            singlemealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 20));
-            pricelabel.setBounds(265, 100, 100, 30);
-            pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
-            pricenumlabel.setBounds(380, 100, 50, 30);
-            pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             mealKcaloriLabel.setBounds(480, 250, 150, 40);
-            mealKcaloriLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
+            pricelabel.setBounds(265, 100, 100, 30);
+            pricenumlabel.setBounds(380, 100, 50, 30);
             mealKcaloriLabel.setForeground(new Color(75, 59, 9));
             mealpricLabel.setBounds(510, 280, 100, 50);
-            mealpricLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
             mealpricLabel.setForeground(new Color(210, 48, 11));
-            extraDetailsFiled.setBounds(200, 650, 320, 25);
-            extraDetailscLabel.setBounds(85, 650, 250, 25);
-            extraDetailscLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 15));
-            descTextArea.setText(m.getDesc());
-            descTextArea.setWrapStyleWord(true);
-            descTextArea.setLineWrap(true);
-            descTextArea.setEditable(false);
-            descTextArea.setFocusable(false);
-            descTextArea.setOpaque(false);
-            descTextArea.setBorder(null);
             descTextArea.setBounds(110, 350, 220, 500);
-            descTextArea.setFont(new Font("MV Boli", Font.BOLD, 22));
-            descTextArea.setForeground(new Color(75, 59, 9));
-            mainLabel.add(addbutton);
-            mainLabel.add(minusbutton);
-            mainLabel.add(extraDetailscLabel);
-            mainLabel.add(extraDetailsFiled);
-            mainLabel.add(mealKcaloriLabel);
-            mainLabel.add(descTextArea);
-            mainLabel.add(singlemealnumlabel);
-            mainLabel.add(pricelabel);
-            mainLabel.add(pricenumlabel);
-            mainLabel.add(mealpricLabel);
         }
         if (type.equals("Drink")) {
-            backButton.setBounds(250, 710, 150, 30);
-            addbutton.setBounds(245, 605, 50, 30);
-            singlemealnumlabel.setBounds(313, 610, 50, 20);
-            minusbutton.setBounds(345, 605, 50, 30);
-            singlemealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 20));
             pricelabel.setBounds(265, 100, 100, 30);
-            pricelabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             pricenumlabel.setBounds(380, 100, 50, 30);
-            pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 25));
             mealKcaloriLabel.setBounds(480, 245, 150, 40);
-            mealKcaloriLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
             mealKcaloriLabel.setForeground(new Color(75, 59, 9));
             mealpricLabel.setBounds(510, 275, 100, 50);
-            mealpricLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 30));
             mealpricLabel.setForeground(new Color(210, 48, 11));
-            extraDetailsFiled.setBounds(200, 650, 320, 25);
-            extraDetailscLabel.setBounds(85, 650, 250, 25);
-            extraDetailscLabel.setFont(new Font("Franklin Gothic Demi", Font.BOLD, 15));
-            descTextArea.setText(m.getDesc());
-            descTextArea.setWrapStyleWord(true);
-            descTextArea.setLineWrap(true);
-            descTextArea.setEditable(false);
-            descTextArea.setFocusable(false);
-            descTextArea.setOpaque(false);
-            descTextArea.setBorder(null);
-            descTextArea.setBounds(110, 350, 220, 500);
+            descTextArea.setBounds(55, 450, 400, 300);
             descTextArea.setFont(new Font("MV Boli", Font.BOLD, 22));
             descTextArea.setForeground(new Color(75, 59, 9));
-            mainLabel.add(addbutton);
-            mainLabel.add(minusbutton);
-            mainLabel.add(extraDetailscLabel);
-            mainLabel.add(extraDetailsFiled);
-            mainLabel.add(mealKcaloriLabel);
-            mainLabel.add(descTextArea);
-            mainLabel.add(singlemealnumlabel);
-            mainLabel.add(pricelabel);
-            mainLabel.add(pricenumlabel);
-            mainLabel.add(mealpricLabel);
         }
         addbutton.addActionListener(this);
         minusbutton.addActionListener(this);
@@ -378,6 +279,8 @@ public class AllMealsFrame implements ActionListener {
         addbutton.setFocusable(false);
         minusbutton.setFocusable(false);
         backButton.setFocusable(false);
+        
+        f.add(mainLabel);
         f.setTitle(m.getName());
         f.setResizable(false);
         f.setSize(650, 830);

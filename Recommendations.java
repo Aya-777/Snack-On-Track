@@ -49,10 +49,7 @@ class Recommendations{
             try {
                 RecommendationsIconLabel.add(mostpopularmealLabel);
                 mostpopularmealLabelname = new JLabel(mostpopularmeal.getName());
-                // JLabel l = new JLabel();
-                // l=Order.meallabels.get(mostpopularmeal.getSerialnum());
                 RecommendationsIconLabel.add(mostpopularmealLabelname);
-                // f.add(l);
             } catch (Exception e) {}
             RecommendationExist=true;
         }
@@ -69,9 +66,7 @@ class Recommendations{
             try {
                 RecommendationsIconLabel.add(mostpopularsaladLabel);
                 mostpopularsaladLabelname = new JLabel(mostpopularsalad.getName());
-                // JLabel l = Order.meallabels.get(mostpopularmeal.getSerialnum()); 
                 RecommendationsIconLabel.add(mostpopularsaladLabelname);
-                // f.add(l);
             } catch (Exception e) {}
             RecommendationExist=true;
         }
@@ -88,9 +83,7 @@ class Recommendations{
             try {
                 RecommendationsIconLabel.add(mostpopulardessertLabel);
                 mostpopulardessertLabelname = new JLabel(mostpopulardessert.getName());
-                // JLabel l = Order.meallabels.get(mostpopularmeal.getSerialnum()); 
                 RecommendationsIconLabel.add(mostpopulardessertLabelname);
-                // f.add(l);
             } catch (Exception e) {}
             RecommendationExist=true;
         }
@@ -120,21 +113,21 @@ class Recommendations{
         if (!RecommendationExist){
             JLabel nomealLabel=new JLabel("No Recommendation");
             RecommendationsIconLabel.add(nomealLabel);
+        }else{
+            int ind = 1;
+            for(int i = 0 ; i < meals.size() ; i++){
+                if(meals.get(i)==mostpopulardrink||meals.get(i)==mostpopulardessert||meals.get(i)==mostpopularmeal||meals.get(i)==mostpopularsalad){
+                    int x = 50;
+                    int y = ind * 100;
+                    y -= 50;
+                    JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
+                    mealname.setBounds(x, y, 320, 30);
+                    mealname.setFont(new Font("Eras Medium ITC", Font.PLAIN, 25));
+                    ind++;
+                    RecommendationsIconLabel.add(mealname);
+                }
+            }
         }
-        
-        // mostpopulardessertLabel.
-        int ind = 1;
-        for(int i = 0 ; i < meals.size() ; i++){
-            if(meals.get(i)==mostpopulardrink||meals.get(i)==mostpopulardessert||meals.get(i)==mostpopularmeal||meals.get(i)==mostpopularsalad){
-                int x = 50;
-                int y = ind * 100;
-                y -= 50;
-                JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
-                mealname.setBounds(x, y, 320, 30);
-                mealname.setFont(new Font("Eras Medium ITC", Font.PLAIN, 25));
-                ind++;
-                RecommendationsIconLabel.add(mealname);
-        }}
 
         f.add(RecommendationsIconLabel);
         f.setResizable(false);
@@ -143,4 +136,5 @@ class Recommendations{
         f.setLocationRelativeTo(null);
 
 
-}}
+    }
+}

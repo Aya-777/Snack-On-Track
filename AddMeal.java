@@ -31,16 +31,15 @@ class AddMeal implements ActionListener {
     JLabel newmealPriceLabel = new JLabel();
     JLabel newmealCalorieLabel = new JLabel();
 
-    ImageIcon newmealmenuicon = new ImageIcon("add meal.png");
-    ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.png");
-    ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.png");
-    ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
+    static ImageIcon newmealmenuicon = new ImageIcon("add meal.png");
+    static ImageIcon newDessertMenuIcon = new ImageIcon("add dessert.png");
+    static ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.png");
+    static ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
 
     JLabel addMealIconLabel = new JLabel();
     ImageIcon addMealIcon = new ImageIcon("cart.png");
 
     AddMeal() {
-        f.setLayout(new FlowLayout());
 
         addMealIconLabel.setBounds(0,0,500,500);
         addMealIconLabel.setIcon(addMealIcon);
@@ -52,21 +51,25 @@ class AddMeal implements ActionListener {
         mealnamelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealnamefield.setBounds(165,142,150,23);
         mealnamefield.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
+        mealnamefield.setCaretColor(Color.black);
 
         mealpricelabel.setBounds(100,200,100,25);
         mealpricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealpricefield.setBounds(160,202,75,23);
         mealpricefield.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
+        mealpricefield.setCaretColor(Color.black);
 
         mealcalorielabel.setBounds(100,260,120,25);
         mealcalorielabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealcaloriefield.setBounds(185,262,75,23);
         mealcaloriefield.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
+        mealcaloriefield.setCaretColor(Color.black);
 
         mealdescriptionlabel.setBounds(100,320,150,25);
         mealdescriptionlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
         mealdescriptionfield.setBounds(210,322,200,23);
         mealdescriptionfield.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 15));
+        mealdescriptionfield.setCaretColor(Color.black);
 
         submitbutton.setBounds(190,375,120,25);
         submitbutton.setFocusable(false);
@@ -114,15 +117,14 @@ class AddMeal implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Meal added.",
                             "", JOptionPane.INFORMATION_MESSAGE);
                     f.dispose();
-                    ImageIcon newmealIcon = new ImageIcon("drink1icon.jpg");
+                    // ImageIcon newmealIcon = new ImageIcon("drink1icon.jpg");
                     int price = Integer.parseInt(mealpricefield.getText());
                     int calorie = Integer.parseInt(mealcaloriefield.getText());
                     String name = mealnamefield.getText();
                     String desc = mealdescriptionfield.getText();
 
 
-                    JLabel newmealLabel = new JLabel(newmealIcon);
-                    newmealLabel.setLayout(new FlowLayout());
+                    JLabel newmealLabel = new JLabel();
                     newmealNameLabel.setText(name);
                     newmealCalorieLabel.setText(String.valueOf(calorie)+" kcal");
                     newmealPriceLabel.setText(String.valueOf(price)+" $");
@@ -153,9 +155,6 @@ class AddMeal implements ActionListener {
                         newmealCalorieLabel.setBackground(new Color(255, 134, 120));
                         newmealCalorieLabel.setOpaque(true);
 
-
-                        // AllMealsFrame.addMeal(newMeal);
-
                         newmealLabel.setIcon(newmealmenuicon);
                         MealOrder m = new MealOrder(true);
                         m.addMeal(newmealLabel, newMeal);
@@ -165,7 +164,6 @@ class AddMeal implements ActionListener {
 
                         int serialnum = AllMealsFrame.meallist.size();
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Salad");
-                        // AllMealsFrame.addMeal(newMeal);
 
                         newmealNameLabel.setBounds(20,30,400,50);
                         newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
@@ -193,7 +191,6 @@ class AddMeal implements ActionListener {
 
                         int serialnum = AllMealsFrame.meallist.size();
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Dessert");
-                        // AllMealsFrame.addMeal(newMeal);
                         newmealNameLabel.setBounds(20,30,400,50);
                         newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
                         newmealNameLabel.setForeground(new Color(91,74,38));
@@ -219,7 +216,6 @@ class AddMeal implements ActionListener {
 
                         int serialnum = AllMealsFrame.meallist.size();
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Drink");
-                        // AllMealsFrame.addMeal(newMeal);
 
                         newmealNameLabel.setBounds(20,30,500,50);
                         newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));

@@ -26,6 +26,7 @@ public class Details implements ActionListener{
     static ArrayList<OrderFile> saveFileArray = new ArrayList<>();
 
     Details(ArrayList<Integer> meals){
+        f.setLayout(null);
 
         if(myAccount.customer==null){
             OrderFile file = new OrderFile(meals, myAccount.employee.getName(), LocalDate.now() );
@@ -79,9 +80,6 @@ public class Details implements ActionListener{
         cancelButton.addActionListener(this);
         cancelButton.setFocusable(false);
 
-        f.add(detailsLabel);
-        f.setLayout(null);
-        f.setSize(600,700);
         for (int i = 0 ; i < meals.size() ; i++){
             if(meals.get(i)>0){
                 x = xbar+115;
@@ -98,7 +96,6 @@ public class Details implements ActionListener{
 
 
 
-        f.add(scrollPane);
         boolean mealsExist=false;
         y=gap; ynum=gap;
         for(int i = 0 ; i < meals.size() ; i++){
@@ -186,10 +183,13 @@ public class Details implements ActionListener{
             ybar+=50;
         }
 
+        f.add(scrollPane);
+        f.add(detailsLabel);
         f.add(backToOrderButton);
         f.setResizable(false);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
+        f.setSize(600,700);
 
     }
 
@@ -205,11 +205,7 @@ public class Details implements ActionListener{
             AllMealsFrame.arrayMealsIcon.clear();
             AllMealsFrame.arrayMenuMealsIcon.clear();
             AllMealsFrame.fillLists();
-            if(MealOrder.manager){
-                new MealOrder(true);
-            } else {
-                new MealOrder(false);
-            }
+            new MealOrder(MealOrder.manager);
         }
         if(e.getSource()==cancelButton){
             AllMealsFrame.order.clear();
@@ -218,6 +214,5 @@ public class Details implements ActionListener{
             cancelButton.setEnabled(false);
         }
     }
-
 
 }

@@ -11,7 +11,6 @@ public class SaladOrder extends Order {
     ImageIcon saladOrderIcon = new ImageIcon("main design salad.png");
     JLabel mealprice;
     JLabel mealcalorie;
-    ImageIcon newSaladMenuIcon = new ImageIcon("add salad.png");
     JLabel newmealNameLabel;
 
     SaladOrder() {
@@ -60,7 +59,7 @@ public class SaladOrder extends Order {
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Salad") && m.getSerialnum() >= 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(newSaladMenuIcon);
+                jLabel.setIcon(AddMeal.newSaladMenuIcon);
                 newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
                         AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
@@ -105,9 +104,7 @@ public class SaladOrder extends Order {
 
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
-        newmeals++;
         newmealLabel.addMouseListener(this);
-        newmealLabel.setText(String.valueOf(newmeals));
         panelScroll.add(newmealLabel);
         Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
@@ -151,9 +148,6 @@ public class SaladOrder extends Order {
             }
         }
         if (e.getSource() == logoutitem) {
-            super.actionPerformed(e);
-        }
-        if (e.getSource() == addmealitem) {
             super.actionPerformed(e);
         }
         if (e.getSource() == addmealitem) {

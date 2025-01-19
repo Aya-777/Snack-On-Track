@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 public class MealOrder extends Order {
     JLabel mealOrderIconLabel = new JLabel();
     ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
-    static int index = 0;
 
     JLabel mealprice;
     JLabel mealcalorie;
@@ -21,7 +20,6 @@ public class MealOrder extends Order {
     MealOrder(boolean manager) {
         super(manager);
         Order.manager = manager;
-        index = 0;
         meallabels.clear();
 
         mealOrderIconLabel.setBounds(0, 0, 650, 830);
@@ -47,7 +45,6 @@ public class MealOrder extends Order {
             mealcalorie.setForeground(new Color(229, 230, 202));
             mealcalorie.setBackground(new Color(255, 134, 120));
             mealcalorie.setOpaque(true);
-            index++;
 
             meallabels.add(jLabel);    
             jLabel.add(mealprice);
@@ -58,7 +55,7 @@ public class MealOrder extends Order {
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Meal") && m.getSerialnum() >= 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(newmealmenuicon);
+                jLabel.setIcon(AddMeal.newmealmenuicon);
 
                 newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
@@ -104,9 +101,8 @@ public class MealOrder extends Order {
 
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
-        newmeals++;
         newmealLabel.addMouseListener(this);
-        newmealLabel.setText(String.valueOf(newmeals));
+        newmealLabel.setIcon(AddMeal.newmealmenuicon);
         panelScroll.add(newmealLabel);
         Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
@@ -149,9 +145,6 @@ public class MealOrder extends Order {
             }
         }
         if (e.getSource() == logoutitem) {
-            super.actionPerformed(e);
-        }
-        if (e.getSource() == addmealitem) {
             super.actionPerformed(e);
         }
         if (e.getSource() == addmealitem) {

@@ -12,10 +12,7 @@ public class DrinksOrder extends Order {
     ImageIcon drinksOrderIcon = new ImageIcon("main desin drinks.png");
     JLabel mealprice;
     JLabel mealcalorie;
-    ImageIcon newDrinkMenuIcon = new ImageIcon("add drink.png");
     JLabel newmealNameLabel;
-    DrinksOrder() {
-    }
 
     DrinksOrder(boolean manager) {
         super(manager);
@@ -56,7 +53,7 @@ public class DrinksOrder extends Order {
         for (Meal m : AllMealsFrame.meallist) {
             if (m.getType().equals("Drink") && m.getSerialnum() >= 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
-                jLabel.setIcon(newDrinkMenuIcon);
+                jLabel.setIcon(AddMeal.newDrinkMenuIcon);
                 newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));
                 mealprice = new JLabel(String.valueOf(
                         AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
@@ -103,9 +100,7 @@ public class DrinksOrder extends Order {
 
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
-        newmeals++;
         newmealLabel.addMouseListener(this);
-        newmealLabel.setText(String.valueOf(newmeals));
         panelScroll.add(newmealLabel);
         Order.meallabels.add(newmealLabel);
         AllMealsFrame.order.add(0);
@@ -149,10 +144,6 @@ public class DrinksOrder extends Order {
         if (e.getSource() == logoutitem) {
             super.actionPerformed(e);
         }
-        if (e.getSource() == addmealitem) {
-            super.actionPerformed(e);
-        }
-
         if (e.getSource() == addmealitem) {
             super.actionPerformed(e);
         }
