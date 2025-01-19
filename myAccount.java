@@ -1,4 +1,6 @@
-public class myAccount {
+import java.io.Serializable;
+
+public class myAccount implements Serializable {
     static customerAccounts customer = null;
     static ManagementAccounts employee = null;
     static Bank bankAccount = null;
@@ -16,6 +18,14 @@ public class myAccount {
             return true; // customer account
         } else {
             return false; // employee account
+        }
+    }
+
+    String getUserName() {
+        if (whichOne()) {
+            return customer.getName();
+        } else {
+            return employee.getName();
         }
     }
 }

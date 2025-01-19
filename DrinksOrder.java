@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class DrinksOrder extends Order {
     JLabel drinksOrderIconLabel = new JLabel();
-    ImageIcon drinksOrderIcon = new ImageIcon("main desin drinks.png");
+    ImageIcon drinksOrderIcon = new ImageIcon("Snack-On-Track\\main desin drinks.png");
     JLabel mealprice;
     JLabel mealcalorie;
 
@@ -49,7 +49,7 @@ public class DrinksOrder extends Order {
             jLabel.add(mealcalorie);
             jLabel.addMouseListener(this);
             panelScroll.add(jLabel);
-            meallabels.add(jLabel);    
+            meallabels.add(jLabel);
 
         }
         for (Meal m : AllMealsFrame.meallist) {
@@ -80,7 +80,7 @@ public class DrinksOrder extends Order {
                 jLabel.add(mealcalorie);
                 jLabel.addMouseListener(this);
                 panelScroll.add(jLabel);
-                meallabels.add(jLabel);    
+                meallabels.add(jLabel);
 
             }
         }
@@ -92,7 +92,6 @@ public class DrinksOrder extends Order {
         drinksitem.setEnabled(false);
 
     }
-
 
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
@@ -155,7 +154,10 @@ public class DrinksOrder extends Order {
         if (e.getSource() == recommendationsitem) {
             super.actionPerformed(e);
         }
-        if(e.getSource() == myordersitem){
+        if (e.getSource() == myordersitem) {
+            super.actionPerformed(e);
+        }
+        if (e.getSource() == Ordersitem) {
             super.actionPerformed(e);
         }
     }

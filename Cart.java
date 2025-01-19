@@ -10,7 +10,7 @@ public class Cart implements ActionListener {
     JFrame f = new JFrame();
 
     JLabel cartLabel = new JLabel();
-    ImageIcon cartIcon = new ImageIcon("cart.png");
+    ImageIcon cartIcon = new ImageIcon("Snack-On-Track\\cart backgroung.png");
 
     JLabel l = new JLabel("Your Order");
     JCheckBox delivery = new JCheckBox("Delivery");
@@ -188,12 +188,13 @@ public class Cart implements ActionListener {
 
                                 try {
                                     int newBalance = myAccount.customer.getBankAccount().getBalance() - Order.price;
+                                    // System.out.println(Order.price);
                                     myAccount.customer.getBankAccount().setBalance(newBalance);
                                     openIt = true;
                                     System.out.println(myAccount.customer.getBankAccount().getBalance());
                                     System.out.println("customer");
                                 } catch (Exception ex) {
-                                    System.out.println("cart 160");
+                                    System.out.println("cart 197");
                                 }
 
                             } else {
@@ -220,7 +221,7 @@ public class Cart implements ActionListener {
                                     System.out.println(myAccount.employee.getBankAccount().getBalance());
                                     System.out.println("empolyee");
                                 } catch (Exception ex) {
-                                    System.out.println("cart 186");
+                                    System.out.println("cart 224");
                                 }
                             } else {
                                 String[] yes_no = { "Yes", "No" };
@@ -243,6 +244,7 @@ public class Cart implements ActionListener {
                 if (cashCheckBox.isSelected()) {
                     f.dispose();
                     new Details(meals);
+
                 }
 
             }

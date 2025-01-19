@@ -8,12 +8,13 @@ import java.io.ObjectOutputStream;
 
 public class MealOrder extends Order {
     JLabel mealOrderIconLabel = new JLabel();
-    ImageIcon mealOrderIcon = new ImageIcon("main design meal.png");
+    ImageIcon mealOrderIcon = new ImageIcon("Snack-On-Track\\main design meal.png");
     static int index = 0;
     JLabel mealprice;
     JLabel mealcalorie;
 
-    MealOrder() {}
+    MealOrder() {
+    }
 
     MealOrder(boolean manager) {
         super(manager);
@@ -24,16 +25,16 @@ public class MealOrder extends Order {
         mealOrderIconLabel.setBounds(0, 0, 650, 830);
         mealOrderIconLabel.setIcon(mealOrderIcon);
 
-        for (int i = 0 ; i < 7 ; i++) {
+        for (int i = 0; i < 7; i++) {
             JLabel jLabel = new JLabel(String.valueOf(i));
             jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(i));
-            mealprice = new JLabel(String.valueOf(AllMealsFrame.meallist.get(i).getPrice())+ " $");
-            mealcalorie = new JLabel(String.valueOf(AllMealsFrame.meallist.get(i).getCals())+ " kcal ,");
+            mealprice = new JLabel(String.valueOf(AllMealsFrame.meallist.get(i).getPrice()) + " $");
+            mealcalorie = new JLabel(String.valueOf(AllMealsFrame.meallist.get(i).getCals()) + " kcal ,");
 
             jLabel.setBorder(new LineBorder(Color.white, 2));
             jLabel.setOpaque(true);
 
-            mealprice.setBounds(175 , 78, 150, 60);
+            mealprice.setBounds(175, 78, 150, 60);
             mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
             mealprice.setForeground(new Color(139, 37, 17));
             mealprice.setBackground(new Color(255, 134, 120));
@@ -46,7 +47,7 @@ public class MealOrder extends Order {
             mealcalorie.setOpaque(true);
             index++;
 
-            meallabels.add(jLabel);    
+            meallabels.add(jLabel);
             jLabel.add(mealprice);
             jLabel.add(mealcalorie);
             jLabel.addMouseListener(this);
@@ -57,9 +58,9 @@ public class MealOrder extends Order {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
                 jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(21));
                 mealprice = new JLabel(String.valueOf(
-                    AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
+                        AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
-                    AllMealsFrame.meallist.get(m.getSerialnum()).getCals()) + " kcal");
+                        AllMealsFrame.meallist.get(m.getSerialnum()).getCals()) + " kcal");
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
@@ -153,7 +154,10 @@ public class MealOrder extends Order {
         if (e.getSource() == recommendationsitem) {
             super.actionPerformed(e);
         }
-        if(e.getSource() == myordersitem){
+        if (e.getSource() == myordersitem) {
+            super.actionPerformed(e);
+        }
+        if (e.getSource() == Ordersitem) {
             super.actionPerformed(e);
         }
 

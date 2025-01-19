@@ -7,13 +7,16 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        // new OrderManagment();
+
         AllMealsFrame.fillLists();
-        // try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Meals.dat"))) {
-        //     oos.writeObject(AllMealsFrame.meallist);
+        // AllMealsFrame.restartapp();
+        // try (ObjectOutputStream oos = new ObjectOutputStream(new
+        // FileOutputStream("Meals.dat"))) {
+        // oos.writeObject(AllMealsFrame.meallist);
         // } catch (Exception ee) {
-        //     ee.printStackTrace();
+        // ee.printStackTrace();
         // }
-        // Details.manageArrayList = loadfiles();
         loadfiles();
         loadAccounts();
         loadMeals();
@@ -66,7 +69,7 @@ public class Main {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(mealfile))) {
                 AllMealsFrame.meallist = (ArrayList<Meal>) ois.readObject();
                 System.out.println(AllMealsFrame.meallist.size());
-                for(Meal m : AllMealsFrame.meallist){
+                for (Meal m : AllMealsFrame.meallist) {
                     AllMealsFrame.order.add(0);
                 }
 

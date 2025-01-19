@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class bankFrame extends JFrame implements ActionListener {
 
-    ImageIcon background = new ImageIcon("bank2.jpg");
+    ImageIcon background = new ImageIcon("Snack-On-Track\\bank2.jpg");
     static ArrayList<Bank> list = Bank.list;
 
     JTextField nameTextField;

@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class SaladOrder extends Order {
     JLabel saladOrderIconLabel = new JLabel();
-    ImageIcon saladOrderIcon = new ImageIcon("main design salad.png");
+    ImageIcon saladOrderIcon = new ImageIcon("Snack-On-Track\\main design salad.png");
     JLabel mealprice;
     JLabel mealcalorie;
 
@@ -153,7 +153,10 @@ public class SaladOrder extends Order {
         if (e.getSource() == recommendationsitem) {
             super.actionPerformed(e);
         }
-        if(e.getSource() == myordersitem){
+        if (e.getSource() == myordersitem) {
+            super.actionPerformed(e);
+        }
+        if (e.getSource() == Ordersitem) {
             super.actionPerformed(e);
         }
     }

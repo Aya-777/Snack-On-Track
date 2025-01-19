@@ -51,7 +51,7 @@ public class newAccount extends JFrame implements ActionListener {
         this.setSize(650, 830);
         this.setLayout(null);
 
-        backImage = new ImageIcon("firstFrame.png");
+        backImage = new ImageIcon("Snack-On-Track\\firstFrame.png");
 
         label = new JLabel();
         label.setBounds(0, 0, 800, 830);
@@ -74,7 +74,7 @@ public class newAccount extends JFrame implements ActionListener {
         addBankButton.addActionListener(this);
 
         backButton = new JButton("Back");
-        backButton.setBounds(120,630,120,30);
+        backButton.setBounds(120, 630, 120, 30);
         backButton.setBackground(Color.BLACK);
         backButton.setForeground(Color.white);
         backButton.setFocusable(false);
@@ -122,7 +122,7 @@ public class newAccount extends JFrame implements ActionListener {
         if (e.getSource() == addBankButton) {
             new bankFrame();
         }
-        if(e.getSource() == backButton){
+        if (e.getSource() == backButton) {
             this.dispose();
             new SignFrame();
         }
@@ -149,16 +149,17 @@ public class newAccount extends JFrame implements ActionListener {
                         myAccount.customer = customeAccounts.get(customeAccounts.size() - 1);
                         myAccount.customer.setBankAccount(myAccount.bankAccount);
 
-                        if (myAccount.customer.getBankAccount() == null) {
-                            System.out.println("it is null");
-                        } else {
-                            System.out.println("it is not null");
-                        }
-                        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("CustomerAccounts.dat"))){
+                        // if (myAccount.customer.getBankAccount() == null) {
+                        // System.out.println("it is null");
+                        // } else {
+                        // System.out.println("it is not null");
+                        // }
+                        try (ObjectOutputStream oos = new ObjectOutputStream(
+                                new FileOutputStream("CustomerAccounts.dat"))) {
                             oos.writeObject(customeAccounts);
-                            } catch (Exception ee) {
-                                ee.printStackTrace();
-                            }
+                        } catch (Exception ee) {
+                            ee.printStackTrace();
+                        }
                         this.dispose();
                         new MealOrder(false);
 
@@ -175,11 +176,12 @@ public class newAccount extends JFrame implements ActionListener {
                             myAccount.employee = mangeAccounts.get(mangeAccounts.size() - 1);
                             myAccount.employee.setBankAccount(myAccount.bankAccount);
 
-                            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ManagerAccounts.dat"))){
+                            try (ObjectOutputStream oos = new ObjectOutputStream(
+                                    new FileOutputStream("ManagerAccounts.dat"))) {
                                 oos.writeObject(mangeAccounts);
-                                } catch (Exception ee) {
-                                    ee.printStackTrace();
-                                }
+                            } catch (Exception ee) {
+                                ee.printStackTrace();
+                            }
 
                             this.dispose();
                             new MealOrder(true);

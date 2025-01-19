@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class DessertOrder extends Order {
     JLabel dessertOrderIconLabel = new JLabel();
-    ImageIcon dessertOrderIcon = new ImageIcon("main design sweets.png");
+    ImageIcon dessertOrderIcon = new ImageIcon("Snack-On-Track\\main design sweets.png");
     JLabel mealprice;
     JLabel mealcalorie;
 
@@ -46,7 +46,7 @@ public class DessertOrder extends Order {
             jLabel.add(mealcalorie);
             jLabel.addMouseListener(this);
             panelScroll.add(jLabel);
-            meallabels.add(jLabel);    
+            meallabels.add(jLabel);
 
         }
         for (Meal m : AllMealsFrame.meallist) {
@@ -54,9 +54,9 @@ public class DessertOrder extends Order {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
                 jLabel.setIcon(AllMealsFrame.arrayMenuMealsIcon.get(21));
                 mealprice = new JLabel(String.valueOf(
-                    AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
+                        AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
-                    AllMealsFrame.meallist.get(m.getSerialnum()).getCals()) + " kcal , ");
+                        AllMealsFrame.meallist.get(m.getSerialnum()).getCals()) + " kcal , ");
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
@@ -77,7 +77,7 @@ public class DessertOrder extends Order {
                 jLabel.add(mealcalorie);
                 jLabel.addMouseListener(this);
                 panelScroll.add(jLabel);
-                meallabels.add(jLabel);    
+                meallabels.add(jLabel);
 
             }
         }
@@ -92,10 +92,9 @@ public class DessertOrder extends Order {
     public DessertOrder() {
     }
 
-
     @Override
     void addMeal(JLabel newmealLabel, Meal newMeal) {
-         newmeals++;
+        newmeals++;
         newmealLabel.addMouseListener(this);
         newmealLabel.setText(String.valueOf(newmeals));
         panelScroll.add(newmealLabel);
@@ -138,6 +137,9 @@ public class DessertOrder extends Order {
                 new OrderDetails(AllMealsFrame.order);
             }
         }
+        if (e.getSource() == Ordersitem) {
+            super.actionPerformed(e);
+        }
         if (e.getSource() == logoutitem) {
             super.actionPerformed(e);
         }
@@ -153,7 +155,7 @@ public class DessertOrder extends Order {
         if (e.getSource() == recommendationsitem) {
             super.actionPerformed(e);
         }
-        if(e.getSource() == myordersitem){
+        if (e.getSource() == myordersitem) {
             super.actionPerformed(e);
         }
     }

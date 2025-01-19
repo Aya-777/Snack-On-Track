@@ -7,9 +7,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class Order implements ActionListener, MouseListener{
+public class Order implements ActionListener, MouseListener {
 
-    static int num = 0, price = 0, newmeals=AllMealsFrame.meallist.size()-1;
+    static int num = 0, price = 0, newmeals = AllMealsFrame.meallist.size() - 1;
     JFrame f = new JFrame();
     JLabel mealslabel = new JLabel("Meals :");
     static JLabel mealnumlabel = new JLabel(String.valueOf(num));
@@ -22,20 +22,23 @@ public class Order implements ActionListener, MouseListener{
     JMenuItem saladsitem = new JMenuItem("Salads");
     JMenuItem dessertsitem = new JMenuItem("Desserts");
     JMenuItem drinksitem = new JMenuItem("Drinks");
-    JMenuBar menuBar= new JMenuBar();
+    JMenuBar menuBar = new JMenuBar();
     JMenu menu = new JMenu("|||");
     JMenuItem recommendationsitem = new JMenuItem("Recommendations");
     JMenuItem logoutitem = new JMenuItem("Log out");
     JMenuItem addmealitem = new JMenuItem("Add meal");
     JMenuItem manageritem = new JMenuItem("Manager details");
     JMenuItem myordersitem = new JMenuItem("My Orders");
+    JMenuItem Ordersitem = new JMenuItem("Orders");
     static boolean manager;
     JPanel panelScroll = new JPanel();
     JScrollPane scrollPane = new JScrollPane(panelScroll);
-    static ArrayList<JLabel>meallabels=new ArrayList<>();
+    static ArrayList<JLabel> meallabels = new ArrayList<>();
     static ImageIcon newmealIcon = new ImageIcon("menu sweets 5.png");
-    
-    Order(){}
+
+    Order() {
+    }
+
     Order(boolean manager) {
         f.setLayout(null);
 
@@ -43,9 +46,10 @@ public class Order implements ActionListener, MouseListener{
         if (manager) {
             menu.add(addmealitem);
             menu.add(manageritem);
+            menu.add(Ordersitem);
         }
 
-        menuBar.setBounds(0, 0, 635 , 15);
+        menuBar.setBounds(0, 0, 635, 15);
         menuBar.add(menu);
         menu.add(myordersitem);
         menu.add(recommendationsitem);
@@ -55,7 +59,7 @@ public class Order implements ActionListener, MouseListener{
         panelScroll.setLayout(new BoxLayout(panelScroll, BoxLayout.Y_AXIS));
         panelScroll.setBorder(new LineBorder(Color.white, 2));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
+
         mealsbar.add(mealsitem);
         mealsbar.add(saladsitem);
         mealsbar.add(dessertsitem);
@@ -91,11 +95,11 @@ public class Order implements ActionListener, MouseListener{
         dessertsitem.addActionListener(this);
         drinksitem.addActionListener(this);
         addmealitem.addActionListener(this);
+        Ordersitem.addActionListener(this);
         recommendationsitem.addActionListener(this);
         logoutitem.addActionListener(this);
         manageritem.addActionListener(this);
         myordersitem.addActionListener(this);
-
 
         f.setResizable(false);
         f.setSize(650, 830);
@@ -103,7 +107,9 @@ public class Order implements ActionListener, MouseListener{
         f.setLocationRelativeTo(null);
 
     }
-    void addMeal(JLabel newmealLabel , Meal newMeal){}
+
+    void addMeal(JLabel newmealLabel, Meal newMeal) {
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -111,56 +117,73 @@ public class Order implements ActionListener, MouseListener{
             f.dispose();
             price = 0;
             num = 0;
-            Details.gap=30;
-            Details.x=130; Details.y=150; Details.xnum=350; Details.ynum=150;
-            Details.xstate=40; Details.ystate=200; Details.xbar=20; Details.ybar=30;
-            Details.panelScroll=new JPanel();
+            Details.gap = 30;
+            Details.x = 130;
+            Details.y = 150;
+            Details.xnum = 350;
+            Details.ynum = 150;
+            Details.xstate = 40;
+            Details.ystate = 200;
+            Details.xbar = 20;
+            Details.ybar = 30;
+            Details.panelScroll = new JPanel();
             mealnumlabel.setText(String.valueOf(num));
             pricenumlabel.setText(String.valueOf(price));
-            AllMealsFrame.meallist.clear();
             AllMealsFrame.order.clear();
             AllMealsFrame.fillLists();
             new SignFrame();
         }
-        if (e.getSource() == addmealitem){
+        if (e.getSource() == addmealitem) {
             new AddMeal();
         }
-        if(e.getSource()==manageritem){
+        if (e.getSource() == manageritem) {
             new ManagerDetails(AllMealsFrame.meallist);
         }
-        if(e.getSource() == recommendationsitem){
+        if (e.getSource() == recommendationsitem) {
             new Recommendations(AllMealsFrame.meallist);
         }
-        if(e.getSource() == myordersitem){
+        if (e.getSource() == myordersitem) {
             new Details(AllMealsFrame.order);
+        }
+        if (e.getSource() == Ordersitem) {
+            new OrderManagment();
         }
 
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() instanceof JLabel){
+        if (e.getSource() instanceof JLabel) {
             for (JLabel jLabel : meallabels) {
-                if(jLabel.getText().equals(((JLabel) e.getSource()).getText())){
-                    int mealnum=Integer.parseInt(jLabel.getText());
+                if (jLabel.getText().equals(((JLabel) e.getSource()).getText())) {
+                    int mealnum = Integer.parseInt(jLabel.getText());
                     Meal m = AllMealsFrame.meallist.get(mealnum);
-                    if(m.getDeleted()){
-                        JOptionPane.showMessageDialog(null,"This meal is not available.",
-                    "Title",JOptionPane.OK_OPTION);
+                    if (m.getDeleted()) {
+                        JOptionPane.showMessageDialog(null, "This meal is not available.",
+                                "Title", JOptionPane.OK_OPTION);
                         break;
-                    } else{
-                        new AllMealsFrame(mealnum,manager ,m.getType());
+                    } else {
+                        new AllMealsFrame(mealnum, manager, m.getType());
                         break;
                     }
                 }
             }
         }
     }
+
     @Override
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {
+    }
+
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+    }
+
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+    }
+
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+    }
 }

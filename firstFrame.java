@@ -1,11 +1,13 @@
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 public class firstFrame extends JFrame {
     ImageIcon frontImage;
     JLabel label;
+
     firstFrame() {
-        frontImage = new ImageIcon("frontFrame.png");
+        frontImage = new ImageIcon("Snack-On-Track\\firstFrame.png");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(650, 830);
         this.setLayout(null);
