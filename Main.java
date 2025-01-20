@@ -57,6 +57,14 @@ public class Main {
                     ee.printStackTrace();
                 }
             }
+            File Bankfile = new File("BankAccounts.dat");
+            if (Bankfile.exists()) {
+                try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Bankfile))) {
+                    Bank.list = (ArrayList<Bank>) ois.readObject();
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
+            }
         }
     }
 
@@ -66,7 +74,7 @@ public class Main {
         if (mealfile.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(mealfile))) {
                 AllMealsFrame.meallist = (ArrayList<Meal>) ois.readObject();
-                System.out.println(AllMealsFrame.meallist.size());
+                // System.out.println(AllMealsFrame.meallist.size());
                 for (Meal m : AllMealsFrame.meallist) {
                     AllMealsFrame.order.add(0);
                 }

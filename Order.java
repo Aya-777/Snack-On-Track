@@ -18,7 +18,6 @@ public class Order implements ActionListener, MouseListener {
     JLabel pricelabel = new JLabel("Price : ");
     static JLabel pricenumlabel = new JLabel(String.valueOf(price));
     JButton viewdetailsbutton = new JButton("View details");
-    // JButton myordersButton = new JButton("My Orders");
     JMenuBar mealsbar = new JMenuBar();
     JMenuItem mealsitem = new JMenuItem("Meals");
     JMenuItem saladsitem = new JMenuItem("Salads");

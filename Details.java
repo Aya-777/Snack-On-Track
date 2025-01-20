@@ -114,9 +114,7 @@ public class Details implements ActionListener {
                 for (int i = 0; i <= 100; i++) {
                     try {
                         Thread.sleep(100);
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
+                    } catch (Exception e) {}
                     publish(i);
                     if (!cancelButton.isEnabled() && cancelPressed) {
                         break;
@@ -154,10 +152,11 @@ public class Details implements ActionListener {
                 if (!cancelButton.isEnabled() && cancelPressed) {
                     state.setText("Canceled");
                     file.setStatus("Canceled");
-                    int Balance = myAccount.customer.getBankAccount().getBalance();
-                    System.out.println(Balance);
-                    myAccount.customer.getBankAccount().setBalance(Balance + TakeMoneyBack);
-                    System.out.println(myAccount.customer.getBankAccount().getBalance());
+                    if(myAccount.customer.getBankAccount()!=null){
+                        int Balance = myAccount.customer.getBankAccount().getBalance();
+                        myAccount.customer.getBankAccount().setBalance(Balance + TakeMoneyBack);
+                    }
+                  
                     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))) {
                         oos.writeObject(saveFileArray);
                     } catch (Exception e) {

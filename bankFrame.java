@@ -32,7 +32,6 @@ public class bankFrame extends JFrame implements ActionListener {
     String bankName;
     String id;
     String password;
-    boolean check1; // to if the operation is checking or adding new account // true for checking
     static myAccount m1 = new myAccount();
 
     bankFrame() {
@@ -142,21 +141,25 @@ public class bankFrame extends JFrame implements ActionListener {
                         } else {
 
                             myAccount.bankAccount = new Bank(bankName, id, password);
-                            if (myAccount.bankAccount != null) {
                                 // System.out.println("added");
-                                try (ObjectOutputStream oos = new ObjectOutputStream(
-                                    new FileOutputStream("CustomerAccounts.dat"))) {
+                                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("CustomerAccounts.dat"))) {
                                     oos.writeObject(newAccount.customeAccounts);
                                 } catch (Exception ee) {
                                     ee.printStackTrace();
                                 }
-                            }
-
+                                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("BankAccounts.dat"))) {
+                                    oos.writeObject(list);
+                                } catch (Exception ee) {
+                                    ee.printStackTrace();
+                                }
                         }
                     } catch (Exception ex) {
                     }
                     this.dispose();
 
+                }else{
+                    JOptionPane.showMessageDialog(null, "Change your info please", "Title",
+                        JOptionPane.ERROR_MESSAGE);
                 }
 
             }
