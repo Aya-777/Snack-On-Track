@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

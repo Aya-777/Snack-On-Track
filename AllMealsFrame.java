@@ -1,10 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -497,13 +494,6 @@ public class AllMealsFrame implements ActionListener {
                 for (Meal m : meallist) {
                         order.add(0);
                 }
-
-                // Order.meallabels.clear();
-                // new MealOrder().fillmeallabellist();
-                // new SaladOrder().fillmeallabellist();
-                // new DessertOrder().fillmeallabellist();
-                // new DrinksOrder().fillmeallabellist();
-
         }
 
 }
