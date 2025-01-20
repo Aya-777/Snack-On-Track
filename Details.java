@@ -152,13 +152,14 @@ public class Details implements ActionListener {
             protected void process(List<Integer> chunks) {
                 int progress = chunks.get(chunks.size() - 1);
                 detailsprogregressbar.setValue(progress);
-                if (progress == 10) {
-                    state.setText("Preparing...");
-                    file.setStatus("Preparing");
-                }
                 if (progress == 75) {
-                    state.setText("Delivering...");
+                    state.setText("Delivering");
                     file.setStatus("Delivering");
+                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))) {
+                        oos.writeObject(saveFileArray);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (progress == 50) {
                     cancelButton.setEnabled(false);
@@ -176,13 +177,23 @@ public class Details implements ActionListener {
                 if (!cancelButton.isEnabled() && cancelPressed) {
                     state.setText("Canceled");
                     file.setStatus("Canceled");
+                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))) {
+                        oos.writeObject(saveFileArray);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 } else {
                     System.out.println("completed");
                     state.setText("Done!");
                     file.setStatus("Done");
+                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))) {
+                        oos.writeObject(saveFileArray);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     Details.allDailyPrice += Order.price;
-                    System.out.println(Details.allDailyPrice);
+                    // System.out.println(Details.allDailyPrice);
 
                 }
             }

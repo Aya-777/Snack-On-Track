@@ -29,7 +29,6 @@ public class Order implements ActionListener, MouseListener {
     JMenuItem recommendationsitem = new JMenuItem("Recommendations");
     JMenuItem logoutitem = new JMenuItem("Log out");
     JMenuItem addmealitem = new JMenuItem("Add meal");
-    JMenuItem manageritem = new JMenuItem("Manager details");
     JMenuItem myordersitem = new JMenuItem("My Orders");
     JMenuItem Ordersitem = new JMenuItem("Orders");
     static boolean manager;
@@ -47,8 +46,8 @@ public class Order implements ActionListener, MouseListener {
         Order.manager = manager;
         if (manager) {
             menu.add(addmealitem);
-            menu.add(manageritem);
             menu.add(Ordersitem);
+            recommendationsitem.setText("Manager Details");
         }
 
         menuBar.setBounds(0, 0, 635, 15);
@@ -100,7 +99,6 @@ public class Order implements ActionListener, MouseListener {
         Ordersitem.addActionListener(this);
         recommendationsitem.addActionListener(this);
         logoutitem.addActionListener(this);
-        manageritem.addActionListener(this);
         myordersitem.addActionListener(this);
 
         f.setResizable(false);
@@ -138,14 +136,11 @@ public class Order implements ActionListener, MouseListener {
         if (e.getSource() == addmealitem) {
             new AddMeal();
         }
-        if (e.getSource() == manageritem) {
-            new ManagerDetails(AllMealsFrame.meallist);
-        }
         if (e.getSource() == recommendationsitem) {
             new Recommendations(AllMealsFrame.meallist);
         }
         if (e.getSource() == myordersitem) {
-            new Details(AllMealsFrame.order);
+            new Details(new ArrayList<>());
         }
         if (e.getSource() == Ordersitem) {
             new OrderManagment();

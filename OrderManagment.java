@@ -9,12 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 public class OrderManagment extends JFrame {
 
-    Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
     ArrayList<OrderFile> list;
     int y = 0;
     JLabel emptyLabel;
@@ -46,7 +44,6 @@ public class OrderManagment extends JFrame {
 
         panelScroll.setLayout(null);
         panelScroll.setBounds(0, 0, 550, 448);
-        panelScroll.setBackground(Color.white);
         panelScroll.setPreferredSize(new Dimension(600, 448));
         panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
 
@@ -76,16 +73,18 @@ public class OrderManagment extends JFrame {
 
     JLabel mainLabel(ArrayList<OrderFile> list) {
         int size = list.size();
+        int dailyOrders =0;
         int dailyPrice = 0;
         for (int i = 0; i < size; i++) {
             if (LocalDate.now().equals(list.get(i).getDate())) {
                 dailyPrice += list.get(i).getOrderPrice();
+                dailyOrders +=1;
             }
         }
 
         JLabel howManyOrdersLabel = new JLabel();
         howManyOrdersLabel.setBounds(10, 10, 200, 50);
-        howManyOrdersLabel.setText("Orders :" + size);
+        howManyOrdersLabel.setText("Orders :" + dailyOrders);
         howManyOrdersLabel.setFont(new Font("consolas", Font.PLAIN, 30));
         howManyOrdersLabel.setHorizontalAlignment(JLabel.CENTER);
         howManyOrdersLabel.setVerticalAlignment(JLabel.CENTER);
@@ -125,16 +124,18 @@ public class OrderManagment extends JFrame {
         
         if (status.equals("Done")) {
             statusLabel.setForeground(Color.green);
-        } else if (status.equals("Prepering")) {
+        } else if (status.equals("Preparing")) {
             statusLabel.setForeground(Color.orange);
-        } else {
-            statusLabel.setForeground(Color.red);
+        }else if(status.equals("Delivering")){
+            statusLabel.setForeground(Color.YELLOW);
+
+        }else {
+            statusLabel.setForeground(Color.gray);
         }
 
         JLabel label = new JLabel();
         label.setLayout(null);
         label.setBounds(0, y, 600, 50);
-        label.setBorder(border);
         label.add(nameLabel);
         label.add(dateLabel);
         label.add(statusLabel);

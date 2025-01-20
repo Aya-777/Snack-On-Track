@@ -64,7 +64,7 @@ public class DrinksOrder extends Order {
                 jLabel.setOpaque(true);
 
                 newmealNameLabel.setBounds(20,30,500,50);
-                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
                 newmealNameLabel.setForeground(new Color(224,64,78));
 
                 mealprice.setBounds(188, 78, 150, 60);
@@ -147,9 +147,6 @@ public class DrinksOrder extends Order {
             super.actionPerformed(e);
         }
         if (e.getSource() == addmealitem) {
-            super.actionPerformed(e);
-        }
-        if (e.getSource() == manageritem) {
             super.actionPerformed(e);
         }
         if (e.getSource() == recommendationsitem) {

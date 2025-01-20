@@ -28,9 +28,37 @@ class Recommendations{
     JLabel RecommendationsIconLabel = new JLabel();
     ImageIcon RecommendationIcon = new ImageIcon("cart.png");
 
+    JLabel favcustomerLabel = new JLabel("The most visiting customer : ");
+    JLabel favcutomernamLabel = new JLabel();
+
     ArrayList<JLabel> popularmealsarray = new ArrayList<>();
 
     Recommendations(ArrayList<Meal> meals){
+
+        favcustomerLabel.setBounds(80,90,300,30);
+        favcustomerLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+        favcutomernamLabel.setBounds(360,90,200,30);
+        favcutomernamLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
+
+        if(Order.manager){
+            int min=0;
+            String name ="";
+            for (customerAccounts c : newAccount.customeAccounts) {
+                if(c.getHowManyTimes()>min){
+                    name=c.getName();
+                    min=c.getHowManyTimes();
+                }
+            }
+            try {
+                favcutomernamLabel.setText(name);
+                RecommendationsIconLabel.add(favcutomernamLabel);
+
+            } catch (NullPointerException e) {
+                favcustomerLabel.setText("No customers");
+            }
+            RecommendationsIconLabel.add(favcustomerLabel);
+        }
+   
 
         RecommendationsIconLabel.setBounds(0,0,500,500);
         RecommendationsIconLabel.setIcon(RecommendationIcon);
@@ -117,11 +145,13 @@ class Recommendations{
             int ind = 1;
             for(int i = 0 ; i < meals.size() ; i++){
                 if(meals.get(i)==mostpopulardrink||meals.get(i)==mostpopulardessert||meals.get(i)==mostpopularmeal||meals.get(i)==mostpopularsalad){
-                    int x = 50;
-                    int y = ind * 100;
-                    y -= 50;
+                    if(Order.manager && i==0){
+                        ind = 2;
+                    }
+                    int x = 80;
+                    int y = ind * 65;
                     JLabel mealname = new JLabel(AllMealsFrame.meallist.get(i).getName());
-                    mealname.setBounds(x, y, 320, 30);
+                    mealname.setBounds(x, y+15, 320, 30);
                     mealname.setFont(new Font("Eras Medium ITC", Font.PLAIN, 25));
                     ind++;
                     RecommendationsIconLabel.add(mealname);

@@ -58,14 +58,16 @@ public class MealOrder extends Order {
                 mealprice = new JLabel(String.valueOf(
                         AllMealsFrame.meallist.get(m.getSerialnum()).getPrice()) + " $");
                 mealcalorie = new JLabel(String.valueOf(
-                        AllMealsFrame.meallist.get(m.getSerialnum()).getCals()) + " kcal");
+                        AllMealsFrame.meallist.get(m.getSerialnum()).getCals()) + " kcal ,");
 
                 jLabel.setBorder(new LineBorder(Color.white, 2));
                 jLabel.setOpaque(true);
 
                 newmealNameLabel.setBounds(20,30,400,50);
-                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
-                newmealNameLabel.setBackground( Color.white);
+                newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
+                newmealNameLabel.setForeground( Color.white);
+                newmealNameLabel.setBackground(new Color(255, 134, 120));
+                newmealNameLabel.setOpaque(true);
 
                 mealprice.setBounds(188, 78, 150, 60);
                 mealprice.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
@@ -147,9 +149,6 @@ public class MealOrder extends Order {
             super.actionPerformed(e);
         }
         if (e.getSource() == addmealitem) {
-            super.actionPerformed(e);
-        }
-        if (e.getSource() == manageritem) {
             super.actionPerformed(e);
         }
         if (e.getSource() == recommendationsitem) {

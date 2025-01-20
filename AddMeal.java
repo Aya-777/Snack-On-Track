@@ -140,8 +140,10 @@ class AddMeal implements ActionListener {
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Meal");
 
                         newmealNameLabel.setBounds(25,30,400,50);
-                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
                         newmealNameLabel.setForeground(new Color(255,255,255));
+                        newmealNameLabel.setBackground(new Color(255, 134, 120));
+                        
 
                         newmealPriceLabel.setBounds(188, 78, 150, 60);
                         newmealPriceLabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 32));
@@ -166,7 +168,7 @@ class AddMeal implements ActionListener {
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Salad");
 
                         newmealNameLabel.setBounds(20,30,400,50);
-                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
                         newmealNameLabel.setForeground(new Color(91,74,38));
 
                         newmealPriceLabel.setBounds(188, 78, 150, 60);
@@ -192,7 +194,7 @@ class AddMeal implements ActionListener {
                         int serialnum = AllMealsFrame.meallist.size();
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Dessert");
                         newmealNameLabel.setBounds(20,30,400,50);
-                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
                         newmealNameLabel.setForeground(new Color(91,74,38));
 
                         newmealPriceLabel.setBounds(180, 78, 150, 60);
@@ -218,7 +220,7 @@ class AddMeal implements ActionListener {
                         Meal newMeal = new Meal(serialnum, price, name, desc, calorie, false, 0, "Drink");
 
                         newmealNameLabel.setBounds(20,30,500,50);
-                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.PLAIN, 40));
+                        newmealNameLabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
                         newmealNameLabel.setForeground(new Color(224,64,78));
 
                         newmealPriceLabel.setBounds(188, 78, 150, 60);

@@ -103,6 +103,7 @@ public class AllMealsFrame implements ActionListener {
     JTextField extraDetailsFiled = new JTextField();
     JLabel extraDetailscLabel = new JLabel("Extra details :");
     JFrame f = new JFrame();
+    JLabel newmealnamelabel = new JLabel();
 
     JLabel mainLabel = new JLabel();
     static ImageIcon drink1MainIcon = new ImageIcon("main drink 1.png");
@@ -171,18 +172,35 @@ public class AllMealsFrame implements ActionListener {
 
         mainLabel.setBounds(0, 0, 650, 830);
         if(mealnum>20){
+
+                newmealnamelabel=new JLabel(m.getName());
+                newmealnamelabel.setBounds(130,210,500,50);
+                newmealnamelabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
+                mainLabel.add(newmealnamelabel);
+
                 if (type.equals("Meal")) {
                         mainLabel.setIcon(newMealsIcon);
+                        newmealnamelabel.setForeground(Color.WHITE);
                     }
                     if (type.equals("Salad")) {
                         mainLabel.setIcon(newSaladsIcon);
+                        newmealnamelabel.setForeground(new Color(91,74,38));
+
                     }
                     if (type.equals("Dessert")) {
                         mainLabel.setIcon(newDessertsIcon);
+                        newmealnamelabel.setForeground(new Color(91,74,38));
+
                     }
                     if (type.equals("Drink")) {
                         mainLabel.setIcon(newDrinksIcon);
+                        newmealnamelabel.setForeground(new Color(224,64,78));
+
                     }
+                   
+
+
+
         } else{
             mainLabel.setIcon(arrayMealsIcon.get(mealnum));
         }
@@ -205,6 +223,7 @@ public class AllMealsFrame implements ActionListener {
         mainLabel.add(backButton);
 
         if (type.equals("Meal")) {
+                
                 backButton.setBounds(250, 720, 150, 30);
                 addbutton.setBounds(245, 615, 50, 30);
                 singlemealnumlabel.setBounds(313, 620, 50, 20);
