@@ -27,39 +27,28 @@ class OrderDetails implements ActionListener {
         cartLabel.setBounds(0, 0, 500, 500);
         cartLabel.setIcon(cartIcon);
 
-        scrollPane.setBounds(50, 10, 385, 400);
+        scrollPane.setBounds(50, 10, 385, 350);
         scrollPane.setBackground(new Color(252, 244, 154));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         panelScroll.setLayout(null);
-        panelScroll.setBounds(10, 10, 385, 400);
+        panelScroll.setBounds(10, 10, 385, 350);
         panelScroll.setBackground(new Color(252, 244, 154));
         panelScroll.setPreferredSize(new Dimension(465, 40));
         panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
 
-        mealslabel.setBounds(60, 425, 100, 20);
+        mealslabel.setBounds(40, 425, 100, 20);
         mealslabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        mealnumlabel.setBounds(130, 425, 50, 20);
+        mealnumlabel.setBounds(110, 425, 50, 20);
         mealnumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        pricelabel.setBounds(200, 425, 100, 20);
+        pricelabel.setBounds(40, 375, 100, 20);
         pricelabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
-        pricenumlabel.setBounds(270, 425, 50, 20);
+        pricenumlabel.setBounds(110, 375, 250, 20);
         pricenumlabel.setFont(new Font("Franklin Gothic Demi", Font.PLAIN, 20));
 
-        confirmButton.setBounds(340, 423, 120, 25);
+        confirmButton.setBounds(320, 400, 130, 32);
         confirmButton.addActionListener(this);
         confirmButton.setFocusable(false);
-
-        pricenumlabel.setText(String.valueOf(Order.price));
-        mealnumlabel.setText(String.valueOf(Order.num));
-
-        cartLabel.add(mealnumlabel);
-        cartLabel.add(mealslabel);
-        cartLabel.add(pricelabel);
-        cartLabel.add(pricenumlabel);
-
-        f.add(cartLabel);
-        f.add(scrollPane);
 
         int ind = 1;
         for (int i = 0; i < meals.size(); i++) {
@@ -90,6 +79,19 @@ class OrderDetails implements ActionListener {
 
         }
 
+
+        pricenumlabel.setText(String.valueOf(Order.price) +" + "+ (5*Order.price)/100 + "$ (taxes)");
+        mealnumlabel.setText(String.valueOf(Order.num));
+
+        cartLabel.add(mealnumlabel);
+        cartLabel.add(mealslabel);
+        cartLabel.add(pricelabel);
+        cartLabel.add(pricenumlabel);
+
+        f.add(cartLabel);
+        f.add(scrollPane);
+
+      
         f.add(confirmButton);
 
         f.setResizable(false);

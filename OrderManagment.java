@@ -44,7 +44,7 @@ public class OrderManagment extends JFrame {
 
         panelScroll.setLayout(null);
         panelScroll.setBounds(0, 0, 550, 448);
-        panelScroll.setPreferredSize(new Dimension(600, 448));
+        panelScroll.setPreferredSize(new Dimension(600, 430));
         panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
 
         for (int i = 0; i < size; i++) {

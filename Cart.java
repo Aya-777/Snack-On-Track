@@ -186,16 +186,14 @@ public class Cart implements ActionListener {
                     if (m1.havingAccount()) {
                         if (m1.whichOne()) { // customer
                             if (myAccount.customer.getBankAccount() != null) {
-
-                                try {
+                                Order.price+=(5*Order.price)/100;
+                                if((myAccount.customer.getBankAccount().getBalance()-Order.price)>=0){
                                     int newBalance = myAccount.customer.getBankAccount().getBalance() - Order.price;
-                                    // System.out.println(Order.price);
                                     myAccount.customer.getBankAccount().setBalance(newBalance);
                                     openIt = true;
-                                    System.out.println(myAccount.customer.getBankAccount().getBalance());
-                                    System.out.println("customer");
-                                } catch (Exception ex) {
-                                    System.out.println("cart 197");
+                                } else{
+                                    JOptionPane.showMessageDialog(null, 
+                                    "You dont have enough balance", "Title",JOptionPane.ERROR_MESSAGE);
                                 }
 
                             } else {

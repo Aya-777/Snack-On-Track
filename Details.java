@@ -25,6 +25,7 @@ public class Details implements ActionListener {
     boolean cancelPressed = false;
     static ArrayList<OrderFile> saveFileArray = new ArrayList<>();
     OrderFile file;
+    int TakeMoneyBack=0;
 
     Details(ArrayList<Integer> meals) {
 
@@ -38,30 +39,6 @@ public class Details implements ActionListener {
             e.printStackTrace();
         }
 
-        System.out.println(saveFileArray.get(0).getUsername());
-
-        // int index=0;
-        // try( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new
-        // FileOutputStream("The order.txt"),StandardCharsets.UTF_8))){
-        // for(int i : meals){
-        // writer.write(String.valueOf(index) + " ");
-        // writer.write(String.valueOf(i)+ "\n");
-        // index++;
-        // }
-        // writer.close();
-        // }catch(Exception e){
-        // System.out.println(e.getStackTrace());
-        // }
-        // try(BufferedReader r = new BufferedReader(new FileReader("The order.txt"))) {
-        // String line;
-        // while((line=r.readLine()) != null){
-        // System.out.println(line);
-        // }
-        // } catch (FileNotFoundException e) {
-        // e.printStackTrace();
-        // } catch (IOException e) {
-        // e.printStackTrace();
-        // }
         detailsLabel.setBounds(0, 0, 600, 700);
         detailsLabel.setIcon(detailsIcon);
 
@@ -177,10 +154,20 @@ public class Details implements ActionListener {
                 if (!cancelButton.isEnabled() && cancelPressed) {
                     state.setText("Canceled");
                     file.setStatus("Canceled");
+                    int Balance = myAccount.customer.getBankAccount().getBalance();
+                    System.out.println(Balance);
+                    myAccount.customer.getBankAccount().setBalance(Balance + TakeMoneyBack);
+                    System.out.println(myAccount.customer.getBankAccount().getBalance());
                     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))) {
                         oos.writeObject(saveFileArray);
                     } catch (Exception e) {
                         e.printStackTrace();
+                    }
+                    try (ObjectOutputStream oos = new ObjectOutputStream(
+                            new FileOutputStream("CustomerAccounts.dat"))) {
+                        oos.writeObject(newAccount.customeAccounts);
+                    } catch (Exception ee) {
+                        ee.printStackTrace();
                     }
 
                 } else {
@@ -192,9 +179,13 @@ public class Details implements ActionListener {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    try (ObjectOutputStream oos = new ObjectOutputStream(
+                        new FileOutputStream("CustomerAccounts.dat"))) {
+                        oos.writeObject(newAccount.customeAccounts);
+                    } catch (Exception ee) {
+                        ee.printStackTrace();
+                    }
                     Details.allDailyPrice += Order.price;
-                    // System.out.println(Details.allDailyPrice);
-
                 }
             }
         };
@@ -214,7 +205,7 @@ public class Details implements ActionListener {
         f.setResizable(false);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
-        f.setSize(600,700);
+        f.setSize(600, 700);
 
     }
 
@@ -233,6 +224,7 @@ public class Details implements ActionListener {
             new MealOrder(MealOrder.manager);
         }
         if (e.getSource() == cancelButton) {
+            TakeMoneyBack=Order.price;
             Order.price = 0;
             Order.num = 0;
             Order.mealnumlabel.setText(String.valueOf(Order.num));

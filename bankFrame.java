@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class bankFrame extends JFrame implements ActionListener {
@@ -141,13 +143,20 @@ public class bankFrame extends JFrame implements ActionListener {
 
                             myAccount.bankAccount = new Bank(bankName, id, password);
                             if (myAccount.bankAccount != null) {
-                                System.out.println("added");
+                                // System.out.println("added");
+                                try (ObjectOutputStream oos = new ObjectOutputStream(
+                                    new FileOutputStream("CustomerAccounts.dat"))) {
+                                    oos.writeObject(newAccount.customeAccounts);
+                                } catch (Exception ee) {
+                                    ee.printStackTrace();
+                                }
                             }
 
                         }
                     } catch (Exception ex) {
                     }
                     this.dispose();
+
                 }
 
             }

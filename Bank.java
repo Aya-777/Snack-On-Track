@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bank {
+public class Bank implements Serializable{
     private String bankName;
     private String cardID;
     private String password;
-    private int balance = 10000;
+    private int balance = 1000;
 
     static ArrayList<Bank> list = new ArrayList<>();
 
