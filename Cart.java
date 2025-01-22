@@ -160,6 +160,10 @@ public class Cart implements ActionListener {
             boolean emptyField = false;
             String details = detailsfield.getText();
             String tip = tipfield.getText();
+            if(Integer.parseInt(tip)<0){
+                JOptionPane.showMessageDialog(null, "The tip must be positive!",
+                            "Title", JOptionPane.WARNING_MESSAGE);
+            }else{
             if (delivery.isSelected()) {
                 String address = addressfield.getText();
                 if (address.isEmpty()) {
@@ -214,11 +218,17 @@ public class Cart implements ActionListener {
 
                             if (myAccount.employee.getBankAccount() != null) {
                                 try {
-                                    int newBalance = myAccount.employee.getBankAccount().getBalance() - Order.price;
-                                    myAccount.employee.getBankAccount().setBalance(newBalance);
-                                    openIt = true;
-                                    System.out.println(myAccount.employee.getBankAccount().getBalance());
-                                    System.out.println("empolyee");
+                                    Order.price+=(5*Order.price)/100;
+                                    if((myAccount.customer.getBankAccount().getBalance()-Order.price)>=0){
+                                        int newBalance = myAccount.employee.getBankAccount().getBalance() - Order.price;
+                                        myAccount.employee.getBankAccount().setBalance(newBalance);
+                                        openIt = true;
+                                        // System.out.println(myAccount.employee.getBankAccount().getBalance());
+                                        // System.out.println("empolyee");
+                                    }else{
+                                        JOptionPane.showMessageDialog(null, 
+                                        "You dont have enough balance", "Title",JOptionPane.ERROR_MESSAGE);
+                                    }
                                 } catch (Exception ex) {
                                     System.out.println("cart 224");
                                 }
@@ -247,6 +257,7 @@ public class Cart implements ActionListener {
                 }
 
             }
+         }
 
         }
     }

@@ -54,7 +54,7 @@ public class SaladOrder extends Order {
 
         }
         for (Meal m : AllMealsFrame.meallist) {
-            if (m.getType().equals("Salad") && m.getSerialnum() >= 20) {
+            if (m.getType().equals("Salad") && m.getSerialnum() > 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
                 jLabel.setIcon(AddMeal.newSaladMenuIcon);
                 newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));

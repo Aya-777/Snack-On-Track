@@ -33,7 +33,7 @@ public class OrderManagment extends JFrame {
         mainJLabel.setBounds(0, 0, 600, 500);
 
         emptyLabel = new JLabel("There is no order for today until now");
-        emptyLabel.setBounds(0, y, 600, 50);
+        emptyLabel.setBounds(-50, y, 600, 50);
         emptyLabel.setFont(new Font("consolas", Font.PLAIN, 20));
         emptyLabel.setHorizontalAlignment(JLabel.CENTER);
         emptyLabel.setVerticalAlignment(JLabel.CENTER);
@@ -46,6 +46,7 @@ public class OrderManagment extends JFrame {
         panelScroll.setPreferredSize(new Dimension(600, 430));
         panelScroll.setBorder(new LineBorder(Color.WHITE, 2));
 
+        boolean mealsexist = false;
         for (int i = 0; i < size; i++) {
 
             if (list.get(i).getDate().equals(LocalDate.now())) {
@@ -55,9 +56,13 @@ public class OrderManagment extends JFrame {
                 String status = list.get(i).getStatus();
 
                 panelScroll.add(launchLabel(userName, date, status));
+                mealsexist =true;
             }
         }
 
+        if(!mealsexist){
+            panelScroll.add(emptyLabel);
+        }
 
         mainJLabel.setIcon(mainicon);
 

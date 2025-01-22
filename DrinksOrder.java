@@ -51,7 +51,7 @@ public class DrinksOrder extends Order {
 
         }
         for (Meal m : AllMealsFrame.meallist) {
-            if (m.getType().equals("Drink") && m.getSerialnum() >= 20) {
+            if (m.getType().equals("Drink") && m.getSerialnum() > 20) {
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
                 jLabel.setIcon(AddMeal.newDrinkMenuIcon);
                 newmealNameLabel=new JLabel((AllMealsFrame.meallist.get(m.getSerialnum()).getName()));

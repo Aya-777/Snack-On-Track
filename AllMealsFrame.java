@@ -172,7 +172,6 @@ public class AllMealsFrame implements ActionListener {
 
                 mainLabel.setBounds(0, 0, 650, 830);
                 if (mealnum > 20) {
-
                         newmealnamelabel = new JLabel(m.getName());
                         newmealnamelabel.setBounds(130, 210, 500, 50);
                         newmealnamelabel.setFont(new Font("Eras Medium ITC", Font.BOLD, 40));
@@ -251,7 +250,7 @@ public class AllMealsFrame implements ActionListener {
 
                 if (type.equals("Meal")) {
 
-                        if (mealnum > 19) {
+                        if (mealnum > 20) {
                                 descTextArea.setBounds(100, 350, 350, 300);
                                 mealKcaloriLabel.setBounds(480, 340, 150, 40);
                                 mealpricLabel.setBounds(510, 400, 100, 50);
@@ -271,7 +270,7 @@ public class AllMealsFrame implements ActionListener {
                 }
                 if (type.equals("Salad")) {
 
-                        if (mealnum > 19) {
+                        if (mealnum > 20) {
                                 descTextArea.setBounds(100, 350, 350, 300);
                                 mealKcaloriLabel.setBounds(480, 340, 150, 40);
                                 mealpricLabel.setBounds(510, 400, 100, 50);
@@ -291,7 +290,7 @@ public class AllMealsFrame implements ActionListener {
                 }
                 if (type.equals("Dessert")) {
 
-                        if (mealnum > 19) {
+                        if (mealnum > 20) {
                                 descTextArea.setBounds(100, 350, 350, 300);
                                 mealKcaloriLabel.setBounds(480, 340, 150, 40);
                                 mealpricLabel.setBounds(510, 400, 100, 50);
@@ -310,7 +309,7 @@ public class AllMealsFrame implements ActionListener {
                 }
                 if (type.equals("Drink")) {
 
-                        if (mealnum > 19) {
+                        if (mealnum > 20) {
                                 descTextArea.setBounds(100, 350, 350, 300);
                                 mealKcaloriLabel.setBounds(480, 340, 150, 40);
                                 mealpricLabel.setBounds(510, 400, 100, 50);

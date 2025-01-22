@@ -29,9 +29,13 @@ public class Details implements ActionListener {
 
     Details(ArrayList<Integer> meals) {
 
-        file = new OrderFile(meals, "Preparing", Order.price);
-        OrderFile.list.add(file);
-        saveFileArray.add(file);
+        if(!meals.isEmpty()){
+            file = new OrderFile(meals, "Preparing", Order.price);
+            OrderFile.list.add(file);
+            saveFileArray.add(file);
+        }
+
+       
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Orders.dat"))) {
             oos.writeObject(saveFileArray);

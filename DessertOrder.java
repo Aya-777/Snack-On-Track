@@ -51,7 +51,7 @@ public class DessertOrder extends Order {
 
         }
         for (Meal m : AllMealsFrame.meallist) {
-            if (m.getType().equals("Dessert") && m.getSerialnum() >= 20) {
+            if (m.getType().equals("Dessert") && m.getSerialnum() > 20) {
 
                 JLabel jLabel = new JLabel(String.valueOf(m.getSerialnum()));
                 jLabel.setIcon(AddMeal.newDessertMenuIcon);
